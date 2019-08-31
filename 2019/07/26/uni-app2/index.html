@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>学习uni-app--框架简介 | 举头问天</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="uniapp">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/xiaopang.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">周欣</h5>
+          <a href="mailto:2717584844@qq.com" title="2717584844@qq.com" class="mail">
+            
+              <span>2</span>
+            
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>4</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归纳
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>学习uni-app--框架简介</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">学习uni-app--框架简介</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-26T09:53:21.000Z" itemprop="datePublished" class="page-time">
+  2019-07-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-uni-app2"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">学习uni-app--框架简介</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-26 17:53:21" datetime="2019-07-26T09:53:21.000Z"  itemprop="datePublished">2019-07-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>默认目录及文件：<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/wenjian.png" title="" data-fancybox="images"><img src="/images/wenjian.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<h1 id="语法、API和标签"><a href="#语法、API和标签" class="headerlink" title="语法、API和标签"></a>语法、API和标签</h1><p>uni-app由于要跨多端，所以代码书写会有些糅合性。语法方面使用<a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue.js</a>，标签和Api大部分使用的是<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html" target="_blank" rel="noopener">小程序</a>的技术。比如:div=&gt;view，span=&gt;text，img=&gt;image等。详情见官网<a href="https://uniapp.dcloud.io/component/README" target="_blank" rel="noopener">组件</a>。其实老的HTML标签也可以在uni-app里使用，uni-app编译器会在编译时把老标签转为新标签。但不推荐这种用法，调试H5端时容易混乱，基于元素的选择器也会出问题。</p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>uniapp同时支持小程序和vue.js的生命周期。查看<a href="https://uniapp.dcloud.io/frame?id=%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" target="_blank" rel="noopener">page生命周期函数</a>，（大部分继承<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html" target="_blank" rel="noopener">小程序生命周期</a>），component则应使用<a href="https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA" target="_blank" rel="noopener">vue.js生命周期函数</a>，组件里只支持onReady生命周期函数。</p>
+<h1 id="页面管理"><a href="#页面管理" class="headerlink" title="页面管理"></a>页面管理</h1><p>所有页面必须在pages.json进行注册才能访问.好在HBuilderX能够自动进行注册，可以偷懒。<br>pages数组属性管理页面，第一项表示启动页，每一项当中path表示页面路径，style表示相关的样式设置，即状态栏、导航条、标题、窗口背景色、原生设置(<a href="https://uniapp.dcloud.io/collocation/pages?id=app-plus" target="_blank" rel="noopener">app-plus</a>)及小程序组件的注册与使用(在”usingComponents”注册)。<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/page.png" title="" data-fancybox="images"><img src="/images/page.png" alt title class></a>
+                <p></p>
+            </figure><br>globalStyle用于设置全局应用的状态栏、导航条、标题、窗口背景色等。<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/page1.png" title="" data-fancybox="images"><img src="/images/page1.png" alt title class></a>
+                <p></p>
+            </figure><br>tabBar 如果应用是一个多 tab 应用，可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页，即所谓的底部导航栏。list就是配置tab页面。<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/list.png" title="" data-fancybox="images"><img src="/images/list.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<h1 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h1><p>uni-app 有两种路由跳转方式：使用navigator组件跳转、调用API跳转，API包括uni.navigateTo、uni.redirectTo 、uni.switchTab和uni.reLaunch等几种方式(其实就是借用了<a href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html" target="_blank" rel="noopener">小程序的路由跳转</a>)。这几种跳转的区别如下:<br>在uni-app中所有页面是以栈的形式进行管理。<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/route.png" title="" data-fancybox="images"><img src="/images/route.png" alt title class></a>
+                <p></p>
+            </figure><br>注意：uni.navigateTo、uni.redirectTo是不能跳转到tabBar页面。路由传参只能在url后添加，在跳转后的页面onLoad函数参数options获取传过来的参数。</p>
+<h1 id="页面样式与布局"><a href="#页面样式与布局" class="headerlink" title="页面样式与布局"></a>页面样式与布局</h1><h2 id="upx"><a href="#upx" class="headerlink" title="upx"></a>upx</h2><p>uni-app支持的css单位有px,upx(官方已改为rpx，不影响使用),vw,vh和rem等。<br>这里着重讲upx，upx是基于屏幕响应式的css单位。怎么说呢，就是所有的移动端屏幕宽度都为750upx。举个例子:在手机屏幕宽度为375px时，1px=750/375upx；屏幕宽为414px时，1px=750/414upx；因此所有的移动端屏幕宽度为750upx，当元素宽度设为upx时，就会在各个手机上展示的效果是一样的。</p>
+<p>注意：只有当你需要某元素的单位要根据屏幕宽度大小变化时，才需要rpx这类动态宽度单位。一般情况下高度和字体大小是不应该根据屏幕宽度变化的。</p>
+<h2 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h2><p>在移动端中使用flex布局，可以轻松设置元素适配移动端，教程推荐<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰的flex讲解</a>。<br>rpx加上flex布局可以自适应绝大部分的移动端。</p>
+<h1 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h1><p>几乎全支持vue官方事件处理器：除了click=&gt;tap。详情见如下图：左侧为web事件，右侧为uniapp移动端事件。<figure class="image-box">
+                <a rel=学习uni-app--框架简介 href="/images/shijian.png" title="" data-fancybox="images"><img src="/images/shijian.png" alt title class></a>
+                <p></p>
+            </figure><br>注意：</p>
+<ul>
+<li>为兼容各端，事件需使用<font color="#E96900">v-on</font>或<font color="#E96900">@</font>的方式绑定，请勿使用小程序端的<font color="#E96900">bind</font>和<font color="#E96900">catch</font>进行事件绑定。</li>
+<li>事件修饰符，<font color="#E96900">.stop</font>各平台均支持，使用时会阻止事件冒泡，在非 H5 端同时也会阻止事件的默认行为。其它事件修饰符只支持H5。</li>
+<li>按键修饰符，uni-app运行在手机端，没有键盘事件，所以不支持按键修饰符。</li>
+</ul>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p>uni-app已归纳大部分开发者会遇到的问题，戳这里：<a href="https://uniapp.dcloud.io/faq" target="_blank" rel="noopener">https://uniapp.dcloud.io/faq</a></p>
+<h1 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h1><p>官方总结日常开发时，需要注意的事项，可以大幅度提升uni-app的性能，戳这里：<a href="https://uniapp.dcloud.io/performance" target="_blank" rel="noopener">https://uniapp.dcloud.io/performance</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-29T06:43:14.016Z" itemprop="dateUpdated">2019-07-29 14:43:14</time>
+</span><br>
+
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/uni-app2/&title=《学习uni-app--框架简介》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/uni-app2/&title=《学习uni-app--框架简介》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/07/26/uni-app3/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学习uni-app--vue注意事项</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/26/uni-app/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习uni-app--介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目录结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">目录结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#语法、API和标签"><span class="post-toc-number">2.</span> <span class="post-toc-text">语法、API和标签</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#生命周期"><span class="post-toc-number">3.</span> <span class="post-toc-text">生命周期</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面管理"><span class="post-toc-number">4.</span> <span class="post-toc-text">页面管理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#路由跳转"><span class="post-toc-number">5.</span> <span class="post-toc-text">路由跳转</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面样式与布局"><span class="post-toc-number">6.</span> <span class="post-toc-text">页面样式与布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#upx"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">upx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flex布局"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">flex布局</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#事件处理器"><span class="post-toc-number">7.</span> <span class="post-toc-text">事件处理器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常见问题"><span class="post-toc-number">8.</span> <span class="post-toc-text">常见问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#优化建议"><span class="post-toc-number">9.</span> <span class="post-toc-text">优化建议</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                周欣 &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            <!-- 
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+             -->
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/uni-app2/&title=《学习uni-app--框架简介》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/uni-app2/&title=《学习uni-app--框架简介》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByklEQVR42u3aQW4DIQwF0Nz/0qnUVaUW5hszZCo9VqOEDI8sLGPzesXj/T1Gzz/HfM7ok80DFxe3zX1Px+/l822MVkm2PdwSLi7uQW5CuXhRwMrnDD/HxcV9GHe+ZLJYHvhwcXH/C3eeAI02sPZ34OLiPoGbg6qFkvxtm89quLi4DW6/YNp/PlrfxcXFbXQlksSlQymvjouLe4SbFC/yUkjybXK4utgwLi7uzdzqQSUPN1X6XIWLi3uS20lN7r7INVwRFxf3IHctJFWTleqljUKig4uLu4mbhJvOMsmvCpc8cHFxP8StXrnY26opH3twcXFv4JanFhOjtSRp385wcXHXuUnDIy9xVq9cVC+B4eLi3s2d/7jaTN31Nlxc3Odwq8nKWqs1P2798Ufg4uIe4eYZUL8g0mnS4OLinuQmBZG1s9RaU/ZiLVxc3IPcPGDlzdS1sBUFMlxc3CPczpFm7eJFPj/q3uDi4m7ldrqZa62UTtDExcU9yc2DV/WoUy2/RgEOFxf3IHeteJEnRq0LWLi4uA/mVq9ZJAHuxkCGi4t7nJuXPzrJDS4u7me5nSJpdU61FLJYFsHFxW1w+yeOwhWKYqDExcU9zv0CnBolCwYXcqcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.3"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.3"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.3"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

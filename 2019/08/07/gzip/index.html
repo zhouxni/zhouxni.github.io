@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>gzip | 举头问天</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="性能优化">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/xiaopang.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">周欣</h5>
+          <a href="mailto:2717584844@qq.com" title="2717584844@qq.com" class="mail">
+            
+              <span>2</span>
+            
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>4</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归纳
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>gzip</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">gzip</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-07T02:02:09.000Z" itemprop="datePublished" class="page-time">
+  2019-08-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-gzip"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">gzip</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-07 10:02:09" datetime="2019-08-07T02:02:09.000Z"  itemprop="datePublished">2019-08-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>GZip压缩，是一种网站速度优化技术，也是一把SEO优化利器，许多网站都采用了这种技术，以达到提升网页打开速度、缩短网页打开时间的目的。一般在服务器开启gzip压缩，客户端只需能够接收gzip压缩的文件即可。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>gzip(GNU-ZIP)是一种压缩技术。经gzip压缩后的页面大小可以变为原来的30%甚至更小，因此很多网站使用gzip压缩以降低网站带宽消耗，同时提升访问速度，使访问者拥有更好的用户体验。gzip的压缩页面需要浏览器和服务器双方都支持，实际上就是服务器端压缩，传到浏览器后浏览器解压并解析。目前绝大多数浏览器都支持解析gzip压缩过的页面。</p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>常见gzip指令：</p>
+<ul>
+<li><font color="#E96900">gzip on</font> 该指令用于开启或关闭gzip模块(on/off)</li>
+<li><font color="#E96900">gzip_min_length 1k</font>  设置允许压缩的页面最小字节数，页面字节数从header头得content-length中进行获取。默认值是0，不管页面多大都压缩。建议设置成大于1k的字节数，小于1k可能会越压越大。</li>
+<li><font color="#E96900">gzip_buffers 4 16k</font>， 设置系统获取几个单位的缓存用于存储gzip的压缩结果数据流。4 16k代表以16k为单位，安装原始数据大小以16k为单位的4倍申请内存。</li>
+<li><font color="#E96900">gzip_http_version 1.1</font> 识别http的协议版本(1.0/1.1)</li>
+<li><font color="#E96900">gzip_comp_level 2</font> gzip压缩比，1压缩比最小处理速度最快，9压缩比最大但处理速度最慢(传输快但比较消耗cpu)</li>
+<li><font color="#E96900">gzip_types text/plain application/x-javascript text/css application/xml</font> 匹配mime类型进行压缩，无论是否指定,”text/html”类型总是会被压缩的。</li>
+<li><font color="#E96900">gzip_vary on</font> 和http头有关系，加个vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持。因此，为避免浪费不支持的也压缩，需要根据客户端的HTTP头来判断，是否需要压缩。</li>
+</ul>
+<h1 id="nginx开启gzip"><a href="#nginx开启gzip" class="headerlink" title="nginx开启gzip"></a>nginx开启gzip</h1><p>Nginx的压缩输出由一组gzip压缩指令来实现。相关指令位于http{….}两个大括号之间。</p>
+<figure class="image-box">
+                <a rel=gzip href="/images/gzip3.png" title="" data-fancybox="images"><img src="/images/gzip3.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<h1 id="测试页面是否开启gzip压缩"><a href="#测试页面是否开启gzip压缩" class="headerlink" title="测试页面是否开启gzip压缩"></a>测试页面是否开启gzip压缩</h1><p>在浏览器中可以观测css压缩<figure class="image-box">
+                <a rel=gzip href="/images/gzip1.png" title="" data-fancybox="images"><img src="/images/gzip1.png" alt title class></a>
+                <p></p>
+            </figure><br>也可以利用<a href="https://curl.haxx.se/download.html" target="_blank" rel="noopener">curl工具</a>测试gzip是否开启。然后在cmd输入<font color="#E96900">curl -I -H “Accept-Encoding: gzip, deflate “<a href="http://39.108.73.162:8082/vendor.js&quot;" target="_blank" rel="noopener">http://39.108.73.162:8082/vendor.js&quot;</a></font>，出现以下内容：<figure class="image-box">
+                <a rel=gzip href="/images/gzip2.png" title="" data-fancybox="images"><img src="/images/gzip2.png" alt title class></a>
+                <p></p>
+            </figure><br>说明已开启gzip压缩</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-07T05:43:37.266Z" itemprop="dateUpdated">2019-08-07 13:43:37</time>
+</span><br>
+
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/07/gzip/&title=《gzip》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/07/gzip/&title=《gzip》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/08/07/vue-1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vue开启gzip压缩</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/26/html5/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习uni-app--html5+</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">2.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#指令"><span class="post-toc-number">3.</span> <span class="post-toc-text">指令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nginx开启gzip"><span class="post-toc-number">4.</span> <span class="post-toc-text">nginx开启gzip</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试页面是否开启gzip压缩"><span class="post-toc-number">5.</span> <span class="post-toc-text">测试页面是否开启gzip压缩</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                周欣 &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            <!-- 
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+             -->
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/07/gzip/&title=《gzip》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/07/gzip/&title=《gzip》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aS3LEIAwFwLn/pZ1tFsF5kgxxqprV1HyYxguVePD5xOP6Nlafrt5Z/XY12wMDFxd3zL1ux/3Uq+/fL2k1/70BFxf3PDf/g6RI3SNW8yclEhcX9/3c+xYn/xUuLu7/5fa+k2+QcHFx38ZN2pFkU5Q0MYf2ari4uANunlLue70l38XFxW1xr/HIFzn/R1xc3DPcXlMyCVKr7dQPy8bFxd3MrR6EJOUpWWo+ww/PFRcXdzO3yuoFHJMS9pk8RVxc3BY3n7QKzePUQoCCi4t7hNtrU6qXM+axbKGo4eLiPsqtFqNem9KLUXBxcU9y89XMY5FekFq424WLi/sQ9yloryCOLmrg4uJu5lYDjqSQ9a5eRYUMFxd3M3cCTcLQPOyIjnNwcXGPcHtTT7Yxeaj6S93FxcXdxq1ekMoX0Js5OhPGxcXdzM0Di8kxSe+odTkbLi7uZu5VHPm2p3d8EvViuLi4m7m94tLb5OQxygNoXFzcMTcvXvMMJpmzkPLi4uJu5vYuXjy1jGa+i4uL+wJu9eJF0riUYxRcXNyXcauXNpIDkuR4BhcX96+4k5gjL3mTx4GLi3uSW+0rJi3RU1c9cHFxt3G/APnNvlX3ngIhAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.3"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.3"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.3"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>学习uni-app--weex | 举头问天</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="uniapp">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/xiaopang.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">周欣</h5>
+          <a href="mailto:2717584844@qq.com" title="2717584844@qq.com" class="mail">
+            
+              <span>2</span>
+            
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>4</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归纳
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>学习uni-app--weex</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">学习uni-app--weex</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-26T15:33:15.000Z" itemprop="datePublished" class="page-time">
+  2019-07-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-weex"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">学习uni-app--weex</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-26 23:33:15" datetime="2019-07-26T15:33:15.000Z"  itemprop="datePublished">2019-07-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><blockquote>
+<p>uni-app App端内置 weex 渲染引擎，提供了原生渲染能力。如果你已经是 weex 的开发者，具有 weex 的填坑能力，那么 nvue 是你的更优选择，能切实提升你的开发效率，降低成本。如果你是web前端，不熟悉 weex，那么建议你仍然以使用 vue 为主，在App端某些 vue 表现不佳的场景下使用 nvue 作为强化补充。</p>
+</blockquote>
+<p>这是官方的话，从中可以得出大部分时候我们是不需要用到weex渲染的，但还是有必要了解weex的。如果App要求高性能，推荐用nvue页面进行开发。详情请移步<a href="https://weex.apache.org/zh/guide/introduction.html" target="_blank" rel="noopener">官方</a>。</p>
+<h1 id="编译模式差异"><a href="#编译模式差异" class="headerlink" title="编译模式差异"></a>编译模式差异</h1><p>uni-app深度改进了weex，提供了2种编译模式，一种是常规的weex组件模式，即编写<code>&lt;div&gt;</code>。另一种是uni-app组件模式，即编写<code>&lt;view&gt;</code>。后者更提供了编译为小程序和H5的能力。weex必须在nvue页面使用，weex只支持部分html标签，详情见<a href="https://weex.apache.org/zh/docs/components/a.html" target="_blank" rel="noopener">weex内置组件</a>。在同一文件夹下，如果存在vue和nvue页面，优先编译nvue页面，也可在<font color="#E96900">manifest.json</font> -&gt; <font color="#E96900">app-plus</font> -&gt; <font color="#E96900">nvueCompiler</font> 切换编译模式。</p>
+<h1 id="样式与布局"><a href="#样式与布局" class="headerlink" title="样式与布局"></a>样式与布局</h1><h2 id="wx"><a href="#wx" class="headerlink" title="wx"></a>wx</h2><p>weex中只支持px单位，但是uni-app做了改进，同时支持wx单位。在weex中，所有移动端屏幕宽度为750px(与upx一样)，wx为固定像素单位(px)。由于采用原生渲染，并非所有浏览器的css均支持。详见：<a href="https://weex.apache.org/zh/docs/styles/common-styles.html" target="_blank" rel="noopener">weex样式</a></p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>布局模型只支持flex布局</p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><ul>
+<li>template：模板写法、数据绑定同vue。组件支持2种模式，1、 weex 组件，参考：<a href="https://weex.apache.org/zh/docs/components/a.html" target="_blank" rel="noopener">weex内置组件</a>；2、uni-app组件，参考：<a href="https://ask.dcloud.net.cn/article/36074" target="_blank" rel="noopener">nvue中支持的uni-app组件</a>。</li>
+<li>script写法同 vue，并支持3种API：<ul>
+<li>weex API：使用前需先引入对应模块，参考：<a href="https://weex.apache.org/zh/docs/modules/animation.html#transition" target="_blank" rel="noopener">weex 内置模块</a>。</li>
+<li>uni API：nvue可以使用部分 uni API，详细支持列表请参照：<a href="https://uniapp.dcloud.io/use-weex?id=nvue-%E9%87%8C%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84-uni-app-api" target="_blank" rel="noopener">nvue里可使用的uni-app API</a>。</li>
+<li>plus API：在自定义组件编译模式下，nvue里可直接使用plus API。</li>
+</ul>
+</li>
+</ul>
+<h1 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h1><p>nvue的uni-app编译模式的生命周期同普通vue页面。而weex编译模式，即普通 weex 生命周期函数如下：<figure class="image-box">
+                <a rel=学习uni-app--weex href="/images/weex.png" title="" data-fancybox="images"><img src="/images/weex.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<h1 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h1><p>nvue的页面跳转，与weex不同，仍然遵循uni-app的路由模型。vue页面和nvue页面之间不管怎么跳转，都遵循这个模型。包括nvue页面跳向nvue页面。每个页面都需要在pages.json中注册，调用uni-app的路由API进行跳转。</p>
+<h1 id="vue和nvue共享变量和数据"><a href="#vue和nvue共享变量和数据" class="headerlink" title="vue和nvue共享变量和数据"></a>vue和nvue共享变量和数据</h1><p>由于nvue不支持vuex，uniapp给出了两种方案用于创建全局变量和数据：</p>
+<ul>
+<li>利用uni.storage数据缓存。</li>
+<li>利用小程序的globalData技术，这套机制在uni-app里也可以使用，全端通用。</li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-27T14:51:05.256Z" itemprop="dateUpdated">2019-07-27 22:51:05</time>
+</span><br>
+
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/weex/&title=《学习uni-app--weex》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/weex/&title=《学习uni-app--weex》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/07/26/html5/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学习uni-app--html5+</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/26/uni-app3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习uni-app--vue注意事项</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译模式差异"><span class="post-toc-number">2.</span> <span class="post-toc-text">编译模式差异</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#样式与布局"><span class="post-toc-number">3.</span> <span class="post-toc-text">样式与布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wx"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">wx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">布局</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开发"><span class="post-toc-number">4.</span> <span class="post-toc-text">开发</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面生命周期"><span class="post-toc-number">5.</span> <span class="post-toc-text">页面生命周期</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面跳转"><span class="post-toc-number">6.</span> <span class="post-toc-text">页面跳转</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue和nvue共享变量和数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">vue和nvue共享变量和数据</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                周欣 &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            <!-- 
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+             -->
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/weex/&title=《学习uni-app--weex》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/weex/&title=《学习uni-app--weex》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS2oDMRAFwNz/0g6E7ILH76mliRNKK2NMq+SF6I8+PuL1+Fr5bx6XK4+5uHBxccfcPPTP768jXLPa4+Hi4t7PzcO1G18fLDfg4uK+JzfJN/ID4OLi/ifuPInBxcX9K9y8gEm4LwqYe2o1XFzcAbdtmJ74fLC/i4uLW3If5cqbpHv3/Y6Mi4t7C3dbE/PYyDbKyHBxcbdyJ+3OdtxyJMXBxcU9wE2aGu1Rr+Mke9XPL3Bxcbdy18IlR02uqrrNiouLewt3nqa0F1yeJD09Ni4u7u3cdhCyKxkq/hRcXNzD3Hb7pFA58ZwLFxf3fm7bR8kLpLXkaXHmg4uLu7OrWbdIJtONSTqFi4t7P3fSxFx7wpUnUosDV1xc3CVu++zyOhlq85AkzoviBxcX9zC3DbFWOOX9zzoLw8XF3cRtB6h5eZOXSW18XFzc09xHuYqGRQmqn2zi4uIe47ah823aS21+8eHi4u7l5pdXntbMR6ovxie4uLi3cNuLJh+KTFKfp21TXFzct+GuPdmclFVPUxxcXNw347bNkbXkaUOKg4uLO+bOR6dti+TXajVcXNxxq7R9KjFpkm4b2ODi4q5zPwFeHDPS062IdAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.3"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.3"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.3"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

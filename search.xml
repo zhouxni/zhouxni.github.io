@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>vue-加载进度条</title>
+      <link href="/2019/08/29/vue-progress/"/>
+      <url>/2019/08/29/vue-progress/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>前端在请求时，往往使用loading遮罩。那有什么办法可以根据请求进度去模拟加载滚动条：nprogress</p><ol><li>下载nprogress<figure class="image-box">                <img src="/images/progress.png" alt title class>                <p></p>            </figure></li><li>入口文件，main.js引入 nprogress<figure class="image-box">                <img src="/images/progress1.png" alt title class>                <p></p>            </figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue-项目性能优化</title>
+      <link href="/2019/08/27/vue-2/"/>
+      <url>/2019/08/27/vue-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>vue项目常遇到请求时间过长等问题，一般是优化做的不够好。在vue项目中，主要在三个层面上进行优化：代码、wepack和web常用优化</p><h1 id="优化技巧"><a href="#优化技巧" class="headerlink" title="优化技巧"></a>优化技巧</h1><h3 id="代码层面："><a href="#代码层面：" class="headerlink" title="代码层面："></a>代码层面：</h3><ol><li>v-if和v-show区分使用场景</li><li>computed和watch区分使用场景</li><li>v-for遍历必须为item添加key，且避免同时使用v-if</li><li>长列表性能优化<br>（Vue 会通过 Object.defineProperty 对数据进行劫持，来实现视图响应数据的变化，然而有些时候我们的组件就是纯粹的数据展示，不会有任何改变，我们就不需要 Vue 来劫持我们的数据，在大量数据展示的情况下，这能够很明显的减少组件初始化的时间，那如何禁止Vue劫持我们的数据呢？可以通过Object.freeze方法来冻结一个对象，如：（Object.freeze(this.list)）一旦被冻结的对象就再也不能被修改了。）</li><li>事件的销毁</li><li>图片资源懒加载(vue-lazyload)</li><li>路由懒加载</li><li>第三方插件按需引入:element-ui<br>（安装elementui，babel-plugin-component和babel-preset-env（可以不要）插件，然后在babel.config.js中配置）<figure class="image-box">                <img src="/images/vue-3.png" alt title class>                <p></p>            </figure><br>main.js中，不需要引入css文件<figure class="image-box">                <img src="/images/vue-3.1.png" alt title class>                <p></p>            </figure></li></ol><ol start="9"><li>优化无限列表性能<br>（如果你的应用存在非常长或者无限滚动的列表，那么需要采用窗口化的技术来优化性能，只需要渲染少部分区域的内容，减少重新渲染组件和创建 dom 节点的时间。你可以参考以下开源项目 vue-virtual-scroll-list和vue-virtual-scroller来优化这种无限列表的场景的。）</li><li>服务端渲染或预渲染<br>（服务端渲染是指Vue在客户端将标签渲染成的整个html片段的工作在服务端完成，服务端形成的 html 片段直接返回给客户端这个过程就叫做服务端渲染。）<br>（1）. 服务端渲染的优点</li></ol><ul><li><p>更好的 SEO：<br>因为SPA页面的内容是通过Aja 获取，而搜索引擎爬取工具并不会等待 Ajax 异步完成后再抓取页面内容，所以在 SPA 中是抓取不到页面通过 Ajax 获取到的内容；<br>而 SSR 是直接由服务端返回已经渲染好的页面（数据已经包含在页面中），所以搜索引擎爬取工具可以抓取渲染好的页面；</p></li><li><p>更快的内容到达时间（首屏加载更快）：<br>SPA 会等待所有 Vue 编译后的 js 文件都加载完成后，才开始进行页面的渲染，文件加载等需要一定的时间等，所以首屏渲染需要一定的时间；SSR 直接由服务端渲染好页面直接返回显示，无需等待下载 js 文件及再去渲染等，所以 SSR 有更快的内容到达时间；<br>（2）. 服务端渲染的缺点</p></li><li><p>更多的开发条件限制：<br>例如服务端渲染只支持 beforCreate 和 created 两个钩子函数，这会导致一些外部扩展库需要特殊处理，才能在服务端渲染应用程序中运行；并且与可以部署在任何静态文件服务器上的完全静态单页面应用程序 SPA 不同，服务端渲染应用程序，需要处于 Node.js server 运行环境；</p></li><li><p>更多的服务器负载：<br>在 Node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量占用CPU 资源，因此如果你预料在高流量环境下使用，请准备相应的服务器负载，并明智地采用缓存策略。</p></li></ul><h3 id="wepback："><a href="#wepback：" class="headerlink" title="wepback："></a>wepback：</h3><ol><li>webpack对图片进行压缩</li><li>减少ES6转为ES5的冗余代码</li><li>提取公共代码</li><li>模板预编译</li><li>提取组件的css</li><li>优化sourceMap</li><li>构建结果输出分析</li><li>vue项目的编译优化</li></ol><h3 id="基础web技术优化："><a href="#基础web技术优化：" class="headerlink" title="基础web技术优化："></a>基础web技术优化：</h3><ol><li>开启gzip压缩</li><li>浏览器缓存</li><li>CDN使用</li><li>查找性能瓶颈</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue-路由传参</title>
+      <link href="/2019/08/27/vue-luyou/"/>
+      <url>/2019/08/27/vue-luyou/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>路由传参通常用两种方法：<font color="#E96900">params</font>和<font color="#E96900">query</font></p><ul><li>params：<br>如：/user/id=&gt;/user/:id</li><li>query：<br>如：/user?id=2=&gt;/user</li></ul><h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p>在组件中使用 $route 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。</p><ul><li>$route<figure class="image-box">                <img src="/images/luyou1.png" alt title class>                <p></p>            </figure></li><li>props<figure class="image-box">                <img src="/images/luyou2.png" alt title class>                <p></p>            </figure>当设置props为true时，$route.params将会被设置为组件属性，即<code>$route.params.id</code>将会被映射为组件props中的id属性。<br>如果 props 是一个对象，它会被按原样设置为组件属性。当 props 是静态的时候有用。<br>设置props为函数<figure class="image-box">                <img src="/images/luyou3.png" alt title class>                <p></p>            </figure></li></ul><h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>使用编程式导航时，使用path，不能带params对象形式传参。<figure class="image-box">                <img src="/images/luyou.png" alt title class>                <p></p>            </figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信小程序--target和curretnTarget区别</title>
+      <link href="/2019/08/20/weixin3/"/>
+      <url>/2019/08/20/weixin3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>target：指的是当前点击的组件(触发事件的源组件，冒泡后触发事件)<br>currentTarget：指的是事件捕获的组件(即事件绑定的组件)<br>举个例子:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view catchTap = &quot;fetchImage&quot;&gt;</span><br><span class="line">  &lt;image src=&quot;a.png&quot; data-postId = &quot;item.id&quot;&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetchImage:function(event)&#123;</span><br><span class="line">     var  id = event.target.dataset.postid;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>此时点击image内容，同样经过冒泡会触发fetchImage。此时target指的是image，currentTarget指的是view。如果没有子元素，则currentTarget===target;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信小程序--修改数组和对象的值</title>
+      <link href="/2019/08/20/weixin2/"/>
+      <url>/2019/08/20/weixin2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>小程序setData修改引用类型的值：</p><ul><li><p>数组</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123;</span><br><span class="line">    &apos;array[0].text&apos;:&quot;&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li><li><p>对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123;</span><br><span class="line">    &apos;object.text&apos;:&quot;&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><p>当数组的索引值为动态时，这办法是不行的。需要做如下转换：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var price = &apos;array[&apos;+index+&apos;].text&apos;;</span><br><span class="line">this.setData(&#123;</span><br><span class="line">    [price]:&quot;&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123;</span><br><span class="line">    [`array[$&#123;index&#125;].text`]:&quot;&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>html5 prefetch预加载</title>
+      <link href="/2019/08/14/prefetch/"/>
+      <url>/2019/08/14/prefetch/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在HTML5中,有个很有用但常被忽略的特性,就是预先加载(prefetch),它的原理是: 利用浏览器的空闲时间去先下载用户指定需要的内容,然后缓存起来,这样用户下次加载时,就直接从缓存中取出来,效率就快了。</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>比如要预加载一个页面：<code>&lt;link rel=&quot;perfetch&quot; href=&quot;http://xxx.com&quot; /&gt;</code>，预加载静态资源<code>&lt;link rel=&quot;perfetch&quot; href=&quot;/images/time.jpg&quot; /&gt;</code>…<br>当我们真正需要访问这些资源时，会从缓存中取出来，加强用户体验。详情：<a href="https://www.cnblogs.com/suyuwen1/p/5506397.html" target="_blank" rel="noopener">https://www.cnblogs.com/suyuwen1/p/5506397.html</a><br>注：火狐写法不同<figure class="image-box">                <img src="/images/prefetch1.png" alt title class>                <p></p>            </figure></p><h2 id="prerender-预渲染"><a href="#prerender-预渲染" class="headerlink" title="prerender(预渲染)"></a>prerender(预渲染)</h2><p>前面说到的预解析DNS、预加载资源已经够强悍了有木有，可还有更厉害的预渲染（Pre-rendering）！预渲染意味着我们提前加载好用户即将访问的下一个页面，否则进行预渲染这个页面将浪费资源，慎用！还有<a href="http://eux.baidu.com/blog/fe/link-preload-%E6%A0%87%E7%AD%BE" target="_blank" rel="noopener"><font color="#E96900">preload</font></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>强缓存与协商缓存</title>
+      <link href="/2019/08/14/cache/"/>
+      <url>/2019/08/14/cache/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ngixn开启缓存"><a href="#ngixn开启缓存" class="headerlink" title="ngixn开启缓存"></a>ngixn开启缓存</h1><h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>到底什么是强缓存？强在哪？其实强是强制的意思。当浏览器去请求某个文件的时候，服务端就在respone header里面对该文件做了缓存配置。缓存的时间、缓存类型都由服务端控制，具体表现为：<br>respone header 的cache-control，常见的设置是max-age public private no-cache no-store等。</p><h3 id="强缓存总结"><a href="#强缓存总结" class="headerlink" title="强缓存总结"></a>强缓存总结</h3><p>1.<font color="#E96900">cache-control: max-age=xxxx，public</font><br>客户端和代理服务器都可以缓存该资源；客户端在xxx秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statu code:200 ，如果用户做了刷新操作，就向服务器发起http请求<br>2.<font color="#E96900">cache-control: max-age=xxxx，private</font><br>只让客户端可以缓存该资源；代理服务器不缓存<br>客户端在xxx秒内直接读取缓存,statu code:200<br>3.<font color="#E96900">cache-control: max-age=xxxx，immutable</font><br>客户端在xxx秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statu code:200 ，即使用户做了刷新操作，也不向服务器发起http请求<br>4.<font color="#E96900">cache-control: no-cache</font><br>跳过设置强缓存，但是不妨碍设置协商缓存；一般如果你做了强缓存，只有在强缓存失效了才走协商缓存的，设置了no-cache就不会走强缓存了，每次请求都回询问服务端。<br>5.<font color="#E96900">cache-control: no-store</font><br>不缓存，这个会让客户端、服务器都不缓存，也就没有所谓的强缓存、协商缓存了。</p><h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置:"></a>nginx配置:</h3><figure class="image-box">                <img src="/images/cache.png" alt title class>                <p></p>            </figure><h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>上面说到的强缓存就是给资源设置个过期时间，客户端每次请求资源时都会看是否过期；只有在过期才会去询问服务器。所以，强缓存就是为了给客户端自给自足用的。而当某天，客户端请求该资源时发现其过期了，这是就会去请求服务器了，而这时候去请求服务器的这过程就可以设置协商缓存。这时候，协商缓存就是需要客户端和服务器两端进行交互的。<br>现在有一个这样的业务情景：后端的静态资源会不定时地发生更新，而因为浏览器默认使用强缓存，会默认从浏览器缓存中取到过时的资源。<br>现在我们希望浏览器每次获取资源的时候都向后端确认资源是否更新，就要设置浏览器使用协商缓存那么后端如何判断资源是否更新了呢？这时就要用到Etag和Last-Modified两项响应头。每次收到一个静态资源的请求时，后端都将资源的最后修改时间（Last-Modified）、根据资源内容计算出来的Etag放在响应头给前端。前端收到响应后将这两项缓存起来，然后在下次请求同样资源的时候，将这两项的内容放到If-Modified-Since和If-None-Match这两项请求头中。服务端收到这两项后，会与资源当前生成的Etag和Last-Modified做比较，如果两者都一致，说明资源没有更新，服务端会返回304空响应；否则，说明资源有更新，服务端会将完整的资源内容返回</p><h3 id="nginx配置-1"><a href="#nginx配置-1" class="headerlink" title="nginx配置"></a>nginx配置</h3><p>设置<font color="#E96900">cache-control: no-cache</font>即可开启协商缓存：<br>1.请求资源时，把用户本地该资源的 etag 同时带到服务端，服务端和最新资源做对比。<br>2.如果资源没更改，返回304，浏览器读取本地缓存。<br>3.如果资源有更改，返回200，返回最新的资源。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nginx反向代理</title>
+      <link href="/2019/08/12/nginx-proxy/"/>
+      <url>/2019/08/12/nginx-proxy/</url>
+      
+        <content type="html"><![CDATA[<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>解压nginx压缩包后，找到nginx.conf文件，在location中添加proxy_pass代理地址，添加header:<br>proxy_pass <code>http://www.baidu.com</code>;<br>add_header ‘Access-Control-Allow-Origin’ ‘*’;<br>add_header ‘Access-Control-Allow-Headers’ ‘X-Requested-With’;<br>add_header ‘Access-Control-Allow-Methods’ ‘GET,POST,OPTIONS’</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 服务器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信小程序--openId</title>
+      <link href="/2019/08/08/weixin1/"/>
+      <url>/2019/08/08/weixin1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>小程序的开发者密码（AppSecret）是一个非常重要的字段，使用该密码可以调用小程序的所有后台接口。请不要将该字段放置在微信小程序的前端代码中，因为微信手机客户端容易被反编译并轻松获得Appsecret，造成重大的安全威胁。开发者应将Appsecret保存到后台服务器中，通过服务器使用Appsecert获取Accesstoken。微信公众平台小程序后台的服务器地址设置也将禁止将“api.weixin.qq.com”域名的配置，所有对于“api.weixin.qq.com”域名下的接口请求请全部通过后台服务器发起，请勿直接通过小程序的前端代码发起。 所以解决办法就是把code传给后台，让后台去请求微信的官方接口获得openId和session-key。 <figure class="image-box">                <img src="/images/weinxin1.png" alt title class>                <p></p>            </figure></p><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>总结下整个openid、session_key获取的流程：</p><ol><li>注册微信小程序、登录后台在设置中获得appId和secret(密钥)</li><li>调用wx.login()接口获取登录凭证js_code</li><li>调用wx.request()接口把js_code发送到服务器后台</li><li>在服务器后台，已知appId、secret、js_code</li><li>然后调用官方提供的http接口，即可返回获取openId、session_key</li></ol><p>如：<code>https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue开启gzip压缩</title>
+      <link href="/2019/08/07/vue-1/"/>
+      <url>/2019/08/07/vue-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="webpack打包启用gzip"><a href="#webpack打包启用gzip" class="headerlink" title="webpack打包启用gzip"></a>webpack打包启用gzip</h1><p>webpack在打包时可以借助 compression webpack plugin 实现gzip压缩，首先需要安装该插件。在vue.config.js配置如下:<figure class="image-box">                <img src="/images/vue-gzip1.png" alt title class>                <p></p>            </figure><br>生成的压缩文件以.gz为后缀<figure class="image-box">                <img src="/images/vue-gzip2.png" alt title class>                <p></p>            </figure><br>一般浏览器都已支持.gz的资源文件，在http请求的Request Headers 中能看到 Accept-Encoding:gzip。</p><h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>开启 <font color="red">gzip on;gzip_static on;</font>。其中gzip_static on最为关键，它表示nginx会优先匹配你的gzip文件来返回，如果没有就寻找相应资源进行gzip压缩再返回(前提是服务器已进行配置额外压缩操作，否则以前端gzip压缩为准，没压缩的文件就返回源文件)。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>gzip</title>
+      <link href="/2019/08/07/gzip/"/>
+      <url>/2019/08/07/gzip/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>GZip压缩，是一种网站速度优化技术，也是一把SEO优化利器，许多网站都采用了这种技术，以达到提升网页打开速度、缩短网页打开时间的目的。一般在服务器开启gzip压缩，客户端只需能够接收gzip压缩的文件即可。</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>gzip(GNU-ZIP)是一种压缩技术。经gzip压缩后的页面大小可以变为原来的30%甚至更小，因此很多网站使用gzip压缩以降低网站带宽消耗，同时提升访问速度，使访问者拥有更好的用户体验。gzip的压缩页面需要浏览器和服务器双方都支持，实际上就是服务器端压缩，传到浏览器后浏览器解压并解析。目前绝大多数浏览器都支持解析gzip压缩过的页面。</p><h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>常见gzip指令：</p><ul><li><font color="#E96900">gzip on</font> 该指令用于开启或关闭gzip模块(on/off)</li><li><font color="#E96900">gzip_min_length 1k</font>  设置允许压缩的页面最小字节数，页面字节数从header头得content-length中进行获取。默认值是0，不管页面多大都压缩。建议设置成大于1k的字节数，小于1k可能会越压越大。</li><li><font color="#E96900">gzip_buffers 4 16k</font>， 设置系统获取几个单位的缓存用于存储gzip的压缩结果数据流。4 16k代表以16k为单位，安装原始数据大小以16k为单位的4倍申请内存。</li><li><font color="#E96900">gzip_http_version 1.1</font> 识别http的协议版本(1.0/1.1)</li><li><font color="#E96900">gzip_comp_level 2</font> gzip压缩比，1压缩比最小处理速度最快，9压缩比最大但处理速度最慢(传输快但比较消耗cpu)</li><li><font color="#E96900">gzip_types text/plain application/x-javascript text/css application/xml</font> 匹配mime类型进行压缩，无论是否指定,”text/html”类型总是会被压缩的。</li><li><font color="#E96900">gzip_vary on</font> 和http头有关系，加个vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持。因此，为避免浪费不支持的也压缩，需要根据客户端的HTTP头来判断，是否需要压缩。</li></ul><h1 id="nginx开启gzip"><a href="#nginx开启gzip" class="headerlink" title="nginx开启gzip"></a>nginx开启gzip</h1><p>Nginx的压缩输出由一组gzip压缩指令来实现。相关指令位于http{….}两个大括号之间。</p><figure class="image-box">                <img src="/images/gzip3.png" alt title class>                <p></p>            </figure><h1 id="测试页面是否开启gzip压缩"><a href="#测试页面是否开启gzip压缩" class="headerlink" title="测试页面是否开启gzip压缩"></a>测试页面是否开启gzip压缩</h1><p>在浏览器中可以观测css压缩<figure class="image-box">                <img src="/images/gzip1.png" alt title class>                <p></p>            </figure><br>也可以利用<a href="https://curl.haxx.se/download.html" target="_blank" rel="noopener">curl工具</a>测试gzip是否开启。然后在cmd输入<font color="#E96900">curl -I -H “Accept-Encoding: gzip, deflate “<a href="http://39.108.73.162:8082/vendor.js&quot;" target="_blank" rel="noopener">http://39.108.73.162:8082/vendor.js&quot;</a></font>，出现以下内容：<figure class="image-box">                <img src="/images/gzip2.png" alt title class>                <p></p>            </figure><br>说明已开启gzip压缩</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习uni-app--html5+</title>
+      <link href="/2019/07/26/html5/"/>
+      <url>/2019/07/26/html5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>HTML5+是对接AndroidSDK与页面的中间件，用于页面通过js调用底层的SDK接口，比如弹出个窗口、拍照、录音等，与cordova类似。uni-app内置HTML5+引擎，让js能够调用丰富的原生能力。(官方地址：<a href="https://www.html5plus.org/doc/" target="_blank" rel="noopener">https://www.html5plus.org/doc/</a>)</p><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul><li>uni-app不需要plus ready，在html中使用plus的api，需要等待plus ready。而uni-app不需要等，可以直接使用。而且如果你调用plus ready，反而不会触发。</li><li>在普通的H5+项目中，需要使用 document.addEventListener监听原生扩展的事件。uni-app 中，没有 document。可以使用 plus.globalEvent.addEventListener 来实现（注意manifest中需开启新编译器，即自定义组件模式”usingComponents”:true）。常见原声扩展事件:<figure class="image-box">                <img src="/images/html5.png" alt title class>                <p></p>            </figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习uni-app--weex</title>
+      <link href="/2019/07/26/weex/"/>
+      <url>/2019/07/26/weex/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><blockquote><p>uni-app App端内置 weex 渲染引擎，提供了原生渲染能力。如果你已经是 weex 的开发者，具有 weex 的填坑能力，那么 nvue 是你的更优选择，能切实提升你的开发效率，降低成本。如果你是web前端，不熟悉 weex，那么建议你仍然以使用 vue 为主，在App端某些 vue 表现不佳的场景下使用 nvue 作为强化补充。</p></blockquote><p>这是官方的话，从中可以得出大部分时候我们是不需要用到weex渲染的，但还是有必要了解weex的。如果App要求高性能，推荐用nvue页面进行开发。详情请移步<a href="https://weex.apache.org/zh/guide/introduction.html" target="_blank" rel="noopener">官方</a>。</p><h1 id="编译模式差异"><a href="#编译模式差异" class="headerlink" title="编译模式差异"></a>编译模式差异</h1><p>uni-app深度改进了weex，提供了2种编译模式，一种是常规的weex组件模式，即编写<code>&lt;div&gt;</code>。另一种是uni-app组件模式，即编写<code>&lt;view&gt;</code>。后者更提供了编译为小程序和H5的能力。weex必须在nvue页面使用，weex只支持部分html标签，详情见<a href="https://weex.apache.org/zh/docs/components/a.html" target="_blank" rel="noopener">weex内置组件</a>。在同一文件夹下，如果存在vue和nvue页面，优先编译nvue页面，也可在<font color="#E96900">manifest.json</font> -&gt; <font color="#E96900">app-plus</font> -&gt; <font color="#E96900">nvueCompiler</font> 切换编译模式。</p><h1 id="样式与布局"><a href="#样式与布局" class="headerlink" title="样式与布局"></a>样式与布局</h1><h2 id="wx"><a href="#wx" class="headerlink" title="wx"></a>wx</h2><p>weex中只支持px单位，但是uni-app做了改进，同时支持wx单位。在weex中，所有移动端屏幕宽度为750px(与upx一样)，wx为固定像素单位(px)。由于采用原生渲染，并非所有浏览器的css均支持。详见：<a href="https://weex.apache.org/zh/docs/styles/common-styles.html" target="_blank" rel="noopener">weex样式</a></p><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>布局模型只支持flex布局</p><h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><ul><li>template：模板写法、数据绑定同vue。组件支持2种模式，1、 weex 组件，参考：<a href="https://weex.apache.org/zh/docs/components/a.html" target="_blank" rel="noopener">weex内置组件</a>；2、uni-app组件，参考：<a href="https://ask.dcloud.net.cn/article/36074" target="_blank" rel="noopener">nvue中支持的uni-app组件</a>。</li><li>script写法同 vue，并支持3种API：<ul><li>weex API：使用前需先引入对应模块，参考：<a href="https://weex.apache.org/zh/docs/modules/animation.html#transition" target="_blank" rel="noopener">weex 内置模块</a>。</li><li>uni API：nvue可以使用部分 uni API，详细支持列表请参照：<a href="https://uniapp.dcloud.io/use-weex?id=nvue-%E9%87%8C%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84-uni-app-api" target="_blank" rel="noopener">nvue里可使用的uni-app API</a>。</li><li>plus API：在自定义组件编译模式下，nvue里可直接使用plus API。</li></ul></li></ul><h1 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h1><p>nvue的uni-app编译模式的生命周期同普通vue页面。而weex编译模式，即普通 weex 生命周期函数如下：<figure class="image-box">                <img src="/images/weex.png" alt title class>                <p></p>            </figure></p><h1 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h1><p>nvue的页面跳转，与weex不同，仍然遵循uni-app的路由模型。vue页面和nvue页面之间不管怎么跳转，都遵循这个模型。包括nvue页面跳向nvue页面。每个页面都需要在pages.json中注册，调用uni-app的路由API进行跳转。</p><h1 id="vue和nvue共享变量和数据"><a href="#vue和nvue共享变量和数据" class="headerlink" title="vue和nvue共享变量和数据"></a>vue和nvue共享变量和数据</h1><p>由于nvue不支持vuex，uniapp给出了两种方案用于创建全局变量和数据：</p><ul><li>利用uni.storage数据缓存。</li><li>利用小程序的globalData技术，这套机制在uni-app里也可以使用，全端通用。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习uni-app--vue注意事项</title>
+      <link href="/2019/07/26/uni-app3/"/>
+      <url>/2019/07/26/uni-app3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>uni-app 在发布到H5时支持所有vue的语法；发布到App，由于平台限制，无法实现全部vue语法，但uni-app仍是是对vue语法支持度最高的跨端框架。本文只讲解有差异的地方</p><h1 id="Class-与-Style-绑定"><a href="#Class-与-Style-绑定" class="headerlink" title="Class 与 Style 绑定"></a>Class 与 Style 绑定</h1><p> 非H5端不支持 Vue官方文档：Class 与 Style 绑定 中的 classObject 和 styleObject 语法。</p><h1 id="表单控件绑定"><a href="#表单控件绑定" class="headerlink" title="表单控件绑定"></a>表单控件绑定</h1><p>虽然说支持vue的官方表单控件绑定v-model，但是建议用：value方式进行绑定，与小程序设定保持一定。<br>H5 的select 标签用 picker 组件进行代替。<br>表单元素 radio 用 radio-group 组件进行代替</p><h1 id="v-html指令"><a href="#v-html指令" class="headerlink" title="v-html指令"></a>v-html指令</h1><p>在App端是没有DOM概念的，因此v-html无效。不过可以用<a href="https://uniapp.dcloud.io/component/rich-text" target="_blank" rel="noopener">rich-text富文本组件</a>进行代替。</p><h1 id="v-show指令"><a href="#v-show指令" class="headerlink" title="v-show指令"></a>v-show指令</h1><p>v-show在App端某些场景表现异常，建议使用v-if代替。</p><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>非H5端不支持列表：</p><ul><li>动态组件</li><li>异步组件</li><li>inline-template</li><li>keep-alive</li><li>Slot中scoped 暂时还没做支持</li><li>X-Templates</li><li>transition(可用<a href="https://uniapp.dcloud.io/api/ui/animation?id=createanimation" target="_blank" rel="noopener">animation</a>和css动画代替)</li></ul><h1 id="全局数据和方法"><a href="#全局数据和方法" class="headerlink" title="全局数据和方法"></a>全局数据和方法</h1><h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>uniapp中内置vuex，用法与H5一样，唯一不同的是将store进行挂载时，要将store同时挂载到vue.prototype上(多出的一步操作)，通过原型属性去调用。</p><h2 id="globalData"><a href="#globalData" class="headerlink" title="globalData"></a>globalData</h2><p>在App.vue中声明globalData对象，这是小程序的技术机制。在各个页面通过getApp().globalData就可获取数据。这种方式一般用于vue页面和nvue页面进行数据共享和传递。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习uni-app--框架简介</title>
+      <link href="/2019/07/26/uni-app2/"/>
+      <url>/2019/07/26/uni-app2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>默认目录及文件：<figure class="image-box">                <img src="/images/wenjian.png" alt title class>                <p></p>            </figure></p><h1 id="语法、API和标签"><a href="#语法、API和标签" class="headerlink" title="语法、API和标签"></a>语法、API和标签</h1><p>uni-app由于要跨多端，所以代码书写会有些糅合性。语法方面使用<a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue.js</a>，标签和Api大部分使用的是<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html" target="_blank" rel="noopener">小程序</a>的技术。比如:div=&gt;view，span=&gt;text，img=&gt;image等。详情见官网<a href="https://uniapp.dcloud.io/component/README" target="_blank" rel="noopener">组件</a>。其实老的HTML标签也可以在uni-app里使用，uni-app编译器会在编译时把老标签转为新标签。但不推荐这种用法，调试H5端时容易混乱，基于元素的选择器也会出问题。</p><h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>uniapp同时支持小程序和vue.js的生命周期。查看<a href="https://uniapp.dcloud.io/frame?id=%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" target="_blank" rel="noopener">page生命周期函数</a>，（大部分继承<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html" target="_blank" rel="noopener">小程序生命周期</a>），component则应使用<a href="https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA" target="_blank" rel="noopener">vue.js生命周期函数</a>，组件里只支持onReady生命周期函数。</p><h1 id="页面管理"><a href="#页面管理" class="headerlink" title="页面管理"></a>页面管理</h1><p>所有页面必须在pages.json进行注册才能访问.好在HBuilderX能够自动进行注册，可以偷懒。<br>pages数组属性管理页面，第一项表示启动页，每一项当中path表示页面路径，style表示相关的样式设置，即状态栏、导航条、标题、窗口背景色、原生设置(<a href="https://uniapp.dcloud.io/collocation/pages?id=app-plus" target="_blank" rel="noopener">app-plus</a>)及小程序组件的注册与使用(在”usingComponents”注册)。<figure class="image-box">                <img src="/images/page.png" alt title class>                <p></p>            </figure><br>globalStyle用于设置全局应用的状态栏、导航条、标题、窗口背景色等。<figure class="image-box">                <img src="/images/page1.png" alt title class>                <p></p>            </figure><br>tabBar 如果应用是一个多 tab 应用，可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页，即所谓的底部导航栏。list就是配置tab页面。<figure class="image-box">                <img src="/images/list.png" alt title class>                <p></p>            </figure></p><h1 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h1><p>uni-app 有两种路由跳转方式：使用navigator组件跳转、调用API跳转，API包括uni.navigateTo、uni.redirectTo 、uni.switchTab和uni.reLaunch等几种方式(其实就是借用了<a href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html" target="_blank" rel="noopener">小程序的路由跳转</a>)。这几种跳转的区别如下:<br>在uni-app中所有页面是以栈的形式进行管理。<figure class="image-box">                <img src="/images/route.png" alt title class>                <p></p>            </figure><br>注意：uni.navigateTo、uni.redirectTo是不能跳转到tabBar页面。路由传参只能在url后添加，在跳转后的页面onLoad函数参数options获取传过来的参数。</p><h1 id="页面样式与布局"><a href="#页面样式与布局" class="headerlink" title="页面样式与布局"></a>页面样式与布局</h1><h2 id="upx"><a href="#upx" class="headerlink" title="upx"></a>upx</h2><p>uni-app支持的css单位有px,upx(官方已改为rpx，不影响使用),vw,vh和rem等。<br>这里着重讲upx，upx是基于屏幕响应式的css单位。怎么说呢，就是所有的移动端屏幕宽度都为750upx。举个例子:在手机屏幕宽度为375px时，1px=750/375upx；屏幕宽为414px时，1px=750/414upx；因此所有的移动端屏幕宽度为750upx，当元素宽度设为upx时，就会在各个手机上展示的效果是一样的。</p><p>注意：只有当你需要某元素的单位要根据屏幕宽度大小变化时，才需要rpx这类动态宽度单位。一般情况下高度和字体大小是不应该根据屏幕宽度变化的。</p><h2 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h2><p>在移动端中使用flex布局，可以轻松设置元素适配移动端，教程推荐<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰的flex讲解</a>。<br>rpx加上flex布局可以自适应绝大部分的移动端。</p><h1 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h1><p>几乎全支持vue官方事件处理器：除了click=&gt;tap。详情见如下图：左侧为web事件，右侧为uniapp移动端事件。<figure class="image-box">                <img src="/images/shijian.png" alt title class>                <p></p>            </figure><br>注意：</p><ul><li>为兼容各端，事件需使用<font color="#E96900">v-on</font>或<font color="#E96900">@</font>的方式绑定，请勿使用小程序端的<font color="#E96900">bind</font>和<font color="#E96900">catch</font>进行事件绑定。</li><li>事件修饰符，<font color="#E96900">.stop</font>各平台均支持，使用时会阻止事件冒泡，在非 H5 端同时也会阻止事件的默认行为。其它事件修饰符只支持H5。</li><li>按键修饰符，uni-app运行在手机端，没有键盘事件，所以不支持按键修饰符。</li></ul><h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p>uni-app已归纳大部分开发者会遇到的问题，戳这里：<a href="https://uniapp.dcloud.io/faq" target="_blank" rel="noopener">https://uniapp.dcloud.io/faq</a></p><h1 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h1><p>官方总结日常开发时，需要注意的事项，可以大幅度提升uni-app的性能，戳这里：<a href="https://uniapp.dcloud.io/performance" target="_blank" rel="noopener">https://uniapp.dcloud.io/performance</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习uni-app--介绍</title>
+      <link href="/2019/07/26/uni-app/"/>
+      <url>/2019/07/26/uni-app/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是uni-app"><a href="#什么是uni-app" class="headerlink" title="什么是uni-app?"></a>什么是uni-app?</h1><p>uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可编译到iOS、Android、H5、以及各种小程序等多个平台。对于同时熟悉vue和微信小程序的技术人员，毫无学习成本。即使不跨端，uni-app同时也是更好的小程序开发框架。但是目前只准备考虑App端的实现，故只介绍App的实现。<br>注：这是本人空余时间写的<a href="/images/demo.zip">简易demo</a></p><h1 id="创建uni-app"><a href="#创建uni-app" class="headerlink" title="创建uni-app"></a>创建uni-app</h1><p>下载HBuilderX开发工具，在点击工具栏里的文件 -&gt; 新建 -&gt; 项目：选择uni-app,输入项目名，点击创建，即可成功创建 uni-app。<figure class="image-box">                <img src="/images/create1.png" alt title class>                <p></p>            </figure></p><h1 id="运行uni-app"><a href="#运行uni-app" class="headerlink" title="运行uni-app"></a>运行uni-app</h1><p>真机运行：连接手机，开启USB调试或者使用手机模拟器，进入hello-uniapp项目，点击工具栏的运行 -&gt; 真机运行 -&gt; 选择运行的设备，即可在该设备里面体验uni-app。<figure class="image-box">                <img src="/images/run-phone.png" alt title class>                <p></p>            </figure></p><h1 id="发布uni-app"><a href="#发布uni-app" class="headerlink" title="发布uni-app"></a>发布uni-app</h1><p>打包为原生App（云端）,在HBuilderX工具栏，点击发行，选择原生app-云端打包，如下图：<figure class="image-box">                <img src="/images/uni20190222-11.png" alt title class>                <p></p>            </figure><br>出现如下界面，点击打包即可。<figure class="image-box">                <img src="/images/push.png" alt title class>                <p></p>            </figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
