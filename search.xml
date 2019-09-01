@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vue-组件通信</title>
+      <link href="/2019/09/01/vue-msg/"/>
+      <url>/2019/09/01/vue-msg/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>vue组件通信是最为常见的功能，目前为止，已发现有8种方式：</p><ul><li>props/$emit(使用sync修饰符)</li><li><code>$parent</code>和$children<br>注意：在父组件使用<code>$children</code>时，$children是个数组，因为可能存在多个子组件。</li><li>provide/reject<br>概念：provide/ inject 是vue2.2.0新增的api, 简单来说就是父组件中通过provide来提供变量, 然后再子组件中通过inject来注入变量。<br>注意：这里不论子组件嵌套有多深, 只要调用了inject 那么就可以注入provide中的数据，而不局限于只能从当前父组件的props属性中回去数据。</li><li>ref/$refs<br>ref：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例，可以通过实例直接调用组件的方法或访问数据。</li><li>eventBus<br>eventBus又称为事件总线，在vue中可以使用它来作为沟通桥梁的概念, 就像是所有组件共用相同的事件中心，可以向该中心注册发送事件或接收事件， 所以组件都可以通知其他组件。<br>eventBus也有不方便之处, 当项目较大,就容易造成难以维护的灾难。</li><li>vuex</li><li>localStorage / sessionStorage<br>这种通信比较简单,缺点是数据和状态比较混乱,不太容易维护。<br>通过window.localStorage.getItem(key)获取数据<br>通过window.localStorage.setItem(key,value)存储数据。<br>注意用JSON.parse() / JSON.stringify() 做数据格式转换<br>localStorage / sessionStorage可以结合vuex, 实现数据的持久保存,同时使用vuex解决数据和状态混乱问题</li><li><code>$attrs</code>与 $listeners<br>在vue2.4中，引入了<code>$attrs</code>和$listeners，新增了inheritAttrs 选项。在版本2.4以前，默认情况下父作用域的不被认作props的属性百年孤独，将会“回退”且作为普通的HTML特性应用在子组件的根元素上。通过设置 inheritAttrs 到 false，这些默认行为将会被去掉。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue-加载进度条</title>
       <link href="/2019/08/29/vue-progress/"/>
       <url>/2019/08/29/vue-progress/</url>
