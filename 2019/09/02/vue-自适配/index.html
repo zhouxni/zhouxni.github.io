@@ -203,8 +203,8 @@
 </li>
 <li><p>在入口文件main.js中引入lib-flexible</p>
 </li>
-<li><p>使用postcss-px2rem-exclude自动将css中的px转换成rem。在package.json中配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-px2rem&quot;: &#123; </span><br><span class="line">      &quot;remUnit&quot;: 75,</span><br><span class="line">      &quot;exclude&quot;: &quot;/node_modules|folder_name/i&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>安装使用postcss-px2rem-exclude自动将css中的px转换成rem。在package.json中配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-px2rem-exclude&quot;: &#123; </span><br><span class="line">      &quot;remUnit&quot;: 75,</span><br><span class="line">      &quot;exclude&quot;: /node_modules|folder_name/i</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>使用exclude忽略某文件夹的样式转换。如某些UI框架，我们不想进行单位转换。</p>
 </li>
@@ -216,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-02T16:09:26.551Z" itemprop="dateUpdated">2019-09-03 00:09:26</time>
+    最后更新时间：<time datetime="2019-09-02T16:10:24.682Z" itemprop="dateUpdated">2019-09-03 00:10:24</time>
 </span><br>
 
 
