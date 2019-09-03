@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>vue-自适配 | 举头问天</title>
+    <title>举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="vue">
+    <meta name="keywords" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -125,13 +125,14 @@
 </aside>
 
     <main id="main">
-        <header class="top-header" id="header">
+        
+    <header class="top-header" id="header">
     <div class="flex-row clearfix">
         <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>vue-自适配</span>
+            <span>举头问天</span>
             
         </div>
         
@@ -141,19 +142,13 @@
         
     </div>
 </header>
-<header class="content-header post-header">
+<header class="content-header index-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">vue-自适配</h1>
+        <h1 class="title">举头问天</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-02T15:53:07.000Z" itemprop="datePublished" class="page-time">
-  2019-09-02
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
+                
             
         </h5>
         
@@ -175,143 +170,84 @@
     <div id="local-search-result"></div>
 </div>
 
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-uni-app"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/07/26/uni-app/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
 
-<div class="container body-wrap">
-    <article id="post-vue-自适配"
-  class="post-article article-type-post" itemprop="blogPost">
-    <div class="post-card">
-        <h1 class="post-card-title">vue-自适配</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-09-02 23:53:07" datetime="2019-09-02T15:53:07.000Z"  itemprop="datePublished">2019-09-02</time>
 
-            
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/26/uni-app/">学习uni-app--介绍</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-26 17:17:38" datetime="2019-07-26T09:17:38.000Z"  itemprop="datePublished">2019-07-26</time>
+
+        
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
-            
-
-            
-
-
-            
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            
-            <h1 id="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"><a href="#vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题" class="headerlink" title="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"></a>vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题</h1><ul>
-<li><p>项目中安装lib-flexible</p>
-</li>
-<li><p>在入口文件main.js中引入lib-flexible</p>
-</li>
-<li><p>安装使用postcss-px2rem-exclude自动将css中的px转换成rem。在package.json中配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-px2rem-exclude&quot;: &#123; </span><br><span class="line">      &quot;remUnit&quot;: 75,</span><br><span class="line">      &quot;exclude&quot;: /node_modules|folder_name/i</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用exclude忽略某文件夹的样式转换。如某些UI框架，我们不想进行单位转换。</p>
-</li>
-</ul>
-
-        </div>
         
-<blockquote class="post-copyright">
-    <div class="content">
+
         
-<span class="post-time">
-    最后更新时间：<time datetime="2019-09-02T16:10:24.682Z" itemprop="dateUpdated">2019-09-03 00:10:24</time>
-</span><br>
 
 
+        
         
     </div>
-    <!-- <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/xiaopang.jpg" alt="周欣">
-            周欣
-        </a>
-    </footer> -->
-</blockquote>
-
-        
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-            <div class="page-share-wrap">
     
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/02/vue-自适配/&title=《vue-自适配》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/02/vue-自适配/&title=《vue-自适配》 — 举头问天&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        什么是uni-app?uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可编译到iOS、Android、H5、以及各种小程序等多个平台。对于同时熟悉vue和微信小程序的技术人员，毫无学习成本。即使不跨端，uni-app同时也是更好的小程序开发框架。但是目前只准备考虑App端的实现，故只介绍App的实现。注：这是本人空余时间写的简易demo
+创建uni-ap...
+    
+    <a href="/2019/07/26/uni-app/" class="post-more waves-effect waves-button">
+        more
     </a>
-</div>
-
-        </div>
-        
-            
-
-
-        
     </div>
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/09/03/manifest/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">HTML5-离线缓存</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="next">
-      <a href="/2019/09/02/vue-Eslint/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">vue-Eslint配置</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-    
-    
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题</span></a></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </aside>
-    
 </article>
 
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
 
 </div>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </div>
+</nav>
+
+    </div>
 
     </main>
     <footer class="footer ">
@@ -359,7 +295,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/02/vue-自适配/&title=《vue-自适配》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/page/3/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -371,7 +307,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/02/vue-自适配/&title=《vue-自适配》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/page/3/&title=举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -383,7 +319,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3au3LDMAxEUf//T8szaW0yuwu4IHFZaRxZ4nGB4MHXS17P31p9sr/+XPu37O8pLRgwYBzLeLZrdY/7zOx+ZW8wYMCYw9gH2S6eHqD1vcGAAQNGRnVD8P5nggEDBgyXsX/NPijrJBgwYMDIiljlWwqpkno21OIwYMA4kFEvO393/cP5BgwYMA5hPOZyW3LZ5uxdwYAB42pG1upyG229p0KMDBcGDBgXMSpjRbdxpt/T0DuEAQPGFYyuQKmMLeuw5c8NAwaMAQz9YETW4q9sVyqMYcCAMYCRNeiVzXWNSP/5HAYMGAMYbkmpjwGUhDJrwH2Zb8CAAWMMQw9/2SGw+pPtDBcGDBgDGHqpmSWUlT3AgAFjAkP5WjYGyEYObsiGAQPGBIbeLKtcK4VupYSGAQPGTIZeauqHMJQQ7I4QYMCAMYehtLr0w2FuWvkUlt2xgwEDxrEMfayYBcSG5C87bAEDBowrGOEX5JRRb+e5w9Qvf4UBA8aljKxkzcpavQ1njw1gwIAxhtH7Gn2EGf6XgAEDxhiG+9BsK/VnVg5zwIAB43RG1ojXw6uedCotv2ViCgMGjKsZWRh1UzR3MOCOVGHAgDGB4QZZJWnTZ4vZaNPIHGHAgHERIwuy7lBBCbJuKQsDBgwY+gDA7epVAvEyNYQBAwaM1hdn7bPmgAsDBoyjGNkwIBthukmnlJjCgAHjakY2GKhg3Lc0TDZgwIBxKuMNK0CEmoteM0QAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3ay4oCMRAFUP//px2Y1YDT8VblYQsnKxG6c3RxSVXl8YjX83f9/fy6xk9dPfvYsXBxcae5z+G64r4+m/zIq6cSAy4u7nluvtlM2oy5SRTi4uLejTveYPxNHo64uLjfxc1ZyZtxcXHvz505lIzbH9VDz7JaDRcXd4Lba5iu/by9v4uLi7toKpGsXmz1dsfFxT3DTcYhebbMRGQh4HBxcT/KrVKqw9fxvpff4OLibuZWL1WsanPkF7b+OZHh4uJu5ibtziRoqiOWavcj2gYXF3cpN2+MjuMmD6b8/bi4uJ/iFo4XiyYd1VIKFxf3U9z8eNHsvrTaKG9OZLi4uNu48/Tqe6pHH1xc3JPcXnGSFDy9gUrhtgguLu427kwrZL4TkxdFuLi457kzR5ZeYZMEaLm/i4uLu5nbu1SRj1XyauwNGhcX9wi3dzFrFa58xMHFxd3AbTYmplsh+fWvyy4OLi7uNm4v+ZKA68UiLi7ufbgzJU0ebdWGaTRqxcXF3czthVf1Z+ShiYuL+13c6oWtfHBbuJ6Fi4t7G261Ybq2WMLFxT3PrY5XZ2IrCqyrvxIXF/cIt9cwzYOsWvDkgxxcXNwN3B+86U3U8JkgVgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

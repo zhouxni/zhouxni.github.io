@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HTML5-离线缓存</title>
+      <link href="/2019/09/03/manifest/"/>
+      <url>/2019/09/03/manifest/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是Application-Cache"><a href="#什么是Application-Cache" class="headerlink" title="什么是Application Cache"></a>什么是Application Cache</h1><p>HTML5引入了应用程序缓存技术，意味着web应用可进行缓存，并在没有网络的情况下使用，通过创建cache manifest文件，可以轻松的创建离线应用。<br>Application Cache带来的三个优势是：</p><ul><li>离线浏览 – 用户可在离线时浏览您的完整网站</li><li>提升页面载入速度 – 缓存资源为本地资源，因此加载速度较快</li><li>降低服务器压力 – 浏览器只会从发生了更改的服务器下载资源</li></ul><p>而且主要浏览器皆以支持Application Cache，就算不支持也不会对程序造成什么影响</p><h1 id="Nginx-manifest配置"><a href="#Nginx-manifest配置" class="headerlink" title="Nginx manifest配置"></a>Nginx manifest配置</h1><p>离线存储是通过manifest文件来管理的，需要服务器端的支持，不同的服务器开启支持的方式也是不同的。对于Nginx需要修改配置目录下的mime.types文件，添加manifest文件映射：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text/cache-manifest                   manifest;</span><br></pre></td></tr></table></figure><h1 id="配置manifest文件"><a href="#配置manifest文件" class="headerlink" title="配置manifest文件"></a>配置manifest文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"></span><br><span class="line">#需要缓存的列表</span><br><span class="line">clock.css</span><br><span class="line">clock.js</span><br><span class="line"></span><br><span class="line">NETWORK:</span><br><span class="line">#不需要缓存的,且离线时不可用,即文件是从服务器获取，不从缓存获取。注意：CACHE MANIFEST权重更高</span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">FALLBACK:</span><br><span class="line">#访问缓存失败后，备用访问的资源，第一个是访问源，第二个是替换文件*.html /offline.html</span><br><span class="line">index.html a.html</span><br></pre></td></tr></table></figure><p>使用离线存储外，还需在html标签上添加manifase=”index.manifest”</p><h1 id="manifest更新"><a href="#manifest更新" class="headerlink" title="manifest更新"></a>manifest更新</h1><p>通过添加updateready事件监听，当监听到本地缓存更新后，进行重载页面，以达到更新的目的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">applicationCache.addEventListener(&quot;updateready&quot;,function()&#123;</span><br><span class="line">applicationCache.swapCache();      // 手工更新本地缓存</span><br><span class="line">location.reload();    //重新加载页面页面</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 缓存 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue-自适配</title>
       <link href="/2019/09/02/vue-%E8%87%AA%E9%80%82%E9%85%8D/"/>
       <url>/2019/09/02/vue-%E8%87%AA%E9%80%82%E9%85%8D/</url>
