@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>学习uni-app--html5+ | 举头问天</title>
+    <title>Tags: webpack | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="uniapp">
+    <meta name="keywords" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -105,7 +105,7 @@
               </a>
             </li>
         
-            <li class="">
+            <li class=" active">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>学习uni-app--html5+</span>
+            <span>Tags: webpack</span>
             
         </div>
         
@@ -141,24 +141,49 @@
         
     </div>
 </header>
-<header class="content-header post-header">
+<header class="content-header tags-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">学习uni-app--html5+</h1>
+        <h1 class="title">Tags: webpack</h1>
         <h5 class="subtitle">
-            
-                <time datetime="2019-07-26T15:58:52.000Z" itemprop="datePublished" class="page-time">
-  2019-07-26
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
             
         </h5>
         
     </div>
     
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">全部</a>
+        
+            <a href="/tags/性能优化/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">性能优化</a>
+            
+        
+            <a href="/tags/uniapp/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">uniapp</a>
+            
+        
+            <a href="/tags/缓存/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">缓存</a>
+            
+        
+            <a href="/tags/服务器/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">服务器</a>
+            
+        
+            <a href="/tags/vue/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">vue</a>
+            
+        
+            <a href="/tags/小程序/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">小程序</a>
+            
+        
+            <a href="/tags/webpack/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">webpack</a>
+            
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
+</div>
+
 
 </header>
 
@@ -175,140 +200,47 @@
     <div id="local-search-result"></div>
 </div>
 
+<div class="container body-wrap fade">
+    
+            <div class="waterfall">
+                
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2019-09-08 18:46:40" datetime="2019-09-08T10:46:40.000Z"  itemprop="datePublished">2019-09-08</time>
 
-<div class="container body-wrap">
-    <article id="post-html5"
-  class="post-article article-type-post" itemprop="blogPost">
-    <div class="post-card">
-        <h1 class="post-card-title">学习uni-app--html5+</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-07-26 23:58:52" datetime="2019-07-26T15:58:52.000Z"  itemprop="datePublished">2019-07-26</time>
-
-            
+      
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
-            
-
-            
-
-
-            
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            
-            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>HTML5+是对接AndroidSDK与页面的中间件，用于页面通过js调用底层的SDK接口，比如弹出个窗口、拍照、录音等，与cordova类似。uni-app内置HTML5+引擎，让js能够调用丰富的原生能力。(官方地址：<a href="https://www.html5plus.org/doc/" target="_blank" rel="noopener">https://www.html5plus.org/doc/</a>)</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
-<li>uni-app不需要plus ready，在html中使用plus的api，需要等待plus ready。而uni-app不需要等，可以直接使用。而且如果你调用plus ready，反而不会触发。</li>
-<li>在普通的H5+项目中，需要使用 document.addEventListener监听原生扩展的事件。uni-app 中，没有 document。可以使用 plus.globalEvent.addEventListener 来实现（注意manifest中需开启新编译器，即自定义组件模式”usingComponents”:true）。常见原声扩展事件:<figure class="image-box">
-                <a rel=学习uni-app--html5+ href="/images/html5.png" title="" data-fancybox="images"><img src="/images/html5.png" alt title class></a>
-                <p></p>
-            </figure></li>
-</ul>
-
-        </div>
-        
-<blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2019-07-26T16:27:22.889Z" itemprop="dateUpdated">2019-07-27 00:27:22</time>
-</span><br>
-
-
-        
     </div>
-    <!-- <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/xiaopang.jpg" alt="周欣">
-            周欣
-        </a>
-    </footer> -->
-</blockquote>
-
-        
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
-
-            <div class="page-share-wrap">
     
 
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/html5/&title=《学习uni-app--html5+》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/html5/&title=《学习uni-app--html5+》 — 举头问天&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
+
+  
+    <h3 class="post-title " itemprop="name">
+      <a class="post-title-link" href="/2019/09/08/webpack-env/">webpack-process.env设置</a>
+    </h3>
+  
 
 
 
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+        
+            </div>
+        
+    
 </div>
 
-        </div>
-        
-            
-
-
-        
-    </div>
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/08/07/gzip/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">gzip</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="next">
-      <a href="/2019/07/26/weex/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">学习uni-app--weex</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-    
-    
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">2.</span> <span class="post-toc-text">注意事项</span></a></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </aside>
-    
-</article>
-
-
-</div>
 
     </main>
     <footer class="footer ">
@@ -356,7 +288,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/07/26/html5/&title=《学习uni-app--html5+》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/tags/webpack/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -368,7 +300,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/07/26/html5/&title=《学习uni-app--html5+》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/tags/webpack/&title=举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -380,7 +312,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3awYrDMAxF0fz/T6fQbbFzn2WLUK5XpRPi01kI6dnXhdf9XaNvfj+P1u8z14klV67cMpdvwOmjZyo/Uq5cuf3cefG6wZr/Czj9wSZXrtyXcXlzQ1oluXLl/gf3ofmYzimcLleu3PdweZBRL3Dk/RtmNbly5Ra4aWB64vPBfFeuXLkh9w4XDzXSBgjtLleu3BZuulmlUqYHMMO95MqV284l9PrQQv6KDlnlypV7mLvWuFQikrXrHXLlyu3krjUf82YovWaBjmzlypV7mJs2KBxH3sNLJ0px5MqVe5jLm5ggzlgKT+OH5MqVe4A774b4iIJ6qzSKlStXbgt3F2LtDXzsGcYicuXKPcDlo059pKkEInLlyu3nkramUrZ46/PQWsmVK7eFm446a9/EZzvTMidXrtzT3HrxIpe00uZp+JPkypXbyCXxJWo+wgsW6RGLXLlyO7l8ccSuqCW45SFXrtxN3LSgkG34hYzKAYxcuXJPc0nxIuNKJSgJ4hK5cuU2cnnx2nYokg4/cuXKfSV3LQrhpRMNRXLlyn0xl4xA6fiE4hi5cuU2cteKy9rglEYhi7GIXLlyC9y9gSkZjXihlCtXbjv3A38VbMMO4rdAAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvklEQVR42u3aQW7DMAwEwPz/0+m5QGMvyYp1gdGpQB1rfCGopV6veL0v1/Wvrt/zOrFwcXHH3ITyaeNrxKdnkjd8/CRcXNxF7nUZyrfpURIDLi7uk7l5y1ItZLi4uP+R29ss/xhcXNyncZMWJA8yqh9w5KyGi4s74Fa3P/H3kXwXFxe3xX0X17wkVZ/89itcXNwVbi/Q7I1b8tbnpmHCxcU9zM23nI9Ue3EJLi7u33Lng5B5sFLuyHBxcQ9w80tX1YNNtX1JdsHFxd3nVqPMXhGclEJcXNx9bj4uTRqXPGTJB7S4uLj73N5BpTchHR2ZcHFxD3OT4tI70vQGrjdXNHBxcVe4vfAiKXyTMW1UUnFxcQ9z59cseq1StUnCxcXd5FY/qRepzMscLi7uJrc3ZE0OKvkINm+ncHFxN7nJgLMXglQbmsIoBRcX9wD3XVx58Zq3Mj/8FxcXd4U7H5H+VnYxGdjg4uKe4FavQUwOS3mpupkM4+LirnCTQlN+dat23jyPi4v7SG5SvJLtq5c2cHFxn8ytxql503OwxcHFxW1xe5cyJyFpNX7FxcXd5E7CzUlckseyzXwXFxe3w/0CpzkBL76TjqAAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

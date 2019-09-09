@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>webpack-process.env设置</title>
+      <link href="/2019/09/08/webpack-env/"/>
+      <url>/2019/09/08/webpack-env/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在vue项目，我们常常看到process.env.NODE_ENV的全局变量，那么该如何设置呢？其实有多种方式，但这里只介绍最简单的方法：cross-env。</p><ol><li>安装cross-env：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev cross-env</span><br></pre></td></tr></table></figure><ol start="2"><li>在package.json中进行配置：<figure class="image-box">                <img src="/images/env.png" alt title class>                <p></p>            </figure><br>即可访问process.env.NODE_ENV环境变量</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTML5-离线缓存</title>
       <link href="/2019/09/03/manifest/"/>
       <url>/2019/09/03/manifest/</url>
