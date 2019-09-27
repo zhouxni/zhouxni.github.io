@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>pdfjs--在线预览</title>
+      <link href="/2019/09/27/pdfjs/"/>
+      <url>/2019/09/27/pdfjs/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>因为项目开发需要，在线预览pdf，且要兼容ie9，故选择了pdf.js这个插件。</p><h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>地址：<a href="/images/zip/pdf-js.zip">pdf.js</a></p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>使用iframe加载pdf。设置iframe的src属性为<code>&#39;./public/web/viewer.html?file=css.pdf&#39;</code>，其中file即为pdf的文件地址。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>cookie</title>
       <link href="/2019/09/11/cookie/"/>
       <url>/2019/09/11/cookie/</url>
