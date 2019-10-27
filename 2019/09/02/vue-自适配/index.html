@@ -198,13 +198,13 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"><a href="#vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题" class="headerlink" title="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"></a>vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题</h1><ul>
+            <h1 id="vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题"><a href="#vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题" class="headerlink" title="vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题"></a>vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题</h1><ul>
 <li><p>项目中安装lib-flexible</p>
 </li>
 <li><p>在入口文件main.js中引入lib-flexible</p>
 </li>
-<li><p>安装使用postcss-px2rem-exclude自动将css中的px转换成rem。在package.json中配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-px2rem-exclude&quot;: &#123; </span><br><span class="line">      &quot;remUnit&quot;: 75,</span><br><span class="line">      &quot;exclude&quot;: /node_modules|folder_name/i</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>安装使用postcss-plugin-px2rem自动将css中的px转换成rem。在package.json中配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-plugin-px2rem&quot;: &#123;</span><br><span class="line">      &quot;rootValue&quot;: 37.5,</span><br><span class="line">      &quot;selectorBlackList&quot;: [</span><br><span class="line">        &quot;.featured&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;propBlackList&quot;: [</span><br><span class="line">        &quot;font-size&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <p>使用exclude忽略某文件夹的样式转换。如某些UI框架，我们不想进行单位转换。</p>
 </li>
@@ -216,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-02T16:10:24.682Z" itemprop="dateUpdated">2019-09-03 00:10:24</time>
+    最后更新时间：<time datetime="2019-10-11T13:13:54.996Z" itemprop="dateUpdated">2019-10-11 21:13:54</time>
 </span><br>
 
 
@@ -303,7 +303,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>

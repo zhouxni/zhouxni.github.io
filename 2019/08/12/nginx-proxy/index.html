@@ -198,7 +198,9 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>解压nginx压缩包后，找到nginx.conf文件，在location中添加proxy_pass代理地址，添加header:<br>proxy_pass <code>http://www.baidu.com</code>;<br>add_header ‘Access-Control-Allow-Origin’ ‘*’;<br>add_header ‘Access-Control-Allow-Headers’ ‘X-Requested-With’;<br>add_header ‘Access-Control-Allow-Methods’ ‘GET,POST,OPTIONS’</p>
+            <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>解压nginx压缩包后，找到nginx.conf文件，在location中添加proxy_pass代理地址，添加header:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass `http://www.baidu.com`;</span><br><span class="line">add_header &apos;Access-Control-Allow-Origin&apos; &apos;*&apos;;</span><br><span class="line">add_header &apos;Access-Control-Allow-Headers&apos; &apos;X-Requested-With&apos;;</span><br><span class="line">add_header &apos;Access-Control-Allow-Methods&apos; &apos;GET,POST,OPTIONS&apos;;</span><br><span class="line">proxy_set_header Host $host;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -206,7 +208,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-12T07:39:21.370Z" itemprop="dateUpdated">2019-08-12 15:39:21</time>
+    最后更新时间：<time datetime="2019-10-01T16:52:12.107Z" itemprop="dateUpdated">2019-10-02 00:52:12</time>
 </span><br>
 
 

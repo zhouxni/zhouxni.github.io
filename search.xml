@@ -4,6 +4,281 @@
   
     
     <entry>
+      <title>小程序-全局数据状态管理</title>
+      <link href="/2019/10/27/%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/"/>
+      <url>/2019/10/27/%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="全局数据管理"><a href="#全局数据管理" class="headerlink" title="全局数据管理"></a>全局数据管理</h1><p>在小程序中全局数据状态一般是在app.js中定义globalData去定义相关数据或者方法。但是往往使用却很繁琐，鄙人偶尔在网上看到一个类似mobx的小程序全局管理js库。详情使用：<a href="https://github.com/dao42/wechat-weapp-mobx" target="_blank" rel="noopener">地址</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vuex-数据持久化</title>
+      <link href="/2019/10/09/vuex-%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+      <url>/2019/10/09/vuex-%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>vuex是在中大型项目中必不可少的状态管理组件，刷新会重新更新状态，但是有时候我们并不希望如此。例如全局相关的，如登录状态、token、以及一些不常更新的状态等，我们更希望能够固化到本地，减少无用的接口访问，以及更佳的用户体验。</p><h1 id="安装起步"><a href="#安装起步" class="headerlink" title="安装起步"></a>安装起步</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -S vuex-persistedstate</span><br></pre></td></tr></table></figure><h1 id="配置使用"><a href="#配置使用" class="headerlink" title="配置使用"></a>配置使用</h1><p>在vuex初始化时候，作为组件引入。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import persistedState from &apos;vuex-persistedstate&apos;</span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">    // ...</span><br><span class="line">    plugins: [persistedState()]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h1 id="自定义存储方式"><a href="#自定义存储方式" class="headerlink" title="自定义存储方式"></a>自定义存储方式</h1><p>vuex-persistedstate默认使用localStorage来固化数据，一些特殊情况要如何应对呢？（如：safari的无痕浏览模式）。<br>1.需要使用sessionStorage的情况</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    persistedState(&#123; storage: window.sessionStorage &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>2.使用cookie的情况</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import persistedState from &apos;vuex-persistedstate&apos;</span><br><span class="line">import * as Cookies from &apos;js-cookie&apos;</span><br><span class="line"></span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  // ...</span><br><span class="line">  plugins: [</span><br><span class="line">    persistedState(&#123;</span><br><span class="line">      storage: &#123;</span><br><span class="line">        getItem: key =&gt; Cookies.get(key),</span><br><span class="line">        setItem: (key, value) =&gt; Cookies.set(key, value, &#123; expires: 7 &#125;),</span><br><span class="line">        removeItem: key =&gt; Cookies.remove(key)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue-插件开发</title>
+      <link href="/2019/10/07/vue-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+      <url>/2019/10/07/vue-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着 Vue.js 越来越火，Vue.js 的相关插件也在不断的被贡献出来，数不胜数。比如官方推荐的 vue-router、vuex 等，都是非常优秀的插件。但是我们更多的人还只停留在使用的阶段，比较少自己开发。所以接下来会通过一个简单的 vue-toast 插件，来了解掌握插件的开发和使用。</p><h1 id="认识插件"><a href="#认识插件" class="headerlink" title="认识插件"></a>认识插件</h1><p>Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器 , 第二个参数是一个可选的选项对象:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">MyPlugin.install = function (Vue, options) &#123;</span><br><span class="line">  Vue.myGlobalMethod = function () &#123;  // 1. 添加全局方法或属性，如: vue-custom-element</span><br><span class="line">    // 逻辑...</span><br><span class="line">  &#125;</span><br><span class="line">  Vue.directive(&apos;my-directive&apos;, &#123;  // 2. 添加全局资源：指令/过滤器/过渡等，如 vue-touch</span><br><span class="line">    bind (el, binding, vnode, oldVnode) &#123;</span><br><span class="line">      // 逻辑...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br><span class="line">  Vue.mixin(&#123;</span><br><span class="line">    created: function () &#123;  // 3. 通过全局 mixin方法添加一些组件选项，如: vuex</span><br><span class="line">      // 逻辑...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br><span class="line">  Vue.prototype.$myMethod = function (options) &#123;  // 4. 添加实例方法，通过把它们添加到 Vue.prototype 上实现</span><br><span class="line">    // 逻辑...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>接下来要讲到的 vue-toast 插件则是通过添加实例方法实现的。我们先来看个小例子。先新建个js文件来编写插件：toast.js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// toast.js</span><br><span class="line">var Toast = &#123;&#125;;</span><br><span class="line">Toast.install = function (Vue, options) &#123;</span><br><span class="line">    Vue.prototype.$msg = &apos;Hello World&apos;;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Toast;</span><br></pre></td></tr></table></figure><p>在 main.js 中，需要导入 toast.js 并且通过全局方法 Vue.use() 来使用插件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// main.js</span><br><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import Toast from &apos;./toast.js&apos;;</span><br><span class="line">Vue.use(Toast);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack-热更新</title>
+      <link href="/2019/10/05/webpack-%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+      <url>/2019/10/05/webpack-%E7%83%AD%E6%9B%B4%E6%96%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>webpack热更新，就是在修改代码后，浏览器不必刷新整个页面，只局部刷新。</p><h1 id="开启热更新"><a href="#开启热更新" class="headerlink" title="开启热更新"></a>开启热更新</h1><p>将<code>devServer</code>中<code>hot</code>选项设为<code>true</code>即可。需要<code>new webpack.HotModuleReplacementPlugin()</code>支持。<br>js代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(module.hot)&#123;</span><br><span class="line">    module.hot.accept(&quot;./src/js/a&quot;,function()&#123;</span><br><span class="line">     require(&quot;./src/js/b&quot;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当观察到a.js修改后，就会热更新并执行回调函数。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack-内部插件</title>
+      <link href="/2019/10/05/webpack-%E5%86%85%E9%83%A8%E6%8F%92%E4%BB%B6/"/>
+      <url>/2019/10/05/webpack-%E5%86%85%E9%83%A8%E6%8F%92%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>webpack常用的内部插件：</p><h1 id="ProvidePlugin"><a href="#ProvidePlugin" class="headerlink" title="ProvidePlugin"></a>ProvidePlugin</h1><p>自动加载，而不必模块import或require，模块全局存在。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new webpack.ProvidePlugin(&#123;</span><br><span class="line">     $:&quot;jquery&quot;,</span><br><span class="line">     &quot;window.$&quot;:&quot;jquery&quot;,</span><br><span class="line"> &#125;),</span><br></pre></td></tr></table></figure><p>将jquery全局注入到<code>$</code>或<code>window.$</code>，即可访问jquery。</p><h1 id="DefinePlugin"><a href="#DefinePlugin" class="headerlink" title="DefinePlugin"></a>DefinePlugin</h1><p>命名全局变量，在每个文件都能访问。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new webpack.DefinePlugin(&#123;</span><br><span class="line">    name:JSON.stringify(&quot;举头问天&quot;)</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure><p>注意：如果不使用<code>JSON.stringify</code>创建或者’”string”‘，则字符串会被当作变量进行处理。</p><h1 id="IgnorePlugin"><a href="#IgnorePlugin" class="headerlink" title="IgnorePlugin"></a>IgnorePlugin</h1><p>忽略第三方包内的require全部依赖。避免打包的文件过大，在index.js单独引入某个依赖。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack-异步加载</title>
+      <link href="/2019/10/05/webpack-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/"/>
+      <url>/2019/10/05/webpack-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<p>webpack常用的代码异步加载和懒加载，有两种方式：<code>require.ensure</code>和<code>import</code>；</p><h1 id="require-ensure"><a href="#require-ensure" class="headerlink" title="require.ensure"></a>require.ensure</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">require.ensure([&quot;./src/js/b&quot;],function()&#123;</span><br><span class="line">      var a =  require(&quot;./src/js/a&quot;);</span><br><span class="line">      console.log(a)</span><br><span class="line">   &#125;,&quot;filename&quot;)</span><br></pre></td></tr></table></figure><p>require.ensure接受三个参数：</p><ol><li>依赖 dependencies<br>这是一个字符串数组，通过这个参数，在所有的回调函数的代码被执行前，我们可以将所有需要用到的模块进行声明。</li><li>回调 callback<br>当所有的依赖都加载完成后，webpack会执行这个回调函数。require 对象的一个实现会作为一个参数传递给这个回调函数。因此，我们可以进一步 require() 依赖和其它模块提供下一步的执行。</li><li>chunk名称 chunkName<br>chunkName 是提供给这个特定的 require.ensure() 的 chunk 的名称。通过提供 require.ensure() 不同执行点相同的名称，我们可以保证所有的依赖都会一起放进相同的 文件束(bundle)。</li></ol><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>1.空数组作为参数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require.ensure([], function(require)&#123;</span><br><span class="line">    require(&apos;./a.js&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>以上代码保证了拆分点被创建，而且 a.js 被 webpack 分开打包。</p><p>2.依赖作为参数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require.ensure([&apos;./a.js&apos;], function(require) &#123;</span><br><span class="line">    require(&apos;./b.js&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>上面代码， a.js 和 b.js 都被打包到一起，而且从主文件束中拆分出来。但只有 b.js 的内容被执行。a.js 的内容仅仅是可被使用，但并没有被输出。<br>想去执行 a.js，我们需要异步地引用它，如 require(‘./a.js’)，让它的 JavaScritp 被执行。</p><h1 id="import"><a href="#import" class="headerlink" title="import"></a>import</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import(/* webpackChunkName: &apos;name&apos;*/ &quot;./src/js/a&quot;).then(res=&gt;</span><br><span class="line">        res.add())</span><br></pre></td></tr></table></figure><p>使用注释的方式去定义chunkname，用es6的promise的链式调用去写回调函数。<br>注意：如果不支持<code>import</code>动态语法，请使用<code>@babel/plugin-syntax-dynamic-import</code>插件。<br>然后再babel-loader中options配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    plugins:[&apos;@babel/plugin-syntax-dynamic-import&apos;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tree-shaking</title>
+      <link href="/2019/10/05/tree-shaking/"/>
+      <url>/2019/10/05/tree-shaking/</url>
+      
+        <content type="html"><![CDATA[<p>webpack配置中，有时候需要删除掉无用的代码，这时需要用到tree-shaking技术。tree-shaking又分为js和css两种。</p><h1 id="js-tree-shaking"><a href="#js-tree-shaking" class="headerlink" title="js-tree-shaking"></a>js-tree-shaking</h1><p>js的tree-shaking是依靠ES6的import和export技术。注意：只有mode=”production”时才生效。同时也要设置<code>uglifyjs-webpack-plugin</code>插件</p><h1 id="css-tree-shaking"><a href="#css-tree-shaking" class="headerlink" title="css-tree-shaking"></a>css-tree-shaking</h1><p>css的tree-shaking可以利用webpack插件：<code>webpack-css-treeshaking-plugin</code>去实现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文件下载</title>
+      <link href="/2019/10/03/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"/>
+      <url>/2019/10/03/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在项目中，常常有以下需求，下载服务器文件到本地中。一般来说，前端主要用2种方式：</p><h2 id="服务端生成文件-将文件在服务端的地址返回给前端供前端下载"><a href="#服务端生成文件-将文件在服务端的地址返回给前端供前端下载" class="headerlink" title="服务端生成文件,将文件在服务端的地址返回给前端供前端下载"></a>服务端生成文件,将文件在服务端的地址返回给前端供前端下载</h2><p>前端发送get请求后，获取后台返回的文件地址。</p><h2 id="服务端将文件流传给前端-前端用bolb将文件流转为文件并下载"><a href="#服务端将文件流传给前端-前端用bolb将文件流转为文件并下载" class="headerlink" title="服务端将文件流传给前端,前端用bolb将文件流转为文件并下载"></a>服务端将文件流传给前端,前端用bolb将文件流转为文件并下载</h2><p>通过ajax请求后端，将生成的文件转为文件字符流返回到前端，前端使用Blob的方式将文件字符流数据写入文件，再下载。<br>前端核心代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 下载文件方法 </span><br><span class="line">     var downloadDoc = function(content, filename) &#123; </span><br><span class="line">         var eleLink = document.createElement(&apos;a&apos;); </span><br><span class="line">         eleLink.download = filename; </span><br><span class="line">         eleLink.style.display = &apos;none&apos;; </span><br><span class="line">         // 字符内容转变成blob地址 </span><br><span class="line">         var blob = new Blob([content],&#123;type:&quot;application/zip&quot;&#125;); </span><br><span class="line">         eleLink.href = URL.createObjectURL(blob); </span><br><span class="line">         // 自动触发点击 </span><br><span class="line">         document.body.appendChild(eleLink); </span><br><span class="line">         eleLink.click(); </span><br><span class="line">         // 然后移除 </span><br><span class="line">         document.body.removeChild(eleLink); </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure><p>“content”：后端返回的文件字符流数据<br>“filename”：下载时显示的默认文件名<br>在ajax请求的回调函数中调用该方法即可触发文件下载的操作事件。(注意：ajax或axios请求中，设置responseType:’blob’)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue-闪烁</title>
+      <link href="/2019/10/02/vue-%E9%97%AA%E7%83%81/"/>
+      <url>/2019/10/02/vue-%E9%97%AA%E7%83%81/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在写页面的时候在一些地方用了v-show，在刷新页面的时候就发现即便在逻辑判断为false某些元素不该显示时也会露个脸，一闪而过，元素快小还好，如果是特别大的地方就看起来就很不爽，于是就上网搜了下看有没有解决方法，结果还真有。</p><h2 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h2><p>官方的解释就一句话：这个指令保持在元素上直到关联实例结束编译。光看这句话一头雾水，后面紧接着说了用法：<br>和 CSS 规则如 [v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。<br>也就是说v-cloak指令可以像CSS选择器一样绑定一套CSS样式然后这套CSS会一直生效到实例编译结束。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// &lt;div&gt; 不会显示，直到编译结束。</span><br><span class="line">[v-cloak] &#123;</span><br><span class="line">display: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div v-cloak&gt;</span><br><span class="line">&#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><h2 id="v-text"><a href="#v-text" class="headerlink" title="v-text"></a>v-text</h2><p>vue中我们会将数据包在两个大括号中，然后放到HTML里，但是在vue内部，所有的双括号会被编译成textNode的一个v-text指令。<br>而使用v-text的好处就是永远更好的性能，更重要的是可以避免FOUC (Flash of Uncompiled Content) ，也就是上面与遇到的问题。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span v-text=&quot;msg&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;!-- same as --&gt;</span><br><span class="line">&lt;span&gt;&#123;&#123;msg&#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文件上传</title>
+      <link href="/2019/10/01/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+      <url>/2019/10/01/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>表单文件上传是常见的需求，主要方式有三种：form原始表单，ajax和FormData，jquery.form.js插件</p><h1 id="form表单提交"><a href="#form表单提交" class="headerlink" title="form表单提交"></a>form表单提交</h1><p>设置form标签<code>enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;</code></p><h1 id="ajax和FormData"><a href="#ajax和FormData" class="headerlink" title="ajax和FormData"></a>ajax和FormData</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var data  = new FormData($(&quot;#myForm&quot;)[0]);</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    method:&quot;POST&quot;,</span><br><span class="line">    url:&quot;/&quot;,</span><br><span class="line">    data:data,</span><br><span class="line">    contentType:false,</span><br><span class="line">    processData:false,</span><br><span class="line">    success:function(res)&#123;</span><br><span class="line">        console.log(res)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>注意：<code>contentType</code>和<code>processData</code>要设为false，jquery才能正常解析文件。也可使用(new FormData()).append()方法添加键值对。</p><h1 id="jquery-form-js插件"><a href="#jquery-form-js插件" class="headerlink" title="jquery.form.js插件"></a>jquery.form.js插件</h1><p>使用<a href="http://malsup.github.io/jquery.form.js" target="_blank" rel="noopener">form.js</a> 插件提交更加便捷</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 表单 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>express-ejs模板</title>
+      <link href="/2019/09/29/express-ejs%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2019/09/29/express-ejs%E6%A8%A1%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在前后端混合开发模式下，往往需要模板去代替html文件，在服务端渲染完成后转为html文件，然后传送到客户端(浏览器)。</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol><li><p>安装ejs</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install ejs --save</span><br></pre></td></tr></table></figure></li><li><p>注册</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">///app.engine(&apos;html&apos;, ejs.__express);//设置ejs后缀为html后缀，然后也要设置app.set(&quot;view engine&quot;,&quot;html&quot;)</span><br><span class="line">app.set(&quot;views&quot;,path.resolve(__dirname,&quot;views&quot;))//设置视图目录</span><br><span class="line">app.set(&quot;view engine&quot;,&quot;ejs&quot;)//设置ejs后缀文件为模板文件</span><br></pre></td></tr></table></figure></li><li><p>渲染</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.render(&quot;login&quot;,&#123;name:&quot;周欣&quot;&#125;)//login表示文件名，后面数据对象是在模板中的变量&lt;%= name %&gt;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> express </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pdfjs--在线预览</title>
       <link href="/2019/09/27/pdfjs/"/>
       <url>/2019/09/27/pdfjs/</url>
@@ -27,7 +302,7 @@
       <link href="/2019/09/11/cookie/"/>
       <url>/2019/09/11/cookie/</url>
       
-        <content type="html"><![CDATA[<p>cookie是一种常见的缓存机制。当相关信息以cookie保存在客户端时，要想每个请求的url携带上cookie信息，还要注意以下几点：</p><ol><li>jquery的ajax请求中配置项：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhrFields:&#123;withCredentials: true&#125;</span><br></pre></td></tr></table></figure></li></ol><p>即可在请求头上携带后台设置的cookie值</p><ol start="2"><li><p>axios全局设置请求：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.withCredentials=true;</span><br></pre></td></tr></table></figure></li><li><p>js设置的cookie如何携带：<br>由于cookie遵循同源策略，因此不同域名下是无法访问别的cookie，所以js设置本地的cookie无法携带在请求头上。解决办法是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;name=1111;domain=localhost;path=/&quot;;</span><br></pre></td></tr></table></figure></li></ol><p>设置js中cookie的domain和path，将domain设置为请求接口相同的域名，就可以了。（注：后端同时要设置res.setHeader(“Access-Control-Allow-Credentials”,”true”)）</p>]]></content>
+        <content type="html"><![CDATA[<p>cookie是一种常见的缓存机制。当相关信息以cookie保存在客户端时，要想每个请求的url携带上cookie信息，还要注意以下几点(针对跨域请求)：</p><ol><li>jquery的ajax请求中配置项：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhrFields:&#123;withCredentials: true&#125;</span><br></pre></td></tr></table></figure></li></ol><p>即可在请求头上携带后台设置的cookie值</p><ol start="2"><li><p>axios全局设置请求：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.withCredentials=true;</span><br></pre></td></tr></table></figure></li><li><p>js设置的cookie如何携带：<br>由于cookie遵循同源策略，因此不同域名下是无法访问别的cookie，所以js设置本地的cookie无法携带在请求头上。解决办法是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;name=1111;domain=localhost;path=/&quot;;</span><br></pre></td></tr></table></figure></li></ol><p>设置js中cookie的domain和path，将domain设置为请求接口相同的域名，就可以了。（注：后端同时要设置res.setHeader(“Access-Control-Allow-Credentials”,”true”)）</p>]]></content>
       
       
       <categories>
@@ -52,7 +327,7 @@
       <link href="/2019/09/08/webpack-env/"/>
       <url>/2019/09/08/webpack-env/</url>
       
-        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在vue项目，我们常常看到process.env.NODE_ENV的全局变量，那么该如何设置呢？其实有多种方式，但这里只介绍最简单的方法：cross-env。</p><ol><li>安装cross-env：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev cross-env</span><br></pre></td></tr></table></figure><ol start="2"><li>在package.json中进行配置：<figure class="image-box">                <img src="/images/env.png" alt title class>                <p></p>            </figure><br>即可访问process.env.NODE_ENV环境变量</li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在vue项目，我们常常看到process.env.NODE_ENV的全局变量，那么该如何设置呢？其实有多种方式，但这里只介绍最简单的方法：cross-env。</p><ol><li>安装cross-env：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev cross-env</span><br></pre></td></tr></table></figure><ol start="2"><li>在package.json中进行配置：<figure class="image-box">                <img src="/images/env.png" alt title class>                <p></p>            </figure><br>即可访问process.env.NODE_ENV环境变量</li></ol><h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>上述中的<code>process.env.NODE_ENV</code>只能在<code>webpack.config.js</code>中访问。在文件如<code>index.js</code>将会得到<code>production</code>，因为此时与`mode设置的值相同。<br>如何将webpack.config.js与index.js相关联：<br>定义全局变量即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new webpack.DefinePlugin(&#123;</span><br><span class="line">    &apos;process.env.NODE_ENV&apos;:JSON.stringify(process.env.NODE_ENV)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -102,7 +377,7 @@
       <link href="/2019/09/02/vue-%E8%87%AA%E9%80%82%E9%85%8D/"/>
       <url>/2019/09/02/vue-%E8%87%AA%E9%80%82%E9%85%8D/</url>
       
-        <content type="html"><![CDATA[<h1 id="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"><a href="#vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题" class="headerlink" title="vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题"></a>vue使用lib-flexible和postcss-px2rem-exclude完美解决移动端适配的问题</h1><ul><li><p>项目中安装lib-flexible</p></li><li><p>在入口文件main.js中引入lib-flexible</p></li><li><p>安装使用postcss-px2rem-exclude自动将css中的px转换成rem。在package.json中配置:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-px2rem-exclude&quot;: &#123; </span><br><span class="line">      &quot;remUnit&quot;: 75,</span><br><span class="line">      &quot;exclude&quot;: /node_modules|folder_name/i</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>使用exclude忽略某文件夹的样式转换。如某些UI框架，我们不想进行单位转换。</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题"><a href="#vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题" class="headerlink" title="vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题"></a>vue使用lib-flexible和postcss-plugin-px2rem完美解决移动端适配的问题</h1><ul><li><p>项目中安装lib-flexible</p></li><li><p>在入口文件main.js中引入lib-flexible</p></li><li><p>安装使用postcss-plugin-px2rem自动将css中的px转换成rem。在package.json中配置:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">    &quot;postcss-plugin-px2rem&quot;: &#123;</span><br><span class="line">      &quot;rootValue&quot;: 37.5,</span><br><span class="line">      &quot;selectorBlackList&quot;: [</span><br><span class="line">        &quot;.featured&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;propBlackList&quot;: [</span><br><span class="line">        &quot;font-size&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>使用exclude忽略某文件夹的样式转换。如某些UI框架，我们不想进行单位转换。</p></li></ul>]]></content>
       
       
       <categories>
@@ -379,7 +654,7 @@
       <link href="/2019/08/12/nginx-proxy/"/>
       <url>/2019/08/12/nginx-proxy/</url>
       
-        <content type="html"><![CDATA[<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>解压nginx压缩包后，找到nginx.conf文件，在location中添加proxy_pass代理地址，添加header:<br>proxy_pass <code>http://www.baidu.com</code>;<br>add_header ‘Access-Control-Allow-Origin’ ‘*’;<br>add_header ‘Access-Control-Allow-Headers’ ‘X-Requested-With’;<br>add_header ‘Access-Control-Allow-Methods’ ‘GET,POST,OPTIONS’</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>解压nginx压缩包后，找到nginx.conf文件，在location中添加proxy_pass代理地址，添加header:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass `http://www.baidu.com`;</span><br><span class="line">add_header &apos;Access-Control-Allow-Origin&apos; &apos;*&apos;;</span><br><span class="line">add_header &apos;Access-Control-Allow-Headers&apos; &apos;X-Requested-With&apos;;</span><br><span class="line">add_header &apos;Access-Control-Allow-Methods&apos; &apos;GET,POST,OPTIONS&apos;;</span><br><span class="line">proxy_set_header Host $host;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
