@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>react使用sass</title>
+      <link href="/2019/11/06/react%E4%BD%BF%E7%94%A8sass/"/>
+      <url>/2019/11/06/react%E4%BD%BF%E7%94%A8sass/</url>
+      
+        <content type="html"><![CDATA[<h1 id="react使用sass"><a href="#react使用sass" class="headerlink" title="react使用sass"></a>react使用sass</h1><p>在react中配置sass其实很简单，只需安装<code>node-sass</code>这个包就可以了。</p><h1 id="react配置装饰器"><a href="#react配置装饰器" class="headerlink" title="react配置装饰器"></a>react配置装饰器</h1><p>安装<code>babel-plugin-transform-decorators-legacy</code>这个插件。然后<code>npm run eject</code>释放配置文件。在package.json中babel选项配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;babel&quot;: &#123;</span><br><span class="line">  &quot;presets&quot;: [</span><br><span class="line">    &quot;react-app&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;@babel/plugin-proposal-decorators&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;legacy&quot;: true</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>即可使用es7的装饰器语法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>h5-页面bug</title>
+      <link href="/2019/11/01/h5-%E9%A1%B5%E9%9D%A2%E6%81%A2%E5%A4%8D%E4%BD%8D%E7%BD%AE/"/>
+      <url>/2019/11/01/h5-%E9%A1%B5%E9%9D%A2%E6%81%A2%E5%A4%8D%E4%BD%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="h5移动端页面的兼容性"><a href="#h5移动端页面的兼容性" class="headerlink" title="h5移动端页面的兼容性"></a>h5移动端页面的兼容性</h1><ol><li>IOS端当键盘弹起后，有收起时。页面无法回到原位置，导致底部出现空白。解决办法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&quot;focusout&quot;,function()&#123;</span><br><span class="line">    window.scrollTo(0,0)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></li></ol><p>在body层监听子元素的blur事件，使得window回滚到(0,0)坐标。</p><ol start="2"><li>h5端当在子元素使用touchmove事件时，会将窗口往下拉伸，从而导致子元素的touchend事件失效。解决办法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touchmove(e)&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 移动端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>小程序-全局数据状态管理</title>
       <link href="/2019/10/27/%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/"/>
       <url>/2019/10/27/%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/</url>
