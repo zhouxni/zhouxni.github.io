@@ -229,6 +229,14 @@
 <li><p>更多的服务器负载：<br>在 Node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量占用CPU 资源，因此如果你预料在高流量环境下使用，请准备相应的服务器负载，并明智地采用缓存策略。</p>
 </li>
 </ul>
+<ol start="11">
+<li>打包去除console.log()或者使用babel-plugin-transform-remove-console<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">configureWebpack: config =&gt; &#123;</span><br><span class="line">    if (process.env.NODE_ENV === &apos;production&apos;) &#123;</span><br><span class="line">      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>在babel.config.js中配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const plugins = [&quot;@vue/babel-plugin-transform-vue-jsx&quot;]</span><br><span class="line">// 生产环境移除console</span><br><span class="line">if(process.env.NODE_ENV === &apos;production&apos;) &#123;</span><br><span class="line">  plugins.push(&quot;transform-remove-console&quot;)</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: plugins,</span><br><span class="line">  presets: [</span><br><span class="line">    [</span><br><span class="line">      &apos;@vue/app&apos;, &#123;</span><br><span class="line">        modules: false,</span><br><span class="line">        targets: &#123;</span><br><span class="line">          browsers: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;, &quot;Android &gt;= 4&quot;, &quot;iOS &gt;= 8&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">        useBuiltIns: &apos;entry&apos;,</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="wepback："><a href="#wepback：" class="headerlink" title="wepback："></a>wepback：</h3><ol>
 <li>webpack对图片进行压缩</li>
 <li>减少ES6转为ES5的冗余代码</li>
@@ -252,7 +260,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-29T01:40:33.989Z" itemprop="dateUpdated">2019-08-29 09:40:33</time>
+    最后更新时间：<time datetime="2019-11-10T13:45:49.695Z" itemprop="dateUpdated">2019-11-10 21:45:49</time>
 </span><br>
 
 
