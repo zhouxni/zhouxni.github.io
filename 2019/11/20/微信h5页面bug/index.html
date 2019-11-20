@@ -200,7 +200,7 @@
             
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近的项目是微信H5，在ios中h5的bug真是奇形怪状。为此在这里记录，避免以后再次入坑。</p>
 <h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ol>
-<li>分享页面不是当前页面地址。解决办法：进入分享页面需要使用<code>location.href</code>=或<code>location.replace()</code>。</li>
+<li>分享页面不是当前页面地址。解决办法：进入分享页面需要使用<code>location.href=</code>或<code>location.replace()</code>。</li>
 <li>ios页面后退不刷新。解决办法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&quot;pageshow&quot;, function() &#123;</span><br><span class="line">   if (this.isPageHide) &#123;</span><br><span class="line">     window.location.reload();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;);</span><br><span class="line"> window.addEventListener(&quot;pagehide&quot;, function() &#123;</span><br><span class="line">   this.isPageHide = true;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-20T13:42:31.675Z" itemprop="dateUpdated">2019-11-20 21:42:31</time>
+    最后更新时间：<time datetime="2019-11-20T13:43:09.134Z" itemprop="dateUpdated">2019-11-20 21:43:09</time>
 </span><br>
 
 
