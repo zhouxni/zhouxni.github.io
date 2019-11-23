@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>微信h5页面bug | 举头问天</title>
+    <title>vue-zepto | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="微信">
+    <meta name="keywords" content="zepto">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>微信h5页面bug</span>
+            <span>vue-zepto</span>
             
         </div>
         
@@ -144,11 +144,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">微信h5页面bug</h1>
+        <h1 class="title">vue-zepto</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-11-20T13:23:22.000Z" itemprop="datePublished" class="page-time">
-  2019-11-20
+                <time datetime="2019-11-23T15:43:46.000Z" itemprop="datePublished" class="page-time">
+  2019-11-23
 </time>
 
 
@@ -177,12 +177,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-微信h5页面bug"
+    <article id="post-vue-zepto"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">微信h5页面bug</h1>
+        <h1 class="post-card-title">vue-zepto</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-11-20 21:23:22" datetime="2019-11-20T13:23:22.000Z"  itemprop="datePublished">2019-11-20</time>
+            <time class="post-time" title="2019-11-23 23:43:46" datetime="2019-11-23T15:43:46.000Z"  itemprop="datePublished">2019-11-23</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
@@ -198,14 +198,20 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近的项目是微信H5，在ios中h5的bug真是奇形怪状。为此在这里记录，避免以后再次入坑。</p>
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ol>
-<li>分享页面不是当前页面地址。解决办法：进入分享页面需要使用<code>location.href=</code>或<code>location.replace()</code>。</li>
-<li>ios页面后退不刷新。解决办法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&quot;pageshow&quot;, function() &#123;</span><br><span class="line">   if (this.isPageHide) &#123;</span><br><span class="line">     window.location.reload();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;);</span><br><span class="line"> window.addEventListener(&quot;pagehide&quot;, function() &#123;</span><br><span class="line">   this.isPageHide = true;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+            <p>zepto是移动端的jquery，对于移动端的特性进行了相关的改良。在vue是如何集成zepto呢。</p>
+<h1 id="安装zepto"><a href="#安装zepto" class="headerlink" title="安装zepto"></a>安装zepto</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install zepto -S</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>监听页面的前进和后退。</p>
+<h1 id="exports-loader和script-loader"><a href="#exports-loader和script-loader" class="headerlink" title="exports-loader和script-loader"></a>exports-loader和script-loader</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install script-loader exports-loader -D</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">chainWebpack: config =&gt; &#123;</span><br><span class="line">  config.module</span><br><span class="line">    .rule(&apos;zepto&apos;)</span><br><span class="line">    .test(require.resolve(&apos;zepto&apos;))</span><br><span class="line">    .use(&apos;exports&apos;)</span><br><span class="line">    .loader(&apos;exports-loader?window.Zepto&apos;)</span><br><span class="line">    .end()</span><br><span class="line">    .use(&apos;script&apos;)</span><br><span class="line">    .loader(&apos;script-loader&apos;)</span><br><span class="line">    .end()</span><br><span class="line">  //  if you want import zepto in the main.js you can not use this</span><br><span class="line">  //  如果你想在main.js中引入zepto，下面的配置可以不用复制</span><br><span class="line">//   config</span><br><span class="line">//     .plugin(&apos;env&apos;)</span><br><span class="line">//     .use(require.resolve(&apos;webpack/lib/ProvidePlugin&apos;), [&#123; $: &apos;zepto&apos; &#125;])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="在main-js中引入"><a href="#在main-js中引入" class="headerlink" title="在main.js中引入"></a>在main.js中引入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import $ from &apos;zepto&apos;</span><br></pre></td></tr></table></figure>
+
+<p>如果还要其它的zepto的功能模块，只需引入相应的js文件即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;zepto/src/fx.js&apos;</span><br></pre></td></tr></table></figure>
+
+<p>这样就引入了zepto的animate的功能</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>现在可以在vue使用zepto了。</p>
 
         </div>
         
@@ -213,7 +219,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-20T13:43:09.134Z" itemprop="dateUpdated">2019-11-20 21:43:09</time>
+    最后更新时间：<time datetime="2019-11-23T15:55:59.848Z" itemprop="dateUpdated">2019-11-23 23:55:59</time>
 </span><br>
 
 
@@ -230,7 +236,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zepto/">zepto</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -239,7 +245,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/20/微信h5页面bug/&title=《微信h5页面bug》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -251,7 +257,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/20/微信h5页面bug/&title=《微信h5页面bug》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -274,21 +280,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/11/23/vue-zepto/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">vue-zepto</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/11/10/react移动端自适配/" id="post-next" class="post-nav-link">
+      <a href="/2019/11/20/微信h5页面bug/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">react移动端自适配</h4>
+        <h4 class="title">微信h5页面bug</h4>
       </a>
     </div>
   
@@ -300,7 +299,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常见问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">常见问题</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装zepto"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装zepto</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#exports-loader和script-loader"><span class="post-toc-number">2.</span> <span class="post-toc-text">exports-loader和script-loader</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在main-js中引入"><span class="post-toc-number">4.</span> <span class="post-toc-text">在main.js中引入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结语"><span class="post-toc-number">5.</span> <span class="post-toc-text">结语</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -356,7 +355,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/20/微信h5页面bug/&title=《微信h5页面bug》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -368,7 +367,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/20/微信h5页面bug/&title=《微信h5页面bug》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -380,7 +379,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aQY7DMAgF0Nz/0pkDVE0+kI4U+3lVTaPaLwsGA8cRr/NjVf/++e31LscvFgYGxmsZ5+X6tkEVk+xVfR4DA2M3xrcIdn3o6+eTgJt8e302DAwMjJzUC7j5vhgYGBjVn4vSteDoSeDGwMDAyC+T83pXtdz2k7s4BgbGCxl51f3/P/+kv4GBgfEqxllc1d9JjnWOFwYGxtqMXtr31MBE4YKa7IKBgbEoo9eMTBqZeWMyL+p9pWJgYGzGqA5+9W6ak/YnBgbGboyklTi50FYLefnvYGBg7MOoFsgmiWCegOajGBgYGPswkkSwWtxP0sHkJFFSiIGBsTRjEhzzUn6vnVn+x4CBgbEoo3fovLWZX4PzV3MzM4KBgbENIwnEk9BcbXPeNCcwMDA2YFTHLPJWZW/wopp6YmBg7MnoFc7ywJ0/U5gZwcDAWJSRp2t5WJw0GKpDGzcjFxgYGEsw8m16SWQV3GwzYGBgLM0oF7YGYXSSbpaHwzAwMBZlPHsdzV/E/IViYGDsw+gdqBdY84M2p9swMDA2YPRCcLVMll9cRyMXGBgYL2ecxZUX16oBuhpeo84GBgbGEox85Zh5kH346BgYGEsw8iDbSxMnrwwDAwNj0gaYDHjNx8UwMDAwqmlZryVZDd8YGBgYc8azrc3rk0T9DQwMjOUYeTMgTxYnJbny4CwGBsbSjOrV8dnjVl/TqOOBgYHxPsYf+6oD8e1aS1gAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aS27DMAwFwNz/0inQVYEg7iMpKW4xWgWJLY+zIPjR4xGv5/d6/Zzf+3P19nng4uIe5D4v1+s1vd2SvyC6FxcX9yA336766ySo4eLi3p+bPLgaHHFxcf8TdxLCcHFx/wq3GnSuC6EqZUuthouLO+BOGqarPh/q7+Li4o6nEnnztNfsKD8dFxf3CHcyBL1uhZRLmqBYwsXFPcPdkZQkbdZRioOLi7uZ23uBtaEtT5hwcXFPcpPGZZIMrU2S3t6Li4u7mXt9eKL63skgJEl63r42Li7uEe6q5KbaHp3shouLu5ubHLhMXqZ6wKJ6LAMXF/ckN29M5A2O6jfNWg0XF3czN7+hGrbyVkgzzcLFxd3G7bU5Vh3Dig5e9GosXFzcFreaUjQnt3FB9UtKhIuLexvuZPiRD1mjMIeLi3uEm6cX8xZJbzATzX9wcXGXcp/FtWqAmgdBXFzc89zq1pOGyKoGKy4u7hluPlLNS5r5lYWKDRcXdxu3GmiSFmcvaka9HFxc3Ntwq0GnWlZFLVdcXNxbcucHOPJhTPm0CC4u7lJuddPqeLVaUOHi4n6WO2mY9kJbfrCjScfFxe1zvwAZMhTjo9QAqAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

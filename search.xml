@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vue-zepto</title>
+      <link href="/2019/11/23/vue-zepto/"/>
+      <url>/2019/11/23/vue-zepto/</url>
+      
+        <content type="html"><![CDATA[<p>zepto是移动端的jquery，对于移动端的特性进行了相关的改良。在vue是如何集成zepto呢。</p><h1 id="安装zepto"><a href="#安装zepto" class="headerlink" title="安装zepto"></a>安装zepto</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install zepto -S</span><br></pre></td></tr></table></figure><h1 id="exports-loader和script-loader"><a href="#exports-loader和script-loader" class="headerlink" title="exports-loader和script-loader"></a>exports-loader和script-loader</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install script-loader exports-loader -D</span><br></pre></td></tr></table></figure><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">chainWebpack: config =&gt; &#123;</span><br><span class="line">  config.module</span><br><span class="line">    .rule(&apos;zepto&apos;)</span><br><span class="line">    .test(require.resolve(&apos;zepto&apos;))</span><br><span class="line">    .use(&apos;exports&apos;)</span><br><span class="line">    .loader(&apos;exports-loader?window.Zepto&apos;)</span><br><span class="line">    .end()</span><br><span class="line">    .use(&apos;script&apos;)</span><br><span class="line">    .loader(&apos;script-loader&apos;)</span><br><span class="line">    .end()</span><br><span class="line">  //  if you want import zepto in the main.js you can not use this</span><br><span class="line">  //  如果你想在main.js中引入zepto，下面的配置可以不用复制</span><br><span class="line">//   config</span><br><span class="line">//     .plugin(&apos;env&apos;)</span><br><span class="line">//     .use(require.resolve(&apos;webpack/lib/ProvidePlugin&apos;), [&#123; $: &apos;zepto&apos; &#125;])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="在main-js中引入"><a href="#在main-js中引入" class="headerlink" title="在main.js中引入"></a>在main.js中引入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import $ from &apos;zepto&apos;</span><br></pre></td></tr></table></figure><p>如果还要其它的zepto的功能模块，只需引入相应的js文件即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;zepto/src/fx.js&apos;</span><br></pre></td></tr></table></figure><p>这样就引入了zepto的animate的功能</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>现在可以在vue使用zepto了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zepto </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微信h5页面bug</title>
       <link href="/2019/11/20/%E5%BE%AE%E4%BF%A1h5%E9%A1%B5%E9%9D%A2bug/"/>
       <url>/2019/11/20/%E5%BE%AE%E4%BF%A1h5%E9%A1%B5%E9%9D%A2bug/</url>
