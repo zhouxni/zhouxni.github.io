@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>vue-zepto | 举头问天</title>
+    <title>react-路由传参 | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="zepto">
+    <meta name="keywords" content="react">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>vue-zepto</span>
+            <span>react-路由传参</span>
             
         </div>
         
@@ -144,11 +144,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">vue-zepto</h1>
+        <h1 class="title">react-路由传参</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-11-23T15:43:46.000Z" itemprop="datePublished" class="page-time">
-  2019-11-23
+                <time datetime="2019-12-14T14:00:23.000Z" itemprop="datePublished" class="page-time">
+  2019-12-14
 </time>
 
 
@@ -177,12 +177,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-vue-zepto"
+    <article id="post-react-路由传参"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">vue-zepto</h1>
+        <h1 class="post-card-title">react-路由传参</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-11-23 23:43:46" datetime="2019-11-23T15:43:46.000Z"  itemprop="datePublished">2019-11-23</time>
+            <time class="post-time" title="2019-12-14 22:00:23" datetime="2019-12-14T14:00:23.000Z"  itemprop="datePublished">2019-12-14</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
@@ -198,28 +198,20 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>zepto是移动端的jquery，对于移动端的特性进行了相关的改良。在vue是如何集成zepto呢。</p>
-<h1 id="安装zepto"><a href="#安装zepto" class="headerlink" title="安装zepto"></a>安装zepto</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install zepto -S</span><br></pre></td></tr></table></figure>
+            <h1 id="react路由传参的几种方式"><a href="#react路由传参的几种方式" class="headerlink" title="react路由传参的几种方式"></a>react路由传参的几种方式</h1><h2 id="params传参"><a href="#params传参" class="headerlink" title="params传参"></a>params传参</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=&quot;/detail/:id&quot; component=&#123;Detail&#125;&gt;&lt;/Route&gt;</span><br><span class="line">this.props.history.push(&#123;pathname:`/detail/$&#123;id&#125;`&#125;)</span><br><span class="line">//通过this.props.match.params获取</span><br></pre></td></tr></table></figure>
 
-<h1 id="exports-loader和script-loader"><a href="#exports-loader和script-loader" class="headerlink" title="exports-loader和script-loader"></a>exports-loader和script-loader</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install script-loader exports-loader -D</span><br></pre></td></tr></table></figure>
+<h2 id="query传参"><a href="#query传参" class="headerlink" title="query传参"></a>query传参</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.props.history.push(&#123;pathname:`/detail/$&#123;id&#125;`,query:&#123;name:&apos;周欣&apos;&#125;&#125;)</span><br><span class="line">//通过this.props.location.query获取，刷新后，数据会丢失。</span><br></pre></td></tr></table></figure>
 
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">chainWebpack: config =&gt; &#123;</span><br><span class="line">  config.module</span><br><span class="line">    .rule(&apos;zepto&apos;)</span><br><span class="line">    .test(require.resolve(&apos;zepto&apos;))</span><br><span class="line">    .use(&apos;exports&apos;)</span><br><span class="line">    .loader(&apos;exports-loader?window.Zepto&apos;)</span><br><span class="line">    .end()</span><br><span class="line">    .use(&apos;script&apos;)</span><br><span class="line">    .loader(&apos;script-loader&apos;)</span><br><span class="line">    .end()</span><br><span class="line">  //  if you want import zepto in the main.js you can not use this</span><br><span class="line">  //  如果你想在main.js中引入zepto，下面的配置可以不用复制</span><br><span class="line">//   config</span><br><span class="line">//     .plugin(&apos;env&apos;)</span><br><span class="line">//     .use(require.resolve(&apos;webpack/lib/ProvidePlugin&apos;), [&#123; $: &apos;zepto&apos; &#125;])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="state传参"><a href="#state传参" class="headerlink" title="state传参"></a>state传参</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.props.history.push(&#123;pathname:`/detail/$&#123;id&#125;`,state:&#123;name:&apos;周欣&apos;&#125;&#125;)</span><br><span class="line">//通过this.props.location.state获取</span><br><span class="line">//注意：state数据被存在sessionStorage中。因此页面刷新，数据不会丢失。</span><br></pre></td></tr></table></figure>
 
-<h1 id="在main-js中引入"><a href="#在main-js中引入" class="headerlink" title="在main.js中引入"></a>在main.js中引入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import $ from &apos;zepto&apos;</span><br></pre></td></tr></table></figure>
-
-<p>如果还要其它的zepto的功能模块，只需引入相应的js文件即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;zepto/src/fx.js&apos;</span><br></pre></td></tr></table></figure>
-
-<p>这样就引入了zepto的animate的功能</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>现在可以在vue使用zepto了。</p>
-
+<h2 id="url中的query"><a href="#url中的query" class="headerlink" title="url中的query"></a>url中的query</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通过this.props.location.search获取，但是包含了&apos;?&apos;;</span><br><span class="line">因此要做转换：</span><br><span class="line">const &#123; search &#125; = this.props.location</span><br><span class="line">    const paramsString = search.substring(1)</span><br><span class="line">    const searchParams = new URLSearchParams(paramsString)</span><br><span class="line">    const name = searchParams.get(&apos;name&apos;)</span><br><span class="line">    const age = searchParams.get(&apos;age&apos;)</span><br></pre></td></tr></table></figure>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-23T15:55:59.848Z" itemprop="dateUpdated">2019-11-23 23:55:59</time>
+    最后更新时间：<time datetime="2019-12-14T14:19:19.283Z" itemprop="dateUpdated">2019-12-14 22:19:19</time>
 </span><br>
 
 
@@ -236,7 +228,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zepto/">zepto</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -245,7 +237,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/14/react-路由传参/&title=《react-路由传参》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -257,7 +249,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/14/react-路由传参/&title=《react-路由传参》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -280,21 +272,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/12/14/react-路由传参/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">react-路由传参</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/11/20/微信h5页面bug/" id="post-next" class="post-nav-link">
+      <a href="/2019/11/23/vue-zepto/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">微信h5页面bug</h4>
+        <h4 class="title">vue-zepto</h4>
       </a>
     </div>
   
@@ -306,7 +291,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装zepto"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装zepto</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#exports-loader和script-loader"><span class="post-toc-number">2.</span> <span class="post-toc-text">exports-loader和script-loader</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在main-js中引入"><span class="post-toc-number">4.</span> <span class="post-toc-text">在main.js中引入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结语"><span class="post-toc-number">5.</span> <span class="post-toc-text">结语</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#react路由传参的几种方式"><span class="post-toc-number">1.</span> <span class="post-toc-text">react路由传参的几种方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#params传参"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">params传参</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#query传参"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">query传参</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#state传参"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">state传参</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url中的query"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">url中的query</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -362,7 +347,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/14/react-路由传参/&title=《react-路由传参》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -374,7 +359,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/23/vue-zepto/&title=《vue-zepto》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/14/react-路由传参/&title=《react-路由传参》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -386,7 +371,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aS27DMAwFwNz/0inQVYEg7iMpKW4xWgWJLY+zIPjR4xGv5/d6/Zzf+3P19nng4uIe5D4v1+s1vd2SvyC6FxcX9yA336766ySo4eLi3p+bPLgaHHFxcf8TdxLCcHFx/wq3GnSuC6EqZUuthouLO+BOGqarPh/q7+Li4o6nEnnztNfsKD8dFxf3CHcyBL1uhZRLmqBYwsXFPcPdkZQkbdZRioOLi7uZ23uBtaEtT5hwcXFPcpPGZZIMrU2S3t6Li4u7mXt9eKL63skgJEl63r42Li7uEe6q5KbaHp3shouLu5ubHLhMXqZ6wKJ6LAMXF/ckN29M5A2O6jfNWg0XF3czN7+hGrbyVkgzzcLFxd3G7bU5Vh3Dig5e9GosXFzcFreaUjQnt3FB9UtKhIuLexvuZPiRD1mjMIeLi3uEm6cX8xZJbzATzX9wcXGXcp/FtWqAmgdBXFzc89zq1pOGyKoGKy4u7hluPlLNS5r5lYWKDRcXdxu3GmiSFmcvaka9HFxc3Ntwq0GnWlZFLVdcXNxbcucHOPJhTPm0CC4u7lJuddPqeLVaUOHi4n6WO2mY9kJbfrCjScfFxe1zvwAZMhTjo9QAqAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3awY7DIAxF0fz/T6fbWUyi+2xaCXNZVSENnI1lbK4Lj/thkPf/PnmafX++bMiQIWNbxv06+DvpKmQ2WFeGDBkHMJ4Wfv/N/8XDN/+CDBkyZPDE7j34kmBKEkoZMmTISENnZ1vkyzJkyJBRO8SSYlktWXx/f/FZXIYMGRsyeLHs97+/0t+QIUPGVow7HJ12AnlSGzJkyJjNSNM1khTW2ga19FGGDBnnMHi7sXMxogZID8wyZMiYzUgPkGkSSTbaaSHIkCFjKiNdgC/DGwk8lXyclSFDxmhGJ0FMK/Mk3eQBWoYMGecw0uJ+7UiZJo7BVbBaj0KGDBlbMfob5SG4E9bR6jJkyBjK6CRtfOHaYZUHcRkyZMxmkNI8b2eSUJumpDyIy5AhYyqDL/YeIlcV1HhqKEOGjDMZPL3jPYd+KS24bCFDhozRjFrhjCeIcR+1Vi+UIUPGkYy0Mdm5WkFKco/vy5AhYzSDjLS4lpbMOonmxYcMGTI2Z5DlV5XGaqkh+oIMGTKOYXTalrU0btl1NBkyZBzDCK5hhV+oZXEBW4YMGUMZdzjSon8Nz4/EqPInQ4aMzRlp0a0TItOmab87KUOGjEkMHmQ7jYT0gBrvQYYMGQcweODrH275xVa+WxkyZMggDYPvJYhXxydDhowjGfwqKpntXLn45xArQ4aM0YzaJtJZHkzjhFKGDBmjGZ3ErnOsTbe1oKkpQ4aM/RgfZd4sugqarNgAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
