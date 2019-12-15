@@ -206,6 +206,9 @@
 </li>
 </ol>
 <p>监听页面的前进和后退。</p>
+<ol start="3">
+<li>ios页面后退不刷新(最佳方案)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">        pushHistory();</span><br><span class="line">    &#125;);</span><br><span class="line">    function pushHistory() &#123;</span><br><span class="line">        window.addEventListener(&quot;popstate&quot;, function(e) &#123;</span><br><span class="line">　　　　　//这里监听到了后退事件</span><br><span class="line">            self.location.reload();</span><br><span class="line">        &#125;, false);</span><br><span class="line">        var state = &#123;</span><br><span class="line">            title : &quot;&quot;,</span><br><span class="line">            url : &quot;#&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">        window.history.replaceState(state, &quot;&quot;, &quot;#&quot;);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
 
         </div>
         
@@ -213,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-20T13:43:09.134Z" itemprop="dateUpdated">2019-11-20 21:43:09</time>
+    最后更新时间：<time datetime="2019-12-15T11:35:50.773Z" itemprop="dateUpdated">2019-12-15 19:35:50</time>
 </span><br>
 
 
