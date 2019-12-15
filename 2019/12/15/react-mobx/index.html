@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>react-组件缓存 | 举头问天</title>
+    <title>react-mobx | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="react">
+    <meta name="keywords" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>react-组件缓存</span>
+            <span>react-mobx</span>
             
         </div>
         
@@ -144,15 +144,13 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">react-组件缓存</h1>
+        <h1 class="title">react-mobx</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-12-15T04:53:05.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2019-12-15T06:14:00.000Z" itemprop="datePublished" class="page-time">
   2019-12-15
 </time>
 
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
             
         </h5>
@@ -177,16 +175,14 @@
 
 
 <div class="container body-wrap">
-    <article id="post-react-组件缓存"
+    <article id="post-react-mobx"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">react-组件缓存</h1>
+        <h1 class="post-card-title">react-mobx</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-12-15 12:53:05" datetime="2019-12-15T04:53:05.000Z"  itemprop="datePublished">2019-12-15</time>
+            <time class="post-time" title="2019-12-15 14:14:00" datetime="2019-12-15T06:14:00.000Z"  itemprop="datePublished">2019-12-15</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
 
 
             
@@ -198,22 +194,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="react-组件缓存"><a href="#react-组件缓存" class="headerlink" title="react 组件缓存"></a>react 组件缓存</h1><p><code>cnpm install react-keep-alive -S</code>，这个插件的功能类似于 vue 的 keep-alive。能够很好的缓存当前组件，避免重新渲染。</p>
-<h2 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Provider&#125; from &apos;react-keep-alive&apos;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Router&gt;</span><br><span class="line">    &lt;Provider&gt;</span><br><span class="line">      &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">  &lt;/Router&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;),</span><br><span class="line">);</span><br><span class="line">//用provider包裹根组件，在router下</span><br></pre></td></tr></table></figure>
-
-<h2 id="KeepAlive"><a href="#KeepAlive" class="headerlink" title="KeepAlive"></a>KeepAlive</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//重要一步，缓存组件</span><br><span class="line">&lt;Route path=&quot;/one&quot;&gt;</span><br><span class="line">    &lt;KeepAlive name=&quot;One&quot;&gt;</span><br><span class="line">            &lt;One /&gt;</span><br><span class="line">    &lt;/KeepAlive&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line">//去掉原来的component写法</span><br></pre></td></tr></table></figure>
-
-<h2 id="bindLifecycle"><a href="#bindLifecycle" class="headerlink" title="bindLifecycle"></a>bindLifecycle</h2><p>引入bindLifecycle：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在组件前进行装饰：@bindLifecycle，即可新增两个新的生命周期函数：componentDidActivate和componentWillUnactivate。</span><br><span class="line">componentDidActivate表示进入激活缓存组件时的函数，componentWillUnactivate表示离开缓存组件是的函数。</span><br><span class="line">总的来说：类似vue的keep-alive两个生命周期函数：activated和deactivated。</span><br></pre></td></tr></table></figure>
-
-
+            
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-12-15T05:04:52.461Z" itemprop="dateUpdated">2019-12-15 13:04:52</time>
+    最后更新时间：<time datetime="2019-12-15T06:14:00.117Z" itemprop="dateUpdated">2019-12-15 14:14:00</time>
 </span><br>
 
 
@@ -230,8 +218,6 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
             <div class="page-share-wrap">
     
 
@@ -239,7 +225,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/15/react-组件缓存/&title=《react-组件缓存》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/15/react-mobx/&title=《react-mobx》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -251,7 +237,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/15/react-组件缓存/&title=《react-组件缓存》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/15/react-mobx/&title=《react-mobx》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -274,21 +260,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/12/15/react-mobx/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">react-mobx</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/12/14/react-图片懒加载/" id="post-next" class="post-nav-link">
+      <a href="/2019/12/15/react-组件缓存/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">react-图片懒加载</h4>
+        <h4 class="title">react-组件缓存</h4>
       </a>
     </div>
   
@@ -296,14 +275,6 @@
 
 
     
-    
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#react-组件缓存"><span class="post-toc-number">1.</span> <span class="post-toc-text">react 组件缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#provider"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">provider</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#KeepAlive"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">KeepAlive</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindLifecycle"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">bindLifecycle</span></a></li></ol></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </aside>
     
 </article>
 
@@ -356,7 +327,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/15/react-组件缓存/&title=《react-组件缓存》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/15/react-mobx/&title=《react-mobx》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -368,7 +339,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/15/react-组件缓存/&title=《react-组件缓存》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/15/react-mobx/&title=《react-mobx》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -380,7 +351,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3awW4DMQhF0f7/T0+3kaqk94FbyXC9ilon4zMLhIGvL7yel/X6l5+f+X7yrcNLhgwZ1zKej+vzns5TyH/J2WTIkLGH8e7BZA8PxOSl8F+QIUOGDJLYkRBMQi15KTJkyJBRY5DgS75bC/QyZMjYxuDpGg+m/FiEfewuLkOGjAsZvFj2/5//pL8hQ4aMqxhPuDrl/rS1GZxKhgwZoxk8wKUls1OBmyeRMmTI2MDgha20McmblHxQ7Je7uAwZMgYxOrdenkR2WqEEKUOGjA2MtBzfOS4J3HyPDBkyNjB4Qkaamim4kyzKkCFjJ6MzKsFHKMixigFahgwZoxmfwyV5AP+dTvMAvT4ZMmSMY9QKXnwPCeid4CtDhowNjE4jkx+i1lQgl+RWnitDhoxLGPxKyZuanYIaTyVlyJCxjUGCHdmfpozkoAeGLWTIkHE5o3VdBFfWoAEZZrKoXihDhowRjNo1sjYewcfO0h6lDBkyZjNqcwud8Yi0wclflgwZMmYzWjMaOOCmO9OynQwZMjYwePnsbO+0/+JkyJCxmVEbuUiTzs53UcCVIUPG5YwnXGlxLW0q1GYnZMiQMZvRCXPkClqr9nUuvTJkyJjKSINsetWsseOAK0OGjAWMWuCrDa2SPelpZciQIYO3DdKELz7u2YArQ4aMoYxOYtcfWn0bpmXIkLGAkQ6qpuE1HbyIE0oZMmSMZqR516nyXEo90NSUIUPGfYxvDC68Krq/MdcAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aO27EMAwFwL3/pR0gVRrLj6KkdYBRtVj4M24I8VGfT7yu33X3z/Vnja8fX7Ns4eLitrnXcN1dk1CSlRtwcXHPc8fFa1x07q5MSltuwMXFfSc3KWFzWxxcXNz/zs3LVrKtwcXFfTM3f/T4rg59ca+Gi4vb4FYD0x2/N+a7uLi4Re7VWHkLlBfBhzfi4uIe4eZNTr6tqUYk1WEtLi7uGW7nEQluLn592ADh4uJu41bHqOPvzg9tVEsnLi7ud7lzDU8O7WQduLi4Z7jRUHNqHDIXtpZHKbi4uAe5ydanH4skzywMV3BxcRdxq5Qqosp6+HhcXNwj3GogsuqQ1tyoFRcX97vcuY3OquanXMhwcXGXcjujjmokmvzfmgPj4uIu4uYrH8fmrLmxKy4u7m5u9RhWfqyqemgjGqjg4uIe4eYFqxOYzhXB6C5cXNwN3LnIMg8+1pY5XFzcM9x+A1MFzY1YcHFxz3OrxzHzbVB1DJO0WLi4uCe51cAiL3NzAevtE3BxcV/J7RyqyIPXWxsuLu7LuEnbUy1h5btwcXEPcvPmp/P66iglOriJi4u7gTsXmOaFrFMEl+W7uLi46b0/9L8lC0hG4+AAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
