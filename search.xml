@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>react-组件缓存</title>
+      <link href="/2019/12/15/react-%E7%BB%84%E4%BB%B6%E7%BC%93%E5%AD%98/"/>
+      <url>/2019/12/15/react-%E7%BB%84%E4%BB%B6%E7%BC%93%E5%AD%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="react-组件缓存"><a href="#react-组件缓存" class="headerlink" title="react 组件缓存"></a>react 组件缓存</h1><p><code>cnpm install react-keep-alive -S</code>，这个插件的功能类似于 vue 的 keep-alive。能够很好的缓存当前组件，避免重新渲染。</p><h2 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Provider&#125; from &apos;react-keep-alive&apos;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Router&gt;</span><br><span class="line">    &lt;Provider&gt;</span><br><span class="line">      &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">  &lt;/Router&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;),</span><br><span class="line">);</span><br><span class="line">//用provider包裹根组件，在router下</span><br></pre></td></tr></table></figure><h2 id="KeepAlive"><a href="#KeepAlive" class="headerlink" title="KeepAlive"></a>KeepAlive</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//重要一步，缓存组件</span><br><span class="line">&lt;Route path=&quot;/one&quot;&gt;</span><br><span class="line">    &lt;KeepAlive name=&quot;One&quot;&gt;</span><br><span class="line">            &lt;One /&gt;</span><br><span class="line">    &lt;/KeepAlive&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line">//去掉原来的component写法</span><br></pre></td></tr></table></figure><h2 id="bindLifecycle"><a href="#bindLifecycle" class="headerlink" title="bindLifecycle"></a>bindLifecycle</h2><p>引入bindLifecycle：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在组件前进行装饰：@bindLifecycle，即可新增两个新的生命周期函数：componentDidActivate和componentWillUnactivate。</span><br><span class="line">componentDidActivate表示进入激活缓存组件时的函数，componentWillUnactivate表示离开缓存组件是的函数。</span><br><span class="line">总的来说：类似vue的keep-alive两个生命周期函数：activated和deactivated。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react-图片懒加载</title>
       <link href="/2019/12/14/react-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/"/>
       <url>/2019/12/14/react-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
