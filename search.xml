@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>js-技巧</title>
+      <link href="/2019/12/15/js-%E6%8A%80%E5%B7%A7/"/>
+      <url>/2019/12/15/js-%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="js中不常见的知识"><a href="#js中不常见的知识" class="headerlink" title="js中不常见的知识"></a>js中不常见的知识</h1><ol><li>获取当前页面的获得焦点的元素：document.activeElement</li><li>判断当前页面是否有元素获得焦点：document.hasFocus()，返回true或false。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react-mobx</title>
       <link href="/2019/12/15/react-mobx/"/>
       <url>/2019/12/15/react-mobx/</url>
