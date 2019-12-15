@@ -7,7 +7,7 @@
     <title>react-mobx | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="react">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -152,6 +152,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
             
         </h5>
         
@@ -183,6 +185,8 @@
             <time class="post-time" title="2019-12-15 14:14:00" datetime="2019-12-15T06:14:00.000Z"  itemprop="datePublished">2019-12-15</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
 
 
             
@@ -194,14 +198,25 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            
+            <h1 id="mobx"><a href="#mobx" class="headerlink" title="mobx"></a>mobx</h1><p>mobx是react中常用的全局数据状态管理插件，类似于vuex。</p>
+<h2 id="mobx常用的三个属性"><a href="#mobx常用的三个属性" class="headerlink" title="mobx常用的三个属性"></a>mobx常用的三个属性</h2><p>observable,computed,action:</p>
+<ol>
+<li><p>observable观察者=&gt;vuex的state</p>
+</li>
+<li><p>computed计算属性=&gt;vuex的computed</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@computed get squared() &#123;</span><br><span class="line">    return this.length * this.length;</span><br><span class="line">&#125;</span><br><span class="line">set squared(value) &#123; // 这是一个自动的动作，不需要注解</span><br><span class="line">    this.length = Math.sqrt(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>action执行操作=&gt;vuex的muactions和actions</p>
+</li>
+</ol>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-12-15T06:14:00.117Z" itemprop="dateUpdated">2019-12-15 14:14:00</time>
+    最后更新时间：<time datetime="2019-12-15T06:46:56.053Z" itemprop="dateUpdated">2019-12-15 14:46:56</time>
 </span><br>
 
 
@@ -218,6 +233,8 @@
         
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
             <div class="page-share-wrap">
     
 
@@ -275,6 +292,14 @@
 
 
     
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mobx"><span class="post-toc-number">1.</span> <span class="post-toc-text">mobx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mobx常用的三个属性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mobx常用的三个属性</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
     
 </article>
 
