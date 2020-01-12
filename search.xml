@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>vue-批量打包压缩</title>
+      <link href="/2020/01/12/vue-%E6%89%B9%E9%87%8F%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9/"/>
+      <url>/2020/01/12/vue-%E6%89%B9%E9%87%8F%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9/</url>
+      
+        <content type="html"><![CDATA[<h1 id="文件打包压缩"><a href="#文件打包压缩" class="headerlink" title="文件打包压缩"></a>文件打包压缩</h1><p>管理后台需要批量导出图片并打包</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import axios from &apos;axios&apos;</span><br><span class="line">import JSZip from &apos;jszip&apos;</span><br><span class="line">import FileSaver from &apos;file-saver&apos;</span><br><span class="line">getFile = (url) =&gt; &#123;</span><br><span class="line">      return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(&#123;</span><br><span class="line">          method: &apos;get&apos;,</span><br><span class="line">          url,</span><br><span class="line">          responseType: &apos;arraybuffer&apos;</span><br><span class="line">        &#125;).then(data =&gt; &#123;</span><br><span class="line">          resolve(data.data)</span><br><span class="line">        &#125;).catch(error =&gt; &#123;</span><br><span class="line">          reject(error.toString())</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">// 批量下载</span><br><span class="line">handleBatchDownload = async(selectImgList) =&gt; &#123;</span><br><span class="line">      const data = selectImgList;</span><br><span class="line">      const zip = new JSZip()</span><br><span class="line">      const cache = &#123;&#125;</span><br><span class="line">      const promises = []</span><br><span class="line">      await data.forEach(item =&gt; &#123;</span><br><span class="line">          const promise = this.getFile(item).then(data =&gt; &#123; // 下载文件, 并存成ArrayBuffer对象</span><br><span class="line">          const arr_name = item.split(&quot;/&quot;);</span><br><span class="line">          let file_name = arr_name[arr_name.length - 1] // 获取文件名</span><br><span class="line">          // if (file_name.indexOf(&apos;.png&apos;) == -1) &#123;</span><br><span class="line">         //    file_name = file_name + &apos;.png&apos;</span><br><span class="line">         // &#125;</span><br><span class="line">          zip.file(file_name, data, &#123;</span><br><span class="line">            binary: true</span><br><span class="line">          &#125;) // 逐个添加文件</span><br><span class="line">          cache[file_name] = data</span><br><span class="line">        &#125;)</span><br><span class="line">        promises.push(promise)</span><br><span class="line">      &#125;)</span><br><span class="line">      Promise.all(promises).then(() =&gt; &#123;</span><br><span class="line">        zip.generateAsync(&#123;</span><br><span class="line">          type: &quot;blob&quot;</span><br><span class="line">        &#125;).then(content =&gt; &#123; // 生成二进制流</span><br><span class="line">          FileSaver.saveAs(content, &quot;photo.zip&quot;) // 利用file-saver保存文件</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><h2 id="插件file-saver的使用"><a href="#插件file-saver的使用" class="headerlink" title="插件file-saver的使用"></a>插件file-saver的使用</h2><p>1、a标签download属性下载不了跨域图片直接在浏览器预览，利用file-saver将跨域访问的图片下载<br>2、可以file-saver下载其他文件，详情可去参考其API<br>3、如果你需要保存较大的文件，不受 blob 的大小限制或内存限制，可以看一下更高级的 StreamSaver.js</p><h2 id="插件jszip的使用"><a href="#插件jszip的使用" class="headerlink" title="插件jszip的使用"></a>插件jszip的使用</h2><p>1、点击批量下载所有图片都在浏览器下载文件多表现不友好，需将批量下载的图片打包进压缩包里，故引进了JSZip进行打包<br>2、JSZip是一个用于创建，阅读和编辑.zip文件的JavaScript库，具有友好而简单的API,详细用法可以参照其API</p><h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><p>1、注意的是responseType, 如果下载文件是文本类型的(如: .txt, .js之类的),那么用responseType: ‘text’也可以, 但是如果下载的文件是图片, 视频之类的, 就得用arraybuffer。<br>2、如果下载的文件过大, 打包的时间将会很长, 甚至可能会导致浏览器奔溃<br>3、还需要注意的一点是请求图片资源时因其是异步请求，需要等所有图片请求完再进行打包这一步，在请求资源时需要await</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>react-异步actions</title>
+      <link href="/2019/12/22/react-%E5%BC%82%E6%AD%A5actions/"/>
+      <url>/2019/12/22/react-%E5%BC%82%E6%AD%A5actions/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>js-技巧</title>
       <link href="/2019/12/15/js-%E6%8A%80%E5%B7%A7/"/>
       <url>/2019/12/15/js-%E6%8A%80%E5%B7%A7/</url>
