@@ -8,9 +8,21 @@
       <link href="/2020/01/23/js-%E6%9B%BF%E6%8D%A2%E7%BC%96%E8%BE%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%8D%95%E4%BD%8D/"/>
       <url>/2020/01/23/js-%E6%9B%BF%E6%8D%A2%E7%BC%96%E8%BE%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%8D%95%E4%BD%8D/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在项目中，由于某些内容是后台通过编辑器转换而来，导致像素单位不是 px。因而需要进行全局替换。</p><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let ab = ress.data;</span><br><span class="line">              if (ab) &#123;</span><br><span class="line">                let abc = ab.split(&quot;font-size:&quot;);</span><br><span class="line">                for (let i = 0; i &lt; abc.length; i++) &#123;</span><br><span class="line">                  if (i != 0) &#123;</span><br><span class="line">                    let con = abc[i].substring(0, abc[i].indexOf(&quot;;&quot;));</span><br><span class="line">                    ab = ab.replace(</span><br><span class="line">                      &quot;font-size:&quot; +</span><br><span class="line">                        (con.substring(0, con.indexOf(&quot;px&quot;))</span><br><span class="line">                          ? con.substring(0, con.indexOf(&quot;px&quot;))</span><br><span class="line">                          : con.substring(0, con.indexOf(&quot;pt&quot;))) +</span><br><span class="line">                        (con.substring(0, con.indexOf(&quot;px&quot;)) ? &quot;px;&quot; : &quot;pt;&quot;),</span><br><span class="line">                      &quot;font-size:&quot; +</span><br><span class="line">                        Number(localStorage.getItem(&quot;dpr&quot;)) *</span><br><span class="line">                          Number(</span><br><span class="line">                            con.substring(0, con.indexOf(&quot;px&quot;))</span><br><span class="line">                              ? con.substring(0, con.indexOf(&quot;px&quot;))</span><br><span class="line">                              : con.substring(0, con.indexOf(&quot;pt&quot;))</span><br><span class="line">                          ) +</span><br><span class="line">                        (con.substring(0, con.indexOf(&quot;px&quot;)) ? &quot;px;&quot; : &quot;pt;&quot;)</span><br><span class="line">                    );</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure><p>这样，就可以把<code>font-size</code>单位转为px了。</p>]]></content>
       
       
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
       
     </entry>
     
