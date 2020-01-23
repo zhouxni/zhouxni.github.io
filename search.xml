@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>redux-thunk-异步方法</title>
+      <link href="/2020/01/23/redux-thunk-%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95/"/>
+      <url>/2020/01/23/redux-thunk-%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有时候，redux 中的方法需要进行异步调用，比如接口请求，setTimeout 等操作。这时候需要 redux-thunk 的作用。</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; applyMiddleware, createStore &#125; from &apos;redux&apos;;</span><br><span class="line">import thunk from &apos;redux-thunk&apos;;</span><br><span class="line"> const store = createStore(</span><br><span class="line">  reducers,</span><br><span class="line">  applyMiddleware(thunk)</span><br><span class="line">);</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export function addCount() &#123;</span><br><span class="line">  return &#123;type: ADD_COUNT&#125;</span><br><span class="line">&#125; </span><br><span class="line">export function addCountAsync() &#123;</span><br><span class="line">  return dispatch =&gt; &#123;</span><br><span class="line">    setTimeout( () =&gt; &#123;</span><br><span class="line">      dispatch(addCount())</span><br><span class="line">    &#125;,2000)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>js-替换编辑器转换的单位</title>
       <link href="/2020/01/23/js-%E6%9B%BF%E6%8D%A2%E7%BC%96%E8%BE%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%8D%95%E4%BD%8D/"/>
       <url>/2020/01/23/js-%E6%9B%BF%E6%8D%A2%E7%BC%96%E8%BE%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%8D%95%E4%BD%8D/</url>
