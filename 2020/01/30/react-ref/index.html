@@ -210,8 +210,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; ref=&#123;(input)=&gt;&#123;this.textInput = input&#125;&#125; /&gt;</span><br><span class="line">//其中函数参数就是当前dom节点或组件实例。</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
-<li>React.createRef()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.this.myRef = createRef();</span><br><span class="line">2.&lt;button ref=&#123;this.myRef&#125;&gt;点击&lt;/button&gt;</span><br><span class="line">3.this.myRef.current即可获得当前dom节点或组件实例。</span><br></pre></td></tr></table></figure></li>
+<li>React.createRef()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.this.myRef = createRef();</span><br><span class="line">2.&lt;button ref=&#123;this.myRef&#125;&gt;点击&lt;/button&gt;</span><br><span class="line">3.this.myRef.current即可获得当前dom节点或组件实例。</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>文说到的react组件都是指有状态的，对于无状态组件stateless component而言，正如这篇文章React创建组件的三种方式及其区别里描述的一样，无状态组件是不会被实例化的，在父组件中通过ref来获取无状态子组件时，其值为null。因此，<code>无法通过ref来获取无状态组件实例</code>。</p>
 
         </div>
         
@@ -219,7 +222,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-30T10:04:22.500Z" itemprop="dateUpdated">2020-01-30 18:04:22</time>
+    最后更新时间：<time datetime="2020-01-30T10:07:01.633Z" itemprop="dateUpdated">2020-01-30 18:07:01</time>
 </span><br>
 
 
@@ -299,7 +302,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ref-设置"><span class="post-toc-number">2.</span> <span class="post-toc-text">ref 设置</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ref-设置"><span class="post-toc-number">2.</span> <span class="post-toc-text">ref 设置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注意"><span class="post-toc-number">3.</span> <span class="post-toc-text">注意</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
