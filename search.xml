@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>react-css作用域</title>
+      <link href="/2020/02/02/react-css%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+      <url>/2020/02/02/react-css%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>react中css一般是全局作用域，极易导致class类名重复。常用有两种方式：</p><h1 id="css-modules"><a href="#css-modules" class="headerlink" title="css-modules"></a>css-modules</h1><p>用<code>create-react-app</code>创建的项目中一般默认集成了css-modules，只需在<code>webpack.config.js</code>中配置。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: cssRegex,</span><br><span class="line">  exclude: cssModuleRegex,</span><br><span class="line">  use: getStyleLoaders(&#123;</span><br><span class="line">    importLoaders: 1,</span><br><span class="line">    sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">    modules:true</span><br><span class="line">  &#125;),</span><br><span class="line">  // Don&apos;t consider CSS imports dead code even if the</span><br><span class="line">  // containing package claims to have no side effects.</span><br><span class="line">  // Remove this when webpack adds a warning or an error for this.</span><br><span class="line">  // See https://github.com/webpack/webpack/issues/6571</span><br><span class="line">  sideEffects: true,</span><br><span class="line">&#125;,</span><br><span class="line">//只需设置modules为true就可以了</span><br><span class="line">//然后引入</span><br><span class="line">import style from &apos;./a.scss&apos;</span><br><span class="line">className=&#123;style.类名&#125;</span><br></pre></td></tr></table></figure><h1 id="style-components"><a href="#style-components" class="headerlink" title="style-components"></a>style-components</h1><p><a href="https://www.jianshu.com/p/27788be90605" target="_blank" rel="noopener">详情见:style-components用法</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redux-saga</title>
       <link href="/2020/02/02/redux-saga/"/>
       <url>/2020/02/02/redux-saga/</url>
