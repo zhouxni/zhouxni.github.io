@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>redux-saga</title>
+      <link href="/2020/02/02/redux-saga/"/>
+      <url>/2020/02/02/redux-saga/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在redux中，异步action常用的两种解决方案：<code>redux-thunk</code>和<code>redux-saga</code>。<br>redux-thunk简单易懂，相反，redux-saga有点复杂，不过还是有好处，将异步action分离出。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import createSagaMiddleware   from &apos;redux-saga&apos;</span><br><span class="line">const sagaMiddleware = createSagaMiddleware()</span><br><span class="line">...</span><br><span class="line">export default createStore(combineReducers(&#123;reducer&#125;),applyMiddleware(sagaMiddleware));</span><br><span class="line">sagaMiddleware.run(mySaga)</span><br></pre></td></tr></table></figure><h1 id="创建saga-js"><a href="#创建saga-js" class="headerlink" title="创建saga.js"></a>创建saga.js</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;takeEvery,take,put&#125; from  &apos;redux-saga/effects&apos;</span><br><span class="line">function* mysaga()&#123;</span><br><span class="line">    yield takeEvery(&quot;add&quot;,user)</span><br><span class="line">&#125;</span><br><span class="line">function* user()&#123;</span><br><span class="line">    yield put(&#123;type:&quot;setData&quot;&#125;)</span><br><span class="line">&#125;</span><br><span class="line">export default mysaga;</span><br></pre></td></tr></table></figure><p>这样就可以运行了。常见api：<a href="redux-saga详解">https://www.jianshu.com/p/754e0b7ab665</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react-高阶组件</title>
       <link href="/2020/01/30/react-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/"/>
       <url>/2020/01/30/react-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/</url>
