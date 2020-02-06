@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>redux-actions | 举头问天</title>
+    <title>react-设置环境变量 | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="react">
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>redux-actions</span>
+            <span>react-设置环境变量</span>
             
         </div>
         
@@ -144,11 +144,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">redux-actions</h1>
+        <h1 class="title">react-设置环境变量</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-02-03T08:32:42.000Z" itemprop="datePublished" class="page-time">
-  2020-02-03
+                <time datetime="2020-02-06T06:42:01.000Z" itemprop="datePublished" class="page-time">
+  2020-02-06
 </time>
 
 
@@ -177,12 +177,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-redux-actions"
+    <article id="post-react-设置环境变量"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">redux-actions</h1>
+        <h1 class="post-card-title">react-设置环境变量</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-02-03 16:32:42" datetime="2020-02-03T08:32:42.000Z"  itemprop="datePublished">2020-02-03</time>
+            <time class="post-time" title="2020-02-06 14:42:01" datetime="2020-02-06T06:42:01.000Z"  itemprop="datePublished">2020-02-06</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
@@ -198,17 +198,15 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>redux-actions的产生，是为了简化redux的使用。它总共只有3个api:<code>createAction(s)</code>、<code>handleActions(s)</code>、<code>CombineActions</code>。</p>
-<h1 id="createAction-s"><a href="#createAction-s" class="headerlink" title="createAction(s)"></a>createAction(s)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default createActions(&#123;</span><br><span class="line">    [&apos;add&apos;]:()=&gt;&#123;return 555555&#125;,</span><br><span class="line">    [&apos;setData&apos;]:()=&gt;&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">export default createActions(&apos;add&apos;,()=&gt;&#123;</span><br><span class="line">    return 5555</span><br><span class="line">&#125;);</span><br><span class="line">acions变为&#123;type:&quot;add&quot;,payload:5555&#125;;</span><br></pre></td></tr></table></figure>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开发一个项目的时候通常会有几个版本：开发版，测试版，预发布版，线上版等。各个版本之间请求的API地址不尽相同，为了方便维护，需要使用配置文件来管理这些不同，避免手动修改的尴尬。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p><code>npm install cross-env -D</code></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>1.在<code>package.json</code>设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;cross-env SCRIPT_ENV=development node scripts/start.js&quot;</span><br></pre></td></tr></table></figure>
 
-<h1 id="handleAction-s"><a href="#handleAction-s" class="headerlink" title="handleAction(s)"></a>handleAction(s)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const reducer = handleActions(&#123;</span><br><span class="line">    &quot;add&quot;: (state , action) =&gt; &#123;</span><br><span class="line">        return state + 9;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;setData&quot;: (state, action) =&gt; &#123;</span><br><span class="line">        return state + 6</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 2)</span><br><span class="line">//第二种写法</span><br><span class="line">const reducer = handleActions(&#123;</span><br><span class="line">    &quot;add&quot;: &#123;</span><br><span class="line">        next(state, action) &#123;</span><br><span class="line">            console.log(action)</span><br><span class="line">            return state + 9;</span><br><span class="line">        &#125;,</span><br><span class="line">        throw(state)&#123;</span><br><span class="line">            return state</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;setData&quot;: (state, action) =&gt; &#123;</span><br><span class="line">        return state + 6</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 2)//增加了对异常的处理。</span><br><span class="line">const reducer = handleAction(&quot;add&quot;,()=&gt;&#123;return state + 9;&#125;,2);</span><br><span class="line">第三个参数是默认的state。</span><br></pre></td></tr></table></figure>
+<p>2.在config文件夹下找到<code>env.js</code>文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function getClientEnvironment(publicUrl) &#123;</span><br><span class="line">  const raw = Object.keys(process.env)</span><br><span class="line">    .filter(key =&gt; REACT_APP.test(key))</span><br><span class="line">    .reduce(</span><br><span class="line">      (env, key) =&gt; &#123;</span><br><span class="line">        env[key] = process.env[key];</span><br><span class="line">        return env;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        // Useful for determining whether we’re running in production mode.</span><br><span class="line">        // Most importantly, it switches React into the correct mode.</span><br><span class="line">        NODE_ENV: process.env.NODE_ENV || &apos;development&apos;,</span><br><span class="line">        SCRIPT_ENV:process.env.SCRIPT_ENV||&quot;&quot;,///////添加这一行代码</span><br><span class="line">        // Useful for resolving the correct path to static assets in `public`.</span><br><span class="line">        // For example, &lt;img src=&#123;process.env.PUBLIC_URL + &apos;/img/logo.png&apos;&#125; /&gt;.</span><br><span class="line">        // This should only be used as an escape hatch. Normally you would put</span><br><span class="line">        // images into the `src` and `import` them in code to get their paths.</span><br><span class="line">        PUBLIC_URL: publicUrl,</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  // Stringify all values so we can feed into Webpack DefinePlugin</span><br><span class="line">  const stringified = &#123;</span><br><span class="line">    &apos;process.env&apos;: Object.keys(raw).reduce((env, key) =&gt; &#123;</span><br><span class="line">      env[key] = JSON.stringify(raw[key]);</span><br><span class="line">      return env;</span><br><span class="line">    &#125;, &#123;&#125;),</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  return &#123; raw, stringified &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="combineActions"><a href="#combineActions" class="headerlink" title="combineActions"></a>combineActions</h1><p>一般是用来合并不同动作，但是函数格式相同的操作，用的不多。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const &#123; increment, decrement &#125; = createActions(&#123;</span><br><span class="line">  INCREMENT: amount =&gt; (&#123; amount &#125;),</span><br><span class="line">  DECREMENT: amount =&gt; (&#123; amount: -amount &#125;),</span><br><span class="line">&#125;)</span><br><span class="line">const reducer = handleAction(combineActions(increment, decrement), &#123;</span><br><span class="line">  next: (state, &#123; payload: &#123; amount &#125; &#125;) =&gt; (&#123; ...state, counter: state.counter + amount &#125;),</span><br><span class="line">  throw: state =&gt; (&#123; ...state, counter: 0 &#125;),</span><br><span class="line">&#125;, &#123; counter: 10 &#125;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="组件调用"><a href="#组件调用" class="headerlink" title="组件调用"></a>组件调用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export default connect(mapStateToProps, &#123;add:actions.add&#125;)(A);</span><br><span class="line">this.props.add()或this.props.add调用</span><br></pre></td></tr></table></figure>
-
-<p>引入actions分别对应赋值即可。</p>
+<p>以上，就成功的创建了process.env.SCRIPT_ENV==’development’`的环境变量。</p>
 
         </div>
         
@@ -216,7 +214,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-03T09:09:41.667Z" itemprop="dateUpdated">2020-02-03 17:09:41</time>
+    最后更新时间：<time datetime="2020-02-06T06:48:03.732Z" itemprop="dateUpdated">2020-02-06 14:48:03</time>
 </span><br>
 
 
@@ -242,7 +240,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/03/redux-actions/&title=《redux-actions》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/06/react-设置环境变量/&title=《react-设置环境变量》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -254,7 +252,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/03/redux-actions/&title=《redux-actions》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/06/react-设置环境变量/&title=《react-设置环境变量》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -277,21 +275,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2020/02/06/react-设置环境变量/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">react-设置环境变量</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2020/02/02/react-css作用域/" id="post-next" class="post-nav-link">
+      <a href="/2020/02/03/redux-actions/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">react-css作用域</h4>
+        <h4 class="title">redux-actions</h4>
       </a>
     </div>
   
@@ -303,7 +294,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#createAction-s"><span class="post-toc-number">2.</span> <span class="post-toc-text">createAction(s)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#handleAction-s"><span class="post-toc-number">3.</span> <span class="post-toc-text">handleAction(s)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#combineActions"><span class="post-toc-number">4.</span> <span class="post-toc-text">combineActions</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组件调用"><span class="post-toc-number">5.</span> <span class="post-toc-text">组件调用</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备"><span class="post-toc-number">2.</span> <span class="post-toc-text">准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -359,7 +350,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/03/redux-actions/&title=《redux-actions》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/06/react-设置环境变量/&title=《react-设置环境变量》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -371,7 +362,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/03/redux-actions/&title=《redux-actions》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/06/react-设置环境变量/&title=《react-设置环境变量》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -383,7 +374,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQVLDMAwF0N7/0mWGLeB+SSnT2M+rDGSCnhdCsvV4xOv5vf56Xv8kefPnerxjYWBg3JaRfG4dVvW3SQxlKgYGxgGMPMlWA002aJ3Q17FhYGBg5CXg5DnfPgwMDIy8ca0m34/7v4GBgXFDRl7AJe3rvGV9Yy+OgYFxQ8b8YuB9z/96v4GBgfGRjGdr9QrH5OitFxUGBsbejPV4RC8R54VjjokSMQYGxgGMasNZ3YLqO3lUGBgYZzKqY2HrcKtHdc2GFgMDY2vGtYlvfdA/r+sKSRwDA2MLRq+l7JWS+bFdnrJHnTEGBsYNGZOfVFvffLQiKkwxMDAOYEyazOqfr15LRKkZAwNja0b+oZyaj2LkiTVqejEwMA5gXHvoXz2M67XH5StMDAyM2zImLWvv6H9yGFe+2cDAwLg5o5ccy3vTurAspH4MDIwjGde2msk3e6swbIGBgbEdo5c0k+TYe+fFMwYGxtaM6qhENYjkOiEfTSs3zxgYGBsxJkddvQvOpMSsfg0DA+McRjXo+aVCdeDjxaEbBgbGpoy8ZV1/7n2FYDMFY2BgbMF4Flev1czrt2qpioGBcQKjNx7R+/TkIgEDAwOjV9IlYxZ5Iq4m3Be9OAYGxqaMPMn23iwMSbRO/jEwMDAmgSYNcLWV/SUGDAwMjNYlYh7KxX02BgbGpozJZUA+KJZvU5KUMTAwzmH0kvKkWc1HN6pbg4GBsR3jCyxZk2FO542nAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27DMAwFwNz/0ummiwKp5UfSLWB5vAocV9ZkwYqf1yu+3gfXz2+Pnv985vPb9f3LLgwMjNsy3ssr39Z65aN3Ve8fUjEwMB7AONpEb6PJ5yR8J3vDwMDAWB/+kiNdDsDAwMC4itE7CCa5JwYGBsaaUS2ore+vn5kkvRfk4hgYGDdk5FX3///8J/0NDAyMWzHexSsvolXv9Pbz/bcYGBhbM6rHu3zM4qognqe+GBgYezPm7cZeyO6Nl51QMTAwtmZUy2H5K6uHwl4bFQMDY1dGHkDnjYRqeyD5vTEwMDB69/N2Yy+J/eVJDAyMrRlJ6th7wfrFc0BhpgMDA+PmjElAnITaapXsZIcYGBhbM/LiWv6aapiepK8YGBhPY0xGwfJCf370zA+sGBgYezPytuKcMcGf3MHAwNiakdfkyge1VgiuHhYP/3tgYGBsxMgHKXpBszqQkaey5eYlBgbGbRlRjltMd/OyWm+FKJXFwMDYlLFOPuevzFerhngMDIynMSZ5cF4sm6xZGGDFwMDYjrFONauBMh+8qK5ZHrbAwMDYiFEtos1bCNXU96TBgIGBsSnjXbzyreQbzUPwyYAFBgbGpoxJKb/X8qwOgZVnRjAwMDZlVAcjLmg3BoxywMXAwHgAo9oYSFbLQ2pvfQwMDIzqEW1SPquW7TAwMDCqW08S1Ak+SoAxMDAewOhta/K3vR8OAwPjmYxeapr/BNUGQzXsYmBgbM34AmOmvCqeKZmhAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

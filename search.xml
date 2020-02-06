@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>react-设置环境变量</title>
+      <link href="/2020/02/06/react-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+      <url>/2020/02/06/react-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开发一个项目的时候通常会有几个版本：开发版，测试版，预发布版，线上版等。各个版本之间请求的API地址不尽相同，为了方便维护，需要使用配置文件来管理这些不同，避免手动修改的尴尬。</p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p><code>npm install cross-env -D</code></p><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>1.在<code>package.json</code>设置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;cross-env SCRIPT_ENV=development node scripts/start.js&quot;</span><br></pre></td></tr></table></figure><p>2.在config文件夹下找到<code>env.js</code>文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function getClientEnvironment(publicUrl) &#123;</span><br><span class="line">  const raw = Object.keys(process.env)</span><br><span class="line">    .filter(key =&gt; REACT_APP.test(key))</span><br><span class="line">    .reduce(</span><br><span class="line">      (env, key) =&gt; &#123;</span><br><span class="line">        env[key] = process.env[key];</span><br><span class="line">        return env;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        // Useful for determining whether we’re running in production mode.</span><br><span class="line">        // Most importantly, it switches React into the correct mode.</span><br><span class="line">        NODE_ENV: process.env.NODE_ENV || &apos;development&apos;,</span><br><span class="line">        SCRIPT_ENV:process.env.SCRIPT_ENV||&quot;&quot;,///////添加这一行代码</span><br><span class="line">        // Useful for resolving the correct path to static assets in `public`.</span><br><span class="line">        // For example, &lt;img src=&#123;process.env.PUBLIC_URL + &apos;/img/logo.png&apos;&#125; /&gt;.</span><br><span class="line">        // This should only be used as an escape hatch. Normally you would put</span><br><span class="line">        // images into the `src` and `import` them in code to get their paths.</span><br><span class="line">        PUBLIC_URL: publicUrl,</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  // Stringify all values so we can feed into Webpack DefinePlugin</span><br><span class="line">  const stringified = &#123;</span><br><span class="line">    &apos;process.env&apos;: Object.keys(raw).reduce((env, key) =&gt; &#123;</span><br><span class="line">      env[key] = JSON.stringify(raw[key]);</span><br><span class="line">      return env;</span><br><span class="line">    &#125;, &#123;&#125;),</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  return &#123; raw, stringified &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上，就成功的创建了process.env.SCRIPT_ENV==’development’`的环境变量。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redux-actions</title>
       <link href="/2020/02/03/redux-actions/"/>
       <url>/2020/02/03/redux-actions/</url>
