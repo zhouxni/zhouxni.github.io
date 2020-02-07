@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Categories: 前端 | 举头问天</title>
+    <title>react-lazy及Suspense | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="react">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -98,7 +98,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Categories: 前端</span>
+            <span>react-lazy及Suspense</span>
             
         </div>
         
@@ -141,34 +141,24 @@
         
     </div>
 </header>
-<header class="content-header categories-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Categories: 前端</h1>
+        <h1 class="title">react-lazy及Suspense</h1>
         <h5 class="subtitle">
+            
+                <time datetime="2020-02-07T07:22:55.000Z" itemprop="datePublished" class="page-time">
+  2020-02-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
             
         </h5>
         
     </div>
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/categories" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
-        
-            <a href="/categories/前端/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">前端</a>
-            
-        
-            <a href="/categories/后端/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">后端</a>
-            
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 </header>
 
@@ -185,82 +175,127 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-            <div class="waterfall">
-                
-                    <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-07-26 17:53:21" datetime="2019-07-26T09:53:21.000Z"  itemprop="datePublished">2019-07-26</time>
 
-      
+<div class="container body-wrap">
+    <article id="post-react-lazy及Suspense"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">react-lazy及Suspense</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-07 15:22:55" datetime="2020-02-07T07:22:55.000Z"  itemprop="datePublished">2020-02-07</time>
+
+            
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
-    </div>
-    
+            
+
+            
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/26/uni-app2/">学习uni-app--框架简介</a>
-    </h3>
-  
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们通过 webpack 或是 rollup 这样工具可以将项目多个 JavaScript 文件最终打包成为一个 bundle 文件。加载一个 js 文件速度要快于加载多个 JavaScript 文件。不过随着 bundle 的体积不断增大，最终造成首次加载时间过长，还有就是加载一些不必要的 javascript 文件。<br>所以我们想是否可以对 bundle 文件进行拆分来进行按需加载，就此需求 webpack 和 rollup 都给出自己解决方案，支持代码拆分，也就是 code splitting。<br>在 react 我们可以用 import(‘./Foo.js’).then() 方式进行 code 的懒加载。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const com = () =&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      resolve(import(&quot;./a&quot;));</span><br><span class="line">    &#125;, 5000);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">const A = lazy(() =&gt; com());</span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;Suspense fallback=&#123;&lt;div&gt;loading....&lt;/div&gt;&#125;&gt;</span><br><span class="line">        &lt;A /&gt;</span><br><span class="line">      &lt;/Suspense&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><code>Suspense</code>中fallback指的是加载过程中处理方式，也就是加载过程中的行为。注意：<code>lazy</code>必须要<code>Suspense</code>包裹。</p>
 
-
-    
-    <div class="post-footer">
+        </div>
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-02-07T07:25:52.421Z" itemprop="dateUpdated">2020-02-07 15:25:52</time>
+</span><br>
 
+
+        
     </div>
-    
-  </article>
-</div>
-                
-                    <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-07-26 17:17:38" datetime="2019-07-26T09:17:38.000Z"  itemprop="datePublished">2019-07-26</time>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
 
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/07/react-lazy及Suspense/&title=《react-lazy及Suspense》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/07/react-lazy及Suspense/&title=《react-lazy及Suspense》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/26/uni-app/">学习uni-app--介绍</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/">uniapp</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
-                
-            </div>
+
+        </div>
         
-    
-<nav id="page-nav">
-    <div class="inner">
-    <a class="extend prev" rel="prev" href="/categories/前端/page/5/">上一页</a><a class="page-number" href="/categories/前端/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/前端/page/4/">4</a><a class="page-number" href="/categories/前端/page/5/">5</a><span class="page-number current">6</span>
+            
+
+
+        
     </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/06/react-设置环境变量/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">react-设置环境变量</h4>
+      </a>
+    </div>
+  
 </nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">方法</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
 
 </div>
 
@@ -310,7 +345,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/categories/前端/page/6/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/07/react-lazy及Suspense/&title=《react-lazy及Suspense》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -322,7 +357,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/categories/前端/page/6/&title=举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/07/react-lazy及Suspense/&title=《react-lazy及Suspense》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -334,7 +369,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS24bMRAFQN//0gqQlQFF8nvNkZEhiyvBGg9ZXrT7w6+veD3+ru+fn3/y/Dn53ecnX317wcLAwLgt4/F2zTbIYa/OkJ8NAwPjHEYeZGehNkG+f/8Pb8bAwMAINsvTvjbgYmBgYLSM98liklYmJAwMDIxZEdu+On9PEtwvq8UxMDBuyFhpn33688fnGxgYGP8941GuWfK3MiKNToWBgbE1Y6XVlTzfXrNoo+vwWBgYGDdktE2x2VHy8jjfEQMD4zRGPipoL1Xko9D3qWGddGJgYGzBmF0IyweQOX6lnMbAwDiHkSR27aigHZEm/xMwMDBOY7SXtFpY0mJrL6XVgwEMDIybM/JKt00Ek29nf46X/zcwMDC2Zqw07q8afC413TAwMI5h5NODWVLYtvaKbzEwMA5g5KXm7Lj1scoGHAYGxgmMtumWbN8212YjBAwMjDMZK8VnHr5nAX3psgUGBsZtGbOmf77ZLPnLr24Mb9diYGDckJEcNH++TSXXC2wMDIy9GVHwuqjp1h6xKK0xMDCOZPxOcy1ZSwEXAwNjC0aULS4UnEsHiscGGBgYezMe5VpqgcUFbX2NAwMDY2tGm6K16eDnBgNLmSYGBsYNGcPLWOUIMymVixYbBgbGkYw8yLYbzNLNelSAgYGBUQbB/KrELBD/Y18MDAyMEtCOP/OLFy+fx8DAOIAxK2Lb8UCeFNajCAwMjK0Zs8FAXrJeVaYm6SYGBsZ2jD8GFfUb0B1svwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3a0W7CMAwF0P3/TzNpT5NYu2u7TMM9eUJQSE6QrNjOx0c8Hl/j++vnd84/fX7/6NPnZy4bGBgYb8t4nI7nhR4t9/zT5MlkCw7nxcDAuAEjCbIJYLLQ83l/WTMGBgZGHBCTLegdOjEwMDDygNs7LFZDMwYGBkYvic2n6ZXtkkB/QS6OgYHxhoze9H/z+uX9DQwMjH/PeAxGAk4OkXlT83AlGBgYqxmT5PMq8LwJioGBcQdGfiic/FweiJNZyluPgYHxtozqJdReWMwDcTPIYmBgrGbkga83cf7d3hp+SGIxMDDWMaqhrdd0PAf3ynOH/wMGBsZqxvziRRJM8wuvhXcwMDBWM6qXHqqkPIhXU1YMDIz7MCZhLm9ezotrhSwcAwPjBoy8iNYr1SWbUr3kgYGBsZvRu53ROw5WQ3l1+zAwMHYzerfGkhR3MssoPcbAwFjHyJuOV7UQckZhKzEwMFYzkjJ9fmjr/eZVKTQGBsZWxrVBs9oqqF4O+6UTi4GBsZqRJJlJKT9PPift0lFWjYGB8eaM/Gv5M9WCXV6ei26OYGBgrGD0Doi9oFwtulU3DgMDYx/jURzzMtzkcHk4LwYGxmpGPqoJZ68lmbcBMDAw7sboBdl8+uq1sGQNhRYmBgbGIsYk8OUls14ITo6hGBgYGL0251W/H51nMTAwMKoHteCQ98I8GwMDYylj0sLMn08KdtXAjYGBcQfGpFhfTXHzQNy76oGBgbGO8Ql8lPoIykrRZgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
