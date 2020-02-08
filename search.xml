@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>react-路由懒加载</title>
+      <link href="/2020/02/08/react-%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD/"/>
+      <url>/2020/02/08/react-%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="react中lazy与Suspense"><a href="#react中lazy与Suspense" class="headerlink" title="react中lazy与Suspense"></a>react中lazy与Suspense</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Home = lazy(() =&gt; import(&quot;./views/home&quot;));</span><br><span class="line">const User = lazy(() =&gt; import(&quot;./views/user&quot;));</span><br><span class="line">...</span><br><span class="line">&lt;Route path=&quot;/home&quot; render=&#123;props =&gt; &lt;Home &#123;...props&#125; /&gt;&#125; /&gt;</span><br><span class="line">&lt;Route path=&quot;/user&quot; render=&#123;props =&gt; &lt;User &#123;...props&#125; /&gt;&#125; /&gt;</span><br></pre></td></tr></table></figure><h1 id="lazyload-loader"><a href="#lazyload-loader" class="headerlink" title="lazyload-loader"></a>lazyload-loader</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.(js|jsx)?$/,</span><br><span class="line">  exclude: /node_modules/,</span><br><span class="line">  use: [</span><br><span class="line">    &#123;</span><br><span class="line">      loader: &quot;babel-loader&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lazyload-loader&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br><span class="line">import Home from &apos;lazy!./views/home&apos;;</span><br><span class="line">import User from &apos;lazy!./views/user&apos;</span><br></pre></td></tr></table></figure><h1 id="react-loadable"><a href="#react-loadable" class="headerlink" title="react-loadable"></a>react-loadable</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Loadable from &apos;react-loadable&apos;;</span><br><span class="line">import Loading from &apos;./my-loading-component&apos;;</span><br><span class="line"> </span><br><span class="line">const LoadableComponent = Loadable(&#123;</span><br><span class="line">  loader: () =&gt; import(&apos;./my-component&apos;),</span><br><span class="line">  loading: Loading,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react-lazy及Suspense</title>
       <link href="/2020/02/07/react-lazy%E5%8F%8ASuspense/"/>
       <url>/2020/02/07/react-lazy%E5%8F%8ASuspense/</url>
