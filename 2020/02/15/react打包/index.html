@@ -201,6 +201,9 @@
             <h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>最近将react打包后部署到nginx服务器上时，发现路由刷新报404。nginx配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;        </span><br><span class="line">    root  D:/react/react-tgg/build;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">    try_files $uri /index.html;//添加的代码，路由报错执行index.html文件</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="配置打包目录"><a href="#配置打包目录" class="headerlink" title="配置打包目录"></a>配置打包目录</h1><p>有时候我们需要把文件部署在服务器二级目录，这时候就要配置文件的访问配置了。最简单的办法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">package.json文件加入homepage字段</span><br><span class="line">...</span><br><span class="line">&quot;homepage&quot;:&quot;./sys&quot; //这样打包后的文件就会访问sys下的文件。</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -208,7 +211,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-15T05:23:38.561Z" itemprop="dateUpdated">2020-02-15 13:23:38</time>
+    最后更新时间：<time datetime="2020-02-17T02:14:36.918Z" itemprop="dateUpdated">2020-02-17 10:14:36</time>
 </span><br>
 
 
@@ -288,7 +291,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#打包"><span class="post-toc-number">1.</span> <span class="post-toc-text">打包</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#打包"><span class="post-toc-number">1.</span> <span class="post-toc-text">打包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置打包目录"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置打包目录</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
