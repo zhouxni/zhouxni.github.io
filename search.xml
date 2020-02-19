@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>webpack搭建</title>
+      <link href="/2020/02/19/webpack%E6%90%AD%E5%BB%BA/"/>
+      <url>/2020/02/19/webpack%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="webpack准备"><a href="#webpack准备" class="headerlink" title="webpack准备"></a>webpack准备</h1><p>在项目中安装webpack，webpack-cli，webpack-dev-server三个基本运行包。同时全局安装webpack和webpack-cli。</p><h1 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h1><p>在根目录下创建<code>webpack.config.js</code>文件。</p><h1 id="webpack常见配置项"><a href="#webpack常见配置项" class="headerlink" title="webpack常见配置项"></a>webpack常见配置项</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react打包</title>
       <link href="/2020/02/15/react%E6%89%93%E5%8C%85/"/>
       <url>/2020/02/15/react%E6%89%93%E5%8C%85/</url>
