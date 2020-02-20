@@ -205,14 +205,21 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">entry:&quot;./index.js&quot; //单页面</span><br><span class="line">entry:&#123;             //多页面</span><br><span class="line">    app:&quot;./app.js&quot;,</span><br><span class="line">    search:&quot;./search.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>output输出文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output:&#123;</span><br><span class="line">    filename:&quot;[name][hash].js&quot;,//文件如何命名</span><br><span class="line">    path:path.resolve(__dirname,&quot;dist&quot;)//打包到哪个目录</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line">3. mode环境</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
-<p>mode:”production”//代表生产环境<br>mode:”development”//代表开发环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4. devServer</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output:&#123;</span><br><span class="line">    filename:&quot;[name][hash].js&quot;,//文件如何命名</span><br><span class="line">    path:path.resolve(__dirname,&quot;dist&quot;)//打包到哪个目录</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>  devServer:{//开发环境配置<br>      contentBase:path.resolve(__dirname,”dist”),//打包目录<br>      port:8100,//开启端口<br>      compress:true,//对所有服务开启gzip压缩<br>      hot:true,//启用热模块更换<br>      open:true,//运行后，浏览器自动打开<br>      overlay:true//警告和错误是否在浏览器屏幕上显示<br>      overlay:{<br>        errors:true,<br>        warnings:true<br>    }<br>  },<br>```<br>其它常见配置，可以参看<a href="https://webpack.js.org/configuration/dev-server" target="_blank" rel="noopener">webpack</a>;</p>
+<ol start="3">
+<li>mode环境</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mode:&quot;production&quot;//代表生产环境</span><br><span class="line">mode:&quot;development&quot;//代表开发环境</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>devServer</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">devServer:&#123;//开发环境配置</span><br><span class="line">    contentBase:path.resolve(__dirname,&quot;dist&quot;),//打包目录</span><br><span class="line">    port:8100,//开启端口</span><br><span class="line">    compress:true,//对所有服务开启gzip压缩</span><br><span class="line">    hot:true,//启用热模块更换</span><br><span class="line">    open:true,//运行后，浏览器自动打开</span><br><span class="line">    overlay:true//警告和错误是否在浏览器屏幕上显示</span><br><span class="line">    overlay:&#123;</span><br><span class="line">      errors:true,</span><br><span class="line">      warnings:true</span><br><span class="line">  &#125;    </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>其它常见配置，可以参看<a href="https://webpack.js.org/configuration/dev-server" target="_blank" rel="noopener">webpack</a>;</p>
 
         </div>
         
@@ -220,7 +227,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-20T13:33:28.792Z" itemprop="dateUpdated">2020-02-20 21:33:28</time>
+    最后更新时间：<time datetime="2020-02-20T13:43:18.285Z" itemprop="dateUpdated">2020-02-20 21:43:18</time>
 </span><br>
 
 
