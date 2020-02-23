@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>小程序的bug</title>
+      <link href="/2020/02/23/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84bug/"/>
+      <url>/2020/02/23/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84bug/</url>
+      
+        <content type="html"><![CDATA[<h1 id="小程序开发遇到的问题"><a href="#小程序开发遇到的问题" class="headerlink" title="小程序开发遇到的问题"></a>小程序开发遇到的问题</h1><h2 id="scroll-view"><a href="#scroll-view" class="headerlink" title="scroll-view"></a>scroll-view</h2><p>scroll-view绑定的scroll事件，当滑到顶部时，scrollTop有时候不为0。<br>解决办法：添加属性<code>throttle=&quot;false&quot;</code>，禁止节流操作。</p><h2 id="touchmove滑动卡顿"><a href="#touchmove滑动卡顿" class="headerlink" title="touchmove滑动卡顿"></a>touchmove滑动卡顿</h2><p>原因，bind事件监听频率下降。解决办法：将bindtouchmove换成catchtouchmove即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>webpack搭建</title>
       <link href="/2020/02/19/webpack%E6%90%AD%E5%BB%BA/"/>
       <url>/2020/02/19/webpack%E6%90%AD%E5%BB%BA/</url>
