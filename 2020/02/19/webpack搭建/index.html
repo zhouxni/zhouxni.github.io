@@ -218,7 +218,7 @@
 <ol start="4">
 <li>devServer</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">devServer:&#123;//开发环境配置</span><br><span class="line">    contentBase:path.resolve(__dirname,&quot;dist&quot;),//打包目录</span><br><span class="line">    port:8100,//开启端口</span><br><span class="line">    compress:true,//对所有服务开启gzip压缩</span><br><span class="line">    hot:true,//启用热模块更换</span><br><span class="line">    open:true,//运行后，浏览器自动打开</span><br><span class="line">    overlay:true//警告和错误是否在浏览器屏幕上显示</span><br><span class="line">    overlay:&#123;</span><br><span class="line">      errors:true,</span><br><span class="line">      warnings:true</span><br><span class="line">  &#125;    </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">devServer:&#123;//开发环境配置</span><br><span class="line">    contentBase:path.resolve(__dirname,&quot;dist&quot;),//打包目录</span><br><span class="line">    port:8100,//开启端口</span><br><span class="line">    compress:true,//对所有服务开启gzip压缩</span><br><span class="line">    hot:true,//启用热模块更换</span><br><span class="line">    open:true,//运行后，浏览器自动打开</span><br><span class="line">    overlay:true//警告和错误是否在浏览器屏幕上显示</span><br><span class="line">    historyApiFallback: &#123;//使用HTML5历史记录API时，index.html很可能必须提供该页面来代替任何404响应。</span><br><span class="line">    rewrites: [</span><br><span class="line">        &#123; from: /./, to: &apos;/&apos; &#125;</span><br><span class="line">      ]</span><br><span class="line">     &#125;,</span><br><span class="line">    overlay:&#123;</span><br><span class="line">      errors:true,</span><br><span class="line">      warnings:true</span><br><span class="line">  &#125;    </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <p>其它常见配置，可以参看<a href="https://webpack.js.org/configuration/dev-server" target="_blank" rel="noopener">webpack</a>;</p>
 <ol start="5">
@@ -243,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-23T12:02:07.232Z" itemprop="dateUpdated">2020-02-23 20:02:07</time>
+    最后更新时间：<time datetime="2020-02-24T04:02:45.629Z" itemprop="dateUpdated">2020-02-24 12:02:45</time>
 </span><br>
 
 

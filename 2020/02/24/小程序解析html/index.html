@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Archives: 2019/11 | 举头问天</title>
+    <title>小程序解析html | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="微信小程序">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -112,7 +112,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归纳
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>小程序解析html</span>
             
         </div>
         
@@ -141,18 +141,21 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">小程序解析html</h1>
         <h5 class="subtitle">
             
+                <time datetime="2020-02-24T04:03:37.000Z" itemprop="datePublished" class="page-time">
+  2020-02-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>63</span> )篇，约( <span>59.5K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -172,173 +175,127 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">十一月, 2019</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-小程序解析html"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">小程序解析html</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-24 12:03:37" datetime="2020-02-24T04:03:37.000Z"  itemprop="datePublished">2020-02-24</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-11-23 23:43:46" datetime="2019-11-23T15:43:46.000Z"  itemprop="datePublished">2019-11-23</time>
-
-      
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
-    </div>
-    
+            
+
+            
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/11/23/vue-zepto/">vue-zepto</a>
-    </h3>
-  
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h1><p>先下载所需文件<a href="/images/zip/wxParse.zip">wxparse</a>;</p>
+<h1 id="在所需的js文件引入"><a href="#在所需的js文件引入" class="headerlink" title="在所需的js文件引入"></a>在所需的js文件引入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var WxParse = require(&apos;../../wxParse/wxParse.js&apos;);</span><br><span class="line">WxParse.wxParse(&apos;content&apos;, &apos;html&apos;, content, that, 0);</span><br><span class="line">      //&apos;content&apos;是所要渲染的变量，that是作用域里的this</span><br></pre></td></tr></table></figure>
 
-
-
-    
-    <div class="post-footer">
+<h1 id="在wxml中引入"><a href="#在wxml中引入" class="headerlink" title="在wxml中引入"></a>在wxml中引入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&apos;content_wrap&apos;&gt;</span><br><span class="line">    &lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;</span><br><span class="line">    &lt;template is=&quot;wxParse&quot; data=&quot;&#123;&#123;wxParseData:content.nodes&#125;&#125;&quot; /&gt; </span><br><span class="line"></span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+        </div>
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zepto/">zepto</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
+<blockquote class="post-copyright">
+    <div class="content">
         
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-11-20 21:23:22" datetime="2019-11-20T13:23:22.000Z"  itemprop="datePublished">2019-11-20</time>
+<span class="post-time">
+    最后更新时间：<time datetime="2020-02-24T04:13:03.790Z" itemprop="dateUpdated">2020-02-24 12:13:03</time>
+</span><br>
 
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/11/20/微信h5页面bug/">微信h5页面bug</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-11-10 21:33:46" datetime="2019-11-10T13:33:46.000Z"  itemprop="datePublished">2019-11-10</time>
-
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/24/小程序解析html/&title=《小程序解析html》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/11/10/react移动端自适配/">react移动端自适配</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-11-06 22:20:11" datetime="2019-11-06T14:20:11.000Z"  itemprop="datePublished">2019-11-06</time>
-
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/11/06/react使用sass/">react使用sass</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-11-01 20:47:37" datetime="2019-11-01T12:47:37.000Z"  itemprop="datePublished">2019-11-01</time>
-
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/24/小程序解析html/&title=《小程序解析html》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+    </ul>
+ </div>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/11/01/h5-页面恢复位置/">h5-页面bug</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
+        
+            
+
+
         
     </div>
     
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/23/小程序的bug/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">小程序的bug</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下载文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">下载文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在所需的js文件引入"><span class="post-toc-number">2.</span> <span class="post-toc-text">在所需的js文件引入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在wxml中引入"><span class="post-toc-number">3.</span> <span class="post-toc-text">在wxml中引入</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
 </div>
 
     </main>
@@ -387,7 +344,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/archives/2019/11/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/24/小程序解析html/&title=《小程序解析html》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -399,7 +356,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/archives/2019/11/&title=举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/24/小程序解析html/&title=《小程序解析html》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -411,7 +368,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aQY4iMRAEQP7/aUba00o7mExXY3ql8AkNjDvgkHJV+fGI1/PPWr/++y//rvWeFy9cXNwx97lcr4jrT64/n+/5y1fCxcU9yE3C61VstcG3pr/ZHxcX92bcJHTWu+VHJVxc3P+Fuxdn+TEIFxf3btx5SZO/e6hWw8XFHXCvaphOXn+hv4uLi7s1lcgDZT1QaaPw5dNxcXGPcNcPS1obSebkLZIo5nBxcT/MnTQ6Jxcv2pMMLi7uSe6k4GljqL3eUV/hwsXFPcjNC5t2sLoXl7i4uOe580NPHlVt/OHi4p7h7m2XfJl2WFJMg3FxcY9w2/FJDm25FwxZcXFxL+UmD24bIntnrpf/hYuLe5DbxlB79EmubuDi4t6TmwdZUjglrZZ2fIuLi3uG2zYy9q5c5Nyo3sHFxf0wd+8Bo6bnpLjCxcU9yJ0MWdsditsfuLi4X+Xma370aUe29eQHFxd3zG0DpT2U5KHWvouLi/tpbh46bRTOr3895o/ExcUdcPfCqz2mjIofXFzcW3I/MV6tiyJcXNzbc99cpYrbMcUwBhcX9yD32ubmXkEV/UC4uLhHuG3D9E1xsiycchwuLu6XuD8bYkP6qnMeSQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3ay47CMBBEUf7/p4PECgnFrqo2CLdvViiTAZ8sWv16POTrel3vn9/vjJ/5fH78DZ/3l10wYMDYlnENL4WR3XFf2d3ZYMCAcQ6jHmTrwXr8+ia/CwMGDBhyEMwCsfJXGDBgwMgCpVKyKoEVBgwYMBTG9xpkqwL0slocBgwYGzKywcBvPn99vgEDBoy/Z1zmpRS0lXZ/eCoYMGC0ZtwFOLcBl7XSsrWM25cFAwaMpgwFUDluPSmUimcYMGC0ZrgFpLJy4SLdFp6UGsKAAaMdIys13aUuJcnL1j5gwIABw12V0AH1ZBEGDBgnM9yWWeXodRIMGDBOYLhNLh2ftdLc/QoYMGD0ZujNtWzEuOqgkzANAwaM1gw9Krtf6rbqlGUyO1jDgAGjBWPVKLEy4FTCrpTbwoABoylDCXnuz68tZY3hJQwYMJoy3BZ/FoL1wjgEw4ABozVDD7jKEDEraN12njHfgAEDRjuGEkYnOWbUvNPTwUl0hQEDRlNGVpq6Y0j36PodGDBgnMPIErusZK2X0JN2GwwYMNoxshFjfUiZJZqTxh8MGDCaMi7zqqSDlQbcJIjDgAGjNSMrR8OdDrmEHn9nCIABA8bmjFWrD0aDTEg07fQRBgwYBzDctv6qVLIS9KWdERgwYBzGUAKuvsilhNpwMAADBozjGVl4dZfD7P+FAQPGAQy3WT/GV9r6+jNhLQ4DBowNGdlgsj62VMYDi0tlGDBg7Md4AgyOQc+GVT/5AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

@@ -200,6 +200,7 @@
             
             <h1 id="小程序开发遇到的问题"><a href="#小程序开发遇到的问题" class="headerlink" title="小程序开发遇到的问题"></a>小程序开发遇到的问题</h1><h2 id="scroll-view"><a href="#scroll-view" class="headerlink" title="scroll-view"></a>scroll-view</h2><p>scroll-view绑定的scroll事件，当滑到顶部时，scrollTop有时候不为0。<br>解决办法：添加属性<code>throttle=&quot;false&quot;</code>，禁止节流操作。</p>
 <h2 id="touchmove滑动卡顿"><a href="#touchmove滑动卡顿" class="headerlink" title="touchmove滑动卡顿"></a>touchmove滑动卡顿</h2><p>原因，bind事件监听频率下降。解决办法：将bindtouchmove换成catchtouchmove即可。</p>
+<h2 id="component中id样式无效"><a href="#component中id样式无效" class="headerlink" title="component中id样式无效"></a>component中id样式无效</h2><p>原因：不支持</p>
 
         </div>
         
@@ -207,7 +208,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-23T12:13:07.899Z" itemprop="dateUpdated">2020-02-23 20:13:07</time>
+    最后更新时间：<time datetime="2020-02-23T12:17:21.917Z" itemprop="dateUpdated">2020-02-23 20:17:21</time>
 </span><br>
 
 
@@ -268,7 +269,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/02/24/小程序解析html/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">小程序解析html</h4>
+      </a>
+    </div>
   
 
   
@@ -287,7 +295,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小程序开发遇到的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">小程序开发遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scroll-view"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">scroll-view</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#touchmove滑动卡顿"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">touchmove滑动卡顿</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小程序开发遇到的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">小程序开发遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scroll-view"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">scroll-view</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#touchmove滑动卡顿"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">touchmove滑动卡顿</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#component中id样式无效"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">component中id样式无效</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
