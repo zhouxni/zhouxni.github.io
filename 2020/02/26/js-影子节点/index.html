@@ -221,7 +221,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .sign-up::shadow #username&#123;</span><br><span class="line">        font-size: 20px;</span><br><span class="line">        border: 1px solid red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class=&quot;sign-up&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;sign-up-template&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #username&#123;</span><br><span class="line">            font-size: 12px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var root = document.querySelector(&apos;.sign-up&apos;).createShadowRoot();</span><br><span class="line">var template = document.querySelector(&apos;.sign-up-template&apos;);</span><br><span class="line">root.appendChild(document.importNode(template.content, true));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>不过缺点是只能穿透一层，但我们还有一个神器！(/deep/多层穿透)</p>
-<h2 id="slot代替content-推荐"><a href="#slot代替content-推荐" class="headerlink" title="slot代替content(推荐)"></a>slot代替content(推荐)</h2><p>不同之处：<br>创建方式：</p>
+<h2 id="slot代替content-推荐"><a href="#slot代替content-推荐" class="headerlink" title="slot代替content(推荐)"></a>slot代替content(推荐)</h2><p>不同之处：</p>
+<p>创建方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var root = host.attachShadow(&#123; mode: &quot;open,delegatesFocus: true&#125;);//mode为closed时关闭slot显示。</span><br><span class="line">//&apos;delegatesFocus&apos;:true如果您点击 shadow DOM 内的某个节点，且该节点不是一个可聚焦区域，那么第一个可聚焦区域将成为焦点。当 shadow DOM 内的节点获得焦点时，除了聚焦的元素外，:focus 还会应用到宿主。</span><br></pre></td></tr></table></figure>
 
 <p>选择器：</p>
@@ -235,7 +236,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-26T05:51:13.080Z" itemprop="dateUpdated">2020-02-26 13:51:13</time>
+    最后更新时间：<time datetime="2020-02-26T05:56:53.093Z" itemprop="dateUpdated">2020-02-26 13:56:53</time>
 </span><br>
 
 
