@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>js-影子节点 | 举头问天</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="js">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/xiaopang.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">周欣</h5>
+          <a href="mailto:2717584844@qq.com" title="2717584844@qq.com" class="mail">
+            
+              <span>2</span>
+            
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>4</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归纳
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>js-影子节点</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">js-影子节点</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-26T03:48:24.000Z" itemprop="datePublished" class="page-time">
+  2020-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js-影子节点"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js-影子节点</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-26 11:48:24" datetime="2020-02-26T03:48:24.000Z"  itemprop="datePublished">2020-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="shadow-Dom"><a href="#shadow-Dom" class="headerlink" title="shadow Dom"></a>shadow Dom</h1><p>Shadow DOM 是一个 HTML 的新规范，其允许开发者封装HTML组件（类似vue组件，将html，css，js独立部分提取）。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;widget&quot;&gt;Hello, world!&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var host = document.querySelector(&apos;.widget&apos;);</span><br><span class="line">  var root = host.createShadowRoot();</span><br><span class="line">  root.textContent = &apos;我在你的 div 里！&apos;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何渲染宿主节点的内容"><a href="#如何渲染宿主节点的内容" class="headerlink" title="如何渲染宿主节点的内容"></a>如何渲染宿主节点的内容</h2><p>只渲染影子根中的内容基本没有实用的地方，但能自由的渲染宿主节点中的内容的话就可以让页面展现更灵活。我们需要content标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;pokemon&quot;&gt;胖丁&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;pokemon-template&quot;&gt;</span><br><span class="line">  &lt;h1&gt;一只野生的&lt;content&gt;&lt;/content&gt;出现了！&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var host = document.querySelector(&apos;.pokemon&apos;);</span><br><span class="line">  var root = host.createShadowRoot();</span><br><span class="line">  var template = document.querySelector(&apos;.pokemon-template&apos;);</span><br><span class="line">  root.appendChild(document.importNode(template.content, true)); </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><content>标签创建了一个*<em>插入点 *</em>将.pokemon里面的文本投影出来，多个内容匹配时可以实用select属性指定。</content></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;host&quot;&gt;</span><br><span class="line">    &lt;p&gt;大慈大悲，由诸葛亮进化而来。&lt;/p&gt;</span><br><span class="line">    &lt;span class=&quot;name&quot;&gt;观音姐姐兽&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;root-template&quot;&gt;</span><br><span class="line">    &lt;dl&gt;</span><br><span class="line">      &lt;dt&gt;名字&lt;/dt&gt;</span><br><span class="line">      &lt;dd&gt;&lt;content select=&quot;.name&quot;&gt;&lt;/content&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/dl&gt;</span><br><span class="line">    &lt;p&gt;&lt;content select=&quot;&quot;&gt;&lt;/content&gt;&lt;/p&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var host = document.querySelector(&apos;.host&apos;);</span><br><span class="line">    var root = host.createShadowRoot();</span><br><span class="line">    var template = document.querySelector(&apos;.root-template&apos;);</span><br><span class="line">    root.appendChild(template.content);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用select属性类似选择器的形式渲染宿主节点中匹配元素的投影。这种形式不但可以改变DOM流的顺序也可以让布局变得灵活。<br>在模板的最后<content select></content>是一种贪心匹配（<code>匹配的内容永远放在最后</code>），把宿主节点中所有未被匹配的内容全部投影。需要注意的是把贪心匹配放在最前面会把所有的节点投影并且之后的select不会再获取到被其投影的内容。</p>
+<h2 id="样式渲染和封装"><a href="#样式渲染和封装" class="headerlink" title="样式渲染和封装"></a>样式渲染和封装</h2><p>在影子节点中存在边界使shadow DOM样式和正常DOM流中的样式不相互干扰。这是一种作用域化的体现，不用再担心样式的相互冲突。</p>
+<h3 id="host-选择器"><a href="#host-选择器" class="headerlink" title=":host()选择器"></a>:host()选择器</h3><p>:host是伪类选择器选择宿主节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    p &#123;</span><br><span class="line">        font-size: 12px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;p&gt;我的文本&lt;/p&gt;</span><br><span class="line">&lt;button&gt;我的按钮&lt;/button&gt;</span><br><span class="line">&lt;template class=&quot;shadow-template&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        :host(p) &#123;</span><br><span class="line">            color: green;</span><br><span class="line">        &#125;</span><br><span class="line">        :host(button) &#123;</span><br><span class="line">            color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        :host(*) &#123;</span><br><span class="line">            font-size: 24px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;content select=&quot;&quot;&gt;&lt;/content&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var root1 = document.querySelector(&apos;p&apos;).createShadowRoot();</span><br><span class="line">    var root2 = document.querySelector(&apos;button&apos;).createShadowRoot();</span><br><span class="line"></span><br><span class="line">    var template = document.querySelector(&apos;.shadow-template&apos;);</span><br><span class="line"></span><br><span class="line">    root1.appendChild(document.importNode(template.content, true));</span><br><span class="line">    root2.appendChild(document.importNode(template.content, true));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="host-context"><a href="#host-context" class="headerlink" title=":host-context()"></a>:host-context()</h3><p>选择宿主节点的父级及上级。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;serious&quot;&gt;</span><br><span class="line">    &lt;p class=&quot;serious-widget&quot;&gt;</span><br><span class="line">        serious-widget</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;playful&quot;&gt;</span><br><span class="line">    &lt;p class=&quot;playful-widget&quot;&gt;</span><br><span class="line">        playful-widget</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;widget-template&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        :host-context(.serious) &#123;</span><br><span class="line">            width: 250px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            background: tomato;</span><br><span class="line">        &#125;</span><br><span class="line">        :host-context(.playful) &#123;</span><br><span class="line">            width: 250px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            background: deepskyblue;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;content&gt;&lt;/content&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var root1 = document.querySelector(&apos;.serious-widget&apos;).createShadowRoot();</span><br><span class="line">var root2 = document.querySelector(&apos;.playful-widget&apos;).createShadowRoot();</span><br><span class="line">var template = document.querySelector(&apos;.widget-template&apos;);</span><br><span class="line">root1.appendChild(document.importNode(template.content, true));</span><br><span class="line">root2.appendChild(document.importNode(template.content, true));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="content选择器"><a href="#content选择器" class="headerlink" title="::content选择器"></a>::content选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">    &lt;button&gt;分布节点碉堡啦！&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;widget-template&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        ::content &gt; button &#123;</span><br><span class="line">            color: white;</span><br><span class="line">            background: tomato;</span><br><span class="line">            border-radius: 10px;</span><br><span class="line">            border: none;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;content select=&quot;&quot;&gt;&lt;/content&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var root = document.querySelector(&apos;.widget&apos;).createShadowRoot();</span><br><span class="line">var template = document.querySelector(&apos;.widget-template&apos;);</span><br><span class="line">root.appendChild(document.importNode(template.content, true));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="shadow"><a href="#shadow" class="headerlink" title="::shadow"></a>::shadow</h3><p>我们可以在挂载节点中使用::shadow。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .sign-up::shadow #username&#123;</span><br><span class="line">        font-size: 20px;</span><br><span class="line">        border: 1px solid red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class=&quot;sign-up&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;template class=&quot;sign-up-template&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #username&#123;</span><br><span class="line">            font-size: 12px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var root = document.querySelector(&apos;.sign-up&apos;).createShadowRoot();</span><br><span class="line">var template = document.querySelector(&apos;.sign-up-template&apos;);</span><br><span class="line">root.appendChild(document.importNode(template.content, true));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>不过缺点是只能穿透一层，但我们还有一个神器！(/deep/多层穿透)</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-02-26T05:12:38.262Z" itemprop="dateUpdated">2020-02-26 13:12:38</time>
+</span><br>
+
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/26/js-影子节点/&title=《js-影子节点》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/26/js-影子节点/&title=《js-影子节点》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/26/js-自定义事件/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js-自定义事件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shadow-Dom"><span class="post-toc-number">1.</span> <span class="post-toc-text">shadow Dom</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何渲染宿主节点的内容"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">如何渲染宿主节点的内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#样式渲染和封装"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">样式渲染和封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#host-选择器"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">:host()选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#host-context"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">:host-context()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#content选择器"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">::content选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shadow"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">::shadow</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                周欣 &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            <!-- 
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+             -->
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/26/js-影子节点/&title=《js-影子节点》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/26/js-影子节点/&title=《js-影子节点》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3ayYrDMBBF0fz/T7uhVw2OlTc4DSpfrUJwIh0vihr0esnr+F3nb/6u8/dXz6//5/zMbQsGDBjbMo7lOjOUzfRjKftKVBgwYDyAsQ6ya8ZVGG1ek342GDBgwFASu+yzkobCgAEDRhNw10lenyzCgAEDRlbEGiVl0Rn7ei0OAwaMDRnuYOA/P39xvgEDBoxNGEe0+lSvCetvfgsDBozRDH0k2Sd5CmldEn84IQwYMEYzdF5TTN41ErBfPQwYMEYwmmth65Cqp4P60PSGwQAMGDA2ZDRhtz+Km0RW/UIYMGBsy1AOut5YCcduWmm39mDAgDGU0Ye5LJhmofzyn2HAgPEARvjjqKB1y1HpFcCAAeMBjKZBr+dmd1XYlyMBGDBgDGXoD2Vgvdx1X5ldl8OAAWNbRn95yw2UWer5AQkDBowHMOzEKwrNduzXd4EBA8ZoRjY41FM6/R/6IA4DBoypjKzF76Zu+jUOt3lnZ7IwYMDYkGGMCZdhVLn+1VxXlVJYGDBgPIbhHr0ZT7oNuLBwhQEDxiBGHzTdixpuWmlPOWDAgDGIce/VhywoN3vBgAFjNuMwl34xQi8+s4sXbwYDMGDAGMpoZp5ZuHQvUjRFMgwYMCYx3JQuzD3lQBkGXBgwYDyAobfD9GFk1oYLO2kwYMCAIW+ctdjcoellvxAGDBiPZ/RjA5dqDy9hwIAxmpENA5rLGXrAlTqFMGDAGM1wBwPNUDNr8DVXNGDAgLE54wf3i0up2zOTUgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.3"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.staticfile.org/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.3"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.3"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.3"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.staticfile.org/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
