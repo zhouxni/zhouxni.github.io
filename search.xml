@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>js-自定义事件</title>
+      <link href="/2020/02/26/js-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/"/>
+      <url>/2020/02/26/js-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="自定义事件的使用"><a href="#自定义事件的使用" class="headerlink" title="自定义事件的使用"></a>自定义事件的使用</h1><p>第一种方法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let event = new Event(&quot;myclick&quot;,&#123;&quot;bubbles&quot;:false,&quot;cancelable&quot;:false,&quot;composed&quot;:false&#125;),</span><br><span class="line">document.dispatchEvent(ev);//自动触发事件执行。</span><br><span class="line">document.onmyclick = function()&#123;&#125;或者document.addEventListener(&quot;myclick&quot;,function()&#123;&#125;,false);</span><br><span class="line">&quot;bubbles&quot;:表示事件是否可以冒泡。&quot;cancelable&quot;:表示事件是否可以取消。&quot;composed&quot;:指示事件是否会在影子DOM根节点之外触发侦听器。</span><br></pre></td></tr></table></figure><p>第二种方法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let event = new CustomEvent(&quot;myclick&quot;,&#123;&quot;detail&quot;:&#123;name:&quot;周欣&quot;&#125;,bubbles&quot;:false,&quot;cancelable&quot;:false,&quot;composed&quot;:false&#125;),</span><br><span class="line">document.dispatchEvent(ev);//自动触发事件执行。</span><br><span class="line">document.onmyclick = function(e)&#123;console.log(e.detail.name)&#125;或者document.addEventListener(&quot;myclick&quot;,function()&#123;&#125;,false);</span><br><span class="line">&quot;bubbles&quot;:表示事件是否可以冒泡。&quot;cancelable&quot;:表示事件是否可以取消。&quot;composed&quot;:指示事件是否会在影子DOM根节点之外触发侦听器。</span><br><span class="line">//与第一种方法不同的是可以初始化一个参数值。</span><br></pre></td></tr></table></figure><p>第三种方法：(目前已废弃)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let event = document.createEvent(&quot;HTMLEvents&quot;);//事件类型主要为HTMLEvents,UIEvents,MouseEvents。</span><br><span class="line">event.initEvent(&quot;myclick&quot;,false,false);//第二个和第三个参数分别指是否冒泡和阻止默认事件。</span><br><span class="line">document.dispatchEvent(&quot;myclick&quot;);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>小程序解析html</title>
       <link href="/2020/02/24/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90html/"/>
       <url>/2020/02/24/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90html/</url>

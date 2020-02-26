@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Archives: 2020 | 举头问天</title>
+    <title>js-自定义事件 | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="js">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -112,7 +112,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归纳
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>js-自定义事件</span>
             
         </div>
         
@@ -141,18 +141,21 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">js-自定义事件</h1>
         <h5 class="subtitle">
             
+                <time datetime="2020-02-26T02:06:55.000Z" itemprop="datePublished" class="page-time">
+  2020-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>64</span> )篇，约( <span>60.7K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -172,279 +175,132 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">二月, 2020</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-js-自定义事件"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js-自定义事件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-26 10:06:55" datetime="2020-02-26T02:06:55.000Z"  itemprop="datePublished">2020-02-26</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-02-02 22:24:40" datetime="2020-02-02T14:24:40.000Z"  itemprop="datePublished">2020-02-02</time>
-
-      
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/02/02/react-css作用域/">react-css作用域</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-02-02 11:24:02" datetime="2020-02-02T03:24:02.000Z"  itemprop="datePublished">2020-02-02</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/02/02/redux-saga/">redux-saga</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-                    </div> 
-                
-                <h3 class="archive-separator">一月, 2020</h3>
-                <div class="waterfall">
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-30 21:56:03" datetime="2020-01-30T13:56:03.000Z"  itemprop="datePublished">2020-01-30</time>
 
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+            
 
 
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="自定义事件的使用"><a href="#自定义事件的使用" class="headerlink" title="自定义事件的使用"></a>自定义事件的使用</h1><p>第一种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let event = new Event(&quot;myclick&quot;,&#123;&quot;bubbles&quot;:false,&quot;cancelable&quot;:false,&quot;composed&quot;:false&#125;),</span><br><span class="line">document.dispatchEvent(ev);//自动触发事件执行。</span><br><span class="line">document.onmyclick = function()&#123;&#125;或者document.addEventListener(&quot;myclick&quot;,function()&#123;&#125;,false);</span><br><span class="line">&quot;bubbles&quot;:表示事件是否可以冒泡。&quot;cancelable&quot;:表示事件是否可以取消。&quot;composed&quot;:指示事件是否会在影子DOM根节点之外触发侦听器。</span><br></pre></td></tr></table></figure>
 
-    </div>
-    
+<p>第二种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let event = new CustomEvent(&quot;myclick&quot;,&#123;&quot;detail&quot;:&#123;name:&quot;周欣&quot;&#125;,bubbles&quot;:false,&quot;cancelable&quot;:false,&quot;composed&quot;:false&#125;),</span><br><span class="line">document.dispatchEvent(ev);//自动触发事件执行。</span><br><span class="line">document.onmyclick = function(e)&#123;console.log(e.detail.name)&#125;或者document.addEventListener(&quot;myclick&quot;,function()&#123;&#125;,false);</span><br><span class="line">&quot;bubbles&quot;:表示事件是否可以冒泡。&quot;cancelable&quot;:表示事件是否可以取消。&quot;composed&quot;:指示事件是否会在影子DOM根节点之外触发侦听器。</span><br><span class="line">//与第一种方法不同的是可以初始化一个参数值。</span><br></pre></td></tr></table></figure>
+
+<p>第三种方法：(目前已废弃)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let event = document.createEvent(&quot;HTMLEvents&quot;);//事件类型主要为HTMLEvents,UIEvents,MouseEvents。</span><br><span class="line">event.initEvent(&quot;myclick&quot;,false,false);//第二个和第三个参数分别指是否冒泡和阻止默认事件。</span><br><span class="line">document.dispatchEvent(&quot;myclick&quot;);</span><br></pre></td></tr></table></figure>
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/30/react-高阶组件/">react-高阶组件</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+        </div>
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
+<blockquote class="post-copyright">
+    <div class="content">
         
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-30 17:50:40" datetime="2020-01-30T09:50:40.000Z"  itemprop="datePublished">2020-01-30</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+<span class="post-time">
+    最后更新时间：<time datetime="2020-02-26T02:26:17.751Z" itemprop="dateUpdated">2020-02-26 10:26:17</time>
+</span><br>
 
 
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/30/react-ref/">react-ref</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
     </div>
-    
-  </article>
-</div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
         
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-29 23:08:17" datetime="2020-01-29T15:08:17.000Z"  itemprop="datePublished">2020-01-29</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/29/react-Context/">react-Context</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-23 16:15:23" datetime="2020-01-23T08:15:23.000Z"  itemprop="datePublished">2020-01-23</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/23/redux-thunk-异步方法/">redux-thunk-异步方法</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-23 16:05:08" datetime="2020-01-23T08:05:08.000Z"  itemprop="datePublished">2020-01-23</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/23/js-替换编辑器转换的单位/">js-替换编辑器转换的单位</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
+        <div class="post-footer">
+            
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
-    </div>
+            <div class="page-share-wrap">
     
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-01-12 11:37:05" datetime="2020-01-12T03:37:05.000Z"  itemprop="datePublished">2020-01-12</time>
 
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/26/js-自定义事件/&title=《js-自定义事件》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/26/js-自定义事件/&title=《js-自定义事件》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/01/12/vue-批量打包压缩/">vue-批量打包压缩</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
+        
+            
+
+
         
     </div>
     
-<nav id="page-nav">
-    <div class="inner">
-    <a class="extend prev" rel="prev" href="/archives/2020/">上一页</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/24/小程序解析html/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">小程序解析html</h4>
+      </a>
     </div>
+  
 </nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#自定义事件的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">自定义事件的使用</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
 
 </div>
 
@@ -494,7 +350,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/archives/2020/page/2/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/26/js-自定义事件/&title=《js-自定义事件》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -506,7 +362,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/archives/2020/page/2/&title=举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/26/js-自定义事件/&title=《js-自定义事件》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -518,7 +374,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3awY6DMAxFUf7/p+m2UkW4z0kMlS6r0dCGQxdPsZ3jwNdZur6/e7XmseOSK1fuNJc/8uruzLO4Qa5cuf3ccdD8foYEFsHFYSdXrtxXcnmocaJcuXL/nZvG1ni7I1eu3DdzeWuDbFnS8NpSq8mVK3eCy9sZ+/7e0t+VK1duiVsbjYzXIUFWHMzIlSu3hcsDJd2s8BRKnytXrtwebjosSUcsqwaxcuXK7eGS1kYcMaXGKGqOyJUrt5G7qnHJG6zFwxly5cpt4fJgGtPHL1z7DCp+5MqVu4FLooQfwOKHt9LjXEHyyZUrdxE3HYrw7Qg/tIHWlytXbiOXLMQ3NPMNVlSryZUrt4Wbjk55AZMWPyjI5MqVu43LtylpzKXNVtKElStXbj/35kP8HAemk3VuDmHIlSt3M5eUOqR1wuOM/1+uXLnv4aYtDD4gibc1tapLrly5Je4ZXvMDEl5EyZUr9ylu2p7g7dH0Lj/YIVeu3B7uqvDiI5Opu3Llym3k8qDhDZSZEiheQq5cuY9yeTs1fQH0Lbly5b6Ym0bb/GvIlSu3n1trbqat0vQnkCtX7lPctOLgBylqu5R40yNXrtyV3A+p+QEvFsMC8wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3awY6DMAxF0f7/T9Ntqwp6nx0WODerEUNLDpUsx/brhdfxsX6vfF6/vv/sv9fXly0ZMmQ8lnFcLn7P2TeTb1jwXBkyZGzAIJu4vocE4uvNdZ4rQ4YMGWfbJSkdSSJJQilDhgwZnMEPtPxKP9DLkCFjB0aarvGiGNlW7egrQ4aMfRidrdz99y39DRkyZDyKcUexvpYadpYMGTJmM9J0jZfMVgVuPvwhQ4aMqYxOub82TkHKc2RQ7M/vIEOGjHGMPzeFBX0ejkkRDZX8ZMiQMZqRNiD72101jhZkrzJkyBjBICddPgDBw2jtEBs0MmXIkDGIwY+yq3hpAY6EaRkyZExl1LabHk35G+Xp6df3yJAhYzSDp3e10Jy2JNOjtQwZMnZgtIpZpeMrB3OYDBkyZjN4A6BWMkuHwNIWggwZMvZh8PbhqqEx/ly+HxkyZExlrBqbSIN4bWjj9HeQIUPGaEZnIqN2ZE0/y1+QDBkydmDwEn86ipo2DzrNURkyZExl8LJ+p6DfOluT+2XIkLENIx2bIMMZPMVMG6ULorsMGTIexeAlLR5A+1sPSnUyZMgYyjjCxQ+9tTJcMQGVIUPGaEYa7PpF/E4Lc9m4mAwZMh7IIIGyNvTAQ3YacIOeqgwZMgYxOofVWsuzE8RlyJAhgw891BqQvA0QZ68yZMiQgbsNfGg1JZ1+VoYMGRsw+NhEWu7vbDdIKGXIkDGa0c+70vJc7TXFBTgZMmRMYLwBE0iTYc+8iq8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
