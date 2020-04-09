@@ -202,6 +202,7 @@
 <h1 id="next在路由中间件的应用"><a href="#next在路由中间件的应用" class="headerlink" title="next在路由中间件的应用"></a>next在路由中间件的应用</h1><p>它负责同一个路由的多个中间件的控制权的传递，并且它会接收一个参数”route”，如果调用next(“route”)，则会跳过当前路由的其它中间件，直接将控制权交给下一个路由。如果参数是其它字符串，则控制权会停止传递。</p>
 <h1 id="next在非路由中间件的应用"><a href="#next在非路由中间件的应用" class="headerlink" title="next在非路由中间件的应用"></a>next在非路由中间件的应用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use((req,res,next)=&gt;&#123;</span><br><span class="line">        next();</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&quot;/a&quot;,(req,res,next)=&gt;&#123;</span><br><span class="line">        res.send(&quot;asd&quot;);</span><br><span class="line">        next();</span><br><span class="line">&#125;);</span><br><span class="line">//</span><br><span class="line">在请求&quot;/a&quot;时，会先经过上面的中间件处理，如果next有参数，则会停止传递。下面的请求就不会执行了。注意：中间件的执行，跟位置顺序有关。如果中间件在下面，则请求将会执行。如果请求结束的话，最好不要调用next函数。</span><br></pre></td></tr></table></figure>
 
+<h1 id="app-use-app-get-和app-all-的区别"><a href="#app-use-app-get-和app-all-的区别" class="headerlink" title="app.use(),app.get()和app.all()的区别"></a>app.use(),app.get()和app.all()的区别</h1><p>app.use()是部分匹配，不需要全部匹配。<br>app.get()完全匹配请求和方式。<br>app.all()则是完全匹配请求，但是支持所以类型的请求</p>
 
         </div>
         
@@ -209,7 +210,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-09T06:03:12.284Z" itemprop="dateUpdated">2020-04-09 14:03:12</time>
+    最后更新时间：<time datetime="2020-04-09T06:53:46.581Z" itemprop="dateUpdated">2020-04-09 14:53:46</time>
 </span><br>
 
 
@@ -289,7 +290,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#experss中next-控制"><span class="post-toc-number">1.</span> <span class="post-toc-text">experss中next()控制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在路由中间件的应用"><span class="post-toc-number">2.</span> <span class="post-toc-text">next在路由中间件的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在非路由中间件的应用"><span class="post-toc-number">3.</span> <span class="post-toc-text">next在非路由中间件的应用</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#experss中next-控制"><span class="post-toc-number">1.</span> <span class="post-toc-text">experss中next()控制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在路由中间件的应用"><span class="post-toc-number">2.</span> <span class="post-toc-text">next在路由中间件的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在非路由中间件的应用"><span class="post-toc-number">3.</span> <span class="post-toc-text">next在非路由中间件的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#app-use-app-get-和app-all-的区别"><span class="post-toc-number">4.</span> <span class="post-toc-text">app.use(),app.get()和app.all()的区别</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
