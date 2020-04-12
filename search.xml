@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>express-res.json,res.end,res.send</title>
+      <link href="/2020/04/12/express-res-json-res-end-res-send/"/>
+      <url>/2020/04/12/express-res-json-res-end-res-send/</url>
+      
+        <content type="html"><![CDATA[<h1 id="express响应中常用的三种API"><a href="#express响应中常用的三种API" class="headerlink" title="express响应中常用的三种API"></a>express响应中常用的三种API</h1><p>res.send()<br>res.json()<br>res.end()</p><h2 id="res-send"><a href="#res-send" class="headerlink" title="res.send()"></a>res.send()</h2><p>发送http响应<br>该body参数可以是一个buffer对象，一个String对象或者一个Array。<br>三种不同参数express响应时不同行为</p><ol><li><p>当参数是buffer对象<br>该方法将Content-Type 响应头字段设置为“application / octet-stream”<br>如果想Content-Type设置为“text / html”，需使用下列代码进行设置。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.set(&apos;Content-Type&apos;, &apos;text/html&apos;);</span><br><span class="line">res.send(new Buffer(&apos;&lt;p&gt;some html&lt;/p&gt;&apos;));</span><br></pre></td></tr></table></figure></li><li><p>当参数是String<br>该方法设置header 中Content-Type为“text / html”：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.send(&apos;&lt;p&gt;some html&lt;/p&gt;&apos;);</span><br></pre></td></tr></table></figure></li><li><p>当参数是Array或Object<br>Express以JSON表示响应，该方法设置header 中Content-Type为“application/json”</p></li></ol><h2 id="res-json"><a href="#res-json" class="headerlink" title="res.json()"></a>res.json()</h2><p>发送JSON响应。<br>该方法res.send()与将对象或数组作为参数相同。 即res.json()就是 res.send()第三种情况。同样 ‘content-type’: ‘application/json’。<br>但是，您可以使用它将其他值转换为JSON，例如null和undefined。（尽管这些技术上无效的JSON)。<br>实际测试这种条件下的res.body 就是null。<br>直接发送string ，body直接就是string。</p><h2 id="res-end"><a href="#res-end" class="headerlink" title="res.end()"></a>res.end()</h2><p>结束响应过程。这个方法实际上来自Node核心，特别是http.ServerResponse的response.end()方法。<br>用于快速结束没有任何数据的响应。<br>如果您需要使用数据进行响应，请使用res.send()和res.json()等方法。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用于快速结束没有任何数据的响应，使用res.end()。<br>响应中要发送JSON响应，使用res.json()。<br>响应中要发送数据,使用res.send() ,但要注意header ‘content-type’参数。<br>如果使用res.end()返回数据非常影响性能。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> node </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> express </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>express-next函数</title>
       <link href="/2020/04/09/express-next%E5%87%BD%E6%95%B0/"/>
       <url>/2020/04/09/express-next%E5%87%BD%E6%95%B0/</url>

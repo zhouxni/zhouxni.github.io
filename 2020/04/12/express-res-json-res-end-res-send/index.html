@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>express-next函数 | 举头问天</title>
+    <title>express-res.json,res.end,res.send | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="express">
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>express-next函数</span>
+            <span>express-res.json,res.end,res.send</span>
             
         </div>
         
@@ -144,11 +144,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">express-next函数</h1>
+        <h1 class="title">express-res.json,res.end,res.send</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-04-09T05:44:41.000Z" itemprop="datePublished" class="page-time">
-  2020-04-09
+                <time datetime="2020-04-12T08:21:30.000Z" itemprop="datePublished" class="page-time">
+  2020-04-12
 </time>
 
 
@@ -177,12 +177,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-express-next函数"
+    <article id="post-express-res-json-res-end-res-send"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">express-next函数</h1>
+        <h1 class="post-card-title">express-res.json,res.end,res.send</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-04-09 13:44:41" datetime="2020-04-09T05:44:41.000Z"  itemprop="datePublished">2020-04-09</time>
+            <time class="post-time" title="2020-04-12 16:21:30" datetime="2020-04-12T08:21:30.000Z"  itemprop="datePublished">2020-04-12</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
@@ -198,11 +198,21 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="experss中next-控制"><a href="#experss中next-控制" class="headerlink" title="experss中next()控制"></a>experss中next()控制</h1><p>next函数主要负责将控制权交给下一个中间件，如果当前中间件没有终结请求，并且next没有被调用，那么请求将被挂起，后边定义的中间件将得不到被执行的机会。next()分为路由中间件和非路由中间件，两者是有区别的。</p>
-<h1 id="next在路由中间件的应用"><a href="#next在路由中间件的应用" class="headerlink" title="next在路由中间件的应用"></a>next在路由中间件的应用</h1><p>它负责同一个路由的多个中间件的控制权的传递，并且它会接收一个参数”route”，如果调用next(“route”)，则会跳过当前路由的其它中间件，直接将控制权交给下一个路由。如果参数是其它字符串，则控制权会停止传递。</p>
-<h1 id="next在非路由中间件的应用"><a href="#next在非路由中间件的应用" class="headerlink" title="next在非路由中间件的应用"></a>next在非路由中间件的应用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use((req,res,next)=&gt;&#123;</span><br><span class="line">        next();</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&quot;/a&quot;,(req,res,next)=&gt;&#123;</span><br><span class="line">        res.send(&quot;asd&quot;);</span><br><span class="line">        next();</span><br><span class="line">&#125;);</span><br><span class="line">//</span><br><span class="line">在请求&quot;/a&quot;时，会先经过上面的中间件处理，如果next有参数，则会停止传递。下面的请求就不会执行了。注意：中间件的执行，跟位置顺序有关。如果中间件在下面，则请求将会执行。如果请求结束的话，最好不要调用next函数。</span><br></pre></td></tr></table></figure>
-
-<h1 id="app-use-app-get-和app-all-的区别"><a href="#app-use-app-get-和app-all-的区别" class="headerlink" title="app.use(),app.get()和app.all()的区别"></a>app.use(),app.get()和app.all()的区别</h1><p>app.use()是部分匹配，不需要全部匹配。<br>app.get()完全匹配请求和方式。<br>app.all()则是完全匹配请求，但是支持所以类型的请求</p>
+            <h1 id="express响应中常用的三种API"><a href="#express响应中常用的三种API" class="headerlink" title="express响应中常用的三种API"></a>express响应中常用的三种API</h1><p>res.send()<br>res.json()<br>res.end()</p>
+<h2 id="res-send"><a href="#res-send" class="headerlink" title="res.send()"></a>res.send()</h2><p>发送http响应<br>该body参数可以是一个buffer对象，一个String对象或者一个Array。<br>三种不同参数express响应时不同行为</p>
+<ol>
+<li><p>当参数是buffer对象<br>该方法将Content-Type 响应头字段设置为“application / octet-stream”<br>如果想Content-Type设置为“text / html”，需使用下列代码进行设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.set(&apos;Content-Type&apos;, &apos;text/html&apos;);</span><br><span class="line">res.send(new Buffer(&apos;&lt;p&gt;some html&lt;/p&gt;&apos;));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当参数是String<br>该方法设置header 中Content-Type为“text / html”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.send(&apos;&lt;p&gt;some html&lt;/p&gt;&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当参数是Array或Object<br>Express以JSON表示响应，该方法设置header 中Content-Type为“application/json”</p>
+</li>
+</ol>
+<h2 id="res-json"><a href="#res-json" class="headerlink" title="res.json()"></a>res.json()</h2><p>发送JSON响应。<br>该方法res.send()与将对象或数组作为参数相同。 即res.json()就是 res.send()第三种情况。同样 ‘content-type’: ‘application/json’。<br>但是，您可以使用它将其他值转换为JSON，例如null和undefined。（尽管这些技术上无效的JSON)。<br>实际测试这种条件下的res.body 就是null。<br>直接发送string ，body直接就是string。</p>
+<h2 id="res-end"><a href="#res-end" class="headerlink" title="res.end()"></a>res.end()</h2><p>结束响应过程。这个方法实际上来自Node核心，特别是http.ServerResponse的response.end()方法。<br>用于快速结束没有任何数据的响应。<br>如果您需要使用数据进行响应，请使用res.send()和res.json()等方法。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用于快速结束没有任何数据的响应，使用res.end()。<br>响应中要发送JSON响应，使用res.json()。<br>响应中要发送数据,使用res.send() ,但要注意header ‘content-type’参数。<br>如果使用res.end()返回数据非常影响性能。</p>
 
         </div>
         
@@ -210,7 +220,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-09T06:53:46.581Z" itemprop="dateUpdated">2020-04-09 14:53:46</time>
+    最后更新时间：<time datetime="2020-04-12T10:02:09.545Z" itemprop="dateUpdated">2020-04-12 18:02:09</time>
 </span><br>
 
 
@@ -236,7 +246,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/09/express-next函数/&title=《express-next函数》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/12/express-res-json-res-end-res-send/&title=《express-res.json,res.end,res.send》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -248,7 +258,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/09/express-next函数/&title=《express-next函数》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/12/express-res-json-res-end-res-send/&title=《express-res.json,res.end,res.send》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -271,21 +281,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2020/04/12/express-res-json-res-end-res-send/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">express-res.json,res.end,res.send</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2020/04/04/node-mysql/" id="post-next" class="post-nav-link">
+      <a href="/2020/04/09/express-next函数/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">node-mysql</h4>
+        <h4 class="title">express-next函数</h4>
       </a>
     </div>
   
@@ -297,7 +300,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#experss中next-控制"><span class="post-toc-number">1.</span> <span class="post-toc-text">experss中next()控制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在路由中间件的应用"><span class="post-toc-number">2.</span> <span class="post-toc-text">next在路由中间件的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#next在非路由中间件的应用"><span class="post-toc-number">3.</span> <span class="post-toc-text">next在非路由中间件的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#app-use-app-get-和app-all-的区别"><span class="post-toc-number">4.</span> <span class="post-toc-text">app.use(),app.get()和app.all()的区别</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#express响应中常用的三种API"><span class="post-toc-number">1.</span> <span class="post-toc-text">express响应中常用的三种API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#res-send"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">res.send()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#res-json"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">res.json()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#res-end"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">res.end()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -353,7 +356,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/09/express-next函数/&title=《express-next函数》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/12/express-res-json-res-end-res-send/&title=《express-res.json,res.end,res.send》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -365,7 +368,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/09/express-next函数/&title=《express-next函数》 — 举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/12/express-res-json-res-end-res-send/&title=《express-res.json,res.end,res.send》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -377,7 +380,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQW7jMAwF0N7/0hlgto09n6RTTKmnlYEqjl4WLEXy6yter7/r+/P3PVc77/96tefhhYGB8WsZr9t1v6f6hvwM+ZsxMDDOYSRBNjliEkaTQ+dnw8DAwEhI94Bn34mBgYGRf2U1QPfej4GBgdG7gvZISVnth+7iGBgYv5AxaQx8+vmH+hsYGBj/MeNVXElYrJb+HzgVBgbGasak1DVvWCYX6WSkAwMDYzdjUhTLC3b33zJpOVz+38DAwFjEyIPaJGVMSmzVk0RhGgMDYxEjT+PuA9/8Wpv/cJcJIgYGxmpGL2nLU8OnBjv+EXAxMDAOYPTGGiaNhCSVjAI6BgbGUkb1Y5Pnp371N88YGBjHMPJULC+izZsKUVjHwMA4gNEr+idltfxnqjYv3wRcDAyMpYz5sOmzwbpa4MPAwDiBUS3o98Jf73I7usRiYGAsYkxGTquFtl54rSaOGBgYWxn50auDp70jJm9+swcDA2M1oxo081GwyTW4mphiYGBsZeRl/V6gnJTbCo0HDAyM4xm9w+VDFdV0882pMDAwVjOqW6uNhB6meX3FwMBYyngVVx52k3Qw+VQ0IoaBgbGaUQ12nyjoV8cpok4sBgbGOkZyrN51t5eG9tJTDAyMExjVxsBTjc9em/OydoiBgXE8ozoKNi/JFUI8BgYGRqtVUA3E1RYmBgbGaYz8ElsdF8tbBaMCHwYGxmpGtTHwuXGKXoqJgYGxmvEHwpPMUoxmjIUAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aS27jMBAFQN//0h4gqwHGkl9/6HiA0sqIJYalAGTnNR+P+Hr+XMk9f9959dTzn+v+26s71y48PDy81tTvh7ufSj7m1VP341x9jl4BHh4e3jFedejqCNXNY7Ll4OHh4X0PL1mIq+VvtbzGw8PD+x95+SvIC/f55oSHh4f3ed4kPqhGEnmp/dGsBQ8PD+9AF+l7Ph/s7+Hh4eENuupbAUSy3CcbUnmGeHh4eAd4k0AhDyyqraykQC80xvDw8PAO8KpHpk6HCL3IuFBw4+Hh4Q14k+hzEvKeCIUvi2k8PDy8VV7yK3ut/cmhgfwn+T8DeHh4eFu8XlDbK3YnYW6+nVzue3h4eHhLvMnimwSvveW+N+ab+/Hw8PCWeEnDvhpMbI0/L/Hx8PDwTvCqA+XTqh47mNzzpqTGw8PDO8zrLfF5SFE9uNALL17sfnh4eHhLvOoBqSQOyNtdhRA2jjMe+T6Dh4eH1+JVg9ETgOSFzv8MeHh4eFu83nKcF7XJplItxAtIPDw8vAO8vDztHaXKQ+HelnM/Gh4eHt7neVENPo4MmrV/sDnh4eHhneBVF/E8zK1Oq/qio2fx8PDwPsjbbXH1ivWFo1p4eHh4B3jzJTuPfXvTnTTk8PDw8E7wdoPXapsqubNQQF+V1Hh4eHirvHkDbOvwVnU++SvAw8PD2+XlG0M1Dqi2uCZbxZusBQ8PD2+VN2li3d+ZbCRbhxWiOePh4eEt8Z7FKw9n86MDvWZYsnng4eHhneD1lt1qLNtb7quMJgwPDw+vxasen0p4+eGtaqhRPtqFh4eHd4zX654lU+kFHL2NBA8PD++bedVFvArOX9ybb/Hw8PB+lTeJZfPtoVpwFw4N4OHh4a3y8jBi0qzafa1JVIGHh4d3gtdrgM0D3OqxgPy4w0J/Dw8PD+/1s38ApmaccabNWJsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
