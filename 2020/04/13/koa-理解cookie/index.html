@@ -215,14 +215,15 @@
 <li>HttpOnly: 告知浏览器不允许通过脚本document.cookie去更改这个值，同样这个值在document.cookie中也不可见。但在http请求张仍然会携带这个cookie。注意这个值虽然在脚本中不可获取，但仍然在浏览器安装目录中以文件形式存在。这项设置通常在服务器端设置。</li>
 <li>secure: 安全标志，指定后，只有在使用SSL链接时候才能发送到服务器，如果是http链接则不会传递该信息。就算设置了secure 属性也并不代表他人不能看到你机器本地保存的 cookie 信息，所以不要把重要信息放cookie就对了</li>
 </ol>
-
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>在koa中如何对cookie设置签名秘钥，koa借用了cookies模块，内部集成了设置cookie的插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const app = new Koa();</span><br><span class="line">app.keys = [&quot;sd&quot;]</span><br></pre></td></tr></table></figure>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-13T07:21:49.170Z" itemprop="dateUpdated">2020-04-13 15:21:49</time>
+    最后更新时间：<time datetime="2020-04-13T08:29:18.577Z" itemprop="dateUpdated">2020-04-13 16:29:18</time>
 </span><br>
 
 
@@ -302,7 +303,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">cookie</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器端的发送"><span class="post-toc-number">2.</span> <span class="post-toc-text">服务器端的发送</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">cookie</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器端的发送"><span class="post-toc-number">2.</span> <span class="post-toc-text">服务器端的发送</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注意"><span class="post-toc-number">3.</span> <span class="post-toc-text">注意</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
