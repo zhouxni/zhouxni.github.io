@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>koa-理解cookie</title>
+      <link href="/2020/04/13/koa-%E7%90%86%E8%A7%A3cookie/"/>
+      <url>/2020/04/13/koa-%E7%90%86%E8%A7%A3cookie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>由于HTTP协议是无状态的，而服务器端的业务必须是要有状态的。Cookie诞生的最初目的是为了存储web中的状态信息，以方便服务器端使用。比如判断用户是否是第一次访问网站。目前最新的规范是RFC 6265，它是一个由浏览器服务器共同协作实现的规范。<br>Cookie的处理分为：</p><ol><li>服务器向客户端发送cookie</li><li>浏览器将cookie保存</li><li>之后每次http请求浏览器都会讲cookie发送给服务器端</li></ol><h1 id="服务器端的发送"><a href="#服务器端的发送" class="headerlink" title="服务器端的发送"></a>服务器端的发送</h1><p>服务器端像客户端发送Cookie是通过HTTP响应报文实现的，在Set-Cookie中设置需要像客户端发送的cookie，cookie格式如下：<br>Set-Cookie: “name=value;domain=.domain.com;path=/;expires=Sat, 11 Jun 2016 11:29:42 GMT;HttpOnly;secure”。<br>其中name=value是必选项，其它都是可选项。Cookie的主要构成如下：</p><ol><li>name:一个唯一确定的cookie名称。通常来讲cookie的名称是不区分大小写的。</li><li>value:存储在cookie中的字符串值。最好为cookie的name和value进行url编码</li><li>domain:cookie对于哪个域是有效的。所有向该域发送的请求中都会包含这个cookie信息。这个值可以包含子域(如：yq.aliyun.com)，也可以不包含它(如：.aliyun.com，则对于aliyun.com的所有子域都有效).</li><li>path: 表示这个cookie影响到的路径，浏览器跟会根据这项配置，像指定域中匹配的路径发送cookie。</li><li>expires:失效时间，表示cookie何时应该被删除的时间戳(也就是，何时应该停止向服务器发送这个cookie)。如果不设置这个时间戳，浏览器会在页面关闭时即将删除所有cookie；不过也可以自己设置删除时间。这个值是GMT时间格式，如果客户端和服务器端时间不一致，使用expires就会存在偏差。</li><li>max-age: 与expires作用相同，用来告诉浏览器此cookie多久过期（单位是秒），而不是一个固定的时间点。正常情况下，max-age的优先级高于expires。</li><li>HttpOnly: 告知浏览器不允许通过脚本document.cookie去更改这个值，同样这个值在document.cookie中也不可见。但在http请求张仍然会携带这个cookie。注意这个值虽然在脚本中不可获取，但仍然在浏览器安装目录中以文件形式存在。这项设置通常在服务器端设置。</li><li>secure: 安全标志，指定后，只有在使用SSL链接时候才能发送到服务器，如果是http链接则不会传递该信息。就算设置了secure 属性也并不代表他人不能看到你机器本地保存的 cookie 信息，所以不要把重要信息放cookie就对了</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> node </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>express-res.json,res.end,res.send</title>
       <link href="/2020/04/12/express-res-json-res-end-res-send/"/>
       <url>/2020/04/12/express-res-json-res-end-res-send/</url>
