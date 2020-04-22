@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Archives: 2019/8 | 举头问天</title>
+    <title>koa-session | 举头问天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="node">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.3">
@@ -112,7 +112,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归纳
@@ -131,7 +131,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>koa-session</span>
             
         </div>
         
@@ -141,18 +141,21 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">koa-session</h1>
         <h5 class="subtitle">
             
+                <time datetime="2020-04-22T03:18:43.000Z" itemprop="datePublished" class="page-time">
+  2020-04-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>71</span> )篇，约( <span>72.4K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -172,50 +175,123 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">八月, 2019</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-koa-session"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">koa-session</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-22 11:18:43" datetime="2020-04-22T03:18:43.000Z"  itemprop="datePublished">2020-04-22</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-08-07 10:02:09" datetime="2019-08-07T02:02:09.000Z"  itemprop="datePublished">2019-08-07</time>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
 
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="koa设置session"><a href="#koa设置session" class="headerlink" title="koa设置session"></a>koa设置session</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">app.key = [&apos;some secret hurr&apos;];  /*cookie的签名*/</span><br><span class="line">  const CONFIG = &#123;</span><br><span class="line">    key:&apos;koa:sess&apos;,    /*默认*/</span><br><span class="line">    maxAge:60000   /*同cookie        【需要修改】*/</span><br><span class="line">    overwrite:true    /*同cookie*/</span><br><span class="line">    httpOnly:true    /*同cookie*/</span><br><span class="line">    signed:true    /*默认签名*/</span><br><span class="line">    rolling:false    /*在每次请求时强行设置cookie，这将重置cookie过期时间（默认：false）【需要修改】*/</span><br><span class="line">    renew:true    /*renew session when session is nearly expired  【需要修改】*/</span><br><span class="line">  &#125;</span><br><span class="line">app.use(session(CONFIG,app));</span><br><span class="line">//设置和获取session</span><br><span class="line">ctx.session.name = &apos;slj&apos;;</span><br><span class="line">console.log(ctx.session.name)    //slj</span><br></pre></td></tr></table></figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-22T03:24:04.461Z" itemprop="dateUpdated">2020-04-22 11:24:04</time>
+</span><br>
+
+
+        
+    </div>
+    <!-- <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/xiaopang.jpg" alt="周欣">
+            周欣
+        </a>
+    </footer> -->
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/22/koa-session/&title=《koa-session》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/22/koa-session/&title=《koa-session》 — 举头问天&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/08/07/gzip/">gzip</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
+        
+            
+
+
         
     </div>
     
-<nav id="page-nav">
-    <div class="inner">
-    <a class="extend prev" rel="prev" href="/archives/2019/08/">上一页</a><a class="page-number" href="/archives/2019/08/">1</a><span class="page-number current">2</span>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/04/13/koa-理解cookie/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">koa-理解cookie</h4>
+      </a>
     </div>
+  
 </nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#koa设置session"><span class="post-toc-number">1.</span> <span class="post-toc-text">koa设置session</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
 
 </div>
 
@@ -265,7 +341,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/archives/2019/08/page/2/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/22/koa-session/&title=《koa-session》 — 举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -277,7 +353,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/archives/2019/08/page/2/&title=举头问天&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/22/koa-session/&title=《koa-session》 — 举头问天&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -289,7 +365,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aS27DMAwFwN7/0u62QGDnkYxTWBqtgtaJNF4Q/OjnJ17Hy8qf//uX12euv/XhhYGB8VjGcbmSZ+aw3r4YGBi7Mc42Tp4523gSFfOzYWBgYFwHx0kwvQ7NGBgYGHPGdQCtgv8t4GJgYDyK0UvXkiZa/sq+VItjYGA8kJF33b//+Zb5BgYGxqMYR3FNxgm9cjc6FQYGxtKMPMDlA4BeuZsnl6e7Y2BgLMrIrzv02nNJwZns9eYMGBgYSzMKUfnyJ5IkMv9u3vJ7g8HAwFiI0bskkRx30sqvBmsMDIwdGPMic1LoVhPQ5iQWAwPjsYzkKPMyNQ+7+SABAwNjB0a1EfapdLBX6J5+xsDA2IZRbaL1CtpqERslnRgYGEsz8pFkEnar44F8DFCoxTEwMBZl5GVtngj2ytrR1QoMDIzNGPnFrzyJzBt5+fPReAADA+PhjGrx2StoJ8Vt9F8MDIylGb0N5pcw8nBcbgJiYGBswKiOIasXI+aNuTeBGAMDY1FGfvTqxYjoqkTxMsfpXhgYGBswqhtXBwCTplvExsDA2IBRHUBOmmvNCxN5bouBgbEQ4yiuJAWcvJRb6m8MDIyHM6phbj4SuLvoxcDAWJWRBNkkyfvUm2v+JgYGxgaM3gCgOua8D4mBgYExD6a94xZeHAYGBkar+GxeQm2NQjEwMHZgJEVpnghWg3K1MYeBgbEbY5Ko5Rvkl8OS1LA51MTAwHge4xcd8+TzsecVwQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27DMAwFwN7/0inQVYDA8XuUWzTyaBUk/miyIEiKX1/xevys58/P3yRXvt71+oT3T75gYWBgfCzj8XYdXXO0lffXr7/38JkYGBg3YMyCbMs7evLRW5K9YWBgYLxP41bC68rfgYGBgZEw8kK0/QYDAwNjpYhtX5k8Z9aww8DAuBtjdjDwN59//XwDAwPj3zMe5cpTwPUGXLErDAyMrRkrzf1ZoFyfCikyXAwMjC0Ylw06lIcH7QHDyRsxMDC2ZuRtsiSyJcFxNsARlbsYGBibMmbF6lWt/HVScREGBsaHM/LEblb6zo5I81MADAyMvRn5gFeb5OVF7ywcY2Bg3JPRNs7yreTbzRPN6CgCAwNjC0Z7JJC30vLwmvNOMlwMDIwbMNomWj4i1o5rtAkoBgbG3ow2UM768HmonZXBGBgYezOKurYcy5iNrs6oGBgYezOuatDPJh/y4jYJvhgYGLsyIuVC0jZL/tqdYGBg7M2YXZo8qA3T+R4wMDDuxsjHuaK+3cIIRXsXBgbGnRnJzbNBsTzha3eCgYGxNyMPkSsNtfzXZJ38NRgYGNsxHuVqu/Gzsdc6ccTAwNiasR6tZ6239vBgeDCAgYGxESMJsm0InpXK7fDHyakpBgbGdoxZsdq2yWbNuCglxcDAwBgNuSattzYQH8ZYDAwMjIuSwiQdzAtpDAyMuzHaInZlK7Nh1pNCGgMDY2tGezBw1ebaMnUJgIGB8amMb7FkZavbub0BAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
