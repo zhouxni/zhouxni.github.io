@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>图片存储阿里云OSS</title>
+      <link href="/2020/04/22/%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS/"/>
+      <url>/2020/04/22/%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS/</url>
+      
+        <content type="html"><![CDATA[<h1 id="图片存储和加速"><a href="#图片存储和加速" class="headerlink" title="图片存储和加速"></a>图片存储和加速</h1><p>一般项目中图片最好存储在云服务器中，既减少服务器的压力，同时也可加速不同地区的访问速度。最常用的就是阿里云OSS。</p><h1 id="前端如何使用OSS"><a href="#前端如何使用OSS" class="headerlink" title="前端如何使用OSS"></a>前端如何使用OSS</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm install ali-oss -S</span><br><span class="line">const OSS = require(&quot;ali-oss&quot;);</span><br><span class="line">const client = new OSS(&#123;</span><br><span class="line">  region: &apos;&lt;oss region&gt;&apos;,</span><br><span class="line">  accessKeyId: &apos;&lt;Your accessKeyId&gt;&apos;,</span><br><span class="line">  accessKeySecret: &apos;&lt;Your accessKeySecret&gt;&apos;,</span><br><span class="line">  bucket: &apos;&lt;Your bucket name&gt;&apos;</span><br><span class="line">  secure:true//若网站是https，则图片链接也为https.</span><br><span class="line">&#125;);</span><br><span class="line">client.put(filename,file).then((res)=&gt;&#123;</span><br><span class="line">    res.url//即为图片在阿里云的url.</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>koa-session</title>
       <link href="/2020/04/22/koa-session/"/>
       <url>/2020/04/22/koa-session/</url>
