@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>js-canvas压缩图片</title>
+      <link href="/2020/04/30/js-canvas%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87/"/>
+      <url>/2020/04/30/js-canvas%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近做的项目涉及到手机拍照上传图片，因为手机拍照的图片通常都比较大，所以上传的时候就会很慢。为此，需要对图片进行压缩处理来优化上传功能。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>图片存储阿里云OSS</title>
       <link href="/2020/04/22/%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS/"/>
       <url>/2020/04/22/%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS/</url>
