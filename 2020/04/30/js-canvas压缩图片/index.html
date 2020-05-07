@@ -206,14 +206,14 @@
 <h2 id="blob或file转为base64"><a href="#blob或file转为base64" class="headerlink" title="blob或file转为base64"></a>blob或file转为base64</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function blobToDataURL(blob) &#123;</span><br><span class="line">        var a = new FileReader();</span><br><span class="line">         a.readAsDataURL(blob);//读取文件保存在result中</span><br><span class="line">        a.onload = function (e) &#123;</span><br><span class="line">        var getRes = e.target.result;//读取的结果在result中</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中getRes保存的就是base64格式的内容。</p>
-
+<h2 id="blob对象转为file对象"><a href="#blob对象转为file对象" class="headerlink" title="blob对象转为file对象"></a>blob对象转为file对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new File([blob], filename, &#123;type: contentType, lastModified: Date.now()&#125;);</span><br><span class="line">new File([byteArrays], filename, &#123;type: contentType, lastModified: Date.now()&#125;);</span><br></pre></td></tr></table></figure>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-07T03:48:10.088Z" itemprop="dateUpdated">2020-05-07 11:48:10</time>
+    最后更新时间：<time datetime="2020-05-07T04:20:47.719Z" itemprop="dateUpdated">2020-05-07 12:20:47</time>
 </span><br>
 
 
@@ -293,7 +293,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#base64-blob-url-图片格式转换"><span class="post-toc-number">2.</span> <span class="post-toc-text">base64,blob(url)图片格式转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#file转url"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">file转url</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#base64转为blob对象"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">base64转为blob对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#blob或file转为base64"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">blob或file转为base64</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#base64-blob-url-图片格式转换"><span class="post-toc-number">2.</span> <span class="post-toc-text">base64,blob(url)图片格式转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#file转url"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">file转url</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#base64转为blob对象"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">base64转为blob对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#blob或file转为base64"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">blob或file转为base64</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#blob对象转为file对象"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">blob对象转为file对象</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
