@@ -23,14 +23,19 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("activate", (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName); // 删除旧缓存
-          }
-        })
-      );
-    })
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (cacheWhitelist.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName); // 删除旧缓存
+            }
+          })
+        );
+      })
+      .then(() => {
+        return self.clients.claim(); // 立即控制所有页面
+      })
   );
 });
