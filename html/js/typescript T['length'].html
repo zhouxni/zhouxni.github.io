@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>在 TypeScript 中，<code>T['length']</code> 是一种索引类型查询，用于获取数组或元组类型 <code>T</code> 的长度属性。这对于在编译时获取数组或元组的长度非常有用，尤其是在类型编程中。</p>\n<h3>解释</h3>\n<ul>\n<li><strong><code>T['length']</code></strong>  :\n<ul>\n<li>假设 <code>T</code> 是一个数组或元组类型，例如 <code>string[]</code> 或 <code>[string, number, boolean]</code>。</li>\n<li><code>T['length']</code> 将返回该数组或元组的长度，作为一个字面量类型。</li>\n<li>对于元组 <code>[string, number, boolean]</code>，<code>T['length']</code> 是 <code>3</code>。</li>\n<li>对于数组类型 <code>string[]</code>，虽然 <code>length</code> 属性在运行时存在，但在类型系统中，<code>T['length']</code> 不能直接用于获取数组的长度（因为数组类型没有固定的长度），它主要用于元组类型。</li>\n</ul>\n</li>\n</ul>\n<h3>示例</h3>\n<pre><code class=\"language-typescript\"><span class=\"hljs-comment\">// 示例 1: 元组类型</span>\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">MyTuple</span> = [<span class=\"hljs-built_in\">string</span>, <span class=\"hljs-built_in\">number</span>, <span class=\"hljs-built_in\">boolean</span>];\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">TupleLength</span> = <span class=\"hljs-title class_\">MyTuple</span>[<span class=\"hljs-string\">&#x27;length&#x27;</span>]; <span class=\"hljs-comment\">// TupleLength 是 3</span>\n\n<span class=\"hljs-comment\">// 示例 2: 在类型别名中使用</span>\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">AnotherTuple</span> = [<span class=\"hljs-string\">&#x27;a&#x27;</span>, <span class=\"hljs-string\">&#x27;b&#x27;</span>, <span class=\"hljs-string\">&#x27;c&#x27;</span>, <span class=\"hljs-string\">&#x27;d&#x27;</span>];\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">AnotherTupleLength</span> = <span class=\"hljs-title class_\">AnotherTuple</span>[<span class=\"hljs-string\">&#x27;length&#x27;</span>]; <span class=\"hljs-comment\">// AnotherTupleLength 是 4</span>\n\n<span class=\"hljs-comment\">// 示例 3: 验证元组长度</span>\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">CheckLength</span>&lt;T <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-keyword\">readonly</span> <span class=\"hljs-built_in\">any</span>[]&gt; = T[<span class=\"hljs-string\">&#x27;length&#x27;</span>];\n\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">TestTuple</span> = [<span class=\"hljs-string\">&#x27;x&#x27;</span>, <span class=\"hljs-string\">&#x27;y&#x27;</span>, <span class=\"hljs-string\">&#x27;z&#x27;</span>];\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">TestTupleLength</span> = <span class=\"hljs-title class_\">CheckLength</span>&lt;<span class=\"hljs-title class_\">TestTuple</span>&gt;; <span class=\"hljs-comment\">// TestTupleLength 是 3</span>\n\n<span class=\"hljs-comment\">// 示例 4: 使用条件类型进行验证（可选）</span>\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">IsLengthThree</span>&lt;T <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-keyword\">readonly</span> <span class=\"hljs-built_in\">any</span>[]&gt; = T[<span class=\"hljs-string\">&#x27;length&#x27;</span>] <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-number\">3</span> ? <span class=\"hljs-literal\">true</span> : <span class=\"hljs-literal\">false</span>;\n\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">Tuple1</span> = [<span class=\"hljs-string\">&#x27;a&#x27;</span>, <span class=\"hljs-string\">&#x27;b&#x27;</span>, <span class=\"hljs-string\">&#x27;c&#x27;</span>];\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">Tuple2</span> = [<span class=\"hljs-string\">&#x27;a&#x27;</span>, <span class=\"hljs-string\">&#x27;b&#x27;</span>];\n\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">Tuple1IsLengthThree</span> = <span class=\"hljs-title class_\">IsLengthThree</span>&lt;<span class=\"hljs-title class_\">Tuple1</span>&gt;; <span class=\"hljs-comment\">// true</span>\n<span class=\"hljs-keyword\">type</span> <span class=\"hljs-title class_\">Tuple2IsLengthThree</span> = <span class=\"hljs-title class_\">IsLengthThree</span>&lt;<span class=\"hljs-title class_\">Tuple2</span>&gt;; <span class=\"hljs-comment\">// false</span>\n</code></pre>\n<h3>使用场景</h3>\n<ol>\n<li><strong>元组长度计算</strong>  ：\n<ul>\n<li>当你需要在编译时获取元组的长度时，<code>T['length']</code> 非常有用。</li>\n</ul>\n</li>\n<li><strong>类型约束和验证</strong>  ：\n<ul>\n<li>在编写需要验证元组长度的类型安全代码时，可以使用 <code>T['length']</code> 来确保元组满足特定的长度要求。</li>\n</ul>\n</li>\n<li><strong>条件类型</strong>  ：\n<ul>\n<li>结合条件类型，你可以根据元组的长度来执行不同的类型逻辑。</li>\n</ul>\n</li>\n</ol>\n<h3>注意事项</h3>\n<ul>\n<li><strong>只读元组</strong>  ：\n<ul>\n<li><code>T['length']</code> 主要用于元组类型，因为元组在 TypeScript 中有固定的长度。</li>\n<li>使用 <code>readonly any[]</code> 作为泛型约束可以确保 <code>T</code> 是一个元组或只读数组。</li>\n</ul>\n</li>\n<li><strong>非元组数组</strong>  ：\n<ul>\n<li>对于非元组的数组类型（如 <code>string[]</code>），<code>T['length']</code> 在类型系统中不是一个可用的类型属性，因为数组类型没有固定的长度。</li>\n</ul>\n</li>\n<li><strong>字面量类型</strong>  ：\n<ul>\n<li><code>T['length']</code> 返回的是一个字面量类型，表示元组的实际长度。</li>\n</ul>\n</li>\n</ul>\n<p>通过 <code>T['length']</code>，你可以在编译时获取元组的长度，并利用这个信息进行类型级别的逻辑操作和验证。</p>\n</div>";
+          </script></body></html>

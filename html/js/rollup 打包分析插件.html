@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>是的，Rollup 也有类似的插件可以用来分析打包后的文件大小和依赖关系，类似于 Webpack 的 <code>webpack-bundle-analyzer</code>。以下是几个常用的 Rollup 插件：</p>\n<h3>1. <strong>rollup-plugin-visualizer</strong></h3>\n<ul>\n<li><strong>功能</strong>  ：生成可视化的打包分析报告，支持多种格式（HTML、JSON、Treemap 等）。</li>\n<li><strong>安装</strong>  ：<pre><code class=\"language-sh\">npm install --save-dev rollup-plugin-visualizer\n</code></pre>\n</li>\n<li><strong>配置</strong>  （在 <code>rollup.config.js</code> 中）：<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">import</span> { visualizer } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">&#x27;rollup-plugin-visualizer&#x27;</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> {\n  <span class=\"hljs-attr\">plugins</span>: [\n    <span class=\"hljs-title function_\">visualizer</span>({\n      <span class=\"hljs-attr\">open</span>: <span class=\"hljs-literal\">true</span>, <span class=\"hljs-comment\">// 打包完成后自动打开报告</span>\n      <span class=\"hljs-attr\">filename</span>: <span class=\"hljs-string\">&#x27;bundle-analysis.html&#x27;</span>, <span class=\"hljs-comment\">// 输出文件名</span>\n      <span class=\"hljs-attr\">template</span>: <span class=\"hljs-string\">&#x27;treemap&#x27;</span>, <span class=\"hljs-comment\">// 可选 sunburst|treemap|network</span>\n      <span class=\"hljs-attr\">gzipSize</span>: <span class=\"hljs-literal\">true</span>, <span class=\"hljs-comment\">// 显示 gzip 压缩后的尺寸</span>\n      <span class=\"hljs-attr\">brotliSize</span>: <span class=\"hljs-literal\">true</span>, <span class=\"hljs-comment\">// 显示 brotli 压缩后的尺寸</span>\n    }),\n  ],\n};\n</code></pre>\n</li>\n<li><strong>输出</strong>  ：生成一个交互式的 HTML 文件，展示模块大小和依赖关系。</li>\n</ul>\n<hr>\n<h3>2. <strong>rollup-plugin-analyzer</strong></h3>\n<ul>\n<li><strong>功能</strong>  ：在终端输出打包结果的统计信息（如模块大小、占比等）。</li>\n<li><strong>安装</strong>  ：<pre><code class=\"language-sh\">npm install --save-dev rollup-plugin-analyzer\n</code></pre>\n</li>\n<li><strong>配置</strong>  ：<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">import</span> analyzer <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">&#x27;rollup-plugin-analyzer&#x27;</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> {\n  <span class=\"hljs-attr\">plugins</span>: [\n    <span class=\"hljs-title function_\">analyzer</span>({\n      <span class=\"hljs-attr\">summaryOnly</span>: <span class=\"hljs-literal\">true</span>, <span class=\"hljs-comment\">// 仅显示摘要信息</span>\n      <span class=\"hljs-attr\">limit</span>: <span class=\"hljs-number\">20</span>, <span class=\"hljs-comment\">// 显示最大的前 20 个模块</span>\n    }),\n  ],\n};\n</code></pre>\n</li>\n<li><strong>输出示例</strong>  ：<pre><code>Bundle size: 1.44 KB\nLargest files:\nsrc/index.js: 0.96 KB (66.6%)\nsrc/utils.js: 0.48 KB (33.3%)\n</code></pre>\n</li>\n</ul>\n<hr>\n<h3>3. <strong>rollup-plugin-size-snapshot</strong></h3>\n<ul>\n<li><strong>功能</strong>  ：生成文件大小的快照（适合跟踪打包体积变化）。</li>\n<li><strong>安装</strong>  ：<pre><code class=\"language-sh\">npm install --save-dev rollup-plugin-size-snapshot\n</code></pre>\n</li>\n<li><strong>配置</strong>  ：<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">import</span> sizeSnapshot <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">&#x27;rollup-plugin-size-snapshot&#x27;</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> {\n  <span class=\"hljs-attr\">plugins</span>: [<span class=\"hljs-title function_\">sizeSnapshot</span>()],\n};\n</code></pre>\n</li>\n<li><strong>输出</strong>  ：生成一个 <code>size-snapshot.json</code> 文件记录模块大小。</li>\n</ul>\n<hr>\n<h3>对比总结</h3>\n<table>\n<thead>\n<tr>\n<th>插件</th>\n<th>可视化报告</th>\n<th>终端输出</th>\n<th>跟踪体积变化</th>\n<th>压缩尺寸分析</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>rollup-plugin-visualizer</code></td>\n<td>✅ HTML</td>\n<td>❌</td>\n<td>❌</td>\n<td>✅ (gzip/brotli)</td>\n</tr>\n<tr>\n<td><code>rollup-plugin-analyzer</code></td>\n<td>❌</td>\n<td>✅</td>\n<td>❌</td>\n<td>❌</td>\n</tr>\n<tr>\n<td><code>rollup-plugin-size-snapshot</code></td>\n<td>❌</td>\n<td>✅ (JSON)</td>\n<td>✅</td>\n<td>❌</td>\n</tr>\n</tbody>\n</table>\n<h3>推荐</h3>\n<ul>\n<li>如果需要 <strong>交互式可视化</strong>  ，选择 <code>rollup-plugin-visualizer</code>。</li>\n<li>如果需要 <strong>快速终端统计</strong>  ，选择 <code>rollup-plugin-analyzer</code>。</li>\n<li>如果需要 <strong>长期跟踪体积变化</strong>  ，选择 <code>rollup-plugin-size-snapshot</code>。</li>\n</ul>\n<p>希望这些插件能帮你优化 Rollup 打包结果！</p>\n</div>";
+          </script></body></html>

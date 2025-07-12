@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>在 TypeScript 中，协变（Covariance）、逆变（Contravariance）、双变（Bivariance）和抗变（Invariance）是与类型相关的概念，涉及到参数类型的子类型关系。以下是这些概念的详细解释：</p>\n<h3>协变（Covariance）</h3>\n<ul>\n<li><strong>定义</strong>  ：协变意味着子类型可以赋值给父类型。</li>\n<li><strong>应用场景</strong>  ：在 TypeScript 中，数组类型是协变的。这意味着可以将子类型的数组赋值给父类型的数组。例如：<pre><code class=\"language-typescript\"><span class=\"hljs-keyword\">let</span> <span class=\"hljs-attr\">subtypes</span>: <span class=\"hljs-built_in\">string</span>[] = [<span class=\"hljs-string\">&quot;hello&quot;</span>, <span class=\"hljs-string\">&quot;world&quot;</span>];\n<span class=\"hljs-keyword\">let</span> <span class=\"hljs-attr\">supertype</span>: <span class=\"hljs-title class_\">Object</span>[] = subtypes; <span class=\"hljs-comment\">// 数组是协变的，这是合法的</span>\n</code></pre>\n</li>\n<li><strong>特性</strong>  ：协变通常用于返回值类型，即函数或方法的返回值可以是其子类型。</li>\n</ul>\n<h3>逆变（Contravariance）</h3>\n<ul>\n<li><strong>定义</strong>  ：逆变意味着超类型可以赋值给子类型。</li>\n<li><strong>应用场景</strong>  ：在 TypeScript 中，函数参数类型是逆变的。这意味着可以将超类型的函数赋值给子类型的函数。例如：<pre><code class=\"language-typescript\"><span class=\"hljs-keyword\">let</span> <span class=\"hljs-attr\">logAny</span>: <span class=\"hljs-title class_\">Logger</span>&lt;<span class=\"hljs-built_in\">any</span>&gt; = logNumber; <span class=\"hljs-comment\">// 函数参数是逆变的，这是合法的</span>\n</code></pre>\n</li>\n<li><strong>特性</strong>  ：逆变通常用于函数参数类型，允许父类型的函数参数赋值给子类型的函数参数。</li>\n</ul>\n<h3>双变（Bivariance）</h3>\n<ul>\n<li><strong>定义</strong>  ：双变允许参数类型既是协变又是逆变的。</li>\n<li><strong>应用场景</strong>  ：在 TypeScript 中，普通对象类型是双变的。这意味着可以将子类型的对象赋值给父类型的对象，同时也可以将超类型的对象赋值给子类型的对象。</li>\n<li><strong>特性</strong>  ：双变提供了更大的灵活性，但也可能导致类型不安全。<pre><code>interface Animal {\n  name: string;\n}\n\ninterface Dog extends Animal {\n  bark(): void;\n}\n\nlet animal: Animal = { name: &quot;Buddy&quot; };\nlet dog: Dog = { name: &quot;Rex&quot;, bark: () =&gt; console.log(&quot;Woof!&quot;) };\n\n// 双变允许以下赋值\nanimal = dog; // 子类型赋值给父类型（协变）\ndog = animal as Dog; // 父类型赋值给子类型（逆变，需要类型断言）\n</code></pre>\n</li>\n</ul>\n<h3>抗变（Invariance）</h3>\n<ul>\n<li><strong>定义</strong>  ：抗变表示不允许类型之间的任何赋值关系。</li>\n<li><strong>应用场景</strong>  ：在 TypeScript 中，一般情况下，基本类型和类类型是抗变的。</li>\n<li><strong>特性</strong>  ：抗变意味着类型 T 和 U 之间不存在任何赋值关系，即 T 既不是 U 的子类型，也不是 U 的超类型。</li>\n</ul>\n<h3>总结</h3>\n<ul>\n<li><strong>协变</strong>  ：子类型可以赋值给父类型，常用于返回值类型。</li>\n<li><strong>逆变</strong>  ：超类型可以赋值给子类型，常用于函数参数类型。</li>\n<li><strong>双变</strong>  ：参数类型既是协变又是逆变的，提供更大的灵活性。</li>\n<li><strong>抗变</strong>  ：不允许类型之间的任何赋值关系，确保类型安全。</li>\n</ul>\n<p>理解这些概念有助于更好地利用 TypeScript 的类型系统，编写出既安全又灵活的代码。</p>\n</div>";
+          </script></body></html>

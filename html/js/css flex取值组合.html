@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p><code>flex</code> 是一个 CSS 缩写属性，它是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 这三个属性的简写，能让你更便捷地控制弹性项目在 Flexbox 布局中的行为。下面为你介绍 <code>flex</code> 属性常见的取值组合及其含义：</p>\n<h3>单值情况</h3>\n<ul>\n<li><strong><code>flex: initial</code></strong>\n<ul>\n<li>等同于 <code>flex: 0 1 auto</code>。</li>\n</ul>\n</li>\n<li><strong><code>flex: auto</code></strong>\n<ul>\n<li>等同于 <code>flex: 1 1 auto</code>。</li>\n</ul>\n</li>\n<li><strong><code>flex: none</code></strong>\n<ul>\n<li>等同于 <code>flex: 0 0 auto</code>。</li>\n</ul>\n</li>\n<li><strong><code>flex: 数字</code></strong>\n<ul>\n<li>等同于 <code>flex: 数字 1 0</code>。例如 <code>flex: 1</code> 就等同于 <code>flex: 1 1 0</code>，此时弹性项目会按比例扩展和收缩，初始大小为 <code>0</code>。若多个项目都设置了相同的正数，它们会平均分配容器的可用空间；若数值不同，则按比例分配。</li>\n</ul>\n</li>\n<li><strong><code>flex: 百分比</code></strong>\n<ul>\n<li>等同于 <code>flex:1 1 百分比</code>。</li>\n</ul>\n</li>\n</ul>\n<h3>双值情况</h3>\n<ul>\n<li><strong><code>flex: &lt;flex-grow&gt; &lt;flex-basis&gt;</code></strong>\n<ul>\n<li>此时 <code>flex-shrink</code> 的值默认为 <code>1</code>。比如 <code>flex: 2 300px</code> 表示弹性项目的扩展因子为 <code>2</code>，初始大小是 <code>300px</code>，并且在空间不足时会收缩。</li>\n</ul>\n</li>\n<li><strong><code>flex: &lt;flex-grow&gt; &lt;flex-shrink&gt;</code></strong>\n<ul>\n<li>这种情况下 <code>flex-basis</code> 的值默认为 <code>0</code>。例如 <code>flex: 3 0</code> 表示弹性项目的扩展因子为 <code>3</code>，不会收缩，初始大小为 <code>0</code>。</li>\n</ul>\n</li>\n</ul>\n</div>";
+          </script></body></html>

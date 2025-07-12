@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>在 Node.js 里，<code>path.resolve</code> 和 <code>path.join</code> 均为 <code>path</code> 模块提供的实用方法，二者都和路径处理相关，不过它们的功能和使用场景存在差异。下面为你详细介绍：</p>\n<h3>1. <code>path.join</code></h3>\n<p><code>path.join</code> 方法用于把多个路径片段拼接成一个路径。它会对路径片段间的分隔符进行处理，确保拼接后的路径符合操作系统的规范。</p>\n<h4>示例代码</h4>\n<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">const</span> path = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">&#x27;path&#x27;</span>);\n\n<span class=\"hljs-keyword\">const</span> joinedPath = path.<span class=\"hljs-title function_\">join</span>(<span class=\"hljs-string\">&#x27;foo&#x27;</span>, <span class=\"hljs-string\">&#x27;bar&#x27;</span>, <span class=\"hljs-string\">&#x27;baz&#x27;</span>);\n<span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(joinedPath); \n</code></pre>\n<h4>代码解释</h4>\n<ul>\n<li>此方法单纯地将传入的路径片段拼接起来，并且会自动处理不同操作系统的路径分隔符（Windows 是 <code>\\</code>，其他系统是 <code>/</code>）。</li>\n<li>拼接过程中，若有 <code>.</code>（当前目录）或者 <code>..</code>（上级目录），也会正确处理。</li>\n</ul>\n<h3>2. <code>path.resolve</code></h3>\n<p><code>path.resolve</code> 方法会把一系列路径或路径片段解析为一个绝对路径。它从右到左处理路径片段，直至构建出一个绝对路径。若没有传入绝对路径片段，它会以当前工作目录作为基准。</p>\n<h4>示例代码</h4>\n<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">const</span> path = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">&#x27;path&#x27;</span>);\n\n<span class=\"hljs-keyword\">const</span> resolvedPath = path.<span class=\"hljs-title function_\">resolve</span>(<span class=\"hljs-string\">&#x27;foo&#x27;</span>, <span class=\"hljs-string\">&#x27;bar&#x27;</span>, <span class=\"hljs-string\">&#x27;baz&#x27;</span>);\n<span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(resolvedPath); \n</code></pre>\n<h4>代码解释</h4>\n<ul>\n<li>该方法从右向左处理路径片段，当遇到绝对路径时，就会停止处理并返回结果。</li>\n<li>若所有传入的路径片段都是相对路径，它会结合当前工作目录生成一个绝对路径。</li>\n</ul>\n<h3>3. 二者区别总结</h3>\n<ul>\n<li><strong>拼接规则</strong>  ：\n<ul>\n<li><code>path.join</code> 仅对路径片段进行拼接，不会生成绝对路径。</li>\n<li><code>path.resolve</code> 会生成绝对路径，它会依据当前工作目录或者传入的绝对路径片段来解析。</li>\n</ul>\n</li>\n<li><strong>处理 <code>.</code> 和 <code>..</code></strong>  ：\n<ul>\n<li><code>path.join</code> 会把 <code>.</code> 和 <code>..</code> 当作普通路径片段处理，然后拼接起来。</li>\n<li><code>path.resolve</code> 会解析 <code>.</code> 和 <code>..</code>，并计算出实际的路径。</li>\n</ul>\n</li>\n<li><strong>使用场景</strong>  ：\n<ul>\n<li>当你需要拼接相对路径片段时，用 <code>path.join</code> 更合适。</li>\n<li>当你需要得到一个绝对路径时，应使用 <code>path.resolve</code>。</li>\n</ul>\n</li>\n</ul>\n<h3>4. 示例对比</h3>\n<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">const</span> path = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">&#x27;path&#x27;</span>);\n\n<span class=\"hljs-comment\">// 使用 path.join</span>\n<span class=\"hljs-keyword\">const</span> joined = path.<span class=\"hljs-title function_\">join</span>(<span class=\"hljs-string\">&#x27;/foo&#x27;</span>, <span class=\"hljs-string\">&#x27;bar&#x27;</span>, <span class=\"hljs-string\">&#x27;../baz&#x27;</span>);\n<span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(<span class=\"hljs-string\">&#x27;Joined path:&#x27;</span>, joined); \n\n<span class=\"hljs-comment\">// 使用 path.resolve</span>\n<span class=\"hljs-keyword\">const</span> resolved = path.<span class=\"hljs-title function_\">resolve</span>(<span class=\"hljs-string\">&#x27;/foo&#x27;</span>, <span class=\"hljs-string\">&#x27;bar&#x27;</span>, <span class=\"hljs-string\">&#x27;../baz&#x27;</span>);\n<span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(<span class=\"hljs-string\">&#x27;Resolved path:&#x27;</span>, resolved); \n</code></pre>\n<p>在这个示例中，<code>path.join</code> 只是简单拼接路径，而 <code>path.resolve</code> 会生成一个绝对路径。</p>\n</div>";
+          </script></body></html>

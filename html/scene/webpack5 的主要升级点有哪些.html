@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>Webpack 5 的主要升级点包括以下几个方面：</p>\n<ol>\n<li><strong>持久缓存（Persistent Caching）</strong>  ：\n<ul>\n<li>Webpack 5 引入了更好的持久缓存机制，通过利用更稳定的 <code>HashedModuleIdsPlugin</code> 和 <code>NamedChunksPlugin</code>，改善了构建性能。</li>\n<li>持久缓存可以将中间结果存储在硬盘上，这些结果可以在下一次构建时被重用，从而减少了构建时间。</li>\n</ul>\n</li>\n<li><strong>Tree-shaking 改进</strong>  ：\n<ul>\n<li>Webpack 5 对 Tree-shaking 进行了优化，提供了更好的代码优化，以便删除未使用的代码。</li>\n<li>引入了新的算法，如 <code>scope hoisting</code>，可以将模块打包到更少的函数中，使 Tree-shaking 更加有效。</li>\n</ul>\n</li>\n<li><strong>支持 WebAssembly（WASM）</strong>  ：\n<ul>\n<li>Webpack 5 对 WebAssembly 提供了原生的支持，使得在项目中使用 WebAssembly 更加方便。</li>\n<li>开发者可以直接使用 Webpack 5 来构建和优化 WebAssembly 模块，而无需额外的工具。</li>\n</ul>\n</li>\n<li><strong>支持 ES6 模块导入（Dynamic Import）</strong>  ：\n<ul>\n<li>Webpack 5 对动态导入语法（<code>import()</code>）提供了更好的支持，可以更轻松地进行代码分割。</li>\n<li>现在，Webpack 5 可以自动将动态导入转换为 JSONP 调用，从而更好地支持动态代码块的加载。</li>\n</ul>\n</li>\n<li><strong>模块联邦（Module Federation）</strong>  ：\n<ul>\n<li>这是 Webpack 5 中的一项重大功能，允许将多个独立的 Webpack 构建连接在一起，实现模块共享。</li>\n<li>模块联邦有助于更好地支持微服务架构，提高代码复用性和可维护性。</li>\n</ul>\n</li>\n<li><strong>缓存组（Caching Groups）</strong>  ：\n<ul>\n<li>新的缓存组概念被引入，可以更细粒度地控制模块的缓存策略。</li>\n<li>开发者可以根据需要配置不同的缓存组，以优化构建性能。</li>\n</ul>\n</li>\n<li><strong>内置代码分割优化（optimization.splitChunks）</strong>  ：\n<ul>\n<li>Webpack 5 通过 <code>optimization.splitChunks</code> 进行了重新设计，提供了更灵活的配置选项。</li>\n<li>这使得代码分割更为强大和易用，有助于减小打包后的文件体积。</li>\n</ul>\n</li>\n<li><strong>默认配置优化</strong>  ：\n<ul>\n<li>Webpack 5 默认配置中的一些优化，使得开箱即用的性能更好。</li>\n<li>例如，在生产模式下，默认启用 <code>deterministic</code> 的 <code>moduleIds</code> 和 <code>chunkIds</code>，以优化长期缓存。</li>\n</ul>\n</li>\n<li><strong>提高构建性能</strong>  ：\n<ul>\n<li>Webpack 5 引入了一些性能优化措施，包括更快的持久化缓存、更快的构建速度等。</li>\n<li>通过改进构建算法和缓存机制，Webpack 5 能够更快地构建项目。</li>\n</ul>\n</li>\n<li><strong>移除废弃特性</strong>  ：\n<ul>\n<li>作为更新的一部分，Webpack 5 移除了一些过时的特性和 API。</li>\n<li>开发者在升级时需要注意潜在的破坏性变化，并根据需要进行代码调整。</li>\n</ul>\n</li>\n<li><strong>改进对 PWA 的支持</strong>  ：\n<ul>\n<li>Webpack 5 可以自动将 PWA 相关的代码注入到 HTML 中，从而更好地支持 PWA。</li>\n<li>此外，Webpack 5 还支持在构建时生成 PWA 相关的清单文件。</li>\n</ul>\n</li>\n<li><strong>资源模块（Asset Module）</strong>  ：\n<ul>\n<li>Webpack 5 引入了资源模块类型，允许使用资源文件（如字体、图标等）而无需配置额外的 loader。</li>\n<li>这简化了配置过程，提高了开发效率。</li>\n</ul>\n</li>\n<li><strong>URIs 支持</strong>  ：\n<ul>\n<li>Webpack 5 支持在请求中处理多种协议，如 <code>data</code>、<code>file</code>、<code>http(s)</code> 等。</li>\n<li>这使得开发者可以更方便地处理各种资源请求。</li>\n</ul>\n</li>\n</ol>\n</div>";
+          </script></body></html>

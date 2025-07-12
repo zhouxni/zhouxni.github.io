@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>PM2 是一个功能强大的 Node.js 应用程序进程管理工具，它简化了在生产环境中管理 Node.js 应用的过程。以下是 PM2 的详细解析：</p>\n<h3>一、核心功能</h3>\n<ol>\n<li><strong>进程管理</strong>\n<ul>\n<li><strong>启动、停止、重启和删除应用</strong>  ：PM2 可以轻松管理 Node.js 应用的生命周期。</li>\n<li><strong>集群模式</strong>  ：支持多实例运行，利用多核 CPU 提高应用性能和并发处理能力。</li>\n<li><strong>负载均衡</strong>  ：在集群模式下，PM2 可以自动在多个实例之间分配请求，实现负载均衡。</li>\n</ul>\n</li>\n<li><strong>日志管理</strong>\n<ul>\n<li><strong>集中管理日志</strong>  ：PM2 会自动收集和管理应用程序的日志输出，方便开发人员进行故障排查和日志分析。</li>\n<li><strong>多种日志格式</strong>  ：支持标准输出、标准错误、JSON 格式等日志输出方式。</li>\n</ul>\n</li>\n<li><strong>监控与告警</strong>\n<ul>\n<li><strong>实时监控</strong>  ：PM2 提供实时监控功能，可以监控应用的 CPU 和内存使用情况等指标。</li>\n<li><strong>自定义告警</strong>  ：支持自定义告警规则，当应用出现异常时及时通知开发人员或运维团队。</li>\n</ul>\n</li>\n<li><strong>热重载与零停机更新</strong>\n<ul>\n<li><strong>热重载</strong>  ：支持在不停止整个应用程序的情况下重新加载代码，减少停机时间。</li>\n<li><strong>零停机更新</strong>  ：在更新应用时，PM2 可以确保至少有一个实例在运行，从而实现零停机更新。</li>\n</ul>\n</li>\n<li><strong>部署与集成</strong>\n<ul>\n<li><strong>自动部署</strong>  ：PM2 支持与各种部署工具和自动化流程集成，如 Ansible、Docker、CI/CD 等。</li>\n<li><strong>跨服务器管理</strong>  ：通过配置，PM2 可以管理多台服务器上的应用，实现集中化管理。</li>\n</ul>\n</li>\n</ol>\n<h3>二、使用场景</h3>\n<ul>\n<li><strong>生产环境部署</strong>  ：PM2 是 Node.js 应用在生产环境中的理想选择，可以确保应用的稳定性和可靠性。</li>\n<li><strong>高并发应用</strong>  ：通过集群模式和负载均衡功能，PM2 可以提高应用的并发处理能力，满足高并发需求。</li>\n<li><strong>多服务器管理</strong>  ：PM2 支持跨服务器管理应用，适合需要管理多个服务器的场景。</li>\n</ul>\n<h3>三、常用命令</h3>\n<ul>\n<li><strong>启动应用</strong>  ：<code>pm2 start app.js</code></li>\n<li><strong>查看进程列表</strong>  ：<code>pm2 list</code></li>\n<li><strong>停止应用</strong>  ：<code>pm2 stop app_name|id</code></li>\n<li><strong>重启应用</strong>  ：<code>pm2 restart app_name|id</code></li>\n<li><strong>删除应用</strong>  ：<code>pm2 delete app_name|id</code></li>\n<li><strong>查看日志</strong>  ：<code>pm2 logs app_name|id</code></li>\n<li><strong>实时监控</strong>  ：<code>pm2 monit</code></li>\n<li><strong>保存进程列表</strong>  ：<code>pm2 save</code></li>\n<li><strong>设置开机自启动</strong>  ：<code>pm2 startup</code></li>\n</ul>\n<h3>四、配置文件</h3>\n<p>PM2 支持通过配置文件来管理应用，配置文件可以是 JSON 或 YAML 格式。在配置文件中，你可以定义应用的名称、脚本路径、环境变量、实例数量等参数。配置文件的使用使得应用管理更加灵活和可配置。</p>\n<h3>五、优势与特点</h3>\n<ul>\n<li><strong>简单易用</strong>  ：PM2 提供了简洁的命令行接口和配置文件方式，使得应用管理变得简单易懂。</li>\n<li><strong>高性能</strong>  ：通过集群模式和负载均衡功能，PM2 可以充分利用多核 CPU 的性能，提高应用的并发处理能力。</li>\n<li><strong>稳定性</strong>  ：PM2 提供了自动重启、最大内存重启等功能，确保应用在出现异常情况时能够自动恢复。</li>\n<li><strong>跨平台支持</strong>  ：PM2 支持 Linux、MacOS 和 Windows 等多个操作系统，方便在不同环境中使用。</li>\n</ul>\n<h3>六、注意事项</h3>\n<ul>\n<li><strong>环境变量</strong>  ：在部署应用时，需要确保服务器上的环境变量与本地一致，特别是那些对应用运行有重要影响的变量。</li>\n<li><strong>文件权限</strong>  ：确保 PM2 和应用文件具有正确的权限，以便 PM2 可以正常访问和启动应用。</li>\n<li><strong>日志管理</strong>  ：定期清理和归档日志，避免日志文件过大导致磁盘空间不足。</li>\n</ul>\n</div>";
+          </script></body></html>

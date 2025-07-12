@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>在 Egg.js 3.x 中，<code>ctx.throw</code> 是用于快速抛出 HTTP 异常的方法，继承自 Koa 的上下文对象。以下是详细说明和用法示例：</p>\n<hr>\n<h3><strong><code>ctx.throw([status], [msg], [properties])</code></strong></h3>\n<ul>\n<li><strong>作用</strong>  ：抛出一个包含指定状态码和错误信息的 HTTP 异常，请求处理会立即终止。</li>\n<li><strong>参数</strong>  ：\n<ul>\n<li><code>status</code>（可选）：HTTP 状态码（如 <code>400</code>、<code>404</code>、<code>500</code>），默认为 <code>500</code>。</li>\n<li><code>msg</code>（可选）：错误信息（字符串或对象），会作为响应体返回。</li>\n<li><code>properties</code>（可选）：附加到错误对象的额外属性（如 <code>{ code: 'INVALID_PARAM' }</code>）。</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3><strong>使用示例</strong></h3>\n<h4>1. 基础用法</h4>\n<pre><code class=\"language-javascript\"><span class=\"hljs-comment\">// 抛出 404 错误</span>\nctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-number\">404</span>, <span class=\"hljs-string\">&#x27;资源不存在&#x27;</span>);\n\n<span class=\"hljs-comment\">// 抛出 500 错误（默认状态码）</span>\nctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-string\">&#x27;服务器内部错误&#x27;</span>);\n</code></pre>\n<h4>2. 自定义错误信息</h4>\n<pre><code class=\"language-javascript\"><span class=\"hljs-comment\">// 返回 JSON 格式的错误信息</span>\nctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-number\">400</span>, {\n  <span class=\"hljs-attr\">message</span>: <span class=\"hljs-string\">&#x27;参数无效&#x27;</span>,\n  <span class=\"hljs-attr\">code</span>: <span class=\"hljs-string\">&#x27;INVALID_PARAM&#x27;</span>,\n});\n\n<span class=\"hljs-comment\">// 客户端收到的响应：</span>\n<span class=\"hljs-comment\">// HTTP 400</span>\n<span class=\"hljs-comment\">// { &quot;message&quot;: &quot;参数无效&quot;, &quot;code&quot;: &quot;INVALID_PARAM&quot; }</span>\n</code></pre>\n<h4>3. 附加额外属性</h4>\n<pre><code class=\"language-javascript\">ctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-number\">401</span>, <span class=\"hljs-string\">&#x27;未授权&#x27;</span>, {\n  <span class=\"hljs-attr\">code</span>: <span class=\"hljs-string\">&#x27;UNAUTHORIZED&#x27;</span>,\n  <span class=\"hljs-attr\">redirectUrl</span>: <span class=\"hljs-string\">&#x27;/login&#x27;</span>,\n});\n\n<span class=\"hljs-comment\">// 错误对象会被传递给全局错误处理器（如 onerror 中间件）</span>\n</code></pre>\n<hr>\n<h3><strong>注意事项</strong></h3>\n<ol>\n<li><strong>错误处理</strong>  ：\n<ul>\n<li>抛出的错误会被 Egg.js 的<a href=\"https://eggjs.org/zh-cn/core/error-handling.html\">统一异常处理</a>机制捕获。</li>\n<li>可通过 <code>app.on('error')</code> 或中间件（如 <code>egg-errors</code>）自定义处理逻辑。</li>\n</ul>\n</li>\n<li><strong>与 <code>try/catch</code> 的关系</strong>  ：<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">try</span> {\n  ctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-number\">400</span>, <span class=\"hljs-string\">&#x27;Bad Request&#x27;</span>);\n} <span class=\"hljs-keyword\">catch</span> (err) {\n  <span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(err.<span class=\"hljs-property\">status</span>); <span class=\"hljs-comment\">// 400</span>\n  <span class=\"hljs-variable language_\">console</span>.<span class=\"hljs-title function_\">log</span>(err.<span class=\"hljs-property\">message</span>); <span class=\"hljs-comment\">// &#x27;Bad Request&#x27;</span>\n}\n</code></pre>\n</li>\n<li><strong>Egg.js 3.x 变化</strong>  ：\n<ul>\n<li>延续了 Koa 的 <code>ctx.throw</code> 设计，与 Egg 2.x 兼容。</li>\n<li>推荐使用内置的 <code>ctx.assert</code> 进行条件判断（类似 <code>assert</code> 语法糖）。</li>\n</ul>\n</li>\n</ol>\n<hr>\n<h3><strong>替代方案：<code>ctx.assert</code></strong></h3>\n<p>若需条件性抛出错误，可使用 <code>ctx.assert</code>（基于 <code>http-assert</code>）：</p>\n<pre><code class=\"language-javascript\">ctx.<span class=\"hljs-title function_\">assert</span>(ctx.<span class=\"hljs-property\">state</span>.<span class=\"hljs-property\">user</span>, <span class=\"hljs-number\">401</span>, <span class=\"hljs-string\">&#x27;请先登录&#x27;</span>);\n<span class=\"hljs-comment\">// 等价于：</span>\n<span class=\"hljs-keyword\">if</span> (!ctx.<span class=\"hljs-property\">state</span>.<span class=\"hljs-property\">user</span>) ctx.<span class=\"hljs-keyword\">throw</span>(<span class=\"hljs-number\">401</span>, <span class=\"hljs-string\">&#x27;请先登录&#x27;</span>);\n</code></pre>\n<hr>\n<p>通过 <code>ctx.throw</code> 可以高效地中断请求并返回规范的错误信息，结合 Egg.js 的异常处理机制能大幅提升代码可维护性。</p>\n</div>";
+          </script></body></html>

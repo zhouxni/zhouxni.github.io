@@ -1,996 +1,281 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    
-    
-    <title>举头问天</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content>
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
-    
-    <script type="text/javascript">
-        // Data Center
-        var DC = {
-            reward:	false,
-            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
-            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
-            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
-            d: JSON.parse('{"app_id":null}')
-        };
-    </script>
-    <script type="text/javascript">
-        window.lazyScripts=[];
-    </script>
-    
-</head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./css/uikit.min.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./data.js"></script>
+    <title>周星星的笔记</title>
+    <style>
+      ul {
+        display: inline-block;
+      }
 
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap">
-      
-      <img src="/img/brand.jpg" class="brand-bg">
-      
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/xiaopang.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">周欣</h5>
-          <a href="mailto:2717584844@qq.com" title="2717584844@qq.com" class="mail">
-            
-              <span>2</span>
-            
-              <span>7</span>
-            
-              <span>1</span>
-            
-              <span>7</span>
-            
-              <span>5</span>
-            
-              <span>8</span>
-            
-              <span>4</span>
-            
-              <span>8</span>
-            
-              <span>4</span>
-            
-              <span>4</span>
-            
-              <span>@</span>
-            
-              <span>q</span>
-            
-              <span>q</span>
-            
-              <span>.</span>
-            
-              <span>c</span>
-            
-              <span>o</span>
-            
-              <span>m</span>
-            
-          </a>
-        </hgroup>
-        
-      </div>
+      li {
+        float: left;
+        margin: 0 30px 20px 0;
+      }
+      .fixtop {
+        width: 38px;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        color: #fff;
+        text-align: center;
+        font-size: 13px;
+        cursor: pointer;
+        z-index: 1;
+      }
+      .fixtop::after {
+        content: "";
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #1e87f0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body style="padding: 50px">
+    <span class="fixtop">返回顶部</span>
+    <p id="page" style="display: none"><a href="template">页面调试</a></p>
+    <div style="display: inline-flex; white-space: nowrap; margin-bottom: 30px">
+      <input class="uk-input" id="keyword" />
+      <button
+        class="uk-button uk-button-primary"
+        style="margin-right: 15px"
+        onclick="getData()"
+      >
+        搜索
+      </button>
+      <button
+        class="uk-button uk-button-danger"
+        style="margin-right: 15px"
+        onclick="clearSearch()"
+      >
+        清空
+      </button>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class=" active">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                首页
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                分类
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                标签
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                归纳
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        
-    <header class="top-header" id="header">
-    <div class="flex-row clearfix">
-        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">
-            <span>举头问天</span>
-            
-        </div>
-        
-        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
-            <i class="icon icon-lg icon-search"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header index-header">
-    <img src="/img/banner.jpg" class="header-bg">
-    <div class="container fade-scale">
-        <h1 class="title">举头问天</h1>
-        <h5 class="subtitle">
-            
-                
-            
-        </h5>
-        
-    </div>
-    
-
-</header>
-
-<div id="site_search">
-    <div class="search-title clearfix">
-        <span class="pull-left">
-          <i class="icon icon-lg icon-search"></i>
-        </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
-        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
-          <i class="icon icon-lg icon-close"></i>
-        </a>
-    </div>
-    <div id="local-search-result"></div>
-</div>
-
-    <div class="container body-wrap">
-        <ul class="post-list">
-        
-            <li class="post-list-item fade">
-                <article id="post-web安全"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/06/04/web安全/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/06/04/web安全/">web安全</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-06-04 16:25:40" datetime="2020-06-04T08:25:40.000Z"  itemprop="datePublished">2020-06-04</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        常见的web安全问题XSS存储性XSS利用别人的cookie，可以冒充真实的用户，在颁发cookie的那个网站中为所欲为。因为浏览器的同源策略，所以不能获取到其他网站的cookie，但通过把JavaScript代码注入到目标页面中，就能绕过同源策略，比如在HTML的[]中注入JavaScript代码，等到数据提交到服务器端，会保存下来，下次展示页面的时候，就会执行这段代码。
-1&lt;scr...
-    
-    <a href="/2020/06/04/web安全/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-js-设计模式"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/07/js-设计模式/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/07/js-设计模式/">js-设计模式</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-07 16:31:19" datetime="2020-05-07T08:31:19.000Z"  itemprop="datePublished">2020-05-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        
-    
-    <a href="/2020/05/07/js-设计模式/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-js-canvas压缩图片"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/30/js-canvas压缩图片/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/30/js-canvas压缩图片/">js-canvas压缩图片</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-30 11:00:46" datetime="2020-04-30T03:00:46.000Z"  itemprop="datePublished">2020-04-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        前言最近做的项目涉及到手机拍照上传图片，因为手机拍照的图片通常都比较大，所以上传的时候就会很慢。为此，需要对图片进行压缩处理来优化上传功能。地址
-base64,blob(url)图片格式转换file转urlwindow.URL.createObjectURL()将其转化为HTTP url类型的数据
-base64转为blob对象1234567891011function dataURLtoBl...
-    
-    <a href="/2020/04/30/js-canvas压缩图片/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-图片存储阿里云OSS"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/22/图片存储阿里云OSS/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/22/图片存储阿里云OSS/">图片存储阿里云OSS</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-22 17:53:34" datetime="2020-04-22T09:53:34.000Z"  itemprop="datePublished">2020-04-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        图片存储和加速一般项目中图片最好存储在云服务器中，既减少服务器的压力，同时也可加速不同地区的访问速度。最常用的就是阿里云OSS。
-前端如何使用OSS123456789101112npm install ali-oss -Sconst OSS = require(&quot;ali-oss&quot;);const client = new OSS(&#123;  region: &apos;...
-    
-    <a href="/2020/04/22/图片存储阿里云OSS/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优化/">优化</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-koa-session"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/22/koa-session/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/22/koa-session/">koa-session</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-22 11:18:43" datetime="2020-04-22T03:18:43.000Z"  itemprop="datePublished">2020-04-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        koa设置session1234567891011121314app.key = [&apos;some secret hurr&apos;];  /*cookie的签名*/  const CONFIG = &#123;    key:&apos;koa:sess&apos;,    /*默认*/    maxAge:60000   /*同cookie        【需要修改】*/    ...
-    
-    <a href="/2020/04/22/koa-session/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-koa-理解cookie"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/13/koa-理解cookie/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/13/koa-理解cookie/">koa-理解cookie</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-13 15:12:25" datetime="2020-04-13T07:12:25.000Z"  itemprop="datePublished">2020-04-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        cookie由于HTTP协议是无状态的，而服务器端的业务必须是要有状态的。Cookie诞生的最初目的是为了存储web中的状态信息，以方便服务器端使用。比如判断用户是否是第一次访问网站。目前最新的规范是RFC 6265，它是一个由浏览器服务器共同协作实现的规范。Cookie的处理分为：
-
-服务器向客户端发送cookie
-浏览器将cookie保存
-之后每次http请求浏览器都会讲cookie发送...
-    
-    <a href="/2020/04/13/koa-理解cookie/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-express-res-json-res-end-res-send"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/12/express-res-json-res-end-res-send/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/12/express-res-json-res-end-res-send/">express-res.json,res.end,res.send</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-12 16:21:30" datetime="2020-04-12T08:21:30.000Z"  itemprop="datePublished">2020-04-12</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        express响应中常用的三种APIres.send()res.json()res.end()
-res.send()发送http响应该body参数可以是一个buffer对象，一个String对象或者一个Array。三种不同参数express响应时不同行为
-
-当参数是buffer对象该方法将Content-Type 响应头字段设置为“application / octet-stream”如果想...
-    
-    <a href="/2020/04/12/express-res-json-res-end-res-send/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-express-next函数"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/09/express-next函数/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/09/express-next函数/">express-next函数</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-09 13:44:41" datetime="2020-04-09T05:44:41.000Z"  itemprop="datePublished">2020-04-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        experss中next()控制next函数主要负责将控制权交给下一个中间件，如果当前中间件没有终结请求，并且next没有被调用，那么请求将被挂起，后边定义的中间件将得不到被执行的机会。next()分为路由中间件和非路由中间件，两者是有区别的。
-next在路由中间件的应用它负责同一个路由的多个中间件的控制权的传递，并且它会接收一个参数”route”，如果调用next(“route”)，则会跳...
-    
-    <a href="/2020/04/09/express-next函数/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-node-mysql"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/04/04/node-mysql/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/04/04/node-mysql/">node-mysql</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-04-04 13:23:25" datetime="2020-04-04T05:23:25.000Z"  itemprop="datePublished">2020-04-04</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        node使用mysqlnpm install mysql -S
-123456789101112131415161718192021222324252627//推荐第一种方法const mysql = require(&quot;mysql&quot;);const db = mysql.createPool(&#123;    host: &quot;localhost&quot;,    ...
-    
-    <a href="/2020/04/04/node-mysql/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-html2canvas-图片绘制"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/03/07/html2canvas-图片绘制/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/03/07/html2canvas-图片绘制/">html2canvas-图片绘制</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-03-07 20:12:35" datetime="2020-03-07T12:12:35.000Z"  itemprop="datePublished">2020-03-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        最近在h5项目中要实现下载图片，但是图片是跨域的，因此使用了html2canvas这个插件。html2canvas源码包代码示例：
-12345678910111213&lt;img src=&quot;https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1035415831,1465727770&amp;fm=26&amp;gp...
-    
-    <a href="/2020/03/07/html2canvas-图片绘制/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-        </ul>
-        
-<nav id="page-nav">
-    <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-    </div>
-</nav>
-
-    </div>
-
-    </main>
-    <footer class="footer ">
-    
-    <div class="bottom">
-        <p>
-            <span>
-                周欣 &copy; 2017 - 2020
-            </span>
-        		
-           	
-            
-            <!-- 
-            <span>
-	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
-            </span>
-             -->
-            
-            
-
-            
-                
-<span class="site-uv" title="总访客量">
-    <i class="icon icon-user"></i>
-    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
-</span>
-
-
-<span class="site-pv" title="总访问量">
-    <i class="icon icon-eye"></i>
-    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
-</span>
-
-            
-        </p>
-    </div>
-</footer>
-
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/&title=举头问天&pic=http://yoursite.com/img/xiaopang.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/&title=举头问天&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABW0lEQVR42u3aQQ7DIAxE0dz/0qnUVaUUMjNOF7W/VxVKw8sCMIbjkON8x6r9M/T/PhCwYDVindu4PqO0XNv1vmDBmszaD2y9S/33jQEWLFjC6/QFGBYsWL9muV3CggVrz1KSZmWy0JPvx3J5WLBasCrLbSVRfri+BQvW37JOM9xlOwtYsKax9CLRfhRXtrhGBgELVlPWSpptSvVk+qYvWLBgRUWiynWEL++BBQuW0KUy1BXWsgUWrGEsN2nOQNJRij67wILVlKUUZCvLuVJsks5gYcFqyqqUbt0jE2PqgQVrMMu9fJAdcCqTCCxY01jZQUi2uS2d/MCC1ZpVuXCQlWul1BwWrGGsLOXdd6kv5PVEHBasTqxsUtDTZXcqgQVrMisr/WTbVOkZWLBgyYPcPcMxMgVYsGA9tL1Uik3Lz4AFayQrS5rd1NmYE2DBGsbKrgtkxFI1CxasnqwXXY7FbVPN83MAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-    
-    <!-- main-js -->
-<script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.3"></script>
-<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.3"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
-
-<script type="text/javascript" src="//cdn.staticfile.org/node-waves/0.7.4/waves.min.js"></script>
-
-<script type="text/javascript" src="/js/method.js?v=1.4.3"></script>
-<script type="text/javascript" src="/js/blog.js?v=1.4.3"></script>
-
-<!-- third-party -->
-
-
-
-
-
-
-<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.3"></script>
-<script type="text/javascript">
-	var search_path = "search.xml";
-	if (search_path.length === 0) {
-		search_path = "search.xml";
-	}
-	var path = "/" + search_path;
-	searchFunc(path, "local-search-input", "local-search-result");
-</script>
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-    
-    
-
-
-
-
-
-    <!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-            processEscapes: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <p style="margin: 0">关键词</p>
+    <ul id="keys" style="overflow: hidden"></ul>
+    <p style="margin: 0">模块</p>
+    <ul id="dirs" style="overflow: hidden"></ul>
+    <p style="margin: 0">网站</p>
+    <ul id="webs" style="overflow: hidden"></ul>
+    <script>
+      let win;
+      $(".fixtop").click(function () {
+        $("html").scrollTop(0);
+        $("body").scrollTop(0);
+      });
+      const directorys = ["js", "network", "scene", "app", "node", "interview"];
+      let dirs = "";
+      directorys.forEach((dir) => {
+        dirs += `<li><a>${dir}</a></li>`;
+      });
+      $("#dirs")
+        .append(dirs)
+        .on("click", function (e) {
+          if (!$(e.target).is("a")) {
+            return;
+          }
+          const dir = $(e.target).text();
+          localStorage.setItem("dir", dir);
+          $("#keyword").val("");
+          getData();
+        });
+
+      const webs = [
+        { name: "vue2", url: "https://v2.cn.vuejs.org/v2/api/" },
+        { name: "vue3", url: "https://cn.vuejs.org/api/" },
+        {
+          name: "vue-router",
+          url: "https://v3.router.vuejs.org/zh/guide/#html",
+        },
+        { name: "vuex", url: "https://v3.vuex.vuejs.org/zh/" },
+        { name: "react", url: "https://zh-hans.legacy.reactjs.org/" },
+        {
+          name: "webpack",
+          url: "https://webpack.docschina.org/configuration/",
+        },
+        {
+          name: "微信小程序",
+          url: "https://developers.weixin.qq.com/miniprogram/dev/framework/",
+        },
+        {
+          name: "react native",
+          url: "https://www.react-native.cn/docs/0.71/components-and-apis",
+        },
+        {
+          name: "taro",
+          url: "https://docs.taro.zone/docs/3.x/",
+        },
+        {
+          name: "nuxt2",
+          url: "https://www.nuxtjs.cn/api",
+        },
+        {
+          name: "react技术揭秘",
+          url: "/react",
+        },
+        {
+          name: "vue2.x技术揭秘",
+          url: "/vue/v2/prepare",
+        },
+        {
+          name: "网易云 API",
+          url: "https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=neteasecloudmusicapi",
+        },
+        {
+          name: "vite3",
+          url: "https://vitejs.cn/vite3-cn/",
+        },
+        {
+          name: "rollup",
+          url: "https://www.rollupjs.com/configuration-options/",
+        },
+        {
+          name: "qiankun微前端",
+          url: "https://qiankun.umijs.org/zh",
+        },
+        {
+          name: "vue-cli",
+          url: "https://cli.vuejs.org/zh/",
+        },
+        {
+          name: "Javascript对象手册",
+          url: "https://www.runoob.com/jsref/jsref-tutorial.html",
+        },
+        {
+          name: "前端刷题宝典",
+          url: "https://max.jiaochunxiao.cn/categories",
+        },
+        {
+          name: "eggjs",
+          url: "https://v3.eggjs.org/zh-CN",
+        },
+        {
+          name: "nestjs",
+          url: "https://docs.nestjs.cn/10/introduction",
+        },
+        {
+          name: "nextjs",
+          url: "https://www.nextjs.cn/",
+        },
+        {
+          name: "ES6教程",
+          url: "https://www.runoob.com/w3cnote/es6-tutorial.html",
+        },
+        {
+          name: "NodeJS教程",
+          url: "https://www.runoob.com/nodejs/nodejs-tutorial.html",
+        },
+        {
+          name: "小程序性能与体验",
+          url: "https://developers.weixin.qq.com/miniprogram/dev/framework/performance/",
+        },
+        {
+          name: "react教程",
+          url: "https://www.runoob.com/react/react-tutorial.html",
+        },
+      ];
+      let webStr = "";
+      webs.forEach((web) => {
+        webStr += `<li><a href='${web.url}' target='_blank'>${web.name}</a></li>`;
+      });
+      $("#webs").append(webStr);
+      const keywords = [
+        "vue",
+        "react",
+        "babel",
+        "webpack",
+        "小程序",
+        "typescript",
+        "rollup",
+        "vite",
+        "egg",
+      ];
+      let keys = "";
+      keywords.forEach((key) => {
+        keys += `<li><a>${key}</a></li>`;
+      });
+      $("#keys")
+        .append(keys)
+        .on("click", function (e) {
+          if (!$(e.target).is("a")) {
+            return;
+          }
+          $("#keyword").val($(e.target).text());
+          getData();
+        });
+      !window.location.origin.includes("localhost")
+        ? $("#page").remove()
+        : $("#page").show();
+
+      window.getData = function (resetScroll = true, all = false) {
+        const keyword = $("#keyword").val();
+        const dir = localStorage.getItem("dir");
+        let data = JSON.parse(JSON.stringify(window.fileList));
+        if (keyword || all) {
+          data = data.map((item) => {
+            item.files = item.files.filter((file) =>
+              file.split(".md")[0].toLowerCase().includes(keyword)
+            );
+            return item;
+          });
+        } else {
+          data = data.filter((item) => item.route == dir);
         }
-    });
-</script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
+        if (resetScroll) {
+          $("html").scrollTop(0);
+          $("body").scrollTop(0);
         }
-    });
-</script>
+        $("#list").remove();
+        let html = "<div id='list'>";
+        data.forEach((item) => {
+          html += `<h2>${item.route}</h2>
+                <ul>
+                    ${item.files
+                      .map((file) => {
+                        return `<li><a href='./html/${item.route}/${
+                          file.split(".md")[0]
+                        }.html' target='_blank'>${
+                          file.split(".md")[0]
+                        }</a></li>`;
+                      })
+                      .join("")}
+                </ul>`;
+        });
+        html += "</div>";
+        $("body").append(html);
+      };
 
-<script type="text/javascript" src="//cdn.staticfile.org/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      getData();
 
+      $("#keyword").on("keydown", function (event) {
+        if (event.which === 13) {
+          getData();
+        }
+      });
 
+      window.clearSearch = function () {
+        $("#keyword").val("");
+        getData(true, true);
+      };
 
-
-
-
-
-    
-</body>
+      window.addEventListener("beforeunload", () => {
+        win && win.close();
+        localStorage.removeItem("dir");
+      });
+    </script>
+  </body>
 </html>

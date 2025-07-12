@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>Canvas 的位图（Bitmap）本质上是基于物理像素的，但它的实际显示效果取决于 Canvas 的像素分辨率（<code>width</code>/<code>height</code> 属性）和 设备像素比（DPR）。以下是详细解析：</p>\n<hr>\n<p><strong>1. Canvas 位图的本质</strong><br>\n<strong>(1) Canvas 的 <code>width</code> 和 <code>height</code> 决定位图像素</strong></p>\n<ul>\n<li>Canvas 的 <code>width</code> 和 <code>height</code>（HTML 属性或 JS 设置） 定义了它的像素分辨率（即画布内部位图的物理像素数量）。</li>\n</ul>\n<pre><code class=\"language-html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">canvas</span> <span class=\"hljs-attr\">width</span>=<span class=\"hljs-string\">&quot;800&quot;</span> <span class=\"hljs-attr\">height</span>=<span class=\"hljs-string\">&quot;600&quot;</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">canvas</span>&gt;</span>\n</code></pre>\n<pre><code class=\"language-javascript\">canvas.<span class=\"hljs-property\">width</span> = <span class=\"hljs-number\">800</span>;  <span class=\"hljs-comment\">// 位图像素宽度（物理像素）</span>\ncanvas.<span class=\"hljs-property\">height</span> = <span class=\"hljs-number\">600</span>; <span class=\"hljs-comment\">// 位图像素高度（物理像素）</span>\n</code></pre>\n<ul>\n<li>绘制操作（如 <code>fillRect()</code>、<code>drawImage()</code>）直接作用于这些像素，不受 CSS 缩放影响。</li>\n</ul>\n<p><strong>(2) 位图像素 ≠ CSS 像素</strong></p>\n<table>\n<thead>\n<tr>\n<th>特性</th>\n<th>Canvas 位图像素</th>\n<th>CSS 像素</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>控制方式</td>\n<td><code>canvas.width/height</code></td>\n<td><code>style.width/height</code></td>\n</tr>\n<tr>\n<td>本质</td>\n<td>物理像素（位图存储）</td>\n<td>逻辑像素（显示尺寸）</td>\n</tr>\n<tr>\n<td>缩放影响</td>\n<td>无（固定分辨率）</td>\n<td>可能被浏览器缩放</td>\n</tr>\n</tbody>\n</table>\n<hr>\n<p><strong>2. 设备像素比（DPR）的影响</strong><br>\n<code>window.devicePixelRatio</code>（DPR）表示 1 CSS 像素对应多少物理像素：</p>\n<ul>\n<li>\n<p>普通屏幕（DPR = 1）：1 CSS 像素 = 1 物理像素。</p>\n</li>\n<li>\n<p>Retina 屏（DPR = 2）：1 CSS 像素 = 2×2 物理像素。</p>\n</li>\n</ul>\n<p><strong>Canvas 在高 DPR 设备上的问题</strong><br>\n如果 Canvas 的 <code>width</code>/<code>height</code> 未适配 DPR：</p>\n<ul>\n<li>\n<p>位图像素不足 → 被拉伸显示，导致模糊。</p>\n</li>\n<li>\n<p>解决方案：根据 DPR 缩放 Canvas 分辨率：</p>\n</li>\n</ul>\n<pre><code class=\"language-javascript\"><span class=\"hljs-keyword\">const</span> canvas = <span class=\"hljs-variable language_\">document</span>.<span class=\"hljs-title function_\">querySelector</span>(<span class=\"hljs-string\">&#x27;canvas&#x27;</span>);\n<span class=\"hljs-keyword\">const</span> dpr = <span class=\"hljs-variable language_\">window</span>.<span class=\"hljs-property\">devicePixelRatio</span> || <span class=\"hljs-number\">1</span>;\n\n<span class=\"hljs-comment\">// 获取 CSS 显示尺寸</span>\n<span class=\"hljs-keyword\">const</span> rect = canvas.<span class=\"hljs-title function_\">getBoundingClientRect</span>();\n\n<span class=\"hljs-comment\">// 设置 Canvas 位图像素 = CSS 尺寸 × DPR</span>\ncanvas.<span class=\"hljs-property\">width</span> = rect.<span class=\"hljs-property\">width</span> * dpr;\ncanvas.<span class=\"hljs-property\">height</span> = rect.<span class=\"hljs-property\">height</span> * dpr;\n\n<span class=\"hljs-comment\">// 缩放绘图上下文，确保绘制逻辑匹配 CSS 尺寸</span>\n<span class=\"hljs-keyword\">const</span> ctx = canvas.<span class=\"hljs-title function_\">getContext</span>(<span class=\"hljs-string\">&#x27;2d&#x27;</span>);\nctx.<span class=\"hljs-title function_\">scale</span>(dpr, dpr);\n</code></pre>\n<p>效果：</p>\n<ul>\n<li>\n<p>位图分辨率提高（如 <code>800×600</code> → <code>1600×1200</code>），适配 Retina 屏。</p>\n</li>\n<li>\n<p>绘图时仍使用 CSS 像素单位（<code>ctx.fillRect(10, 10, 100, 50)</code>），但实际渲染为高清物理像素。</p>\n</li>\n</ul>\n<hr>\n<p><strong>3. 总结</strong></p>\n<table>\n<thead>\n<tr>\n<th>问题</th>\n<th>答案</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Canvas 位图是物理像素吗？</td>\n<td>是的，<code>canvas.width/height</code> 定义的位图像素是物理像素。</td>\n</tr>\n<tr>\n<td>是否会受 DPR 影响？</td>\n<td>是，未适配 DPR 时，位图会被拉伸，可能模糊。</td>\n</tr>\n<tr>\n<td>如何保证高清显示？</td>\n<td>根据 <code>devicePixelRatio</code> 缩放 <code>canvas.width/height</code>，并调整绘图上下文。</td>\n</tr>\n</tbody>\n</table>\n<p>关键结论：</p>\n<ul>\n<li>\n<p>Canvas 位图本质是物理像素，但需结合 DPR 优化显示。</p>\n</li>\n<li>\n<p>CSS 像素仅影响 Canvas 的显示尺寸，不改变位图分辨率。</p>\n</li>\n<li>\n<p>适配高 DPR 设备需主动缩放 Canvas 分辨率，避免模糊。</p>\n</li>\n</ul>\n</div>";
+          </script></body></html>

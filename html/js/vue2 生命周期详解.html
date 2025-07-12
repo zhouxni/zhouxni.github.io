@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/github-markdown.min.css">
+    <link rel="stylesheet" href="../../css/github.min.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto !important;
+      padding: 45px 15px;
+    }
+  </style></head>
+  
+  <body>
+    <article id="article" class="markdown-body"></article>
+  
+
+<script>
+            document.getElementById('article').innerHTML = 
+            "<div><p>1、new Vue()实例化一个vue实例，然后init初始化event 和 lifecycle， 其实这个过程中分别调用了3个初始化函数（initLifecycle(), initEvents(), initRender()），分别初始化了生命周期，事件以及定义createElement函数，初始化生命周期时，定义了一些属性，比如表示当前状态生命周期状态得_isMounted ，_isDestroyed ，_isBeingDestroyed，表示keep-alive中组件状态的_inactive，而初始化event时，实际上就是定义了<code>$once、$off、$emit、$on</code>几个函数。而createElement函数是在初始化render时定义的（调用了initRender函数）。</p>\n<p>&lt;br/&gt;</p>\n<p>2、执行beforeCreate生命周期函数</p>\n<p>&lt;br/&gt;</p>\n<p>3、beforeCreate执行完后，会开始进行数据初始化，这个过程，会定义data数据，方法以及事件，并且完成数据劫持observe以及给组件实例配置watcher观察者实例。这样，后续当数据发生变化时，才能感知到数据的变化并完成页面的渲染</p>\n<p>&lt;br/&gt;</p>\n<p>4、执行created生命周期函数，所以，当这个函数执行的时候，我们已经可以拿到data下的数据以及methods下的方法了，所以在这里，我们可以开始调用方法进行数据请求了</p>\n<p>&lt;br/&gt;</p>\n<p>5、created执行完后，我们可以看到，这里有个判断，判断当前是否有el参数(这里为什么需要判断，是因为我们后面的操作是会依赖这个el的，后面会详细说)，如果有，我们再看是否有template参数。如果没有el，那么我们会等待调用$mount(el)方法(后面会详细说)。</p>\n<p>&lt;br/&gt;</p>\n<p>6、确保有了el后，继续往下走，判断当有template参数时，我们会选择去将template模板转换成render函数（其实在这前面是还有一个判断的，判断当前是否有render函数，如果有的话，则会直接去渲染当前的render函数，如果没有那么我们才开始去查找是否有template模板），如果没有template，那么我们就会直接将获取到的el（也就是我们常见的#app，#app里面可能还会有其他标签）编译成templae, 然后在将这个template转换成render函数。</p>\n<p>&lt;br/&gt;</p>\n<p>7、之后再调用beforMount， 也就是说实际从creted到beforeMount之间，最主要的工作就是将模板或者el转换为render函数。并且我们可以看出一点，就是你不管是用el，还是用template, 或者是用我们最常用的.vue文件(如果是.vue文件，他其实是会先编译成为template)，最终他都是会被转换为render函数的。</p>\n<p>&lt;br/&gt;</p>\n<p>8、beforeMount调用后，我们是不是要开始渲染render函数了，首先我们会先生产一个虚拟dom（用于后续数据发生变化时，新老虚拟dom对比计算），进行保存，然后再开始将render渲染成为真实的dom。渲染成真实dom后，会将渲染出来的真实dom替换掉原来的<code>vm.$el</code> ，然后再将替换后的<code>$el</code> append到我们的页面内。整个初步流程就算是走完了。</p>\n<p>&lt;br/&gt;</p>\n<p>9、之后再调用mounted，并将标识生命周期的一个属性_isMounted 置为true。所以mounted函数内，我们是可以操作dom的，因为这个时候dom已经渲染完成了。</p>\n<p>&lt;br/&gt;</p>\n<p>10、再之后，只有当我们状态数据发生变化时,我们在触发beforeUpdate，要开始将我们变化后的数据渲染到页面上了（实际上这里是有个判断的，判断当前的_isMounted是不是为ture并且_isDestroyed是不是为false，也就是说，保证dom已经被挂载的情况下，且当前组件并未被销毁，才会走update流程）</p>\n<p>&lt;br/&gt;</p>\n<p>11、beforeUpdate调用之后，我们又会重新生成一个新的虚拟dom(Vnode)，然后会拿这个最新的Vnode和原来的Vnode去做一个diff算，这里就涉及到一系列的计算，算出最小的更新范围，从而更新render函数中的最新数据，再将更新后的render函数渲染成真实dom。也就完成了我们的数据更新</p>\n<p>&lt;br/&gt;</p>\n<p>12、然后再执行updated，所以updated里面也可以操作dom，并拿到最新更新后的dom。不过这里我要插一句话了，mouted和updated的执行，并不会等待所有子组件都被挂载完成后再执行，所以如果你希望所有视图都更新完毕后再做些什么事情，那么你最好在mouted或者updated中加一个<code>$nextTick（）</code>，然后把要做的事情放在<code>$nextTick()</code>中去做。</p>\n<p>&lt;br/&gt;</p>\n<p>13、再之后beforeDestroy没啥说的，实例销毁前，也就是说在这个函数内，你还是可以操作实例的</p>\n<p>&lt;br/&gt;</p>\n<p>14、之后会做一系列的销毁动作，解除各种数据引用，移除事件监听，删除组件_watcher，删除子实例，删除自身self等。同时将实例属性_isDestroyed置为true</p>\n<p>&lt;br/&gt;</p>\n<p>15、销毁完成后，再执行destroyed。</p>\n</div>";
+          </script></body></html>
