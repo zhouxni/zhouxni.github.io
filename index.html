@@ -232,7 +232,9 @@
             return item;
           });
         } else {
-          data = data.filter((item) => item.route == dir);
+          if (dir) {
+            data = data.filter((item) => item.route == dir);
+          }
         }
 
         if (resetScroll) {
