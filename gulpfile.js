@@ -19,12 +19,14 @@ function listFiles() {
 }
 
 function updateWroker(done) {
-  const swPath = path.join(__dirname, "serviceWorker.js");
+  const swPath = path.join(__dirname, "templateWorker.js");
   let swContent = fs.readFileSync(swPath, "utf8");
   const newUrlsToCache = `const urlsToCache = ${JSON.stringify(filePaths)}`;
   // 终极正则（适配所有格式变体）
-  swContent = swContent.replace("const urlsToCache = []", newUrlsToCache);
-  fs.writeFileSync(swPath, swContent, "utf8");
+  swContent = swContent
+    .replace("const urlsToCache = []", newUrlsToCache)
+    .replace(/my-app-cache-\d+/, `my-app-cache-${Date.now()}`);
+  fs.writeFileSync(path.join(__dirname, "serviceWorker.js"), swContent, "utf8");
   done();
 }
 
