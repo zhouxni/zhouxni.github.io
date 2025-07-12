@@ -220,6 +220,16 @@
         ? $("#page").remove()
         : $("#page").show();
 
+      $(document).on("click", "#list", function (e) {
+        if ($(e.target).is("a")) {
+          win && win.close();
+          win = window.open(
+            `/html/${$(e.target).attr("data-dir")}/${$(e.target).attr(
+              "data-name"
+            )}.html`
+          );
+        }
+      });
       window.getData = function (resetScroll = true, all = false) {
         const keyword = $("#keyword").val();
         const dir = localStorage.getItem("dir");
@@ -249,11 +259,9 @@
                     ${item.files
                       .sort((a, b) => b.birthtime - a.birthtime)
                       .map(({ file }) => {
-                        return `<li><a href='./html/${item.route}/${
+                        return `<li><a data-dir='${item.route}' data-name='${
                           file.split(".md")[0]
-                        }.html' target='_blank'>${
-                          file.split(".md")[0]
-                        }</a></li>`;
+                        }'>${file.split(".md")[0]}</a></li>`;
                       })
                       .join("")}
                 </ul>`;
