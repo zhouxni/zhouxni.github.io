@@ -24,7 +24,7 @@
   
 
 <script>
-      document.title = 'babel  async 函数异常捕获'
+    
         document.getElementById('article').innerHTML = 
         "<div><pre><code>const babel = require(&quot;@babel/core&quot;);\nconst traverse = require(&quot;@babel/traverse&quot;).default;\nconst types = require(&quot;@babel/types&quot;);\nconst generate = require(&quot;@babel/generator&quot;).default;\n\n// 示例代码，包含 await 表达式\nconst code = `\nasync function fetchData() {\n  const data = await fetch('https://api.example.com/data');\n  console.log(data);\n}\n`;\n\n// 解析代码为 AST\nconst ast = babel.parse(code);\n\n// 遍历 AST，找到 AwaitExpression 并包装在 TryStatement 中\ntraverse(ast, {\n  FunctionDeclaration(path) {\n    if (path.node.async) {\n      path.node.body = types.blockStatement([\n        types.tryStatement(\n          path.node.body,\n          types.catchClause(\n            types.identifier(&quot;error&quot;),\n            types.blockStatement([\n              types.expressionStatement(\n                types.callExpression(\n                  types.memberExpression(\n                    types.identifier(&quot;console&quot;),\n                    types.identifier(&quot;error&quot;)\n                  ),\n                  [\n                    types.stringLiteral(&quot;Error occurred:&quot;),\n                    types.identifier(&quot;error&quot;),\n                  ]\n                )\n              ),\n            ])\n          )\n        ),\n      ]);\n    }\n  },\n});\n\n// 生成修改后的代码\nconst output = generate(ast, {}, code);\n\nconsole.log(output.code);\n\n</code></pre>\n</div>";
       </script></body></html>
