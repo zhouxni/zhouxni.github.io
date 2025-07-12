@@ -24,7 +24,7 @@
   
 
 <script>
-    
+      document.title = 'vue 项目错误捕获'
         document.getElementById('article').innerHTML = 
         "<div><p>Vue 项目错误捕获由 <code>errorCaptured</code> 和 <code>Vue.config.errorHandler</code>监听生命周期、渲染时期和事件处理函数的内部错误(除 Promise 错误之外)。同时结合 <code>window.addEventListener('error')</code> 和 <code>window.addEventListener('unhandledrejection')</code>。</p>\n<h3>window.addEventListener('error')</h3>\n<p>用来捕获事件处理函数内部 setTimeout 等异步任务抛出的错误</p>\n<h3>window.addEventListener('unhandledrejection')</h3>\n<p>用来捕获事件处理函数内部同步逻辑 和 setTimeout 等异步任务抛出的Promise 错误</p>\n<h3>errorCaptured 和 Vue.config.errorHandler</h3>\n<p>捕获生命周期函数执行、渲染时期和事件处理函数的内部同步错误，异步错误只能由<code>window.addEventListener('error')</code>捕获</p>\n</div>";
       </script></body></html>
