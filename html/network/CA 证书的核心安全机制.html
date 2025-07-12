@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../css/github-markdown.min.css">
-    <link rel="stylesheet" href="../../css/github.min.css">
-  <style>
-    html,
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title><link rel="stylesheet" href="../../css/github-markdown.min.css"><link rel="stylesheet" href="../../css/github.min.css"><style>html,
     body {
       margin: 0;
       padding: 0;
@@ -16,15 +9,6 @@
       max-width: 980px;
       margin: 0 auto !important;
       padding: 45px 15px;
-    }
-  </style></head>
-  
-  <body>
-    <article id="article" class="markdown-body"></article>
-  
-
-<script>
-      document.title = 'CA 证书的核心安全机制'
+    }</style></head><body><article id="article" class="markdown-body"></article><script>document.title = 'CA 证书的核心安全机制'
         document.getElementById('article').innerHTML = 
-        "<div><p>CA（证书颁发机构）证书的核心安全机制<strong>并不直接依赖哈希加密</strong>  ，而是结合了<strong>非对称加密、数字签名和哈希函数</strong>  的混合技术。以下是关键点的分步说明：</p>\n<hr>\n<h3>1. <strong>哈希函数的作用（单向加密）</strong></h3>\n<ul>\n<li><strong>证书内容的哈希</strong>  ：CA在签发证书时，会先对证书主体（如公钥、持有者信息等）计算哈希值（例如SHA-256）。哈希是单向的，确保数据完整性，但<strong>哈希本身不是加密</strong>  （无法解密还原数据）。</li>\n<li><strong>防篡改</strong>  ：哈希值用于生成数字签名，接收方可通过重新计算哈希验证证书是否被篡改。</li>\n</ul>\n<hr>\n<h3>2. <strong>非对称加密与数字签名（核心安全机制）</strong></h3>\n<ul>\n<li><strong>CA的私钥签名</strong>  ：CA使用自己的<strong>私钥</strong>  （非对称加密）对证书的哈希值进行加密，生成<strong>数字签名</strong>  。这是加密操作，但目的是签名而非保密。</li>\n<li><strong>公钥验证</strong>  ：用户用CA的公钥解密签名，得到原始哈希值，与重新计算的哈希对比，验证证书真实性和完整性。</li>\n</ul>\n<hr>\n<h3>3. <strong>证书中的关键字段</strong></h3>\n<ul>\n<li><strong>签名算法</strong>  ：如<code>SHA256WithRSAEncryption</code>，明确包含哈希算法（SHA256）和非对称加密算法（RSA）。</li>\n<li><strong>公钥</strong>  ：证书包含持有者的公钥，用于后续TLS通信中的密钥交换（如RSA/ECDHE）。</li>\n</ul>\n<hr>\n<h3>4. <strong>总结：CA证书的技术组合</strong></h3>\n<table>\n<thead>\n<tr>\n<th>技术</th>\n<th>作用</th>\n<th>是否加密？</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>哈希函数</td>\n<td>生成数据唯一指纹，保证完整性</td>\n<td>否（单向摘要）</td>\n</tr>\n<tr>\n<td>非对称加密</td>\n<td>私钥签名，公钥验证身份</td>\n<td>是（如RSA、ECC）</td>\n</tr>\n<tr>\n<td>对称加密</td>\n<td>不用于证书本身，用于后续TLS</td>\n<td>是（如AES）</td>\n</tr>\n</tbody>\n</table>\n<hr>\n<h3>常见误解澄清</h3>\n<ul>\n<li><strong>误区</strong>  ：“CA证书用哈希加密”<br>\n<strong>正解</strong>  ：哈希用于完整性校验，加密和签名由非对称算法完成。CA的安全性是<strong>数字签名</strong>  （非对称加密+哈希）而非单纯哈希加密。</li>\n<li><strong>示例</strong>  ：<br>\n当浏览器验证HTTPS证书时，会检查CA签名是否用其私钥加密了证书哈希值。若哈希匹配且CA受信任，则证书有效。</li>\n</ul>\n<hr>\n<p>如需进一步理解，可参考RFC 5280证书标准或OpenSSL的证书处理流程。</p>\n</div>";
-      </script></body></html>
+        "<div><p>CA（证书颁发机构）证书的核心安全机制<strong>并不直接依赖哈希加密</strong>  ，而是结合了<strong>非对称加密、数字签名和哈希函数</strong>  的混合技术。以下是关键点的分步说明：</p>\n<hr>\n<h3>1. <strong>哈希函数的作用（单向加密）</strong></h3>\n<ul>\n<li><strong>证书内容的哈希</strong>  ：CA在签发证书时，会先对证书主体（如公钥、持有者信息等）计算哈希值（例如SHA-256）。哈希是单向的，确保数据完整性，但<strong>哈希本身不是加密</strong>  （无法解密还原数据）。</li>\n<li><strong>防篡改</strong>  ：哈希值用于生成数字签名，接收方可通过重新计算哈希验证证书是否被篡改。</li>\n</ul>\n<hr>\n<h3>2. <strong>非对称加密与数字签名（核心安全机制）</strong></h3>\n<ul>\n<li><strong>CA的私钥签名</strong>  ：CA使用自己的<strong>私钥</strong>  （非对称加密）对证书的哈希值进行加密，生成<strong>数字签名</strong>  。这是加密操作，但目的是签名而非保密。</li>\n<li><strong>公钥验证</strong>  ：用户用CA的公钥解密签名，得到原始哈希值，与重新计算的哈希对比，验证证书真实性和完整性。</li>\n</ul>\n<hr>\n<h3>3. <strong>证书中的关键字段</strong></h3>\n<ul>\n<li><strong>签名算法</strong>  ：如<code>SHA256WithRSAEncryption</code>，明确包含哈希算法（SHA256）和非对称加密算法（RSA）。</li>\n<li><strong>公钥</strong>  ：证书包含持有者的公钥，用于后续TLS通信中的密钥交换（如RSA/ECDHE）。</li>\n</ul>\n<hr>\n<h3>4. <strong>总结：CA证书的技术组合</strong></h3>\n<table>\n<thead>\n<tr>\n<th>技术</th>\n<th>作用</th>\n<th>是否加密？</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>哈希函数</td>\n<td>生成数据唯一指纹，保证完整性</td>\n<td>否（单向摘要）</td>\n</tr>\n<tr>\n<td>非对称加密</td>\n<td>私钥签名，公钥验证身份</td>\n<td>是（如RSA、ECC）</td>\n</tr>\n<tr>\n<td>对称加密</td>\n<td>不用于证书本身，用于后续TLS</td>\n<td>是（如AES）</td>\n</tr>\n</tbody>\n</table>\n<hr>\n<h3>常见误解澄清</h3>\n<ul>\n<li><strong>误区</strong>  ：“CA证书用哈希加密”<br>\n<strong>正解</strong>  ：哈希用于完整性校验，加密和签名由非对称算法完成。CA的安全性是<strong>数字签名</strong>  （非对称加密+哈希）而非单纯哈希加密。</li>\n<li><strong>示例</strong>  ：<br>\n当浏览器验证HTTPS证书时，会检查CA签名是否用其私钥加密了证书哈希值。若哈希匹配且CA受信任，则证书有效。</li>\n</ul>\n<hr>\n<p>如需进一步理解，可参考RFC 5280证书标准或OpenSSL的证书处理流程。</p>\n</div>";</script></body></html>

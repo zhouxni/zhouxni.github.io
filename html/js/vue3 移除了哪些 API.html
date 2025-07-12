@@ -1,11 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../css/github-markdown.min.css">
-    <link rel="stylesheet" href="../../css/github.min.css">
-  <style>
-    html,
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title><link rel="stylesheet" href="../../css/github-markdown.min.css"><link rel="stylesheet" href="../../css/github.min.css"><style>html,
     body {
       margin: 0;
       padding: 0;
@@ -16,15 +9,6 @@
       max-width: 980px;
       margin: 0 auto !important;
       padding: 45px 15px;
-    }
-  </style></head>
-  
-  <body>
-    <article id="article" class="markdown-body"></article>
-  
-
-<script>
-      document.title = 'vue3 移除了哪些 API'
+    }</style></head><body><article id="article" class="markdown-body"></article><script>document.title = 'vue3 移除了哪些 API'
         document.getElementById('article').innerHTML = 
-        "<div><p>Vue 3 相较于 Vue 2 移除了多个 API 和特性，这些移除旨在提升性能、简化 API 并减少混淆。以下是 Vue 3 移除的主要 API 和特性：</p>\n<ol>\n<li><strong>过滤器（Filters）</strong>  ：\n<ul>\n<li>Vue 2 提供了过滤器功能，允许开发者在模板中对数据进行简单的格式化。然而，过滤器容易滥用并导致代码可读性下降。在 Vue 3 中，过滤器功能被移除，建议开发者使用计算属性或方法来代替过滤器。</li>\n</ul>\n</li>\n<li><strong>事件 API（<code>$on、$off 和 $once</code>）</strong>  ：\n<ul>\n<li>在 Vue 2 中，开发者可以使用 <code>$on</code>、<code>$off</code> 和 <code>$once</code> 来管理自定义事件。这些 API 在大型应用中容易导致事件管理混乱。在 Vue 3 中，这些 API 被废弃，推荐使用 Vue 3 的组合 API 和 Vuex 等状态管理工具来管理事件和状态。</li>\n</ul>\n</li>\n<li><strong>Inline Template 功能</strong>  ：\n<ul>\n<li>Vue 2 允许开发者使用 <code>inline-template</code> 特性来直接在 HTML 中定义模板。然而，这种方式与 Vue 的组件化设计理念相悖。在 Vue 3 中，这一功能被移除，鼓励开发者通过 <code>.vue</code> 文件或 <code>template</code> 标签来定义模板。</li>\n</ul>\n</li>\n<li><strong>Vue.observable API</strong>  ：\n<ul>\n<li>Vue.observable API 在 Vue 2 中用于创建响应式对象。在 Vue 3 中，这一功能被废弃，取而代之的是更强大和灵活的响应式系统，包括 <code>reactive</code> 和 <code>ref</code> 等 API。</li>\n</ul>\n</li>\n<li><strong>特定实例属性</strong>  ：\n<ul>\n<li>Vue 3 中取消了一些不常用或容易引起混淆的实例属性，如 <code>$children</code> 等。这些属性在 Vue 2 中用于访问子组件或父组件实例，但在 Vue 3 中被认为不再必要或已被其他功能替代。</li>\n</ul>\n</li>\n<li><strong>按键修饰符（keyCode）</strong>  ：\n<ul>\n<li>在 Vue 2 中，<code>v-on</code> 指令支持使用 <code>keyCode</code> 作为修饰符来监听特定按键事件。然而，在 Vue 3 中，这一功能被移除，推荐使用键名或 <code>KeyboardEvent.key</code> 来代替。</li>\n</ul>\n</li>\n<li><strong>v-on.native 修饰符</strong>  ：\n<ul>\n<li>在 Vue 2 中，<code>v-on.native</code> 修饰符用于在组件的根元素上监听原生 DOM 事件。在 Vue 3 中，这一修饰符被移除，开发者可以直接在组件上使用 <code>v-on</code> 指令来监听原生事件。</li>\n</ul>\n</li>\n<li><strong>其他指令和属性</strong>  ：\n<ul>\n<li>Vue 3 还移除了一些其他指令和属性，如 <code>v-bind.sync</code> 等。这些指令和属性在 Vue 2 中用于处理特定情况，但在 Vue 3 中被认为不再必要或已被其他功能替代。</li>\n</ul>\n</li>\n</ol>\n</div>";
-      </script></body></html>
+        "<div><p>Vue 3 相较于 Vue 2 移除了多个 API 和特性，这些移除旨在提升性能、简化 API 并减少混淆。以下是 Vue 3 移除的主要 API 和特性：</p>\n<ol>\n<li><strong>过滤器（Filters）</strong>  ：\n<ul>\n<li>Vue 2 提供了过滤器功能，允许开发者在模板中对数据进行简单的格式化。然而，过滤器容易滥用并导致代码可读性下降。在 Vue 3 中，过滤器功能被移除，建议开发者使用计算属性或方法来代替过滤器。</li>\n</ul>\n</li>\n<li><strong>事件 API（<code>$on、$off 和 $once</code>）</strong>  ：\n<ul>\n<li>在 Vue 2 中，开发者可以使用 <code>$on</code>、<code>$off</code> 和 <code>$once</code> 来管理自定义事件。这些 API 在大型应用中容易导致事件管理混乱。在 Vue 3 中，这些 API 被废弃，推荐使用 Vue 3 的组合 API 和 Vuex 等状态管理工具来管理事件和状态。</li>\n</ul>\n</li>\n<li><strong>Inline Template 功能</strong>  ：\n<ul>\n<li>Vue 2 允许开发者使用 <code>inline-template</code> 特性来直接在 HTML 中定义模板。然而，这种方式与 Vue 的组件化设计理念相悖。在 Vue 3 中，这一功能被移除，鼓励开发者通过 <code>.vue</code> 文件或 <code>template</code> 标签来定义模板。</li>\n</ul>\n</li>\n<li><strong>Vue.observable API</strong>  ：\n<ul>\n<li>Vue.observable API 在 Vue 2 中用于创建响应式对象。在 Vue 3 中，这一功能被废弃，取而代之的是更强大和灵活的响应式系统，包括 <code>reactive</code> 和 <code>ref</code> 等 API。</li>\n</ul>\n</li>\n<li><strong>特定实例属性</strong>  ：\n<ul>\n<li>Vue 3 中取消了一些不常用或容易引起混淆的实例属性，如 <code>$children</code> 等。这些属性在 Vue 2 中用于访问子组件或父组件实例，但在 Vue 3 中被认为不再必要或已被其他功能替代。</li>\n</ul>\n</li>\n<li><strong>按键修饰符（keyCode）</strong>  ：\n<ul>\n<li>在 Vue 2 中，<code>v-on</code> 指令支持使用 <code>keyCode</code> 作为修饰符来监听特定按键事件。然而，在 Vue 3 中，这一功能被移除，推荐使用键名或 <code>KeyboardEvent.key</code> 来代替。</li>\n</ul>\n</li>\n<li><strong>v-on.native 修饰符</strong>  ：\n<ul>\n<li>在 Vue 2 中，<code>v-on.native</code> 修饰符用于在组件的根元素上监听原生 DOM 事件。在 Vue 3 中，这一修饰符被移除，开发者可以直接在组件上使用 <code>v-on</code> 指令来监听原生事件。</li>\n</ul>\n</li>\n<li><strong>其他指令和属性</strong>  ：\n<ul>\n<li>Vue 3 还移除了一些其他指令和属性，如 <code>v-bind.sync</code> 等。这些指令和属性在 Vue 2 中用于处理特定情况，但在 Vue 3 中被认为不再必要或已被其他功能替代。</li>\n</ul>\n</li>\n</ol>\n</div>";</script></body></html>
