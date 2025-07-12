@@ -226,7 +226,7 @@
         let data = JSON.parse(JSON.stringify(window.fileList));
         if (keyword || all) {
           data = data.map((item) => {
-            item.files = item.files.filter((file) =>
+            item.files = item.files.filter(({ file }) =>
               file.split(".md")[0].toLowerCase().includes(keyword)
             );
             return item;
@@ -279,6 +279,10 @@
         win && win.close();
         localStorage.removeItem("dir");
       });
+
+      if (window.navigator.serviceWorker) {
+        window.navigator.serviceWorker.register("./serviceWorker.js");
+      }
     </script>
   </body>
 </html>
