@@ -247,7 +247,8 @@
           html += `<h2>${item.route}</h2>
                 <ul>
                     ${item.files
-                      .map((file) => {
+                      .sort((a, b) => b.birthtime - a.birthtime)
+                      .map(({ file }) => {
                         return `<li><a href='./html/${item.route}/${
                           file.split(".md")[0]
                         }.html' target='_blank'>${
