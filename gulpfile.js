@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const filePaths = [
   "/",
+  "/data.js",
   "/index.html",
   "/css/github-markdown.min.css",
   "/css/github.min.css",
