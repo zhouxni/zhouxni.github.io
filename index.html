@@ -237,7 +237,10 @@
         if (keyword || all) {
           data = data.map((item) => {
             item.files = item.files.filter(({ file }) =>
-              file.split(".md")[0].toLowerCase().includes(keyword)
+              file
+                .split(".md")[0]
+                .toLowerCase()
+                .includes(keyword.toLowerCase().trim())
             );
             return item;
           });
