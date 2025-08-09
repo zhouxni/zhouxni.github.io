@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/uikit.min.css" />
     <script src="./js/jquery.min.js"></script>
     <script src="./data.js"></script>
+    <script src="./update.js"></script>
     <title>周星星的笔记</title>
     <style>
       ul {
@@ -292,7 +293,13 @@
       });
 
       if (window.navigator.serviceWorker) {
-        window.navigator.serviceWorker.register("./serviceWorker.js");
+        window.navigator.serviceWorker
+          .register("./serviceWorker.js")
+          .then(() => {
+            if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+              navigator.serviceWorker.controller.postMessage(window.updateFile);
+            }
+          });
       }
     </script>
   </body>
