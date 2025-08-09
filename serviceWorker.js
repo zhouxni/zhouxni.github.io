@@ -1,7 +1,5 @@
 const CACHE_NAME = "my-app-cache";
 const urlsToCache = [
-  "/data.js",
-  "/update.js",
   "/css/github-markdown.min.css",
   "/css/github.min.css",
   "/css/uikit.min.css",
