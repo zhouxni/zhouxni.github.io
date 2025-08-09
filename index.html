@@ -296,9 +296,19 @@
         window.navigator.serviceWorker
           .register("./serviceWorker.js")
           .then(() => {
-            if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-              navigator.serviceWorker.controller.postMessage(window.updateFile);
-            }
+            navigator.serviceWorker.ready.then((registration) => {
+              if (
+                localStorage.getItem("updateFile") ==
+                JSON.stringify(window.updateFile)
+              ) {
+                return;
+              }
+              registration.active.postMessage(window.updateFile);
+              localStorage.setItem(
+                "updateFile",
+                JSON.stringify(window.updateFile)
+              );
+            });
           });
       }
     </script>
