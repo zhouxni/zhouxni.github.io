@@ -57,7 +57,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("message", (event) => {
   const urls = event.data;
   event.waitUntil(
-    caches.open("my-app-cache").then((cache) => {
+    caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urls);
     })
   );
