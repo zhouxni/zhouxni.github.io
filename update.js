@@ -1,1 +1,1 @@
-window.updateFile = ["/html/js/Reflect 对象详解.html","/html/scene/pnpm 的优点和缺点.html","/html/scene/pnpm 的使用场景.html"]
+window.updateFile = ["/html/scene/#__PURE__ 标记详解.html","/html/scene/ESM Tree Shaking 是否需要具名导出吗.html","/html/scene/什么是幽灵依赖.html","/html/scene/构建工具如何利用 ESM 的静态分析能力进行优化.html"]
