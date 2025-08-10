@@ -69,7 +69,7 @@
       );
       let mySwiper = null;
       function setLoopMode(enableLoop) {
-        const currentIndex = (mySwiper && mySwiper.activeIndex) || 0;
+        const currentIndex = (mySwiper && mySwiper.realIndex) || 0;
         mySwiper && mySwiper.destroy(true, false);
         mySwiper = new Swiper(".swiper", {
           virtual: {
