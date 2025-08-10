@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片预览</title>
+    <link rel="stylesheet" href="/css/swiper-bundle.css" />
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+      user-select: none;
+      display: none;
+    }
+    #imageUpload {
+      position: fixed;
+      z-index: -1;
+      display: none;
+    }
+    .swiper-slide > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .jump {
+      display: flex;
+      position: fixed;
+      z-index: 100;
+      bottom: 8px;
+      right: 45px;
+    }
+    .jump-hide {
+      display: none;
+    }
+    .jump > input {
+      width: 50px;
+    }
+  </style>
+  <body>
+    <div class="jump jump-hide">
+      <input class="jump-val" type="number" />
+      <button class="jump-btn">跳转</button>
+    </div>
+    <div class="swiper">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <script src="/js/swiper-bundle.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zip.js/zip.js/dist/zip.js"></script>
+    <script src="https://zhouxni.github.io/data/privacy.js"></script>
+    <script>
+      window.picTime = new Map(window.picTime);
+      let password = null;
+      let slides = [];
+      const keys = window.picTime.keys();
+      let files = Array.from(keys).sort(
+        (a, b) => picTime.get(a) - picTime.get(b)
+      );
+      let mySwiper = null;
+      function setLoopMode(enableLoop) {
+        const currentIndex = (mySwiper && mySwiper.activeIndex) || 0;
+        mySwiper && mySwiper.destroy(true, false);
+        mySwiper = new Swiper(".swiper", {
+          virtual: {
+            slides: !enableLoop ? [] : slides,
+            renderSlide: (slide, index) => {
+              return `<div class="swiper-slide"><img src='${slide}' /></div>`;
+            },
+          },
+          loop: enableLoop,
+          initialSlide: currentIndex,
+          // 如果需要分页器
+          pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+            formatFractionTotal: function (total) {
+              return files.length; // 设置总数为100
+            },
+          },
+          // 如果需要前进后退按钮
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          on: {
+            init() {
+              $(".jump-val").val(this.realIndex + 1);
+            },
+            slideChange: function () {
+              $(".jump-val").val(this.realIndex + 1);
+            },
+          },
+        });
+      }
+
+      $(".jump-btn").click(function () {
+        mySwiper && mySwiper.slideTo($(".jump-val").val());
+      });
+      setTimeout(() => {
+        $(".swiper").show();
+        $(".jump").removeClass("jump-hide");
+      }, 100);
+
+      const batches = 10;
+      let countIndex = 0;
+      const totalIndex = Math.floor(files.length / batches);
+      async function init() {
+        if (totalIndex < countIndex) {
+          slides = mySwiper.virtual.slides;
+          setLoopMode(true);
+          return;
+        }
+        const result = [];
+        for (const key of files.slice(
+          countIndex * batches,
+          (countIndex + 1) * batches
+        )) {
+          const zipData = await $.ajax({
+            url: `/zip/${key.split(".")[0]}.zip`,
+            method: "GET",
+            xhrFields: {
+              responseType: "arraybuffer", // 接收二进制数据
+            },
+            headers: {
+              Accept: "*/*",
+            },
+          });
+          const zipReader = new zip.ZipReader(
+            new zip.Uint8ArrayReader(new Uint8Array(zipData))
+          );
+          const entries = await zipReader.getEntries();
+          for (const entry of entries) {
+            // 获取文件内容
+            const blob = await entry.getData(new zip.BlobWriter(), {
+              password,
+            });
+            result.push(URL.createObjectURL(blob));
+          }
+          await zipReader.close();
+        }
+        mySwiper.virtual.appendSlide(result);
+        mySwiper.virtual.update();
+        countIndex++;
+        setTimeout(() => {
+          init();
+        }, 300);
+      }
+      password = window.prompt("请输入密码");
+      setLoopMode(false);
+      init();
+    </script>
+  </body>
+</html>
