@@ -8,5 +8,8 @@
   "dependencies": {
     "glob": "^11.0.3",
     "gulp": "^5.0.1"
+  },
+  "scripts": {
+    "git": "node ./commit.js"
   }
 }
