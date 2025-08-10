@@ -34,7 +34,12 @@ self.addEventListener("fetch", (event) => {
       if (response) {
         return response; // 从缓存中返回响应
       }
-      return fetch(event.request); // 从网络获取资源
+      return fetch(event.request).then((networkResponse) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      }); // 从网络获取资源
     })
   );
 });
