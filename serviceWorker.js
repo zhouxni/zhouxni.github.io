@@ -35,7 +35,7 @@ self.addEventListener("fetch", (event) => {
         return response; // 从缓存中返回响应
       }
       return fetch(event.request).then((networkResponse) => {
-        if (event.request.includes("blob:http")) {
+        if (event.request.url.includes("blob:http")) {
           return networkResponse;
         }
         return caches.open(CACHE_NAME).then((cache) => {
