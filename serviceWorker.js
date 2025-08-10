@@ -35,13 +35,13 @@ self.addEventListener("fetch", (event) => {
         return response; // 从缓存中返回响应
       }
       return fetch(event.request).then((networkResponse) => {
-        if (event.request.url.includes("blob:http")) {
-          return networkResponse;
+        if (networkResponse.ok && event.request.url.startsWith("http")) {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
         }
-        return caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        });
+        return networkResponse;
       }); // 从网络获取资源
     })
   );
