@@ -121,12 +121,53 @@
         $(".swiper").show();
         $(".jump").removeClass("jump-hide");
       }, 100);
-
+      function batchRequest(requestArray) {
+        return new Promise(async (resolve) => {
+          let result = [];
+          let index = 0;
+          for (let i = 0; i < Math.ceil(requestArray.length / 5); i++) {
+            const urls = await Promise.all(
+              requestArray.slice(i * 5, (i + 1) * 5).map((url) => {
+                return $.ajax({
+                  url,
+                  method: "GET",
+                  xhrFields: {
+                    responseType: "arraybuffer", // 接收二进制数据
+                  },
+                  headers: {
+                    Accept: "*/*",
+                  },
+                });
+              })
+            ).then(async (zipArr) => {
+              const zipUrls = [];
+              for (let i = 0; i < zipArr.length; i++) {
+                const zipReader = new zip.ZipReader(
+                  new zip.Uint8ArrayReader(new Uint8Array(zipArr[i]))
+                );
+                const entries = await zipReader.getEntries();
+                for (const entry of entries) {
+                  // 获取文件内容
+                  const blob = await entry.getData(new zip.BlobWriter(), {
+                    password,
+                  });
+                  zipUrls.push(URL.createObjectURL(blob));
+                }
+                await zipReader.close();
+              }
+              return zipUrls;
+            });
+            result = result.concat(urls);
+          }
+          resolve(result);
+        });
+      }
       const batches = 100;
       let countIndex = 0;
       const totalIndex = Math.floor(files.length / batches);
       let blinkInterval;
       const originalTitle = document.title;
+
       async function init() {
         try {
           if (totalIndex < countIndex) {
@@ -142,34 +183,14 @@
             }
             return;
           }
-          const result = [];
+          const requestUrls = [];
           for (const key of files.slice(
             countIndex * batches,
             (countIndex + 1) * batches
           )) {
-            const zipData = await $.ajax({
-              url: `/zip/${key.split(".")[0]}.zip`,
-              method: "GET",
-              xhrFields: {
-                responseType: "arraybuffer", // 接收二进制数据
-              },
-              headers: {
-                Accept: "*/*",
-              },
-            });
-            const zipReader = new zip.ZipReader(
-              new zip.Uint8ArrayReader(new Uint8Array(zipData))
-            );
-            const entries = await zipReader.getEntries();
-            for (const entry of entries) {
-              // 获取文件内容
-              const blob = await entry.getData(new zip.BlobWriter(), {
-                password,
-              });
-              result.push(URL.createObjectURL(blob));
-            }
-            await zipReader.close();
+            requestUrls.push(`/zip/${key.split(".")[0]}.zip`);
           }
+          const result = await batchRequest(requestUrls);
           mySwiper.virtual.appendSlide(result);
           mySwiper.virtual.update();
           countIndex++;
