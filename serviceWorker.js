@@ -6,6 +6,7 @@ const urlsToCache = [
   "/js/highlight.min.js",
   "/js/jquery.min.js",
   "/js/markdown-it.min.js",
+  "/js/zip.js",
 ];
 const cacheWhitelist = [CACHE_NAME];
 self.addEventListener("install", (event) => {

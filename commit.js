@@ -10,21 +10,9 @@ exec(
       return;
     }
     console.log("git push origin master");
-    const gitProcess = spawn("git", ["push", "origin", "master"], {
+    spawn("git", ["push", "origin", "master"], {
       cwd: projectPath,
-      tdio: ["pipe", "pipe", "pipe"],
-    });
-    gitProcess.stdout.on("data", (data) => {
-      console.log(`输出: ${data}`);
-    });
-
-    // 命令执行完成时触发
-    gitProcess.on("close", (code) => {
-      if (code === 0) {
-        console.log("✅ git push origin master 执行成功");
-      } else {
-        console.log(`❌ git 命令执行失败，退出码: ${code}`);
-      }
+      stdio: "inherit",
     });
   }
 );
