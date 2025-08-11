@@ -125,11 +125,21 @@
       const batches = 100;
       let countIndex = 0;
       const totalIndex = Math.floor(files.length / batches);
+      let blinkInterval;
+      const originalTitle = document.title;
       async function init() {
         try {
           if (totalIndex < countIndex) {
             slides = mySwiper.virtual.slides;
             setLoopMode(true);
+            if (document.hidden) {
+              blinkInterval = setInterval(() => {
+                document.title =
+                  document.title === originalTitle
+                    ? "🔔 回来查看 🔔"
+                    : originalTitle;
+              }, 300);
+            }
             return;
           }
           const result = [];
@@ -170,6 +180,16 @@
           document.body.innerHTML = "";
         }
       }
+
+      function handleVisibilityChange() {
+        if (!document.hidden) {
+          clearInterval(blinkInterval);
+          document.title = originalTitle;
+        }
+      }
+
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
       password = window.prompt("请输入密码");
       setLoopMode(false);
       init();
