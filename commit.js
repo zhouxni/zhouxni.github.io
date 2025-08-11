@@ -1,4 +1,4 @@
-const { exec } = require("child_process");
+const { exec, spawn } = require("child_process");
 const path = require("path");
 const projectPath = process.cwd();
 exec(
@@ -10,7 +10,9 @@ exec(
       return;
     }
     console.log("git push origin master");
-    const gitProcess = exec("git push origin master", { cwd: projectPath });
+    const gitProcess = spawn("git", ["push", "origin", "master"], {
+      cwd: projectPath,
+    });
     gitProcess.stdout.on("data", (data) => {
       console.log(`输出: ${data}`);
     });
