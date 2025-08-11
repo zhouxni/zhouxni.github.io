@@ -17,6 +17,20 @@ exec(
     gitProcess.stdout.on("data", (data) => {
       console.log(`输出: ${data}`);
     });
+    // 实时捕获错误输出（错误信息、警告等）
+    gitProcess.stderr.on("data", (data) => {
+      const error = data.toString().trim();
+      console.error(`[错误信息] ${error}`);
+    });
+
+    // 命令执行完成时触发
+    gitProcess.on("close", (code) => {
+      if (code === 0) {
+        console.log("✅ git push origin master 执行成功");
+      } else {
+        console.log(`❌ git 命令执行失败，退出码: ${code}`);
+      }
+    });
   }
 );
 
