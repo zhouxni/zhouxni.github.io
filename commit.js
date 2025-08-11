@@ -12,6 +12,7 @@ exec(
     console.log("git push origin master");
     const gitProcess = spawn("git", ["push", "origin", "master"], {
       cwd: projectPath,
+      tdio: ["pipe", "pipe", "pipe"],
     });
     gitProcess.stdout.on("data", (data) => {
       console.log(`输出: ${data}`);
