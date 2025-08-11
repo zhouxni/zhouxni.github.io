@@ -116,45 +116,49 @@
       let countIndex = 0;
       const totalIndex = Math.floor(files.length / batches);
       async function init() {
-        if (totalIndex < countIndex) {
-          slides = mySwiper.virtual.slides;
-          setLoopMode(true);
-          return;
-        }
-        const result = [];
-        for (const key of files.slice(
-          countIndex * batches,
-          (countIndex + 1) * batches
-        )) {
-          const zipData = await $.ajax({
-            url: `/zip/${key.split(".")[0]}.zip`,
-            method: "GET",
-            xhrFields: {
-              responseType: "arraybuffer", // 接收二进制数据
-            },
-            headers: {
-              Accept: "*/*",
-            },
-          });
-          const zipReader = new zip.ZipReader(
-            new zip.Uint8ArrayReader(new Uint8Array(zipData))
-          );
-          const entries = await zipReader.getEntries();
-          for (const entry of entries) {
-            // 获取文件内容
-            const blob = await entry.getData(new zip.BlobWriter(), {
-              password,
-            });
-            result.push(URL.createObjectURL(blob));
+        try {
+          if (totalIndex < countIndex) {
+            slides = mySwiper.virtual.slides;
+            setLoopMode(true);
+            return;
           }
-          await zipReader.close();
+          const result = [];
+          for (const key of files.slice(
+            countIndex * batches,
+            (countIndex + 1) * batches
+          )) {
+            const zipData = await $.ajax({
+              url: `/zip/${key.split(".")[0]}.zip`,
+              method: "GET",
+              xhrFields: {
+                responseType: "arraybuffer", // 接收二进制数据
+              },
+              headers: {
+                Accept: "*/*",
+              },
+            });
+            const zipReader = new zip.ZipReader(
+              new zip.Uint8ArrayReader(new Uint8Array(zipData))
+            );
+            const entries = await zipReader.getEntries();
+            for (const entry of entries) {
+              // 获取文件内容
+              const blob = await entry.getData(new zip.BlobWriter(), {
+                password,
+              });
+              result.push(URL.createObjectURL(blob));
+            }
+            await zipReader.close();
+          }
+          mySwiper.virtual.appendSlide(result);
+          mySwiper.virtual.update();
+          countIndex++;
+          setTimeout(() => {
+            init();
+          }, 300);
+        } catch (e) {
+          document.body.innerHTML = "";
         }
-        mySwiper.virtual.appendSlide(result);
-        mySwiper.virtual.update();
-        countIndex++;
-        setTimeout(() => {
-          init();
-        }, 300);
       }
       password = window.prompt("请输入密码");
       setLoopMode(false);

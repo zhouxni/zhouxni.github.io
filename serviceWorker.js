@@ -6,7 +6,6 @@ const urlsToCache = [
   "/js/highlight.min.js",
   "/js/jquery.min.js",
   "/js/markdown-it.min.js",
-  "/data/privacy.js",
 ];
 const cacheWhitelist = [CACHE_NAME];
 self.addEventListener("install", (event) => {
@@ -31,6 +30,16 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
+      if (
+        event.request.url.startsWith("http") &&
+        (event.request.url.endsWith("preview.html") ||
+          event.request.url.endsWith("index.html") ||
+          event.request.url.endsWith("privacy.js"))
+      ) {
+        return fetch(event.request).then((networkResponse) => {
+          return networkResponse;
+        });
+      }
       if (response) {
         return response; // 从缓存中返回响应
       }

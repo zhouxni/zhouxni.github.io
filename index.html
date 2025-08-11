@@ -47,7 +47,7 @@
   </head>
   <body style="padding: 50px">
     <span class="fixtop">返回顶部</span>
-    <p id="page" style="display: none"><a href="template">页面调试</a></p>
+    <p id="page"><a href="/preview.html">图片预览</a></p>
     <div style="display: inline-flex; white-space: nowrap; margin-bottom: 30px">
       <input class="uk-input" id="keyword" />
       <button
@@ -217,9 +217,6 @@
           $("#keyword").val($(e.target).text());
           getData();
         });
-      !window.location.origin.includes("localhost")
-        ? $("#page").remove()
-        : $("#page").show();
 
       $(document).on("click", "#list", function (e) {
         if ($(e.target).is("a")) {
