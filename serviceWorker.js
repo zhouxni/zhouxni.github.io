@@ -35,7 +35,9 @@ self.addEventListener("fetch", (event) => {
         event.request.url.startsWith("http") &&
         (event.request.url.endsWith("preview.html") ||
           event.request.url.endsWith("index.html") ||
-          event.request.url.endsWith("privacy.js"))
+          event.request.url.endsWith("privacy.js") ||
+          event.request.url == "https://zhouxni.github.io/" ||
+          event.request.url == "https://zhouxni.github.io")
       ) {
         return fetch(event.request).then((networkResponse) => {
           return networkResponse;
