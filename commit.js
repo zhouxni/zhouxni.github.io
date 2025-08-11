@@ -10,7 +10,10 @@ exec(
       return;
     }
     console.log("git push origin master");
-    exec("git push origin master", { cwd: projectPath });
+    const gitProcess = exec("git push origin master", { cwd: projectPath });
+    gitProcess.stdout.on("data", (data) => {
+      console.log(`输出: ${data}`);
+    });
   }
 );
 
