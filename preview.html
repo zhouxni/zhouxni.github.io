@@ -69,7 +69,7 @@
       );
       let mySwiper = null;
       function setLoopMode(enableLoop) {
-        const currentIndex = (mySwiper && mySwiper.realIndex) || 0;
+        const currentIndex = (mySwiper && mySwiper.activeIndex) || 0;
         mySwiper && mySwiper.destroy(true, false);
         mySwiper = new Swiper(".swiper", {
           virtual: {
@@ -79,7 +79,7 @@
             },
           },
           loop: enableLoop,
-          initialSlide: currentIndex,
+          initialSlide: 0,
           // 如果需要分页器
           pagination: {
             el: ".swiper-pagination",
@@ -95,17 +95,27 @@
           },
           on: {
             init() {
-              $(".jump-val").val(this.realIndex + 1);
+              if (enableLoop) {
+                this.slideTo(currentIndex + 1);
+              }
+              $(".jump-val").val(
+                enableLoop ? this.realIndex + 1 : this.activeIndex + 1
+              );
             },
             slideChange: function () {
-              $(".jump-val").val(this.realIndex + 1);
+              $(".jump-val").val(
+                enableLoop ? this.realIndex + 1 : this.activeIndex + 1
+              );
             },
           },
         });
       }
 
       $(".jump-btn").click(function () {
-        mySwiper && mySwiper.slideTo($(".jump-val").val());
+        mySwiper &&
+          mySwiper.slideTo(
+            $(".jump-val").val() - (mySwiper.params.loop ? 0 : 1)
+          );
       });
       setTimeout(() => {
         $(".swiper").show();
