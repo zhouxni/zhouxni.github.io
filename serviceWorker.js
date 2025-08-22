@@ -29,34 +29,37 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (
-        event.request.url.startsWith("http") &&
-        (event.request.url.endsWith("preview.html") ||
-          event.request.url.endsWith("index.html") ||
-          event.request.url.endsWith("privacy.js") ||
-          event.request.url == "https://zhouxni.github.io/" ||
-          event.request.url == "https://zhouxni.github.io")
-      ) {
-        return fetch(event.request).then((networkResponse) => {
-          return networkResponse;
-        });
-      }
-      if (response) {
-        return response; // 从缓存中返回响应
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (networkResponse.ok && event.request.url.startsWith("http")) {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        }
+  if (
+    event.request.url.startsWith("http") &&
+    (event.request.url.endsWith("preview.html") ||
+      event.request.url.endsWith("index.html") ||
+      event.request.url.endsWith("privacy.js") ||
+      event.request.url == "https://zhouxni.github.io/" ||
+      event.request.url == "https://zhouxni.github.io")
+  ) {
+    event.respondWith(
+      fetch(event.request).then((networkResponse) => {
         return networkResponse;
-      }); // 从网络获取资源
-    })
-  );
+      })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        if (response) {
+          return response; // 从缓存中返回响应
+        }
+        return fetch(event.request).then((networkResponse) => {
+          if (networkResponse.ok && event.request.url.startsWith("http")) {
+            return caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            });
+          }
+          return networkResponse;
+        }); // 从网络获取资源
+      })
+    );
+  }
 });
 
 self.addEventListener("activate", (event) => {
