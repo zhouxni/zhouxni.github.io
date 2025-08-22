@@ -1,1 +1,1 @@
-window.updateFile = ["/html/js/React-Redux 管理全局状态借助了 React 的 Context API.html","/html/scene/CommonJS 的模块系统在语法和语义上都是“动态”的.html","/html/scene/React 17 的同步批处理.html","/html/scene/React 18 的异步批处理.html","/html/scene/SSR 要注意哪些问题.html","/html/scene/package.json exports有哪些功能.html","/html/scene/为什么 Object 可以是构造函数.html","/html/scene/前端主导第三方支付.html","/html/scene/前端项目如何保证稳定性.html","/html/scene/动态导入 import() 也可以 tree shaking.html","/html/scene/后端主导第三方支付流程.html","/html/scene/断点续传.html","/html/scene/流式渲染.html"]
+window.updateFile = ["/html/scene/taro H5 路由如何管理.html"]
