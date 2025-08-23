@@ -28,40 +28,40 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("fetch", (event) => {
-  if (
-    event.request.url.startsWith("http") &&
-    (event.request.url.endsWith("preview.html") ||
-      event.request.url.endsWith("index.html") ||
-      event.request.url.endsWith("privacy.js") ||
-      event.request.url.endsWith("data.js") ||
-      event.request.url == "https://zhouxni.github.io/" ||
-      event.request.url == "https://zhouxni.github.io")
-  ) {
-    event.respondWith(
-      fetch(event.request).then((networkResponse) => {
-        return networkResponse;
-      })
-    );
-  } else {
-    event.respondWith(
-      caches.match(event.request).then((response) => {
-        if (response) {
-          return response; // 从缓存中返回响应
-        }
-        return fetch(event.request).then((networkResponse) => {
-          if (networkResponse.ok && event.request.url.startsWith("http")) {
-            return caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, networkResponse.clone());
-              return networkResponse;
-            });
-          }
-          return networkResponse;
-        }); // 从网络获取资源
-      })
-    );
-  }
-});
+// self.addEventListener("fetch", (event) => {
+//   if (
+//     event.request.url.startsWith("http") &&
+//     (event.request.url.endsWith("preview.html") ||
+//       event.request.url.endsWith("index.html") ||
+//       event.request.url.endsWith("privacy.js") ||
+//       event.request.url.endsWith("data.js") ||
+//       event.request.url == "https://zhouxni.github.io/" ||
+//       event.request.url == "https://zhouxni.github.io")
+//   ) {
+//     event.respondWith(
+//       fetch(event.request).then((networkResponse) => {
+//         return networkResponse;
+//       })
+//     );
+//   } else {
+//     event.respondWith(
+//       caches.match(event.request).then((response) => {
+//         if (response) {
+//           return response; // 从缓存中返回响应
+//         }
+//         return fetch(event.request).then((networkResponse) => {
+//           if (networkResponse.ok && event.request.url.startsWith("http")) {
+//             return caches.open(CACHE_NAME).then((cache) => {
+//               cache.put(event.request, networkResponse.clone());
+//               return networkResponse;
+//             });
+//           }
+//           return networkResponse;
+//         }); // 从网络获取资源
+//       })
+//     );
+//   }
+// });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
