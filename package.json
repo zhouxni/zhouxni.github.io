@@ -1,0 +1,15 @@
+{
+  "name": "express-page",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zhouxni/zhouxni.github.io.git",
+  "author": "zhouxni <2717584844@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^11.0.3",
+    "gulp": "^5.0.1"
+  },
+  "scripts": {
+    "git": "node ./commit.js"
+  }
+}
