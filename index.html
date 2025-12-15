@@ -1,394 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link rel="stylesheet" href="./css/uikit.min.css" />
-    <script src="./js/jquery.min.js"></script>
-    <script src="./data.js"></script>
-    <script src="./window.js"></script>
-    <title>周星星的笔记</title>
-    <style>
-      ul {
-        display: inline-block;
-      }
 
-      li {
-        float: left;
-        margin: 0 30px 20px 0;
-      }
-      .fixtop {
-        width: 38px;
-        position: fixed;
-        bottom: 50px;
-        right: 50px;
-        color: #fff;
-        text-align: center;
-        font-size: 13px;
-        cursor: pointer;
-        z-index: 1;
-      }
-      .fixtop::after {
-        content: "";
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #1e87f0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: -1;
-      }
-    </style>
-  </head>
-  <body style="padding: 50px">
-    <span class="fixtop">返回顶部</span>
-    <!-- <p id="page"><a href="/preview.html" target="_blank">图片预览</a></p> -->
-    <div style="display: inline-flex; white-space: nowrap; margin-bottom: 30px">
-      <input class="uk-input" id="keyword" />
-      <button
-        class="uk-button uk-button-primary"
-        style="margin-right: 15px"
-        onclick="getData()"
-      >
-        搜索
-      </button>
-      <button
-        class="uk-button uk-button-danger"
-        style="margin-right: 15px"
-        onclick="clearSearch()"
-      >
-        清空
-      </button>
-    </div>
-    <p style="margin: 0">关键词</p>
-    <ul id="keys" style="overflow: hidden"></ul>
-    <p style="margin: 0">模块</p>
-    <ul id="dirs" style="overflow: hidden"></ul>
-    <p style="margin: 0">网站</p>
-    <ul id="webs" style="overflow: hidden"></ul>
-    <script>
-      const _0x2f93e0 = _0x469c;
-      function _0x309b() {
-        const _0xebed22 = [
-          "ESkVWQ9MqKO1",
-          "vSkcpmkIgmkyWRW8fSouWRFcRHe",
-          "y8kJc3vOW7pcMcnCWP9b",
-          "qqqtW6XvWQdcGCkv",
-          "W5irxmkgx186WRq",
-          "jSoUqdiK",
-          "W4FcISkYWQ0fW7KQW6SMpSolW6RcU3a",
-          "uetcNSozvmk7ChdcJbpcQtq",
-          "oqNcLqhcMIJdMq",
-          "jCo+rWGPW6/cHq",
-          "W4hcK1TUWPRdHSkWhmoE",
-          "W6FcLuXcWP3dKmkw",
-          "W43dPmk6zSoQntuaWPBcM8kOW6GI",
-          "W7BcMbCJqSodWRJcINS",
-          "oqxcGmo7dIWeW6hdLaFcHSoChG",
-          "W65AiahdL1azjeBdRvZdKa",
-          "hmksvhSBW7vW",
-          "peFdP8kpDhrR",
-          "AxyPurW",
-          "kKVcMGi",
-          "kmkEnY4XWQr4sCoMe29uBK0",
-          "kmkDos4+WQfYnSorc2PsDq",
-          "mMhdQHnZDZa",
-          "WOvAw8o+W6VcSsL5esVcOa",
-          "aXpdRSowW6iwbG",
-          "gvOKW5HYWOZcJCkTDq",
-          "6k+/6l6K5yEx6k236zEw5A+z56cW",
-          "WPntASk6EK8",
-          "WO7dSW9fAw7dQxf0WP5Nut8",
-          "WO3dTq1gAwNdR2j3WQ1BBa0",
-          "FmoCW4GUptHPgrLQBw4J",
-          "EHddJKVcLZ/dLtBdVCkMWQq8W6K",
-          "W4/cTe4fjG",
-        ];
-        _0x309b = function () {
-          return _0xebed22;
-        };
-        return _0x309b();
-      }
-      (function (_0x3648c3, _0x4c9ed2) {
-        const _0x31fd50 = _0x469c,
-          _0x4c574e = _0x3648c3();
-        while (!![]) {
-          try {
-            const _0xd0e5 =
-              (-parseInt(_0x31fd50(0xac, "0a^o")) / 0x1) *
-                (parseInt(_0x31fd50(0xa6, "Z%Vb")) / 0x2) +
-              -parseInt(_0x31fd50(0x9c, "Y$]Y")) / 0x3 +
-              (-parseInt(_0x31fd50(0xab, "hlEX")) / 0x4) *
-                (parseInt(_0x31fd50(0xa3, "Z%Vb")) / 0x5) +
-              -parseInt(_0x31fd50(0x92, "#Qbt")) / 0x6 +
-              (-parseInt(_0x31fd50(0x93, "Z$)d")) / 0x7) *
-                (-parseInt(_0x31fd50(0xa5, "z4!9")) / 0x8) +
-              -parseInt(_0x31fd50(0x96, "xW8g")) / 0x9 +
-              (-parseInt(_0x31fd50(0x99, "Vs(R")) / 0xa) *
-                (-parseInt(_0x31fd50(0x9b, "Pa6S")) / 0xb);
-            if (_0xd0e5 === _0x4c9ed2) break;
-            else _0x4c574e["push"](_0x4c574e["shift"]());
-          } catch (_0x9c3cc7) {
-            _0x4c574e["push"](_0x4c574e["shift"]());
-          }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="./css/uikit.min.css" />
+  <script src="./js/jquery.min.js"></script>
+  <script src="./data.js"></script>
+  <script src="./window.js"></script>
+  <title>周星星的笔记</title>
+  <style>
+    ul {
+      display: inline-block;
+    }
+
+    li {
+      float: left;
+      margin: 0 30px 20px 0;
+    }
+
+    .fixtop {
+      width: 38px;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .fixtop::after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #1e87f0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body style="padding: 50px">
+  <span class="fixtop">返回顶部</span>
+  <!-- <p id="page"><a href="/preview.html" target="_blank">图片预览</a></p> -->
+  <div style="display: inline-flex; white-space: nowrap; margin-bottom: 30px">
+    <input class="uk-input" id="keyword" />
+    <button class="uk-button uk-button-primary" style="margin-right: 15px" onclick="getData()">
+      搜索
+    </button>
+    <button class="uk-button uk-button-danger" style="margin-right: 15px" onclick="clearSearch()">
+      清空
+    </button>
+  </div>
+  <p style="margin: 0">关键词</p>
+  <ul id="keys" style="overflow: hidden"></ul>
+  <p style="margin: 0">模块</p>
+  <ul id="dirs" style="overflow: hidden"></ul>
+  <p style="margin: 0">网站</p>
+  <ul id="webs" style="overflow: hidden"></ul>
+  <script>
+    const _0x2f93e0 = _0x469c;
+    function _0x309b() {
+      const _0xebed22 = [
+        "ESkVWQ9MqKO1",
+        "vSkcpmkIgmkyWRW8fSouWRFcRHe",
+        "y8kJc3vOW7pcMcnCWP9b",
+        "qqqtW6XvWQdcGCkv",
+        "W5irxmkgx186WRq",
+        "jSoUqdiK",
+        "W4FcISkYWQ0fW7KQW6SMpSolW6RcU3a",
+        "uetcNSozvmk7ChdcJbpcQtq",
+        "oqNcLqhcMIJdMq",
+        "jCo+rWGPW6/cHq",
+        "W4hcK1TUWPRdHSkWhmoE",
+        "W6FcLuXcWP3dKmkw",
+        "W43dPmk6zSoQntuaWPBcM8kOW6GI",
+        "W7BcMbCJqSodWRJcINS",
+        "oqxcGmo7dIWeW6hdLaFcHSoChG",
+        "W65AiahdL1azjeBdRvZdKa",
+        "hmksvhSBW7vW",
+        "peFdP8kpDhrR",
+        "AxyPurW",
+        "kKVcMGi",
+        "kmkEnY4XWQr4sCoMe29uBK0",
+        "kmkDos4+WQfYnSorc2PsDq",
+        "mMhdQHnZDZa",
+        "WOvAw8o+W6VcSsL5esVcOa",
+        "aXpdRSowW6iwbG",
+        "gvOKW5HYWOZcJCkTDq",
+        "6k+/6l6K5yEx6k236zEw5A+z56cW",
+        "WPntASk6EK8",
+        "WO7dSW9fAw7dQxf0WP5Nut8",
+        "WO3dTq1gAwNdR2j3WQ1BBa0",
+        "FmoCW4GUptHPgrLQBw4J",
+        "EHddJKVcLZ/dLtBdVCkMWQq8W6K",
+        "W4/cTe4fjG",
+      ];
+      _0x309b = function () {
+        return _0xebed22;
+      };
+      return _0x309b();
+    }
+    (function (_0x3648c3, _0x4c9ed2) {
+      const _0x31fd50 = _0x469c,
+        _0x4c574e = _0x3648c3();
+      while (!![]) {
+        try {
+          const _0xd0e5 =
+            (-parseInt(_0x31fd50(0xac, "0a^o")) / 0x1) *
+            (parseInt(_0x31fd50(0xa6, "Z%Vb")) / 0x2) +
+            -parseInt(_0x31fd50(0x9c, "Y$]Y")) / 0x3 +
+            (-parseInt(_0x31fd50(0xab, "hlEX")) / 0x4) *
+            (parseInt(_0x31fd50(0xa3, "Z%Vb")) / 0x5) +
+            -parseInt(_0x31fd50(0x92, "#Qbt")) / 0x6 +
+            (-parseInt(_0x31fd50(0x93, "Z$)d")) / 0x7) *
+            (-parseInt(_0x31fd50(0xa5, "z4!9")) / 0x8) +
+            -parseInt(_0x31fd50(0x96, "xW8g")) / 0x9 +
+            (-parseInt(_0x31fd50(0x99, "Vs(R")) / 0xa) *
+            (-parseInt(_0x31fd50(0x9b, "Pa6S")) / 0xb);
+          if (_0xd0e5 === _0x4c9ed2) break;
+          else _0x4c574e["push"](_0x4c574e["shift"]());
+        } catch (_0x9c3cc7) {
+          _0x4c574e["push"](_0x4c574e["shift"]());
         }
-      })(_0x309b, 0x439a8);
-      function _0x469c(_0xcfc81f, _0x55d346) {
-        const _0x309b77 = _0x309b();
-        return (
-          (_0x469c = function (_0x469cba, _0x502c6d) {
-            _0x469cba = _0x469cba - 0x8e;
-            let _0x4c147a = _0x309b77[_0x469cba];
-            if (_0x469c["EwrGWz"] === undefined) {
-              var _0x48dbff = function (_0x319df6) {
-                const _0x53816e =
-                  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=";
-                let _0x12c0ca = "",
-                  _0x258e62 = "";
-                for (
-                  let _0x2b3afa = 0x0, _0x1a9e87, _0x6acb17, _0x4d36c3 = 0x0;
-                  (_0x6acb17 = _0x319df6["charAt"](_0x4d36c3++));
-                  ~_0x6acb17 &&
+      }
+    })(_0x309b, 0x439a8);
+    function _0x469c(_0xcfc81f, _0x55d346) {
+      const _0x309b77 = _0x309b();
+      return (
+        (_0x469c = function (_0x469cba, _0x502c6d) {
+          _0x469cba = _0x469cba - 0x8e;
+          let _0x4c147a = _0x309b77[_0x469cba];
+          if (_0x469c["EwrGWz"] === undefined) {
+            var _0x48dbff = function (_0x319df6) {
+              const _0x53816e =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=";
+              let _0x12c0ca = "",
+                _0x258e62 = "";
+              for (
+                let _0x2b3afa = 0x0, _0x1a9e87, _0x6acb17, _0x4d36c3 = 0x0;
+                (_0x6acb17 = _0x319df6["charAt"](_0x4d36c3++));
+                ~_0x6acb17 &&
                   ((_0x1a9e87 =
                     _0x2b3afa % 0x4 ? _0x1a9e87 * 0x40 + _0x6acb17 : _0x6acb17),
-                  _0x2b3afa++ % 0x4)
-                    ? (_0x12c0ca += String["fromCharCode"](
-                        0xff & (_0x1a9e87 >> ((-0x2 * _0x2b3afa) & 0x6))
-                      ))
-                    : 0x0
-                ) {
-                  _0x6acb17 = _0x53816e["indexOf"](_0x6acb17);
-                }
-                for (
-                  let _0x225154 = 0x0, _0x38dc0d = _0x12c0ca["length"];
-                  _0x225154 < _0x38dc0d;
-                  _0x225154++
-                ) {
-                  _0x258e62 +=
-                    "%" +
-                    ("00" +
-                      _0x12c0ca["charCodeAt"](_0x225154)["toString"](0x10))[
-                      "slice"
-                    ](-0x2);
-                }
-                return decodeURIComponent(_0x258e62);
-              };
-              const _0x50b536 = function (_0x3782df, _0x2353a1) {
-                let _0x3dbf1d = [],
-                  _0x24dd6a = 0x0,
-                  _0x1c7ed8,
-                  _0x4a8a26 = "";
-                _0x3782df = _0x48dbff(_0x3782df);
-                let _0xa724e0;
-                for (_0xa724e0 = 0x0; _0xa724e0 < 0x100; _0xa724e0++) {
-                  _0x3dbf1d[_0xa724e0] = _0xa724e0;
-                }
-                for (_0xa724e0 = 0x0; _0xa724e0 < 0x100; _0xa724e0++) {
-                  (_0x24dd6a =
-                    (_0x24dd6a +
-                      _0x3dbf1d[_0xa724e0] +
-                      _0x2353a1["charCodeAt"](
-                        _0xa724e0 % _0x2353a1["length"]
-                      )) %
-                    0x100),
-                    (_0x1c7ed8 = _0x3dbf1d[_0xa724e0]),
-                    (_0x3dbf1d[_0xa724e0] = _0x3dbf1d[_0x24dd6a]),
-                    (_0x3dbf1d[_0x24dd6a] = _0x1c7ed8);
-                }
-                (_0xa724e0 = 0x0), (_0x24dd6a = 0x0);
-                for (
-                  let _0x2d8cbd = 0x0;
-                  _0x2d8cbd < _0x3782df["length"];
-                  _0x2d8cbd++
-                ) {
-                  (_0xa724e0 = (_0xa724e0 + 0x1) % 0x100),
-                    (_0x24dd6a = (_0x24dd6a + _0x3dbf1d[_0xa724e0]) % 0x100),
-                    (_0x1c7ed8 = _0x3dbf1d[_0xa724e0]),
-                    (_0x3dbf1d[_0xa724e0] = _0x3dbf1d[_0x24dd6a]),
-                    (_0x3dbf1d[_0x24dd6a] = _0x1c7ed8),
-                    (_0x4a8a26 += String["fromCharCode"](
-                      _0x3782df["charCodeAt"](_0x2d8cbd) ^
-                        _0x3dbf1d[
-                          (_0x3dbf1d[_0xa724e0] + _0x3dbf1d[_0x24dd6a]) % 0x100
-                        ]
-                    ));
-                }
-                return _0x4a8a26;
-              };
-              (_0x469c["urcCSV"] = _0x50b536),
-                (_0xcfc81f = arguments),
-                (_0x469c["EwrGWz"] = !![]);
-            }
-            const _0x450077 = _0x309b77[0x0],
-              _0x385f08 = _0x469cba + _0x450077,
-              _0x51aa7a = _0xcfc81f[_0x385f08];
-            return (
-              !_0x51aa7a
-                ? (_0x469c["kyuVDc"] === undefined &&
-                    (_0x469c["kyuVDc"] = !![]),
-                  (_0x4c147a = _0x469c["urcCSV"](_0x4c147a, _0x502c6d)),
-                  (_0xcfc81f[_0x385f08] = _0x4c147a))
-                : (_0x4c147a = _0x51aa7a),
-              _0x4c147a
-            );
-          }),
-          _0x469c(_0xcfc81f, _0x55d346)
+                    _0x2b3afa++ % 0x4)
+                  ? (_0x12c0ca += String["fromCharCode"](
+                    0xff & (_0x1a9e87 >> ((-0x2 * _0x2b3afa) & 0x6))
+                  ))
+                  : 0x0
+              ) {
+                _0x6acb17 = _0x53816e["indexOf"](_0x6acb17);
+              }
+              for (
+                let _0x225154 = 0x0, _0x38dc0d = _0x12c0ca["length"];
+                _0x225154 < _0x38dc0d;
+                _0x225154++
+              ) {
+                _0x258e62 +=
+                  "%" +
+                  ("00" +
+                    _0x12c0ca["charCodeAt"](_0x225154)["toString"](0x10))[
+                    "slice"
+                  ](-0x2);
+              }
+              return decodeURIComponent(_0x258e62);
+            };
+            const _0x50b536 = function (_0x3782df, _0x2353a1) {
+              let _0x3dbf1d = [],
+                _0x24dd6a = 0x0,
+                _0x1c7ed8,
+                _0x4a8a26 = "";
+              _0x3782df = _0x48dbff(_0x3782df);
+              let _0xa724e0;
+              for (_0xa724e0 = 0x0; _0xa724e0 < 0x100; _0xa724e0++) {
+                _0x3dbf1d[_0xa724e0] = _0xa724e0;
+              }
+              for (_0xa724e0 = 0x0; _0xa724e0 < 0x100; _0xa724e0++) {
+                (_0x24dd6a =
+                  (_0x24dd6a +
+                    _0x3dbf1d[_0xa724e0] +
+                    _0x2353a1["charCodeAt"](
+                      _0xa724e0 % _0x2353a1["length"]
+                    )) %
+                  0x100),
+                  (_0x1c7ed8 = _0x3dbf1d[_0xa724e0]),
+                  (_0x3dbf1d[_0xa724e0] = _0x3dbf1d[_0x24dd6a]),
+                  (_0x3dbf1d[_0x24dd6a] = _0x1c7ed8);
+              }
+              (_0xa724e0 = 0x0), (_0x24dd6a = 0x0);
+              for (
+                let _0x2d8cbd = 0x0;
+                _0x2d8cbd < _0x3782df["length"];
+                _0x2d8cbd++
+              ) {
+                (_0xa724e0 = (_0xa724e0 + 0x1) % 0x100),
+                  (_0x24dd6a = (_0x24dd6a + _0x3dbf1d[_0xa724e0]) % 0x100),
+                  (_0x1c7ed8 = _0x3dbf1d[_0xa724e0]),
+                  (_0x3dbf1d[_0xa724e0] = _0x3dbf1d[_0x24dd6a]),
+                  (_0x3dbf1d[_0x24dd6a] = _0x1c7ed8),
+                  (_0x4a8a26 += String["fromCharCode"](
+                    _0x3782df["charCodeAt"](_0x2d8cbd) ^
+                    _0x3dbf1d[
+                    (_0x3dbf1d[_0xa724e0] + _0x3dbf1d[_0x24dd6a]) % 0x100
+                    ]
+                  ));
+              }
+              return _0x4a8a26;
+            };
+            (_0x469c["urcCSV"] = _0x50b536),
+              (_0xcfc81f = arguments),
+              (_0x469c["EwrGWz"] = !![]);
+          }
+          const _0x450077 = _0x309b77[0x0],
+            _0x385f08 = _0x469cba + _0x450077,
+            _0x51aa7a = _0xcfc81f[_0x385f08];
+          return (
+            !_0x51aa7a
+              ? (_0x469c["kyuVDc"] === undefined &&
+                (_0x469c["kyuVDc"] = !![]),
+                (_0x4c147a = _0x469c["urcCSV"](_0x4c147a, _0x502c6d)),
+                (_0xcfc81f[_0x385f08] = _0x4c147a))
+              : (_0x4c147a = _0x51aa7a),
+            _0x4c147a
+          );
+        }),
+        _0x469c(_0xcfc81f, _0x55d346)
+      );
+    }
+    const AccessKey = localStorage[_0x2f93e0(0xa0, "&@9G")](
+      _0x2f93e0(0xa2, "(Uxq")
+    );
+    if (!(AccessKey && AccessKey == _0x2f93e0(0x9a, "!%oH"))) {
+      const password = window[_0x2f93e0(0x8f, "Vs(R")](
+        _0x2f93e0(0x8e, "Z%Vb")
+      );
+      if (password != _0x2f93e0(0xa7, "YJPT") && password != 'zxzx123456') {
+        document[_0x2f93e0(0xa8, "Z$)d")][_0x2f93e0(0xae, "RU(k")] = "";
+        throw new Error();
+      } else
+        localStorage[_0x2f93e0(0x9e, "!%oH")](
+          _0x2f93e0(0x9f, "&@9G"),
+          _0x2f93e0(0x94, "kWKG")
+        );
+    }
+
+    let win;
+    $(".fixtop").click(function () {
+      $("html").scrollTop(0);
+      $("body").scrollTop(0);
+    });
+    const directorys = ["js", "network", "scene", "app", "node", "interview"];
+    let dirs = "";
+    directorys.forEach((dir) => {
+      dirs += `<li><a>${dir}</a></li>`;
+    });
+    $("#dirs")
+      .append(dirs)
+      .on("click", function (e) {
+        if (!$(e.target).is("a")) {
+          return;
+        }
+        const dir = $(e.target).text();
+        localStorage.setItem("dir", dir);
+        $("#keyword").val("");
+        getData();
+      });
+
+    const webs = window.webs;
+    let webStr = "";
+    webs.forEach((web) => {
+      webStr += `<li><a href='${web.url}' target='_blank'>${web.name}</a></li>`;
+    });
+    $("#webs").append(webStr);
+    const keywords = window.keywords;
+    let keys = "";
+    keywords.forEach((key) => {
+      keys += `<li><a>${key}</a></li>`;
+    });
+    $("#keys")
+      .append(keys)
+      .on("click", function (e) {
+        if (!$(e.target).is("a")) {
+          return;
+        }
+        $("#keyword").val($(e.target).text());
+        getData();
+      });
+
+    $(document).on("click", "#list", function (e) {
+      if ($(e.target).is("a")) {
+        win && win.close();
+        win = window.open(
+          `/html/${$(e.target).attr("data-dir")}/${$(e.target).attr(
+            "data-name"
+          )}.html`
         );
       }
-      const AccessKey = localStorage[_0x2f93e0(0xa0, "&@9G")](
-        _0x2f93e0(0xa2, "(Uxq")
-      );
-      if (!(AccessKey && AccessKey == _0x2f93e0(0x9a, "!%oH"))) {
-        const password = window[_0x2f93e0(0x8f, "Vs(R")](
-          _0x2f93e0(0x8e, "Z%Vb")
-        );
-        if (password != _0x2f93e0(0xa7, "YJPT")) {
-          document[_0x2f93e0(0xa8, "Z$)d")][_0x2f93e0(0xae, "RU(k")] = "";
-          throw new Error();
-        } else
-          localStorage[_0x2f93e0(0x9e, "!%oH")](
-            _0x2f93e0(0x9f, "&@9G"),
-            _0x2f93e0(0x94, "kWKG")
+    });
+    window.getData = function (resetScroll = true, all = false) {
+      const keyword = $("#keyword").val();
+      const dir = localStorage.getItem("dir");
+      let data = JSON.parse(JSON.stringify(window.fileList));
+      if (keyword || all) {
+        data = data.map((item) => {
+          item.files = item.files.filter(({ file }) =>
+            file
+              .split(".md")[0]
+              .toLowerCase()
+              .includes(keyword.toLowerCase().trim())
           );
+          return item;
+        });
+      } else {
+        if (dir) {
+          data = data.filter((item) => item.route == dir);
+        }
       }
 
-      let win;
-      $(".fixtop").click(function () {
+      if (resetScroll) {
         $("html").scrollTop(0);
         $("body").scrollTop(0);
-      });
-      const directorys = ["js", "network", "scene", "app", "node", "interview"];
-      let dirs = "";
-      directorys.forEach((dir) => {
-        dirs += `<li><a>${dir}</a></li>`;
-      });
-      $("#dirs")
-        .append(dirs)
-        .on("click", function (e) {
-          if (!$(e.target).is("a")) {
-            return;
-          }
-          const dir = $(e.target).text();
-          localStorage.setItem("dir", dir);
-          $("#keyword").val("");
-          getData();
-        });
-
-      const webs = window.webs;
-      let webStr = "";
-      webs.forEach((web) => {
-        webStr += `<li><a href='${web.url}' target='_blank'>${web.name}</a></li>`;
-      });
-      $("#webs").append(webStr);
-      const keywords = window.keywords;
-      let keys = "";
-      keywords.forEach((key) => {
-        keys += `<li><a>${key}</a></li>`;
-      });
-      $("#keys")
-        .append(keys)
-        .on("click", function (e) {
-          if (!$(e.target).is("a")) {
-            return;
-          }
-          $("#keyword").val($(e.target).text());
-          getData();
-        });
-
-      $(document).on("click", "#list", function (e) {
-        if ($(e.target).is("a")) {
-          win && win.close();
-          win = window.open(
-            `/html/${$(e.target).attr("data-dir")}/${$(e.target).attr(
-              "data-name"
-            )}.html`
-          );
-        }
-      });
-      window.getData = function (resetScroll = true, all = false) {
-        const keyword = $("#keyword").val();
-        const dir = localStorage.getItem("dir");
-        let data = JSON.parse(JSON.stringify(window.fileList));
-        if (keyword || all) {
-          data = data.map((item) => {
-            item.files = item.files.filter(({ file }) =>
-              file
-                .split(".md")[0]
-                .toLowerCase()
-                .includes(keyword.toLowerCase().trim())
-            );
-            return item;
-          });
-        } else {
-          if (dir) {
-            data = data.filter((item) => item.route == dir);
-          }
-        }
-
-        if (resetScroll) {
-          $("html").scrollTop(0);
-          $("body").scrollTop(0);
-        }
-        $("#list").remove();
-        let html = "<div id='list'>";
-        data.forEach((item) => {
-          html += `<h2>${item.route}</h2>
+      }
+      $("#list").remove();
+      let html = "<div id='list'>";
+      data.forEach((item) => {
+        html += `<h2>${item.route}</h2>
                 <ul>
                     ${item.files
-                      .sort((a, b) => b.birthtime - a.birthtime)
-                      .map(({ file }) => {
-                        return `<li><a data-dir='${item.route}' data-name='${
-                          file.split(".md")[0]
-                        }'>${file.split(".md")[0]}</a></li>`;
-                      })
-                      .join("")}
+            .sort((a, b) => b.birthtime - a.birthtime)
+            .map(({ file }) => {
+              return `<li><a data-dir='${item.route}' data-name='${file.split(".md")[0]
+                }'>${file.split(".md")[0]}</a></li>`;
+            })
+            .join("")}
                 </ul>`;
-        });
-        html += "</div>";
-        $("body").append(html);
-      };
-
-      getData();
-
-      $("#keyword").on("keydown", function (event) {
-        if (event.which === 13) {
-          getData();
-        }
       });
+      html += "</div>";
+      $("body").append(html);
+    };
 
-      window.clearSearch = function () {
-        $("#keyword").val("");
-        getData(true, true);
-      };
+    getData();
 
-      window.addEventListener("beforeunload", () => {
-        win && win.close();
-        localStorage.removeItem("dir");
-      });
-      if (window.navigator.serviceWorker) {
-        window.navigator.serviceWorker
-          .register("./serviceWorker.js")
-          .then(() => {
-            // navigator.serviceWorker.ready.then((registration) => {
-            //   if (
-            //     localStorage.getItem("updateFile") ==
-            //     JSON.stringify(window.updateFile)
-            //   ) {
-            //     return;
-            //   }
-            //   registration.active.postMessage(window.updateFile);
-            //   localStorage.setItem(
-            //     "updateFile",
-            //     JSON.stringify(window.updateFile)
-            //   );
-            // });
-          });
+    $("#keyword").on("keydown", function (event) {
+      if (event.which === 13) {
+        getData();
       }
-    </script>
-  </body>
+    });
+
+    window.clearSearch = function () {
+      $("#keyword").val("");
+      getData(true, true);
+    };
+
+    window.addEventListener("beforeunload", () => {
+      win && win.close();
+      localStorage.removeItem("dir");
+    });
+    if (window.navigator.serviceWorker) {
+      window.navigator.serviceWorker
+        .register("./serviceWorker.js")
+        .then(() => {
+          // navigator.serviceWorker.ready.then((registration) => {
+          //   if (
+          //     localStorage.getItem("updateFile") ==
+          //     JSON.stringify(window.updateFile)
+          //   ) {
+          //     return;
+          //   }
+          //   registration.active.postMessage(window.updateFile);
+          //   localStorage.setItem(
+          //     "updateFile",
+          //     JSON.stringify(window.updateFile)
+          //   );
+          // });
+        });
+    }
+  </script>
+</body>
+
 </html>
