@@ -10,7 +10,7 @@ exec(
       return;
     }
     console.log("git push origin master");
-    const gitProcess = spawn("git", ["push", "origin", "master"], {
+    const gitProcess = spawn("git", ["push", "origin", "main"], {
       cwd: projectPath,
       stdio: "inherit",
     });
