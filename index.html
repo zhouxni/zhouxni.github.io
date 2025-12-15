@@ -244,11 +244,20 @@
       if (password != _0x2f93e0(0xa7, "YJPT") && password != 'zxzx123456') {
         document[_0x2f93e0(0xa8, "Z$)d")][_0x2f93e0(0xae, "RU(k")] = "";
         throw new Error();
-      } else
-        localStorage[_0x2f93e0(0x9e, "!%oH")](
-          _0x2f93e0(0x9f, "&@9G"),
-          _0x2f93e0(0x94, "kWKG")
-        );
+      } else {
+        if (password == 'zxzx123456') {
+          localStorage[_0x2f93e0(0x9e, "!%oH")](
+            _0x2f93e0(0x9f, "&@9G"),
+            'zxzx123456'
+          );
+        } else {
+          localStorage[_0x2f93e0(0x9e, "!%oH")](
+            _0x2f93e0(0x9f, "&@9G"),
+            _0x2f93e0(0x94, "kWKG")
+          );
+        }
+      }
+
     }
 
     let win;
