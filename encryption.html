@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js混淆加密</title>
+</head>
+
+<body>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 30px;
+      ">
+        <div style="flex: 1">
+            <textarea id="sourceCode" class="uk-textarea" rows="8" placeholder="源代码"></textarea>
+        </div>
+        <div style="flex: 1">
+            <textarea id="encryptionCode" class="uk-textarea" rows="8" placeholder="混淆代码"></textarea>
+        </div>
+    </div>
+    <div style="justify-content: center; display: flex; gap: 30px">
+        <button id="encryption_btn" class="uk-button uk-button-primary">
+            混淆
+        </button>
+        <button id="copy_btn" class="uk-button uk-button-default">复制</button>
+    </div>
+    <script>
+        function insert(file, type = "script") {
+            return new Promise((resolve) => {
+                const tag = document.createElement(type);
+
+                if (type == "link") {
+                    tag.setAttribute("rel", "stylesheet");
+                    tag.setAttribute(
+                        "href",
+                        file.includes("https") ?
+                            file :
+                            `${window.location.origin}/js/${file}`
+                    );
+                } else {
+                    tag.src = file.includes("https") ?
+                        file :
+                        `${window.location.origin}/js/${file}`;
+                }
+                const htmlElement = document.querySelector("html");
+                // 获取 body 元素
+                const bodyElement = document.querySelector("body");
+                htmlElement.insertBefore(tag, bodyElement);
+                if (type == "script") {
+                    tag.onload = function () {
+                        resolve();
+                    };
+                } else {
+                    resolve();
+                }
+            });
+        }
+        insert("uikit.min.css", "link");
+        Promise.all([
+            insert("javascript-obfuscator.js"),
+            insert("jquery.min.js"),
+            insert("uikit.min.js"),
+            insert("uikit-icons.min.js"),
+        ]).then(() => {
+            $("#encryption_btn").click(function () {
+                if (!$("#sourceCode").val().trim()) {
+                    UIkit.notification({
+                        message: '请输入源代码',
+                        status: 'danger',
+                        timeout: 3000
+                    });
+                    return
+                }
+
+                $("#encryptionCode").val(encryptCode($("#sourceCode").val()));
+            });
+            $("#copy_btn").click(function () {
+                if (!$("#encryptionCode").val().trim()) {
+                    UIkit.notification({
+                        message: '混淆代码为空',
+                        status: 'danger',
+                        timeout: 3000
+                    });
+                    return
+                }
+                writeText($("#encryptionCode").val());
+            });
+        });
+
+        function encryptCode(code) {
+            const obfuscatedResult = JavaScriptObfuscator.obfuscate(code, {
+                compact: true,
+                controlFlowFlattening: true,
+                stringArray: true,
+                stringArrayThreshold: 1,
+                stringArrayEncoding: ["rc4"], // 使用RC4加密
+                stringArrayIndexShift: true,
+                rotateStringArray: true,
+                identifierNamesGenerator: "hexadecimal",
+                target: "browser",
+            });
+
+            return obfuscatedResult.getObfuscatedCode();
+        }
+
+        async function writeText(content) {
+            try {
+                await navigator.clipboard.writeText(content);
+                console.log("文本已复制");
+            } catch (err) {
+                console.error("写入失败:", err);
+            }
+        }
+    </script>
+</body>
+
+</html>
