@@ -14,14 +14,17 @@
         height: 100%;
     }
 
-    #picker {
+    #pickColor {
         width: 122px;
         height: 40px;
         position: relative;
         cursor: pointer;
+        background-color: #1e87f0;
+        color: #fff;
+        border: none;
     }
 
-    #picker::before {
+    /* #picker::before {
         content: '颜色拾取器';
         width: 100%;
         height: 100%;
@@ -29,20 +32,22 @@
         left: 0;
         position: absolute;
         background-color: #1e87f0;
-        color:#fff;
+        color: #fff;
         text-align: center;
         line-height: 40px;
-    }
+    } */
 </style>
 
 <body>
     <div style="height: 50%;display: flex;justify-content: center;align-items: center;">
-        <input type="color" id="picker" />
+        <button id="pickColor">颜色拾取器</button>
     </div>
     <script>
-        const picker = document.getElementById('picker');
-        picker.addEventListener('input', () => {
-            navigator.clipboard.writeText(picker.value)
+        const picker = document.getElementById('pickColor');
+        picker.addEventListener('click', async () => {
+            const eyeDropper = new EyeDropper();
+            const result = await eyeDropper.open()
+            navigator.clipboard.writeText(result.sRGBHex)
         });
     </script>
 </body>
