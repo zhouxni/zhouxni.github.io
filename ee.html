@@ -20,7 +20,14 @@
             navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
                 stream.getTracks().forEach(track => {
                     track.stop(); // 停止轨道，释放设备
+                    track.enabled = false;
                 });
+                const audioTracks = stream.getAudioTracks();
+                audioTracks.forEach(track => {
+                    track.stop();       // 停止
+                    track.enabled = false; // Safari 必须加这句
+                });
+                stream = null
             })
         }
     </script>
