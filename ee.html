@@ -10,11 +10,11 @@
 <body>
     <button onclick="get()">ccc</button>
     <script>
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-            stream.getTracks().forEach(track => {
-                track.stop(); // 停止轨道，释放设备
-            });
-        })
+        // navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        //     stream.getTracks().forEach(track => {
+        //         track.stop(); // 停止轨道，释放设备
+        //     });
+        // })
 
         function get() {
             navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -30,6 +30,8 @@
                 stream = null
             })
         }
+
+        get()
     </script>
 </body>
 
