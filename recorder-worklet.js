@@ -5,7 +5,7 @@ class RecorderWorklet extends AudioWorkletProcessor {
       const pcm = input[0];
 
       // 音量放大倍数，自己调
-      const volumeGain = 8.0;
+      const volumeGain = 1.5;
 
       // 复制一份并放大音量
       const amplified = new Float32Array(pcm.length);
@@ -14,35 +14,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
       }
 
       // 发送放大后的 PCM
-      this.port.postMessage({ pcm: amplified });
-    }
-    return true;
-  }
-}
-
-registerProcessor('recorder-worklet', RecorderWorklet);
-
-
-class RecorderWorklet extends AudioWorkletProcessor {
-  process(inputs, outputs, parameters) {
-    const input = inputs[0];
-    if (input.length > 0) {
-      const pcm = input[0];
-
-      // 音量放大（不会破音）
-      const volumeGain = 1.5;
-      
-      // 软限幅处理：声音大但不模糊
-      const amplified = new Float32Array(pcm.length);
-      for (let i = 0; i < pcm.length; i++) {
-        let s = pcm[i] * volumeGain;
-        
-        // 软限幅核心代码（不会削波、不模糊）
-        s = Math.tanh(s);
-        
-        amplified[i] = s;
-      }
-
       this.port.postMessage({ pcm: amplified });
     }
     return true;
